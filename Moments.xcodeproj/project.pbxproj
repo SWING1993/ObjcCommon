@@ -54,16 +54,6 @@
 		03141A5D2146A3FB0030B553 /* LWAsyncImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 03141A342146A3FA0030B553 /* LWAsyncImageView+WebCache.m */; };
 		03141A672146A64A0030B553 /* AppConfigurationTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 03141A662146A64A0030B553 /* AppConfigurationTemplate.m */; };
 		03141A6B2146A7B50030B553 /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 03141A692146A7A60030B553 /* libxml2.2.tbd */; };
-		03141A902146A9930030B553 /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 03141A6F2146A9930030B553 /* TableViewCell.m */; };
-		03141A912146A9930030B553 /* Menu.m in Sources */ = {isa = PBXBuildFile; fileRef = 03141A702146A9930030B553 /* Menu.m */; };
-		03141A922146A9930030B553 /* MomentUserInfoM.m in Sources */ = {isa = PBXBuildFile; fileRef = 03141A722146A9930030B553 /* MomentUserInfoM.m */; };
-		03141A952146A9930030B553 /* MomentEssayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 03141A7B2146A9930030B553 /* MomentEssayModel.m */; };
-		03141A962146A9930030B553 /* CellLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 03141A7C2146A9930030B553 /* CellLayout.m */; };
-		03141A972146A9930030B553 /* CommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 03141A7F2146A9930030B553 /* CommentModel.m */; };
-		03141A982146A9930030B553 /* TableViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 03141A802146A9930030B553 /* TableViewHeader.m */; };
-		03141A992146A9930030B553 /* MomentsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03141A822146A9930030B553 /* MomentsController.m */; };
-		03141A9B2146A9930030B553 /* LikeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 03141A862146A9930030B553 /* LikeButton.m */; };
-		03141A9C2146A9930030B553 /* ApproveModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 03141A872146A9930030B553 /* ApproveModel.m */; };
 		03141C462146B34D0030B553 /* systemEmoji.plist in Resources */ = {isa = PBXBuildFile; fileRef = 03141AC12146B34C0030B553 /* systemEmoji.plist */; };
 		03141C472146B34D0030B553 /* face.plist in Resources */ = {isa = PBXBuildFile; fileRef = 03141AC22146B34C0030B553 /* face.plist */; };
 		03141C482146B34D0030B553 /* NSString+Emoji.m in Sources */ = {isa = PBXBuildFile; fileRef = 03141AC52146B34C0030B553 /* NSString+Emoji.m */; };
@@ -418,26 +408,6 @@
 		03141A652146A6490030B553 /* AppConfigurationTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppConfigurationTemplate.h; sourceTree = "<group>"; };
 		03141A662146A64A0030B553 /* AppConfigurationTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppConfigurationTemplate.m; sourceTree = "<group>"; };
 		03141A692146A7A60030B553 /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
-		03141A6D2146A9930030B553 /* MomentEssayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MomentEssayModel.h; sourceTree = "<group>"; };
-		03141A6E2146A9930030B553 /* CommentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentModel.h; sourceTree = "<group>"; };
-		03141A6F2146A9930030B553 /* TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCell.m; sourceTree = "<group>"; };
-		03141A702146A9930030B553 /* Menu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Menu.m; sourceTree = "<group>"; };
-		03141A712146A9930030B553 /* CellLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellLayout.h; sourceTree = "<group>"; };
-		03141A722146A9930030B553 /* MomentUserInfoM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MomentUserInfoM.m; sourceTree = "<group>"; };
-		03141A732146A9930030B553 /* TableViewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewHeader.h; sourceTree = "<group>"; };
-		03141A752146A9930030B553 /* ApproveModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApproveModel.h; sourceTree = "<group>"; };
-		03141A762146A9930030B553 /* LikeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LikeButton.h; sourceTree = "<group>"; };
-		03141A792146A9930030B553 /* MomentsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MomentsController.h; sourceTree = "<group>"; };
-		03141A7B2146A9930030B553 /* MomentEssayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MomentEssayModel.m; sourceTree = "<group>"; };
-		03141A7C2146A9930030B553 /* CellLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellLayout.m; sourceTree = "<group>"; };
-		03141A7D2146A9930030B553 /* Menu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Menu.h; sourceTree = "<group>"; };
-		03141A7E2146A9930030B553 /* TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCell.h; sourceTree = "<group>"; };
-		03141A7F2146A9930030B553 /* CommentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentModel.m; sourceTree = "<group>"; };
-		03141A802146A9930030B553 /* TableViewHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewHeader.m; sourceTree = "<group>"; };
-		03141A812146A9930030B553 /* MomentUserInfoM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MomentUserInfoM.h; sourceTree = "<group>"; };
-		03141A822146A9930030B553 /* MomentsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MomentsController.m; sourceTree = "<group>"; };
-		03141A862146A9930030B553 /* LikeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LikeButton.m; sourceTree = "<group>"; };
-		03141A872146A9930030B553 /* ApproveModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApproveModel.m; sourceTree = "<group>"; };
 		03141AA12146AADB0030B553 /* MomentsHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MomentsHeader.pch; sourceTree = "<group>"; };
 		03141AC12146B34C0030B553 /* systemEmoji.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = systemEmoji.plist; sourceTree = "<group>"; };
 		03141AC22146B34C0030B553 /* face.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = face.plist; sourceTree = "<group>"; };
@@ -778,7 +748,6 @@
 		0314196021469F780030B553 /* Feature */ = {
 			isa = PBXGroup;
 			children = (
-				03141A6C2146A9930030B553 /* Moments */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -888,49 +857,6 @@
 			children = (
 			);
 			path = Util;
-			sourceTree = "<group>";
-		};
-		03141A6C2146A9930030B553 /* Moments */ = {
-			isa = PBXGroup;
-			children = (
-				03141ABE2146B20A0030B553 /* Models */,
-				03141AA22146ACA20030B553 /* Views */,
-				03141A812146A9930030B553 /* MomentUserInfoM.h */,
-				03141A722146A9930030B553 /* MomentUserInfoM.m */,
-				03141A6D2146A9930030B553 /* MomentEssayModel.h */,
-				03141A7B2146A9930030B553 /* MomentEssayModel.m */,
-				03141A792146A9930030B553 /* MomentsController.h */,
-				03141A822146A9930030B553 /* MomentsController.m */,
-			);
-			path = Moments;
-			sourceTree = "<group>";
-		};
-		03141AA22146ACA20030B553 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				03141A7D2146A9930030B553 /* Menu.h */,
-				03141A702146A9930030B553 /* Menu.m */,
-				03141A762146A9930030B553 /* LikeButton.h */,
-				03141A862146A9930030B553 /* LikeButton.m */,
-				03141A7E2146A9930030B553 /* TableViewCell.h */,
-				03141A6F2146A9930030B553 /* TableViewCell.m */,
-				03141A732146A9930030B553 /* TableViewHeader.h */,
-				03141A802146A9930030B553 /* TableViewHeader.m */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		03141ABE2146B20A0030B553 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				03141A6E2146A9930030B553 /* CommentModel.h */,
-				03141A7F2146A9930030B553 /* CommentModel.m */,
-				03141A712146A9930030B553 /* CellLayout.h */,
-				03141A7C2146A9930030B553 /* CellLayout.m */,
-				03141A752146A9930030B553 /* ApproveModel.h */,
-				03141A872146A9930030B553 /* ApproveModel.m */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		03141ABF2146B34C0030B553 /* KeyBoard */ = {
@@ -2545,22 +2471,17 @@
 				0314194E21469BB50030B553 /* ViewController.m in Sources */,
 				03141A402146A3FB0030B553 /* LWTransactionGroup.m in Sources */,
 				03141D3A2146B34D0030B553 /* PanelBottomView.m in Sources */,
-				03141A982146A9930030B553 /* TableViewHeader.m in Sources */,
 				03141A3D2146A3FB0030B553 /* CALayer+WebCacheOperation.m in Sources */,
-				03141A902146A9930030B553 /* TableViewCell.m in Sources */,
 				03141C492146B34D0030B553 /* MoreItem.m in Sources */,
 				03141D402146B34D0030B553 /* ChatToolBar.m in Sources */,
-				03141A922146A9930030B553 /* MomentUserInfoM.m in Sources */,
 				03141A562146A3FB0030B553 /* LWStorage.m in Sources */,
 				03141D412146B34D0030B553 /* RFTextView.m in Sources */,
 				03141A362146A3FA0030B553 /* LWTransaction.m in Sources */,
-				03141A9B2146A9930030B553 /* LikeButton.m in Sources */,
 				03141C4B2146B34D0030B553 /* FaceThemeModel.m in Sources */,
 				03141A3A2146A3FB0030B553 /* LWTextGlyph.m in Sources */,
 				03141A532146A3FB0030B553 /* LWImageProcessor.m in Sources */,
 				03141A412146A3FB0030B553 /* NSMutableAttributedString+Gallop.m in Sources */,
 				03141A522146A3FB0030B553 /* SDImageCache+Gallop.m in Sources */,
-				03141A972146A9930030B553 /* CommentModel.m in Sources */,
 				03141A422146A3FB0030B553 /* NSManagedObject+LWLayout.m in Sources */,
 				03141A492146A3FB0030B553 /* LWHTMLDisplayView.m in Sources */,
 				03141D3D2146B34D0030B553 /* FaceButton.m in Sources */,
@@ -2577,7 +2498,6 @@
 				03141A482146A3FB0030B553 /* LWFlag.m in Sources */,
 				03141A382146A3FB0030B553 /* LWCGRectTransform.m in Sources */,
 				03141A4B2146A3FB0030B553 /* LWTextStorage.m in Sources */,
-				03141A992146A9930030B553 /* MomentsController.m in Sources */,
 				0314195921469BB60030B553 /* main.m in Sources */,
 				03141A4C2146A3FB0030B553 /* LWStorageBuilder.m in Sources */,
 				03141A592146A3FB0030B553 /* LWHTMLParser.m in Sources */,
@@ -2586,7 +2506,6 @@
 				03141A4D2146A3FB0030B553 /* LWAsyncDisplayLayer.m in Sources */,
 				03141A582146A3FB0030B553 /* LWAsyncDisplayView.m in Sources */,
 				03141D3B2146B34D0030B553 /* FaceThemeView.m in Sources */,
-				03141A952146A9930030B553 /* MomentEssayModel.m in Sources */,
 				03141D432146B34D0030B553 /* MorePanel.m in Sources */,
 				03141C482146B34D0030B553 /* NSString+Emoji.m in Sources */,
 				03141A5A2146A3FB0030B553 /* LWAsyncImageView+WebCacheOperation.m in Sources */,
@@ -2597,10 +2516,7 @@
 				03141A462146A3FB0030B553 /* LWHTMLTextConfig.m in Sources */,
 				03141D3C2146B34D0030B553 /* FacePageView.m in Sources */,
 				03141A3C2146A3FB0030B553 /* LWHTMLImageConfig.m in Sources */,
-				03141A912146A9930030B553 /* Menu.m in Sources */,
 				03141A4F2146A3FB0030B553 /* LWHTMLNode.m in Sources */,
-				03141A962146A9930030B553 /* CellLayout.m in Sources */,
-				03141A9C2146A9930030B553 /* ApproveModel.m in Sources */,
 				03141D3E2146B34D0030B553 /* FaceSourceManager.m in Sources */,
 				03141A4A2146A3FB0030B553 /* LWTextLine.m in Sources */,
 				03141A3F2146A3FB0030B553 /* LWLayout.m in Sources */,
