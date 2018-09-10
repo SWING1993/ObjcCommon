@@ -1,0 +1,238 @@
+//
+//  MomentsHeader.pch
+//  Moments
+//
+//  Created by 宋国华 on 2018/9/10.
+//  Copyright © 2018年 songguohua. All rights reserved.
+//
+
+#ifndef MomentsHeader_pch
+#define MomentsHeader_pch
+
+#import <QMUIKit/QMUIKit.h>
+#import "AppConfigurationTemplate.h"
+
+
+
+#define kCellMinimumLineSpacing 4.0f
+#define kCellEdgeInsets UIEdgeInsetsMake(4, 4, 4, 4)
+#define kSizeThumbnailCollectionView_one  (kScreenW - 30 - 2*kCellMinimumLineSpacing)
+#define kSizeThumbnailCollectionView_two  (kScreenW - 30 - 3*kCellMinimumLineSpacing)/2
+#define kSizeThumbnailCollectionView_three  (kScreenW - 30 - 4*kCellMinimumLineSpacing)/3
+#define kHeightCollection (kSizeThumbnailCollectionView_three + 6)
+
+#define kPlaceholderImage [UIImage imageNamed:@"WhiteFigure"]
+#define kAvatarImage [UIImage imageNamed:@"avatarImage"]
+#define kDismissImage [UIImage imageNamed:@"iconCollpose"]
+#define kBackImage [[UIImage imageNamed:@"iconback"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
+#define kCoffeePlaceholderImage [UIImage imageNamed:@"coffee_detail_holder"]
+
+//弱引用/强引用
+#define HKWeakSelf(type)  __weak typeof(type) weak##type = type;
+#define HKStrongSelf(type)  __strong typeof(type) type = weak##type;
+
+//设置 view 圆角和边框
+#define HKViewBorderRadius(View, Radius, Width, Color)\
+\
+[View.layer setCornerRadius:(Radius)];\
+[View.layer setMasksToBounds:YES];\
+[View.layer setBorderWidth:(Width)];\
+[View.layer setBorderColor:[Color CGColor]]
+
+//由角度转换弧度 由弧度转换角度
+#define HKDegreesToRadian(x) (M_PI * (x) / 180.0)
+#define HKRadianToDegrees(radian) (radian*180.0)/(M_PI)
+
+//获取view的frame
+#define kGetViewWidth(view)  view.frame.size.width
+#define kGetViewHeight(view) view.frame.size.height
+#define kGetViewX(view)      view.frame.origin.x
+#define kGetViewY(view)      view.frame.origin.y
+//获取图片资源的frame
+#define kGetImage(imageName) [UIImage imageNamed:[NSString stringWithFormat:@"%@",imageName]]
+
+//沙盒目录文件
+//获取temp
+#define kPathTemp NSTemporaryDirectory()
+//获取沙盒 Document
+#define kPathDocument [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject]
+//获取沙盒 Cache
+#define kPathCache [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject]
+
+//GCD - 一次性执行
+#define kDISPATCH_ONCE_BLOCK(onceBlock) static dispatch_once_t onceToken; dispatch_once(&onceToken, onceBlock);
+//GCD - 在Main线程上运行
+#define kDISPATCH_MAIN_THREAD(mainQueueBlock) dispatch_async(dispatch_get_main_queue(), mainQueueBlock);
+//GCD - 开启异步线程
+#define kDISPATCH_GLOBAL_QUEUE_DEFAULT(globalQueueBlock) dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), globalQueueBlock);
+
+// alertView
+#define kTipAlert(_S_, ...)     [[[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:(_S_), ##__VA_ARGS__] message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil] show]
+//#define kTipAlert(_S_, ...)     [NSObject showHudTipStr:[NSString stringWithFormat:(_S_), ##__VA_ARGS__]]
+
+#define kKeyWindow [UIApplication sharedApplication].keyWindow
+
+#define kShieldDay @"ShieldDayKey"
+#define kApplicationMsgHidden @"ApplicationMsgHiddenKey"
+#define kTrainTicketMsgHidden @"TrainTicketMsgHiddenKey"
+#define kTrainMoreMsgHidden @"TrainMoreMsgHiddenKey"
+#define kHotelOrderMsgHidden @"HotelOrderMsgHiddenKey"
+#define kPlaneOrderMsgHidden @"PlaneOrderMsgHiddenKey"
+#define kShoppingBagsMsgHidden @"ShoppingBagsMsgHiddenKey"
+#define kIndexFinancialFlip @"indexFinancialFlipKey"
+
+#define kApplicationSettingPaymentPwd @"ApplicationSettingPaymentPwd"
+#define kApplicationForgetPwd @"ApplicationForgetPwd"
+
+#pragma mark - 系统版本  屏幕尺寸
+/**
+ *  系统版本
+ */
+#define kDeviceType  [[UIDevice currentDevice] model]
+#define kSystemVersion [[UIDevice currentDevice] systemVersion]
+#define kDeviceId [HKTools getDeviceIDInKeychain]
+#define kVersion [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]
+#define kVersionBuild [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"]
+#define KIdentifier [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIdentifier"]
+
+#ifndef ios11x
+
+#endif
+
+#pragma mark - ios系统版本
+/**
+ *  设备
+ */
+#define ios11x [kSystemVersion floatValue] >= 11.0f
+#define ios10x [kSystemVersion floatValue] >= 10.0f
+#define ios9x [kSystemVersion floatValue] >= 9.0f
+#define ios8x [kSystemVersion floatValue] >= 8.0f
+#define ios7x ([kSystemVersion floatValue] >= 7.0f) && ([kSystemVersion floatValue] < 8.0f)
+#define ios6x [kSystemVersion floatValue] < 7.0f
+#define kStatusBarHeight [UIApplication sharedApplication].statusBarFrame.size.height
+#define kNavigationBarHeight 44
+#define kNaviHeigh (kNavigationBarHeight+kStatusBarHeight)
+#define kTabBarHeight (kDevice_Is_iPhoneX ? 83.0f : 49.0f)
+
+#pragma mark - 屏幕宽高
+
+#define kScaleFrom_iPhone6_Desgin(_X_) (_X_ * (kScreenW/375))
+#define kDevice_Is_iPad [[UIDevice currentDevice].model hasPrefix:@"iPad"]
+#define kDevice_Is_iPhone4 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 960), [[UIScreen mainScreen] currentMode].size) : NO)
+#define kDevice_Is_iPhone5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
+#define kDevice_Is_iPhone6 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(750, 1334), [[UIScreen mainScreen] currentMode].size) : NO)
+#define kDevice_Is_iPhone6Plus ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1242, 2208), [[UIScreen mainScreen] currentMode].size) : NO)
+
+#define kDevice_Is_iPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
+
+
+#pragma mark - 屏幕frame,bounds,size
+#define kScreenFrame [UIScreen mainScreen].bounds
+#define kScreenBounds [UIScreen mainScreen].bounds
+#define kScale [UIScreen mainScreen].scale
+#define kScreenSize [UIScreen mainScreen].bounds.size
+#define kScreenW [[UIScreen mainScreen] bounds].size.width
+#define kScreenH [[UIScreen mainScreen] bounds].size.height
+
+#define kScreenWidthRatio       (kScreenW < 375 ? kScreenW / 375.0 : 1)
+#define kScreenHeightRatio      (kScreenW < 667 ? kScreenH / 667.0 : 1)
+#define AdaptedWidth(x)         ceilf((x) * kScreenWidthRatio)
+#define AdaptedHeight(x)        ceilf((x) * kScreenHeightRatio)
+
+#pragma mark - Methods
+#define BCURL(urlString)    [NSURL URLWithString:urlString]
+#define BCNotificationCenter [NSNotificationCenter defaultCenter]
+#define BCFileManager        [NSFileManager defaultManager]
+#define HKRGBColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
+#define RGBA   [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
+#define HKRGBAColor(r, g, b ,a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:a]
+
+#pragma mark - Colors
+#define KColorTopic         HKRGBColor(77.0, 77.0, 77.0)
+#define KColorBackGround    HKRGBColor(246.0, 246.0, 246.0)
+#define kColorSelecteGray   HKRGBColor(217.0, 217.0, 217.0) // cell选择高亮颜色
+#define KColorAbsoluteBlack [UIColor blackColor]
+#define KColorBlack         HKRGBColor(33.0, 33.0, 33.0)
+#define KColorLight         HKRGBColor(130.0, 131.0, 138.0)
+#define KColorTextGary      HKRGBColor(98.0, 98.0, 98.0)
+#define KColorTextLightGary HKRGBColor(163.0, 163.0, 163.0)
+#define kColorOrange        HKRGBColor(240, 150, 22)
+#define kColorText          HKRGBColor(48.0, 50.0, 62.0)
+#define KColorLightGary     HKRGBColor(131.0, 132.0, 139.0)
+#define KColorGreen         HKRGBColor(32.0, 216.0, 31.0)
+#define KColorBrown         HKRGBColor(193.0, 169.0, 107.0)
+#define KColorPlaneBrown    HKRGBColor(193.0, 149.0, 68.0)
+#define kColorGolden        HKRGBColor(178.0, 152.0, 87.0)
+#define KColorTrain         HKRGBColor(233.0, 144.0, 11.0)
+#define KColorRed           HKRGBColor(255.0, 64.0, 64.0)
+#define KColorBlue          HKRGBColor(110.0, 137.0f, 204.0)
+#define KColorLine          HKRGBColor(221.0, 221.0, 221.0)
+#define KColorNavigation    HKRGBColor(33.0, 33.0, 33.0)
+#define kColorWhite         HKRGBColor(255.0, 255.0, 255.0)
+#define kColorGary_170      HKRGBColor(170.0, 170.0, 170.0)
+#define kColorCash          HKRGBColor(190.0, 191.0, 193.0)
+#define KColorLightBrown    HKRGBColor(230.0, 221.0, 196.0)
+#define KNoDataBackView     HKRGBColor(212.0, 212.0, 212.0)
+#define KShareBGView        HKRGBColor(229.0, 229.0, 229.0)
+#define kColorFriend        HKRGBColor(119.0, 119.0, 119.0)
+#define kColorClear         [UIColor clearColor]
+#define kColorRandom        [UIColor randomColor]
+#define kGradientColorsNormal @[[UIColor colorWithHexString:@"FFE198"],[UIColor colorWithHexString:@"C1973D"]]
+#define kGradientColorsInside @[[UIColor colorWithHexString:@"E5CA89"],[UIColor colorWithHexString:@"B69B65"]]
+#define kWXBlue             HKRGBAColor(87, 107, 149, 1)
+
+#define KPurchaseCoffee       HKRGBColor(12.0, 112.0, 66.0)
+#define KPurchaseCoffee_h     HKRGBAColor(12.0, 112.0, 66.0, 0.05)
+#define KHotelBrownColor      HKRGBColor(250.0, 177.0, 22.0)
+#define KHotelGrayColor       HKRGBColor(125.0,125.0,125.0)
+
+#pragma mark 电商订单部分颜色配置
+#define KColorWithOrange    HKRGBColor(255.0, 195.0, 80.0)
+#define KColorWithGreen    HKRGBColor(82.0, 206.0, 149.0)
+#define KColorSectionColor    HKRGBColor(244.0, 244.0, 244.0)
+#define KColorSeperator    HKRGBColor(221.0, 221.0, 221.0)
+
+#pragma mark - Fonts
+#define KNumberFont [UIFont systemFontOfSize:10.0f]
+#define kTimeFont [UIFont systemFontOfSize:12.0f]
+#define kTitleFont [UIFont systemFontOfSize:14.0f]
+#define kNormFont [UIFont systemFontOfSize:15.5f]
+#define kContentFont [UIFont systemFontOfSize:16.0f]
+#define kNavTitleFont [UIFont kMediumFont:18.0f]
+#define kButtonFont [UIFont systemFontOfSize:18.0f]
+
+#define WEAK_SELF __weak typeof(self) weakSelf = self;
+#define STRONG_SELF __strong typeof(self) strongSelf = self;
+
+#pragma mark - 通知处理
+#define DDAddNotification(_selector,_name)\
+([[NSNotificationCenter defaultCenter] addObserver:self selector:_selector name:_name object:nil])
+
+#define DDRemoveNotificationWithName(_name)\
+([[NSNotificationCenter defaultCenter] removeObserver:self name:_name object:nil])
+
+#define DDRemoveNotificationObserver() ([[NSNotificationCenter defaultCenter] removeObserver:self])
+
+#define DDPostNotification(_name)\
+([[NSNotificationCenter defaultCenter] postNotificationName:_name object:nil userInfo:nil])
+
+#define DDPostNotificationWithObj(_name,_obj)\
+([[NSNotificationCenter defaultCenter] postNotificationName:_name object:_obj userInfo:nil])
+
+#define DDPostNotificationWithInfos(_name,_obj,_infos)\
+([[NSNotificationCenter defaultCenter] postNotificationName:_name object:_obj userInfo:_infos])
+
+// 字符串是否为空
+#define kStringIsEmpty(str) ([str isKindOfClass:[NSNull class]] || str == nil || [str length] < 1 ? YES : NO )
+// 数组是否为空
+#define kArrayIsEmpty(array) (array == nil || [array isKindOfClass:[NSNull class]] || array.count == 0)
+// 字典是否为空
+#define kDictIsEmpty(dic) (dic == nil || [dic isKindOfClass:[NSNull class]] || dic.allKeys == 0)
+// 是否是空对象
+#define kObjectIsEmpty(_object) (_object == nil \
+|| [_object isKindOfClass:[NSNull class]] \
+|| ([_object respondsToSelector:@selector(length)] && [(NSData *)_object length] == 0) \
+|| ([_object respondsToSelector:@selector(count)] && [(NSArray *)_object count] == 0))
+
+
+#endif /* MomentsHeader_pch */

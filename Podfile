@@ -10,4 +10,6 @@ target "Moments" do
   pod 'YTKKeyValueStore'
   pod 'MJRefresh'
   pod 'MJExtension'
+  pod 'SDWebImage'
+  pod 'TZImagePickerController'
 end
