@@ -149,7 +149,7 @@ NSString *const PageFaceViewIdentifier = @"PageFaceViewIdentifier";
     _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, self.frame.size.height-kUIPageControllerHeight, self.frame.size.width, kUIPageControllerHeight)];
     _pageControl.currentPage = 0;
     _pageControl.hidesForSinglePage = YES;
-    _pageControl.pageIndicatorTintColor = kColorCash;
+    _pageControl.pageIndicatorTintColor = UIColorBlue;
     _pageControl.currentPageIndicatorTintColor = [UIColor grayColor];
     [self addSubview:_pageControl];
 }

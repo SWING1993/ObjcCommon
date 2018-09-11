@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0314194B21469BB50030B553 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0314194A21469BB50030B553 /* AppDelegate.m */; };
-		0314194E21469BB50030B553 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0314194D21469BB50030B553 /* ViewController.m */; };
 		0314195321469BB60030B553 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0314195221469BB60030B553 /* Assets.xcassets */; };
 		0314195921469BB60030B553 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0314195821469BB60030B553 /* main.m */; };
 		03141A352146A3FA0030B553 /* LWTextContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 031419E32146A3FA0030B553 /* LWTextContainer.m */; };
@@ -310,14 +309,24 @@
 		03141D432146B34D0030B553 /* MorePanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 03141C432146B34C0030B553 /* MorePanel.m */; };
 		03141D442146B34D0030B553 /* ChatKeyBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 03141C452146B34C0030B553 /* ChatKeyBoard.m */; };
 		499416C83B006E9CF274A068 /* Pods_Moments.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EA9D01FD7A1B70092AD68B9 /* Pods_Moments.framework */; };
+		897EBB7B2147664800CC32BF /* SWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBB7A2147664800CC32BF /* SWViewController.m */; };
+		897EBB7E214767A300CC32BF /* SWNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBB7D214767A300CC32BF /* SWNavigationController.m */; };
+		897EBB81214767DC00CC32BF /* IndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBB80214767DC00CC32BF /* IndexViewController.m */; };
+		897EBB8421476B6900CC32BF /* SWTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBB8321476B6900CC32BF /* SWTableViewController.m */; };
+		897EBB8921476E6B00CC32BF /* SWStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBB8821476E6B00CC32BF /* SWStatus.m */; };
+		897EBB8E21476EAF00CC32BF /* SWStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBB8D21476EAF00CC32BF /* SWStatusViewController.m */; };
+		897EBB922147720300CC32BF /* SWStatusCellLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBB912147720300CC32BF /* SWStatusCellLayout.m */; };
+		897EBB952147843F00CC32BF /* SWMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBB942147843F00CC32BF /* SWMenu.m */; };
+		897EBB982147848300CC32BF /* SWStatusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBB972147848300CC32BF /* SWStatusCell.m */; };
+		897EBB9B214785CD00CC32BF /* SWLikeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBB9A214785CD00CC32BF /* SWLikeButton.m */; };
+		897EBB9E21478D7900CC32BF /* SWStatusLike.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBB9D21478D7900CC32BF /* SWStatusLike.m */; };
+		897EBBA121478D9B00CC32BF /* SWStatusComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBBA021478D9B00CC32BF /* SWStatusComment.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0314194621469BB50030B553 /* Moments.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moments.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0314194921469BB50030B553 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0314194A21469BB50030B553 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		0314194C21469BB50030B553 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		0314194D21469BB50030B553 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		0314195221469BB60030B553 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0314195721469BB60030B553 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0314195821469BB60030B553 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -682,6 +691,30 @@
 		03141C442146B34C0030B553 /* MorePanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MorePanel.h; sourceTree = "<group>"; };
 		03141C452146B34C0030B553 /* ChatKeyBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatKeyBoard.m; sourceTree = "<group>"; };
 		05BDC4358F3399D37FD7F08F /* Pods-Moments.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moments.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Moments/Pods-Moments.debug.xcconfig"; sourceTree = "<group>"; };
+		897EBB792147664800CC32BF /* SWViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWViewController.h; sourceTree = "<group>"; };
+		897EBB7A2147664800CC32BF /* SWViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWViewController.m; sourceTree = "<group>"; };
+		897EBB7C214767A300CC32BF /* SWNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWNavigationController.h; sourceTree = "<group>"; };
+		897EBB7D214767A300CC32BF /* SWNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWNavigationController.m; sourceTree = "<group>"; };
+		897EBB7F214767DC00CC32BF /* IndexViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IndexViewController.h; sourceTree = "<group>"; };
+		897EBB80214767DC00CC32BF /* IndexViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IndexViewController.m; sourceTree = "<group>"; };
+		897EBB8221476B6900CC32BF /* SWTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWTableViewController.h; sourceTree = "<group>"; };
+		897EBB8321476B6900CC32BF /* SWTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWTableViewController.m; sourceTree = "<group>"; };
+		897EBB8721476E6B00CC32BF /* SWStatus.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWStatus.h; sourceTree = "<group>"; };
+		897EBB8821476E6B00CC32BF /* SWStatus.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWStatus.m; sourceTree = "<group>"; };
+		897EBB8C21476EAF00CC32BF /* SWStatusViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWStatusViewController.h; sourceTree = "<group>"; };
+		897EBB8D21476EAF00CC32BF /* SWStatusViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWStatusViewController.m; sourceTree = "<group>"; };
+		897EBB902147720300CC32BF /* SWStatusCellLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWStatusCellLayout.h; sourceTree = "<group>"; };
+		897EBB912147720300CC32BF /* SWStatusCellLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWStatusCellLayout.m; sourceTree = "<group>"; };
+		897EBB932147843F00CC32BF /* SWMenu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWMenu.h; sourceTree = "<group>"; };
+		897EBB942147843F00CC32BF /* SWMenu.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWMenu.m; sourceTree = "<group>"; };
+		897EBB962147848300CC32BF /* SWStatusCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWStatusCell.h; sourceTree = "<group>"; };
+		897EBB972147848300CC32BF /* SWStatusCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWStatusCell.m; sourceTree = "<group>"; };
+		897EBB99214785CD00CC32BF /* SWLikeButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWLikeButton.h; sourceTree = "<group>"; };
+		897EBB9A214785CD00CC32BF /* SWLikeButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWLikeButton.m; sourceTree = "<group>"; };
+		897EBB9C21478D7900CC32BF /* SWStatusLike.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWStatusLike.h; sourceTree = "<group>"; };
+		897EBB9D21478D7900CC32BF /* SWStatusLike.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWStatusLike.m; sourceTree = "<group>"; };
+		897EBB9F21478D9B00CC32BF /* SWStatusComment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWStatusComment.h; sourceTree = "<group>"; };
+		897EBBA021478D9B00CC32BF /* SWStatusComment.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWStatusComment.m; sourceTree = "<group>"; };
 		9EA9D01FD7A1B70092AD68B9 /* Pods_Moments.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Moments.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A61FFE8889B53E330545BB1B /* Pods-Moments.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moments.release.xcconfig"; path = "Pods/Target Support Files/Pods-Moments/Pods-Moments.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -721,8 +754,8 @@
 			isa = PBXGroup;
 			children = (
 				0314195F21469F4C0030B553 /* Main */,
+				897EBB762147644100CC32BF /* Feature */,
 				0314196121469F810030B553 /* Vendor */,
-				0314196021469F780030B553 /* Feature */,
 				03141A642146A6340030B553 /* Util */,
 				0314195221469BB60030B553 /* Assets.xcassets */,
 				0314195721469BB60030B553 /* Info.plist */,
@@ -739,17 +772,8 @@
 				0314194A21469BB50030B553 /* AppDelegate.m */,
 				03141A652146A6490030B553 /* AppConfigurationTemplate.h */,
 				03141A662146A64A0030B553 /* AppConfigurationTemplate.m */,
-				0314194C21469BB50030B553 /* ViewController.h */,
-				0314194D21469BB50030B553 /* ViewController.m */,
 			);
 			path = Main;
-			sourceTree = "<group>";
-		};
-		0314196021469F780030B553 /* Feature */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Feature;
 			sourceTree = "<group>";
 		};
 		0314196121469F810030B553 /* Vendor */ = {
@@ -855,6 +879,7 @@
 		03141A642146A6340030B553 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				897EBB752147641E00CC32BF /* Base */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -2091,6 +2116,92 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		897EBB752147641E00CC32BF /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				897EBB782147660000CC32BF /* Controller */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		897EBB762147644100CC32BF /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				897EBB8521476E3B00CC32BF /* Status */,
+				897EBB77214765E600CC32BF /* Index */,
+			);
+			path = Feature;
+			sourceTree = "<group>";
+		};
+		897EBB77214765E600CC32BF /* Index */ = {
+			isa = PBXGroup;
+			children = (
+				897EBB7F214767DC00CC32BF /* IndexViewController.h */,
+				897EBB80214767DC00CC32BF /* IndexViewController.m */,
+			);
+			path = Index;
+			sourceTree = "<group>";
+		};
+		897EBB782147660000CC32BF /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				897EBB792147664800CC32BF /* SWViewController.h */,
+				897EBB7A2147664800CC32BF /* SWViewController.m */,
+				897EBB8221476B6900CC32BF /* SWTableViewController.h */,
+				897EBB8321476B6900CC32BF /* SWTableViewController.m */,
+				897EBB7C214767A300CC32BF /* SWNavigationController.h */,
+				897EBB7D214767A300CC32BF /* SWNavigationController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		897EBB8521476E3B00CC32BF /* Status */ = {
+			isa = PBXGroup;
+			children = (
+				897EBB8B21476E8500CC32BF /* Controller */,
+				897EBB8A21476E7B00CC32BF /* View */,
+				897EBB8621476E4800CC32BF /* Model */,
+			);
+			path = Status;
+			sourceTree = "<group>";
+		};
+		897EBB8621476E4800CC32BF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				897EBB8721476E6B00CC32BF /* SWStatus.h */,
+				897EBB8821476E6B00CC32BF /* SWStatus.m */,
+				897EBB9C21478D7900CC32BF /* SWStatusLike.h */,
+				897EBB9D21478D7900CC32BF /* SWStatusLike.m */,
+				897EBB9F21478D9B00CC32BF /* SWStatusComment.h */,
+				897EBBA021478D9B00CC32BF /* SWStatusComment.m */,
+				897EBB902147720300CC32BF /* SWStatusCellLayout.h */,
+				897EBB912147720300CC32BF /* SWStatusCellLayout.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		897EBB8A21476E7B00CC32BF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				897EBB932147843F00CC32BF /* SWMenu.h */,
+				897EBB942147843F00CC32BF /* SWMenu.m */,
+				897EBB962147848300CC32BF /* SWStatusCell.h */,
+				897EBB972147848300CC32BF /* SWStatusCell.m */,
+				897EBB99214785CD00CC32BF /* SWLikeButton.h */,
+				897EBB9A214785CD00CC32BF /* SWLikeButton.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		897EBB8B21476E8500CC32BF /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				897EBB8C21476EAF00CC32BF /* SWStatusViewController.h */,
+				897EBB8D21476EAF00CC32BF /* SWStatusViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		AD8237014271D1CACE5D2039 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -2468,19 +2579,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0314194E21469BB50030B553 /* ViewController.m in Sources */,
 				03141A402146A3FB0030B553 /* LWTransactionGroup.m in Sources */,
 				03141D3A2146B34D0030B553 /* PanelBottomView.m in Sources */,
 				03141A3D2146A3FB0030B553 /* CALayer+WebCacheOperation.m in Sources */,
+				897EBB8421476B6900CC32BF /* SWTableViewController.m in Sources */,
 				03141C492146B34D0030B553 /* MoreItem.m in Sources */,
 				03141D402146B34D0030B553 /* ChatToolBar.m in Sources */,
 				03141A562146A3FB0030B553 /* LWStorage.m in Sources */,
 				03141D412146B34D0030B553 /* RFTextView.m in Sources */,
+				897EBB8E21476EAF00CC32BF /* SWStatusViewController.m in Sources */,
 				03141A362146A3FA0030B553 /* LWTransaction.m in Sources */,
 				03141C4B2146B34D0030B553 /* FaceThemeModel.m in Sources */,
 				03141A3A2146A3FB0030B553 /* LWTextGlyph.m in Sources */,
+				897EBB9E21478D7900CC32BF /* SWStatusLike.m in Sources */,
 				03141A532146A3FB0030B553 /* LWImageProcessor.m in Sources */,
 				03141A412146A3FB0030B553 /* NSMutableAttributedString+Gallop.m in Sources */,
+				897EBB952147843F00CC32BF /* SWMenu.m in Sources */,
 				03141A522146A3FB0030B553 /* SDImageCache+Gallop.m in Sources */,
 				03141A422146A3FB0030B553 /* NSManagedObject+LWLayout.m in Sources */,
 				03141A492146A3FB0030B553 /* LWHTMLDisplayView.m in Sources */,
@@ -2496,23 +2610,28 @@
 				03141A4E2146A3FB0030B553 /* LWImageStorage.m in Sources */,
 				03141A512146A3FB0030B553 /* CALayer+WebCache.m in Sources */,
 				03141A482146A3FB0030B553 /* LWFlag.m in Sources */,
+				897EBB9B214785CD00CC32BF /* SWLikeButton.m in Sources */,
 				03141A382146A3FB0030B553 /* LWCGRectTransform.m in Sources */,
 				03141A4B2146A3FB0030B553 /* LWTextStorage.m in Sources */,
+				897EBB81214767DC00CC32BF /* IndexViewController.m in Sources */,
 				0314195921469BB60030B553 /* main.m in Sources */,
 				03141A4C2146A3FB0030B553 /* LWStorageBuilder.m in Sources */,
 				03141A592146A3FB0030B553 /* LWHTMLParser.m in Sources */,
 				03141A372146A3FA0030B553 /* LWTextLayout.m in Sources */,
+				897EBB7B2147664800CC32BF /* SWViewController.m in Sources */,
 				0314194B21469BB50030B553 /* AppDelegate.m in Sources */,
 				03141A4D2146A3FB0030B553 /* LWAsyncDisplayLayer.m in Sources */,
 				03141A582146A3FB0030B553 /* LWAsyncDisplayView.m in Sources */,
 				03141D3B2146B34D0030B553 /* FaceThemeView.m in Sources */,
 				03141D432146B34D0030B553 /* MorePanel.m in Sources */,
+				897EBBA121478D9B00CC32BF /* SWStatusComment.m in Sources */,
 				03141C482146B34D0030B553 /* NSString+Emoji.m in Sources */,
 				03141A5A2146A3FB0030B553 /* LWAsyncImageView+WebCacheOperation.m in Sources */,
 				03141D422146B34D0030B553 /* OfficialAccountToolbar.m in Sources */,
 				03141A5B2146A3FB0030B553 /* UIImage+Gallop.m in Sources */,
 				03141A432146A3FB0030B553 /* LWTextAttachment.m in Sources */,
 				03141A5D2146A3FB0030B553 /* LWAsyncImageView+WebCache.m in Sources */,
+				897EBB922147720300CC32BF /* SWStatusCellLayout.m in Sources */,
 				03141A462146A3FB0030B553 /* LWHTMLTextConfig.m in Sources */,
 				03141D3C2146B34D0030B553 /* FacePageView.m in Sources */,
 				03141A3C2146A3FB0030B553 /* LWHTMLImageConfig.m in Sources */,
@@ -2522,7 +2641,10 @@
 				03141A3F2146A3FB0030B553 /* LWLayout.m in Sources */,
 				03141A442146A3FB0030B553 /* NSString+HKMD5.m in Sources */,
 				03141A3B2146A3FB0030B553 /* LWGIFImage.m in Sources */,
+				897EBB982147848300CC32BF /* SWStatusCell.m in Sources */,
 				03141A472146A3FB0030B553 /* SDWebImageManager+Gallop.m in Sources */,
+				897EBB7E214767A300CC32BF /* SWNavigationController.m in Sources */,
+				897EBB8921476E6B00CC32BF /* SWStatus.m in Sources */,
 				03141D442146B34D0030B553 /* ChatKeyBoard.m in Sources */,
 				03141A352146A3FA0030B553 /* LWTextContainer.m in Sources */,
 				03141A392146A3FB0030B553 /* LWHTMLLayout.m in Sources */,

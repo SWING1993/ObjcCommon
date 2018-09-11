@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "AppConfigurationTemplate.h"
-
+#import "IndexViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -18,7 +18,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.backgroundColor = [UIColor whiteColor];
     [AppConfigurationTemplate applyConfigurationTemplate];
+    
+    IndexViewController *indexController = [[IndexViewController alloc] init];
+    SWNavigationController *indexNav = [[SWNavigationController alloc] initWithRootViewController:indexController];
+    self.window.rootViewController = indexNav;
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 

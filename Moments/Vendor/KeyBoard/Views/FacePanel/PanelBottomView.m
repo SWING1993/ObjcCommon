@@ -31,15 +31,15 @@
 
 - (void)initSubViews
 {
-    self.backgroundColor = kColorWhite;
+    self.backgroundColor = UIColorWhite;
     _facePickerView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kScreenW-kFacePanelBottomSendWidth, kFacePanelBottomToolBarHeight)];
     [self addSubview:_facePickerView];
     _sendBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     _sendBtn.frame = CGRectMake(kScreenW-kFacePanelBottomSendWidth, 0, kFacePanelBottomSendWidth, kFacePanelBottomToolBarHeight);
     _sendBtn.titleLabel.font = UIFontPFMediumMake(17);
     [_sendBtn setTitle:@"发送" forState:UIControlStateNormal];
-    [_sendBtn setBackgroundColor:KColorBlue];
-    [_sendBtn setTitleColor:kColorWhite forState:UIControlStateNormal];
+    [_sendBtn setBackgroundColor:UIColorBlue];
+    [_sendBtn setTitleColor:UIColorWhite forState:UIControlStateNormal];
     [_sendBtn addTarget:self action:@selector(sendBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_sendBtn];
 }
@@ -51,17 +51,16 @@
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
         if (i == 0) {
             btn.selected = YES;
-            [btn setBackgroundColor:KColorBackGround];
+            [btn setBackgroundColor:UIColorForBackground];
         } else {
             btn.selected = NO;
-            [btn setBackgroundColor:kColorWhite];
+            [btn setBackgroundColor:UIColorWhite];
         }
         btn.tag = i+100;
         btn.titleLabel.font = UIFontMake(14);
         [btn setImage:kGetImage(themeM.themeIcon) forState:UIControlStateNormal];
-//        [btn setTitle:themeM.themeDecribe forState:UIControlStateNormal];
-        [btn setTitleColor:KColorBlue forState:UIControlStateSelected];
-        [btn setTitleColor:KColorLight forState:UIControlStateNormal];
+        [btn setTitleColor:UIColorBlue forState:UIControlStateSelected];
+        [btn setTitleColor:UIColorRandom forState:UIControlStateNormal];
         [btn addTarget:self action:@selector(subjectPicBtnClick:) forControlEvents:UIControlEventTouchUpInside];
         btn.frame = CGRectMake(i*kFacePanelBottomSendWidth, 0, kFacePanelBottomSendWidth, kFacePanelBottomToolBarHeight);
         [_facePickerView addSubview:btn];
@@ -80,10 +79,10 @@
             UIButton *btn = (UIButton *)sub;
             if (btn.tag-100 == subjectIndex) {
                 btn.selected = YES;
-                [btn setBackgroundColor:KColorBackGround];
+                [btn setBackgroundColor:UIColorForBackground];
             }else {
                 btn.selected = NO;
-                [btn setBackgroundColor:kColorWhite];
+                [btn setBackgroundColor:UIColorWhite];
             }
         }
     }

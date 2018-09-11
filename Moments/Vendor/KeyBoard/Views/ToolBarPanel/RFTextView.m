@@ -23,7 +23,7 @@
     if (self) {
         self.font = [UIFont systemFontOfSize:16.f];
         self.textColor = [UIColor blackColor];
-        self.layer.borderColor = KColorLine.CGColor;
+        self.layer.borderColor = UIColorSeparator.CGColor;
         self.layer.cornerRadius = 4.0f;
         self.layer.borderWidth = 0.5f;
         self.contentMode = UIViewContentModeRedraw;
