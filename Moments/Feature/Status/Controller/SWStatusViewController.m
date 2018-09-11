@@ -7,6 +7,7 @@
 //
 
 #import "SWStatusViewController.h"
+#import "SWStatusPostViewController.h"
 #import "SWStatusCellLayout.h"
 #import "SWStatusCell.h"
 
@@ -14,17 +15,24 @@
 
 @property (nonatomic, strong) QMUITableView *tableView;
 @property (nonatomic, strong) NSMutableArray <SWStatusCellLayout *>*dataSource;
+
 @end
 
 @implementation SWStatusViewController
 
 - (void)initSubviews {
     [super initSubviews];
-    
+    [self setTitle:@"朋友圈"];
     self.tableView = [[QMUITableView alloc] initWithFrame:kScreenBounds style:UITableViewStyleGrouped];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self.view addSubview:self.tableView];
+}
+
+- (void)setupNavigationItems {
+    [super setupNavigationItems];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:kGetImage(@"Moment_Post") style:UIBarButtonItemStyleDone target:self action:@selector(postStatusAction)];
 }
 
 - (void)viewDidLoad {
@@ -35,6 +43,13 @@
 //- (UIStatusBarStyle)preferredStatusBarStyle {
 //    return UIStatusBarStyleDefault;
 //}
+
+#pragma mark - Actions
+
+- (void)postStatusAction {
+    SWStatusPostViewController *postViewController = [[SWStatusPostViewController alloc] init];
+    [self.navigationController pushViewController:postViewController animated:YES];
+}
 
 #pragma mark - UITableViewDataSource
 
@@ -79,4 +94,37 @@
     cell.cellLayout = cellLayout;
 //    [self callbackWithCell:cell];
 }
+
+
+#pragma mark - QMUINavigationControllerDelegate
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleDefault;
+}
+
+- (UIImage *)navigationBarBackgroundImage {
+    return UIImageMake(@"navigationbar_background");
+}
+
+- (UIImage *)navigationBarShadowImage {
+    return [[UIImage alloc] init];
+}
+
+- (UIColor *)navigationBarTintColor {
+    return UIColorMake(33, 33, 33);
+}
+
+- (UIColor *)titleViewTintColor {
+    return UIColorMake(33, 33, 33);
+}
+
+#pragma mark - NavigationBarTransition
+- (BOOL)shouldCustomNavigationBarTransitionWhenPushDisappearing {
+    return YES;
+}
+
+- (BOOL)shouldCustomNavigationBarTransitionWhenPopDisappearing {
+    return YES;
+}
+
 @end

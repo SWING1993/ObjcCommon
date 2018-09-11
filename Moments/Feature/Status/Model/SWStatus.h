@@ -12,7 +12,7 @@
 
 @property (nonatomic, copy  ) NSString *id;
 @property (nonatomic, copy  ) NSString *content;
-@property (nonatomic, strong) NSArray *images;
+@property (nonatomic, strong) NSMutableArray *images;
 /** 时间戳 */
 @property (nonatomic, assign) long long created;
 @property (nonatomic, copy  ) NSString *nickname;

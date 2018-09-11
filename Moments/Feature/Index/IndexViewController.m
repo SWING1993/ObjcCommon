@@ -51,4 +51,12 @@
     [self.navigationController pushViewController:statusController animated:YES];
 }
 
+- (BOOL)shouldCustomNavigationBarTransitionWhenPushDisappearing {
+    return YES;
+}
+
+- (BOOL)shouldCustomNavigationBarTransitionWhenPopDisappearing {
+    return YES;
+}
+
 @end

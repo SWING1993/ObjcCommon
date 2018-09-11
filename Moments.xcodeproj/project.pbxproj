@@ -321,6 +321,24 @@
 		897EBB9B214785CD00CC32BF /* SWLikeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBB9A214785CD00CC32BF /* SWLikeButton.m */; };
 		897EBB9E21478D7900CC32BF /* SWStatusLike.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBB9D21478D7900CC32BF /* SWStatusLike.m */; };
 		897EBBA121478D9B00CC32BF /* SWStatusComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBBA021478D9B00CC32BF /* SWStatusComment.m */; };
+		897EBBA52147A78A00CC32BF /* SWStatusPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBBA42147A78A00CC32BF /* SWStatusPostViewController.m */; };
+		897EBBA82147A9D700CC32BF /* SWTextViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBBA72147A9D700CC32BF /* SWTextViewCell.m */; };
+		897EBBAB2147AE6400CC32BF /* SWStatusImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBBAA2147AE6400CC32BF /* SWStatusImageCell.m */; };
+		897EBBCC2147C33200CC32BF /* UITableView+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBBAD2147C33100CC32BF /* UITableView+Common.m */; };
+		897EBBCD2147C33200CC32BF /* NSDictionary+HandleNSNull.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBBAE2147C33100CC32BF /* NSDictionary+HandleNSNull.m */; };
+		897EBBCE2147C33200CC32BF /* UIColor+layer.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBBB12147C33100CC32BF /* UIColor+layer.m */; };
+		897EBBCF2147C33200CC32BF /* NSString+Device.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBBB22147C33100CC32BF /* NSString+Device.m */; };
+		897EBBD02147C33200CC32BF /* UIScrollView+EmptyDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBBB52147C33100CC32BF /* UIScrollView+EmptyDataSet.m */; };
+		897EBBD12147C33200CC32BF /* NSDate+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBBB62147C33100CC32BF /* NSDate+Utilities.m */; };
+		897EBBD22147C33200CC32BF /* UIView+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBBB82147C33100CC32BF /* UIView+Common.m */; };
+		897EBBD32147C33200CC32BF /* UIAlertAction+CM.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBBB92147C33100CC32BF /* UIAlertAction+CM.m */; };
+		897EBBD42147C33200CC32BF /* NSString+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBBBE2147C33100CC32BF /* NSString+Common.m */; };
+		897EBBD52147C33200CC32BF /* UIView+FrameGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBBBF2147C33100CC32BF /* UIView+FrameGeometry.m */; };
+		897EBBD62147C33200CC32BF /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBBC22147C33100CC32BF /* NSDate+Extension.m */; };
+		897EBBD72147C33200CC32BF /* UIView+GesAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBBC42147C33100CC32BF /* UIView+GesAdditions.m */; };
+		897EBBD82147C33200CC32BF /* NSDictionary+Safe.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBBC62147C33100CC32BF /* NSDictionary+Safe.m */; };
+		897EBBD92147C33200CC32BF /* UIViewController+Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBBCA2147C33100CC32BF /* UIViewController+Animation.m */; };
+		897EBBDA2147C33200CC32BF /* UIImage+UI.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBBCB2147C33100CC32BF /* UIImage+UI.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -715,6 +733,43 @@
 		897EBB9D21478D7900CC32BF /* SWStatusLike.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWStatusLike.m; sourceTree = "<group>"; };
 		897EBB9F21478D9B00CC32BF /* SWStatusComment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWStatusComment.h; sourceTree = "<group>"; };
 		897EBBA021478D9B00CC32BF /* SWStatusComment.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWStatusComment.m; sourceTree = "<group>"; };
+		897EBBA32147A78A00CC32BF /* SWStatusPostViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWStatusPostViewController.h; sourceTree = "<group>"; };
+		897EBBA42147A78A00CC32BF /* SWStatusPostViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWStatusPostViewController.m; sourceTree = "<group>"; };
+		897EBBA62147A9D700CC32BF /* SWTextViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWTextViewCell.h; sourceTree = "<group>"; };
+		897EBBA72147A9D700CC32BF /* SWTextViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWTextViewCell.m; sourceTree = "<group>"; };
+		897EBBA92147AE6400CC32BF /* SWStatusImageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWStatusImageCell.h; sourceTree = "<group>"; };
+		897EBBAA2147AE6400CC32BF /* SWStatusImageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWStatusImageCell.m; sourceTree = "<group>"; };
+		897EBBAD2147C33100CC32BF /* UITableView+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+Common.m"; sourceTree = "<group>"; };
+		897EBBAE2147C33100CC32BF /* NSDictionary+HandleNSNull.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+HandleNSNull.m"; sourceTree = "<group>"; };
+		897EBBAF2147C33100CC32BF /* NSString+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Common.h"; sourceTree = "<group>"; };
+		897EBBB02147C33100CC32BF /* UIView+FrameGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FrameGeometry.h"; sourceTree = "<group>"; };
+		897EBBB12147C33100CC32BF /* UIColor+layer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+layer.m"; sourceTree = "<group>"; };
+		897EBBB22147C33100CC32BF /* NSString+Device.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Device.m"; sourceTree = "<group>"; };
+		897EBBB32147C33100CC32BF /* NSDate+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Extension.h"; sourceTree = "<group>"; };
+		897EBBB42147C33100CC32BF /* Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Category.h; sourceTree = "<group>"; };
+		897EBBB52147C33100CC32BF /* UIScrollView+EmptyDataSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+EmptyDataSet.m"; sourceTree = "<group>"; };
+		897EBBB62147C33100CC32BF /* NSDate+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Utilities.m"; sourceTree = "<group>"; };
+		897EBBB72147C33100CC32BF /* NSDictionary+Safe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Safe.h"; sourceTree = "<group>"; };
+		897EBBB82147C33100CC32BF /* UIView+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Common.m"; sourceTree = "<group>"; };
+		897EBBB92147C33100CC32BF /* UIAlertAction+CM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertAction+CM.m"; sourceTree = "<group>"; };
+		897EBBBA2147C33100CC32BF /* UIView+GesAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+GesAdditions.h"; sourceTree = "<group>"; };
+		897EBBBB2147C33100CC32BF /* UIImage+UI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+UI.h"; sourceTree = "<group>"; };
+		897EBBBC2147C33100CC32BF /* UIViewController+Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Animation.h"; sourceTree = "<group>"; };
+		897EBBBD2147C33100CC32BF /* UIColor+layer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+layer.h"; sourceTree = "<group>"; };
+		897EBBBE2147C33100CC32BF /* NSString+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Common.m"; sourceTree = "<group>"; };
+		897EBBBF2147C33100CC32BF /* UIView+FrameGeometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FrameGeometry.m"; sourceTree = "<group>"; };
+		897EBBC02147C33100CC32BF /* UITableView+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+Common.h"; sourceTree = "<group>"; };
+		897EBBC12147C33100CC32BF /* NSDictionary+HandleNSNull.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+HandleNSNull.h"; sourceTree = "<group>"; };
+		897EBBC22147C33100CC32BF /* NSDate+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Extension.m"; sourceTree = "<group>"; };
+		897EBBC32147C33100CC32BF /* NSString+Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Device.h"; sourceTree = "<group>"; };
+		897EBBC42147C33100CC32BF /* UIView+GesAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+GesAdditions.m"; sourceTree = "<group>"; };
+		897EBBC52147C33100CC32BF /* UIAlertAction+CM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertAction+CM.h"; sourceTree = "<group>"; };
+		897EBBC62147C33100CC32BF /* NSDictionary+Safe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Safe.m"; sourceTree = "<group>"; };
+		897EBBC72147C33100CC32BF /* NSDate+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Utilities.h"; sourceTree = "<group>"; };
+		897EBBC82147C33100CC32BF /* UIView+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Common.h"; sourceTree = "<group>"; };
+		897EBBC92147C33100CC32BF /* UIScrollView+EmptyDataSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+EmptyDataSet.h"; sourceTree = "<group>"; };
+		897EBBCA2147C33100CC32BF /* UIViewController+Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Animation.m"; sourceTree = "<group>"; };
+		897EBBCB2147C33100CC32BF /* UIImage+UI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+UI.m"; sourceTree = "<group>"; };
 		9EA9D01FD7A1B70092AD68B9 /* Pods_Moments.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Moments.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A61FFE8889B53E330545BB1B /* Pods-Moments.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moments.release.xcconfig"; path = "Pods/Target Support Files/Pods-Moments/Pods-Moments.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -879,6 +934,7 @@
 		03141A642146A6340030B553 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				897EBBAC2147C33100CC32BF /* Category */,
 				897EBB752147641E00CC32BF /* Base */,
 			);
 			path = Util;
@@ -2189,6 +2245,10 @@
 				897EBB972147848300CC32BF /* SWStatusCell.m */,
 				897EBB99214785CD00CC32BF /* SWLikeButton.h */,
 				897EBB9A214785CD00CC32BF /* SWLikeButton.m */,
+				897EBBA62147A9D700CC32BF /* SWTextViewCell.h */,
+				897EBBA72147A9D700CC32BF /* SWTextViewCell.m */,
+				897EBBA92147AE6400CC32BF /* SWStatusImageCell.h */,
+				897EBBAA2147AE6400CC32BF /* SWStatusImageCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2198,8 +2258,48 @@
 			children = (
 				897EBB8C21476EAF00CC32BF /* SWStatusViewController.h */,
 				897EBB8D21476EAF00CC32BF /* SWStatusViewController.m */,
+				897EBBA32147A78A00CC32BF /* SWStatusPostViewController.h */,
+				897EBBA42147A78A00CC32BF /* SWStatusPostViewController.m */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		897EBBAC2147C33100CC32BF /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				897EBBAD2147C33100CC32BF /* UITableView+Common.m */,
+				897EBBAE2147C33100CC32BF /* NSDictionary+HandleNSNull.m */,
+				897EBBAF2147C33100CC32BF /* NSString+Common.h */,
+				897EBBB02147C33100CC32BF /* UIView+FrameGeometry.h */,
+				897EBBB12147C33100CC32BF /* UIColor+layer.m */,
+				897EBBB22147C33100CC32BF /* NSString+Device.m */,
+				897EBBB32147C33100CC32BF /* NSDate+Extension.h */,
+				897EBBB42147C33100CC32BF /* Category.h */,
+				897EBBB52147C33100CC32BF /* UIScrollView+EmptyDataSet.m */,
+				897EBBB62147C33100CC32BF /* NSDate+Utilities.m */,
+				897EBBB72147C33100CC32BF /* NSDictionary+Safe.h */,
+				897EBBB82147C33100CC32BF /* UIView+Common.m */,
+				897EBBB92147C33100CC32BF /* UIAlertAction+CM.m */,
+				897EBBBA2147C33100CC32BF /* UIView+GesAdditions.h */,
+				897EBBBB2147C33100CC32BF /* UIImage+UI.h */,
+				897EBBBC2147C33100CC32BF /* UIViewController+Animation.h */,
+				897EBBBD2147C33100CC32BF /* UIColor+layer.h */,
+				897EBBBE2147C33100CC32BF /* NSString+Common.m */,
+				897EBBBF2147C33100CC32BF /* UIView+FrameGeometry.m */,
+				897EBBC02147C33100CC32BF /* UITableView+Common.h */,
+				897EBBC12147C33100CC32BF /* NSDictionary+HandleNSNull.h */,
+				897EBBC22147C33100CC32BF /* NSDate+Extension.m */,
+				897EBBC32147C33100CC32BF /* NSString+Device.h */,
+				897EBBC42147C33100CC32BF /* UIView+GesAdditions.m */,
+				897EBBC52147C33100CC32BF /* UIAlertAction+CM.h */,
+				897EBBC62147C33100CC32BF /* NSDictionary+Safe.m */,
+				897EBBC72147C33100CC32BF /* NSDate+Utilities.h */,
+				897EBBC82147C33100CC32BF /* UIView+Common.h */,
+				897EBBC92147C33100CC32BF /* UIScrollView+EmptyDataSet.h */,
+				897EBBCA2147C33100CC32BF /* UIViewController+Animation.m */,
+				897EBBCB2147C33100CC32BF /* UIImage+UI.m */,
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 		AD8237014271D1CACE5D2039 /* Frameworks */ = {
@@ -2532,6 +2632,7 @@
 				"${BUILT_PRODUCTS_DIR}/QMUIKit/QMUIKit.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveObjC/ReactiveObjC.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/TPKeyboardAvoiding/TPKeyboardAvoiding.framework",
 				"${BUILT_PRODUCTS_DIR}/TZImagePickerController/TZImagePickerController.framework",
 				"${BUILT_PRODUCTS_DIR}/YTKKeyValueStore/YTKKeyValueStore.framework",
 			);
@@ -2546,6 +2647,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QMUIKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveObjC.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TPKeyboardAvoiding.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TZImagePickerController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YTKKeyValueStore.framework",
 			);
@@ -2579,28 +2681,40 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				897EBBCC2147C33200CC32BF /* UITableView+Common.m in Sources */,
+				897EBBCF2147C33200CC32BF /* NSString+Device.m in Sources */,
 				03141A402146A3FB0030B553 /* LWTransactionGroup.m in Sources */,
 				03141D3A2146B34D0030B553 /* PanelBottomView.m in Sources */,
+				897EBBD12147C33200CC32BF /* NSDate+Utilities.m in Sources */,
 				03141A3D2146A3FB0030B553 /* CALayer+WebCacheOperation.m in Sources */,
 				897EBB8421476B6900CC32BF /* SWTableViewController.m in Sources */,
+				897EBBD82147C33200CC32BF /* NSDictionary+Safe.m in Sources */,
 				03141C492146B34D0030B553 /* MoreItem.m in Sources */,
 				03141D402146B34D0030B553 /* ChatToolBar.m in Sources */,
+				897EBBCE2147C33200CC32BF /* UIColor+layer.m in Sources */,
 				03141A562146A3FB0030B553 /* LWStorage.m in Sources */,
 				03141D412146B34D0030B553 /* RFTextView.m in Sources */,
 				897EBB8E21476EAF00CC32BF /* SWStatusViewController.m in Sources */,
 				03141A362146A3FA0030B553 /* LWTransaction.m in Sources */,
 				03141C4B2146B34D0030B553 /* FaceThemeModel.m in Sources */,
+				897EBBD02147C33200CC32BF /* UIScrollView+EmptyDataSet.m in Sources */,
+				897EBBD42147C33200CC32BF /* NSString+Common.m in Sources */,
 				03141A3A2146A3FB0030B553 /* LWTextGlyph.m in Sources */,
 				897EBB9E21478D7900CC32BF /* SWStatusLike.m in Sources */,
 				03141A532146A3FB0030B553 /* LWImageProcessor.m in Sources */,
+				897EBBAB2147AE6400CC32BF /* SWStatusImageCell.m in Sources */,
 				03141A412146A3FB0030B553 /* NSMutableAttributedString+Gallop.m in Sources */,
 				897EBB952147843F00CC32BF /* SWMenu.m in Sources */,
 				03141A522146A3FB0030B553 /* SDImageCache+Gallop.m in Sources */,
 				03141A422146A3FB0030B553 /* NSManagedObject+LWLayout.m in Sources */,
 				03141A492146A3FB0030B553 /* LWHTMLDisplayView.m in Sources */,
+				897EBBA82147A9D700CC32BF /* SWTextViewCell.m in Sources */,
 				03141D3D2146B34D0030B553 /* FaceButton.m in Sources */,
 				03141A552146A3FB0030B553 /* LWTextParser.m in Sources */,
+				897EBBD92147C33200CC32BF /* UIViewController+Animation.m in Sources */,
+				897EBBD32147C33200CC32BF /* UIAlertAction+CM.m in Sources */,
 				03141C4A2146B34D0030B553 /* ChatToolBarItem.m in Sources */,
+				897EBBCD2147C33200CC32BF /* NSDictionary+HandleNSNull.m in Sources */,
 				03141A672146A64A0030B553 /* AppConfigurationTemplate.m in Sources */,
 				03141A502146A3FB0030B553 /* LWAsyncImageView.m in Sources */,
 				03141A3E2146A3FB0030B553 /* LWAsyncImageView+Display.m in Sources */,
@@ -2621,6 +2735,8 @@
 				897EBB7B2147664800CC32BF /* SWViewController.m in Sources */,
 				0314194B21469BB50030B553 /* AppDelegate.m in Sources */,
 				03141A4D2146A3FB0030B553 /* LWAsyncDisplayLayer.m in Sources */,
+				897EBBD52147C33200CC32BF /* UIView+FrameGeometry.m in Sources */,
+				897EBBDA2147C33200CC32BF /* UIImage+UI.m in Sources */,
 				03141A582146A3FB0030B553 /* LWAsyncDisplayView.m in Sources */,
 				03141D3B2146B34D0030B553 /* FaceThemeView.m in Sources */,
 				03141D432146B34D0030B553 /* MorePanel.m in Sources */,
@@ -2630,13 +2746,17 @@
 				03141D422146B34D0030B553 /* OfficialAccountToolbar.m in Sources */,
 				03141A5B2146A3FB0030B553 /* UIImage+Gallop.m in Sources */,
 				03141A432146A3FB0030B553 /* LWTextAttachment.m in Sources */,
+				897EBBD62147C33200CC32BF /* NSDate+Extension.m in Sources */,
 				03141A5D2146A3FB0030B553 /* LWAsyncImageView+WebCache.m in Sources */,
 				897EBB922147720300CC32BF /* SWStatusCellLayout.m in Sources */,
+				897EBBD72147C33200CC32BF /* UIView+GesAdditions.m in Sources */,
 				03141A462146A3FB0030B553 /* LWHTMLTextConfig.m in Sources */,
 				03141D3C2146B34D0030B553 /* FacePageView.m in Sources */,
+				897EBBD22147C33200CC32BF /* UIView+Common.m in Sources */,
 				03141A3C2146A3FB0030B553 /* LWHTMLImageConfig.m in Sources */,
 				03141A4F2146A3FB0030B553 /* LWHTMLNode.m in Sources */,
 				03141D3E2146B34D0030B553 /* FaceSourceManager.m in Sources */,
+				897EBBA52147A78A00CC32BF /* SWStatusPostViewController.m in Sources */,
 				03141A4A2146A3FB0030B553 /* LWTextLine.m in Sources */,
 				03141A3F2146A3FB0030B553 /* LWLayout.m in Sources */,
 				03141A442146A3FB0030B553 /* NSString+HKMD5.m in Sources */,

@@ -14,7 +14,6 @@
 
 @implementation SWViewController
 
-
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
 }

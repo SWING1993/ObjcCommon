@@ -12,4 +12,6 @@ target "Moments" do
   pod 'MJExtension'
   pod 'SDWebImage'
   pod 'TZImagePickerController'
+  pod 'TPKeyboardAvoiding'
+
 end
