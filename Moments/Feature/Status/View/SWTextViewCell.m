@@ -25,6 +25,7 @@
             _textView.placeholder = @"这一刻的想法 ...";
             _textView.font = [UIFont systemFontOfSize:16.f];
             _textView.textColor = [UIColor blackColor];
+            _textView.delegate = self;
             [self.contentView addSubview:_textView];
         }
     }

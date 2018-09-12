@@ -27,9 +27,10 @@
     return one;
 }
 
+//布局模型
 - (id)initWithStatusModel:(SWStatus *)statusModel
                     index:(NSInteger)index
-            dateFormatter:(NSDateFormatter *)dateFormatter {
+                    opend:(BOOL)open {
     self = [super init];
     if (self) {
         @autoreleasepool {
@@ -38,9 +39,8 @@
             LWImageStorage* avatarStorage = [[LWImageStorage alloc] initWithIdentifier:AVATAR_IDENTIFIER];
 //            avatarStorage.contents = @"头像";
 //            avatarStorage.placeholder = kPlaceholderImage;
-            avatarStorage.cornerBackgroundColor = [UIColor whiteColor];
-            avatarStorage.backgroundColor = [UIColor whiteColor];
-            avatarStorage.frame = CGRectMake(10, 20, 40, 40);
+            avatarStorage.backgroundColor = UIColorRandom;
+            avatarStorage.frame = CGRectMake(10, 15, 40, 40);
             avatarStorage.tag = 9;
             avatarStorage.cornerBorderWidth = 1.0f;
             avatarStorage.cornerBorderColor = [UIColor grayColor];
@@ -48,12 +48,9 @@
             //名字模型 nameTextStorage
             LWTextStorage* nameTextStorage = [[LWTextStorage alloc] init];
             nameTextStorage.text = statusModel.nickname;
-            nameTextStorage.font = UIFontPFMediumMake(16);
-            nameTextStorage.frame = CGRectMake(60.0f, 20.0f, SCREEN_WIDTH - 80.0f, CGFLOAT_MAX);
-//            [nameTextStorage lw_addLinkWithData:@""
-//                                          range:NSMakeRange(0,statusModel.nickname.length)
-//                                      linkColor:kWXBlue
-//                                 highLightColor:RGBA(0, 0, 0, 0.15)];
+            nameTextStorage.vericalAlignment = LWTextVericalAlignmentTop;
+            nameTextStorage.font = UIFontPFMediumMake(15);
+            nameTextStorage.frame = CGRectMake(60.0f, 15.0f, SCREEN_WIDTH - 80.0f, 15);
             
             //正文内容模型 contentTextStorage
             LWTextStorage* contentTextStorage = [[LWTextStorage alloc] init];
@@ -62,23 +59,6 @@
             contentTextStorage.font = UIFontMake(15);
             contentTextStorage.textColor = RGBA(40, 40, 40, 1);
             contentTextStorage.text = statusModel.content;
-            if (kStringIsEmpty(contentTextStorage.text) == false) {
-                NSString *str = @"((http[s]{0,1}|ftp)://[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)|(www.[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)";
-                NSError *error;
-                NSRegularExpression *expression = [NSRegularExpression regularExpressionWithPattern:str options:NSRegularExpressionCaseInsensitive error:&error];
-                NSArray *resultArray = [expression matchesInString:contentTextStorage.text options:0 range:NSMakeRange(0, contentTextStorage.text.length)];
-                NSMutableAttributedString * replaceStr = [[NSMutableAttributedString alloc] initWithString:@"🔗网页链接" attributes:nil];
-                for (NSInteger i = resultArray.count-1; i>= 0; i--) {
-                    NSTextCheckingResult *match = resultArray[i];
-                    NSString * subStringForMatch = [contentTextStorage.attributedText.string substringWithRange:match.range];
-                    [contentTextStorage.attributedText replaceCharactersInRange:match.range withAttributedString:replaceStr];
-                    [contentTextStorage lw_addLinkWithData:[NSString stringWithFormat:@"%@%@",kLinkHref,subStringForMatch]
-                                                     range:[contentTextStorage.attributedText.string rangeOfString:replaceStr.string]
-                                                 linkColor:UIColorLink
-                                            highLightColor:RGBA(0, 0, 0, 0.15f)];
-                }
-            }
-            
             contentTextStorage.frame = CGRectMake(nameTextStorage.left,
                                                   nameTextStorage.bottom,
                                                   SCREEN_WIDTH - 80.0f,
@@ -118,14 +98,16 @@
                                                highLightColor:RGBA(0, 0, 0, 0.25f)];
             
             //发布的图片模型 imgsStorage
+            
+            NSArray *imageArray = [statusModel.images mj_JSONObject];
             CGFloat imageWidth = (SCREEN_WIDTH - 110.0f)/3.0f;
-            NSInteger imageCount = [statusModel.images count];
+            NSInteger imageCount = [imageArray count];
             NSMutableArray* imageStorageArray = [[NSMutableArray alloc] initWithCapacity:imageCount];
             NSMutableArray* imagePositionArray = [[NSMutableArray alloc] initWithCapacity:imageCount];
             
             // type 4 视频
             if ([statusModel.type isEqualToString:@"4"]) {
-                NSDictionary *imageDict = [statusModel.images objectAtIndex:0];
+                NSDictionary *imageDict = [imageArray objectAtIndex:0];
                 CGFloat height = [imageDict[@"videoHeight"] floatValue];
                 CGFloat width = [imageDict[@"videoWidth"] floatValue];
                 
@@ -169,21 +151,14 @@
 //                imageStorage.contents = [HKConfig complementedImageURLWithComponent:imageDict[@"videoImageUrl"] withImageLongEdge:imageWidth*3 withImageShortEdge:imageWidth*3];
                 [imageStorageArray addObject:imageStorage];
             } else {
-                BOOL isImageData = [[statusModel.images firstObject] isKindOfClass:[UIImage class]] ? YES: NO;
                 NSInteger row = 0;
                 NSInteger column = 0;
                 if (imageCount == 1) {
+                    UIImage *firstImage = [SWStatus getDocumentImageWithName:[imageArray firstObject]];
                     CGFloat height;
                     CGFloat width;
-                    if (isImageData) {
-                        UIImage *image = [statusModel.images firstObject];
-                        height = image.size.height;
-                        width = image.size.width;
-                    } else {
-                        NSDictionary *imageDict = [statusModel.images objectAtIndex:0];
-                        height = [imageDict[@"height"] floatValue];
-                        width = [imageDict[@"width"] floatValue];
-                    }
+                    height = firstImage.size.height;
+                    width = firstImage.size.width;
                     CGFloat x = width/height;
                     if (x > 2.5f) {
                         x = 2.5f;
@@ -220,12 +195,7 @@
                     imageStorage.clipsToBounds = YES;
                     imageStorage.frame = imageRect;
                     imageStorage.backgroundColor = RGBA(240, 240, 240, 1);
-                    if (isImageData) {
-                        imageStorage.contents = [statusModel.images firstObject];
-                    } else {
-                        NSDictionary *imageDict = [statusModel.images objectAtIndex:0];
-//                        imageStorage.contents = [HKConfig complementedImageURLWithComponent:imageDict[@"url"] withImageLongEdge:imageWidth*3 withImageShortEdge:imageWidth*3];
-                    }
+                    imageStorage.contents = firstImage;
                     [imageStorageArray addObject:imageStorage];
                 } else {
                     for (NSInteger i = 0; i < imageCount; i ++) {
@@ -241,15 +211,8 @@
                         imageStorage.tag = i;
                         imageStorage.frame = imageRect;
                         imageStorage.backgroundColor = RGBA(240, 240, 240, 1);
-                        
-                        if (isImageData) {
-                            UIImage *image = [statusModel.images objectAtIndex:i];
-                            imageStorage.contents = image;
-                        } else {
-                            NSDictionary *imageDict = [statusModel.images objectAtIndex:i];
-//                            imageStorage.contents = [HKConfig complementedImageURLWithComponent:imageDict[@"url"] withImageLongEdge:imageWidth withImageShortEdge:imageWidth];
-                        }
-                        
+                        UIImage *image = [SWStatus getDocumentImageWithName:[imageArray objectAtIndex:i]];
+                        imageStorage.contents = image;
                         [imageStorageArray addObject:imageStorage];
                         column = column + 1;
                         if (imageCount == 4) {
@@ -282,18 +245,19 @@
             
             //生成时间的模型 dateTextStorage
             LWTextStorage* dateTextStorage = [[LWTextStorage alloc] init];
-            dateTextStorage.text = @"12年 xx日";
+            dateTextStorage.vericalAlignment = LWTextVericalAlignmentTop;
+            dateTextStorage.text = kStringIsEmpty(statusModel.createdTime) ? @"现在" : statusModel.createdTime;
             dateTextStorage.font = UIFontMake(12);
             dateTextStorage.textColor = [UIColor grayColor];
             dateTextStorage.frame = CGRectMake(nameTextStorage.left,
-                                               lastImageStorage.bottom,
+                                               lastImageStorage.bottom + 5,
                                                SCREEN_WIDTH - 80.0f,
-                                               CGFLOAT_MAX);
+                                               10);
             
             //菜单按钮
             CGRect menuPosition = CGRectZero;
             menuPosition = CGRectMake(SCREEN_WIDTH - 54.0f,
-                                      lastImageStorage.bottom - 14.5f,
+                                      lastImageStorage.bottom - 18.f,
                                       44.0f,
                                       44.0f);
             
@@ -301,13 +265,13 @@
             if (visible) {
                 LWImageStorage* imageStorage = [[LWImageStorage alloc] initWithIdentifier:IMAGE_IDENTIFIER];
                 imageStorage.tag = 999;
-                imageStorage.frame = CGRectMake(dateTextStorage.right + 15, dateTextStorage.frame.origin.y + 5, 15, 10);
+                imageStorage.frame = CGRectMake(dateTextStorage.right + 15, dateTextStorage.frame.origin.y + 2.5, 15, 10);
                 imageStorage.contents = kGetImage(@"visibleType");
                 [self addStorage:imageStorage];
             }
             
             //删除模型模型 deleteTextStorage
-            if (visible) {
+            if (statusModel.own) {
                 LWTextStorage* deleteTextStorage = [[LWTextStorage alloc] init];
                 deleteTextStorage.text = @"删除";
                 deleteTextStorage.font = [UIFont fontWithName:@"Heiti SC" size:12.0f];
@@ -499,7 +463,7 @@
             self.commentBgPosition = commentBgPosition;//评论灰色背景位置
             self.imagePostions = imagePositionArray;//保存图片位置的数组
             //如果是使用在UITableViewCell上面，可以通过以下方法快速的得到Cell的高度
-            self.cellHeight = [self suggestHeightWithBottomMargin:15.0f];
+            self.cellHeight = [self suggestHeightWithBottomMargin:10.0f];
         }
     }
     return self;

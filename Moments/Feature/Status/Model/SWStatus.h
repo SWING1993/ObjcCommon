@@ -11,31 +11,35 @@
 RLM_ARRAY_TYPE(NSString)
 
 @interface SWStatus : RLMObject
-
+// id
 @property NSInteger id;
-/** 类型：1=文本，2=图片，3=图文 4=视频 **/
+// 类型：1=文本，2=图片，3=图文 4=视频
 @property NSString *type;
-@property BOOL isMine;
+// 我的
+@property BOOL own;
+// 部分人可见标志
+@property BOOL personal;
+// 正文
 @property NSString *content;
-// json array 格式
-@property NSString *imagesJson;
-@property (readonly) NSArray *images;
-/** 时间戳 */
-@property long long created;
+// 图片数组 jsonarray 格式
+@property NSString *images;
+// 发布时间
+@property NSString *createdTime;
+// 发布人昵称
 @property NSString *nickname;
-@property NSDate *date;
-@property NSString *userHeadurl;
-/** 点赞标志位，0为当前用户未点赞，1为当前用户已点赞 **/
-@property BOOL approveFlag;
-/** 点赞数量 */
-@property NSInteger approvesCnt;
-/** 评论数量 */
-@property NSInteger commentsCnt;
+// 发布人头像
+@property NSString *avator;
+// 评论
 @property (readonly) NSArray *essayComments;
+// 昵称
 @property (readonly) NSArray *essayApproves;
 
++ (NSInteger)incrementaID;
 + (NSString *)generateRandomString;
 + (NSString *)saveImage:(UIImage *)image;
 + (UIImage *)getDocumentImageWithName:(NSString *)name;
 
 @end
+
+RLM_ARRAY_TYPE(SWStatus) // 定义RLMArray<RLMUser>
+

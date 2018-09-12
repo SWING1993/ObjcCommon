@@ -14,8 +14,4 @@
 
 @implementation SWTableViewController
 
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleLightContent;
-}
-
 @end

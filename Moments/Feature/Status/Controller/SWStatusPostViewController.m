@@ -10,12 +10,15 @@
 #import "SWTextViewCell.h"
 #import "SWStatusImageCell.h"
 #import "SWStatus.h"
+#import "SWStatusTimeViewController.h"
 
 @interface SWStatusPostViewController ()<QMUITableViewDelegate, QMUITableViewDataSource>
 
 @property (nonatomic, strong) QMUITableView *tableView;
 @property (nonatomic, strong) SWStatus *status;
 @property (nonatomic, strong) NSMutableArray <UIImage *>*originImages;
+@property (nonatomic, strong) UISwitch *ownSwitch;
+@property (nonatomic, strong) UISwitch *personalSwitch;
 
 @end
 
@@ -28,6 +31,22 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
 - (void)initSubviews {
     [super initSubviews];
     self.view.backgroundColor = UIColorWhite;
+    
+    self.ownSwitch = [[UISwitch alloc] init];
+    @weakify(self)
+    [[self.ownSwitch rac_newOnChannel] subscribeNext:^(NSNumber * _Nullable x) {
+        @strongify(self)
+        self.status.own = [x boolValue];
+        [self.tableView reloadData];
+    }];
+    
+    self.personalSwitch = [[UISwitch alloc] init];
+    [[self.personalSwitch rac_newOnChannel] subscribeNext:^(NSNumber * _Nullable x) {
+        @strongify(self)
+        self.status.personal = [x boolValue];
+//        [self.tableView reloadData];
+    }];
+    
     self.tableView = [[QMUITableView alloc] initWithFrame:kScreenBounds style:UITableViewStyleGrouped];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
@@ -46,6 +65,7 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.status = [[SWStatus alloc] init];
+    self.status.createdTime = @"现在";
     self.originImages = [NSMutableArray array];
 }
 
@@ -67,10 +87,11 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
         for (UIImage *image in self.originImages) {
             [imageNames addObject:[SWStatus saveImage:image]];
         }
-        self.status.imagesJson = [imageNames mj_JSONString];
-        NSLog(@"%@",self.status.imagesJson);
+        self.status.images = [imageNames mj_JSONString];
     }
-    
+//    self.status.avatar
+    self.status.nickname = @"SUPERMAN";
+    self.status.id = [SWStatus incrementaID];
     // 获取默认的 Realm 存储对象
     RLMRealm *realm = [RLMRealm defaultRealm];
     
@@ -78,6 +99,8 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
     [realm beginWriteTransaction];
     [realm addObject:self.status];
     [realm commitWriteTransaction];
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - UITableViewDataSource
@@ -93,7 +116,7 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
         }
             break;
         default:
-            return 6;
+            return 5;
             break;
     }
 }
@@ -168,13 +191,11 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
             
         case 1: {
             switch (indexPath.row) {
-              
-                    
                 case 0:{
                     QMUITableViewCell *cell = (QMUITableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"cell2"];
                     if (!cell) {
                         cell = [[QMUITableViewCell alloc] initForTableView:tableView withStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell2"];
-                        cell.selectionStyle = UITableViewCellSeparatorStyleNone;
+                        cell.accessoryType = QMUIStaticTableViewCellAccessoryTypeDisclosureIndicator;
                     }
                     cell.textLabel.text = @"所在位置";
                     return cell;
@@ -185,7 +206,7 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
                     QMUITableViewCell *cell = (QMUITableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"cell4"];
                     if (!cell) {
                         cell = [[QMUITableViewCell alloc] initForTableView:tableView withStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell4"];
-                        cell.selectionStyle = UITableViewCellSeparatorStyleNone;
+                        cell.accessoryType = QMUIStaticTableViewCellAccessoryTypeDisclosureIndicator;
                     }
                     cell.textLabel.text = @"提醒谁看";
                     return cell;
@@ -195,10 +216,11 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
                 case 2:{
                     QMUITableViewCell *cell = (QMUITableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"cell5"];
                     if (!cell) {
-                        cell = [[QMUITableViewCell alloc] initForTableView:tableView withStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell5"];
-                        cell.selectionStyle = UITableViewCellSeparatorStyleNone;
+                        cell = [[QMUITableViewCell alloc] initForTableView:tableView withStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell5"];
+                        cell.accessoryType = QMUIStaticTableViewCellAccessoryTypeDisclosureIndicator;
                     }
                     cell.textLabel.text = @"发布时间";
+                    cell.detailTextLabel.text = self.status.createdTime;
                     return cell;
                 }
                     break;
@@ -207,8 +229,9 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
                     QMUITableViewCell *cell = (QMUITableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"section1cell0"];
                     if (!cell) {
                         cell = [[QMUITableViewCell alloc] initForTableView:tableView withStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"section1cell0"];
-                        cell.selectionStyle = UITableViewCellSeparatorStyleNone;
                     }
+                    self.ownSwitch.on = self.status.own;
+                    cell.accessoryView = self.ownSwitch;
                     cell.textLabel.text = @"自己发布";
                     return cell;
                 }
@@ -218,20 +241,16 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
                     QMUITableViewCell *cell = (QMUITableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"section1cell1"];
                     if (!cell) {
                         cell = [[QMUITableViewCell alloc] initForTableView:tableView withStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"section1cell1"];
-                        cell.selectionStyle = UITableViewCellSeparatorStyleNone;
                     }
-                    cell.textLabel.text = @"发布人头像";
-                    return cell;
-                }
-                    break;
-                    
-                case 5:{
-                    QMUITableViewCell *cell = (QMUITableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"section1cell2"];
-                    if (!cell) {
-                        cell = [[QMUITableViewCell alloc] initForTableView:tableView withStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"section1cell2"];
-                        cell.selectionStyle = UITableViewCellSeparatorStyleNone;
+                    if (self.status.own) {
+                        self.personalSwitch.on = self.status.personal;
+                        cell.accessoryView = self.personalSwitch;
+                        cell.textLabel.text = @"部分人可见";
+
+                    } else {
+                        cell.accessoryType = QMUIStaticTableViewCellAccessoryTypeDisclosureIndicator;
+                        cell.textLabel.text = @"发布人";
                     }
-                    cell.textLabel.text = @"发布人昵称";
                     return cell;
                 }
                     break;
@@ -247,18 +266,47 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
             return nil;
             break;
     }
-    
 }
 
-
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0)
-    {}else {
+    if (indexPath.section != 0) {
         [tableView addLineforPlainCell:cell forRowAtIndexPath:indexPath withLeftSpace:15 hasSectionLine:NO];
     }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView qmui_clearsSelection];
+    if (indexPath.section == 1) {
+        switch (indexPath.row) {
+            case 0:{
+                    
+                }
+                break;
+            case 1:{
+                
+            }
+                break;
+            case 2:{
+                SWStatusTimeViewController *controller = [[SWStatusTimeViewController alloc] init];
+                STPopupController *popupController = [[STPopupController alloc] initWithRootViewController:controller];
+                popupController.style = STPopupStyleBottomSheet;
+                [popupController presentInViewController:self.navigationController];
+                controller.completeBlock = ^(NSString *valueStr) {
+                    self.status.createdTime = valueStr;
+                    [self.tableView reloadData];
+                };
+            }
+                break;
+            case 3:{
+                
+            }
+                break;
+                
+            default:
+                break;
+        }
+        
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -268,37 +316,5 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return CGFLOAT_MIN;
 }
-
-#pragma mark - QMUINavigationControllerDelegate
-
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleDefault;
-}
-
-- (UIImage *)navigationBarBackgroundImage {
-    return UIImageMake(@"navig/Users/7cmlg/Desktop/iOSProject/Moments/Moments/Util/Category/UIViewController+Animation.hationbar_background");
-}
-
-- (UIImage *)navigationBarShadowImage {
-    return [[UIImage alloc] init];
-}
-
-- (UIColor *)navigationBarTintColor {
-    return UIColorMake(33, 33, 33);
-}
-
-- (UIColor *)titleViewTintColor {
-    return UIColorMake(33, 33, 33);
-}
-
-#pragma mark - NavigationBarTransition
-- (BOOL)shouldCustomNavigationBarTransitionWhenPushDisappearing {
-    return YES;
-}
-
-- (BOOL)shouldCustomNavigationBarTransitionWhenPopDisappearing {
-    return YES;
-}
-
 
 @end

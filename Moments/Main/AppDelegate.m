@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "AppConfigurationTemplate.h"
 #import "IndexViewController.h"
+#import "SWStatus.h"
 @interface AppDelegate ()
 
 @end

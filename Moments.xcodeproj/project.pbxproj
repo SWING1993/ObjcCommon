@@ -339,6 +339,7 @@
 		897EBBD82147C33200CC32BF /* NSDictionary+Safe.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBBC62147C33100CC32BF /* NSDictionary+Safe.m */; };
 		897EBBD92147C33200CC32BF /* UIViewController+Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBBCA2147C33100CC32BF /* UIViewController+Animation.m */; };
 		897EBBDA2147C33200CC32BF /* UIImage+UI.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBBCB2147C33100CC32BF /* UIImage+UI.m */; };
+		897EBBDD2148F00700CC32BF /* SWStatusTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBBDC2148F00700CC32BF /* SWStatusTimeViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -770,6 +771,8 @@
 		897EBBC92147C33100CC32BF /* UIScrollView+EmptyDataSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+EmptyDataSet.h"; sourceTree = "<group>"; };
 		897EBBCA2147C33100CC32BF /* UIViewController+Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Animation.m"; sourceTree = "<group>"; };
 		897EBBCB2147C33100CC32BF /* UIImage+UI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+UI.m"; sourceTree = "<group>"; };
+		897EBBDB2148F00700CC32BF /* SWStatusTimeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWStatusTimeViewController.h; sourceTree = "<group>"; };
+		897EBBDC2148F00700CC32BF /* SWStatusTimeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWStatusTimeViewController.m; sourceTree = "<group>"; };
 		9EA9D01FD7A1B70092AD68B9 /* Pods_Moments.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Moments.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A61FFE8889B53E330545BB1B /* Pods-Moments.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moments.release.xcconfig"; path = "Pods/Target Support Files/Pods-Moments/Pods-Moments.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -2260,6 +2263,8 @@
 				897EBB8D21476EAF00CC32BF /* SWStatusViewController.m */,
 				897EBBA32147A78A00CC32BF /* SWStatusPostViewController.h */,
 				897EBBA42147A78A00CC32BF /* SWStatusPostViewController.m */,
+				897EBBDB2148F00700CC32BF /* SWStatusTimeViewController.h */,
+				897EBBDC2148F00700CC32BF /* SWStatusTimeViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2625,7 +2630,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Moments/Pods-Moments-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BlocksKit/BlocksKit.framework",
 				"${BUILT_PRODUCTS_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework",
-				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
@@ -2633,15 +2638,16 @@
 				"${BUILT_PRODUCTS_DIR}/ReactiveObjC/ReactiveObjC.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/STPopup/STPopup.framework",
 				"${BUILT_PRODUCTS_DIR}/TPKeyboardAvoiding/TPKeyboardAvoiding.framework",
 				"${BUILT_PRODUCTS_DIR}/TZImagePickerController/TZImagePickerController.framework",
-				"${BUILT_PRODUCTS_DIR}/YTKKeyValueStore/YTKKeyValueStore.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BlocksKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DZNEmptyDataSet.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJExtension.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
@@ -2649,9 +2655,10 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveObjC.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/STPopup.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TPKeyboardAvoiding.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TZImagePickerController.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YTKKeyValueStore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2747,6 +2754,7 @@
 				03141A5A2146A3FB0030B553 /* LWAsyncImageView+WebCacheOperation.m in Sources */,
 				03141D422146B34D0030B553 /* OfficialAccountToolbar.m in Sources */,
 				03141A5B2146A3FB0030B553 /* UIImage+Gallop.m in Sources */,
+				897EBBDD2148F00700CC32BF /* SWStatusTimeViewController.m in Sources */,
 				03141A432146A3FB0030B553 /* LWTextAttachment.m in Sources */,
 				897EBBD62147C33200CC32BF /* NSDate+Extension.m in Sources */,
 				03141A5D2146A3FB0030B553 /* LWAsyncImageView+WebCache.m in Sources */,

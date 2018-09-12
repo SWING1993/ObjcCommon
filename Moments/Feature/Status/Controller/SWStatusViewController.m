@@ -40,15 +40,31 @@
     // Do any additional setup after loading the view.
 }
 
-//- (UIStatusBarStyle)preferredStatusBarStyle {
-//    return UIStatusBarStyleDefault;
-//}
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self reloadData];
+}
+
 
 #pragma mark - Actions
 
 - (void)postStatusAction {
     SWStatusPostViewController *postViewController = [[SWStatusPostViewController alloc] init];
     [self.navigationController pushViewController:postViewController animated:YES];
+}
+
+- (void)reloadData {
+    // 从默认 Realm 中，检索所有的状态
+    RLMResults<SWStatus *> *allStatus = [SWStatus allObjects];
+    self.dataSource = [NSMutableArray arrayWithCapacity:allStatus.count];
+    for (NSInteger index = 0; index < allStatus.count; index ++) {
+        SWStatus *status = [allStatus objectAtIndex:index];
+        SWStatusCellLayout *layout = [[SWStatusCellLayout alloc] initWithStatusModel:status index:index opend:NO];
+        [self.dataSource addObject:layout];
+    }
+    kDISPATCH_MAIN_THREAD(^{
+        [self.tableView reloadData];
+    })
 }
 
 #pragma mark - UITableViewDataSource
@@ -87,7 +103,6 @@
 }
 
 - (void)confirgueCell:(SWStatusCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    cell.displaysAsynchronously = YES;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.indexPath = indexPath;
     SWStatusCellLayout* cellLayout = self.dataSource[indexPath.row];
@@ -96,35 +111,35 @@
 }
 
 
-#pragma mark - QMUINavigationControllerDelegate
-
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleDefault;
-}
-
-- (UIImage *)navigationBarBackgroundImage {
-    return UIImageMake(@"navigationbar_background");
-}
-
-- (UIImage *)navigationBarShadowImage {
-    return [[UIImage alloc] init];
-}
-
-- (UIColor *)navigationBarTintColor {
-    return UIColorMake(33, 33, 33);
-}
-
-- (UIColor *)titleViewTintColor {
-    return UIColorMake(33, 33, 33);
-}
-
-#pragma mark - NavigationBarTransition
-- (BOOL)shouldCustomNavigationBarTransitionWhenPushDisappearing {
-    return YES;
-}
-
-- (BOOL)shouldCustomNavigationBarTransitionWhenPopDisappearing {
-    return YES;
-}
+//#pragma mark - QMUINavigationControllerDelegate
+//
+//- (UIStatusBarStyle)preferredStatusBarStyle {
+//    return UIStatusBarStyleDefault;
+//}
+//
+//- (UIImage *)navigationBarBackgroundImage {
+//    return UIImageMake(@"navigationbar_background");
+//}
+//
+//- (UIImage *)navigationBarShadowImage {
+//    return [[UIImage alloc] init];
+//}
+//
+//- (UIColor *)navigationBarTintColor {
+//    return UIColorMake(33, 33, 33);
+//}
+//
+//- (UIColor *)titleViewTintColor {
+//    return UIColorMake(33, 33, 33);
+//}
+//
+//#pragma mark - NavigationBarTransition
+//- (BOOL)shouldCustomNavigationBarTransitionWhenPushDisappearing {
+//    return YES;
+//}
+//
+//- (BOOL)shouldCustomNavigationBarTransitionWhenPopDisappearing {
+//    return YES;
+//}
 
 @end

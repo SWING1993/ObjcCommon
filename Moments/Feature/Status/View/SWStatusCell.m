@@ -289,13 +289,6 @@
     self.menu.statusModel = self.cellLayout.statusModel;
 }
 
-- (void)setDisplaysAsynchronously:(BOOL)displaysAsynchronously {
-    if (_displaysAsynchronously != displaysAsynchronously) {
-        _displaysAsynchronously = displaysAsynchronously;
-    }
-    self.asyncDisplayView.displaysAsynchronously = self.displaysAsynchronously;
-}
-
 #pragma mark - Getter
 
 - (LWAsyncDisplayView *)asyncDisplayView {
@@ -304,6 +297,7 @@
     }
     _asyncDisplayView = [[LWAsyncDisplayView alloc] init];
     _asyncDisplayView.delegate = self;
+    _asyncDisplayView.displaysAsynchronously = NO;
     return _asyncDisplayView;
 }
 
@@ -324,7 +318,6 @@
         return _menu;
     }
     _menu = [[SWMenu alloc] init];
-    _menu.backgroundColor = [UIColor whiteColor];
     _menu.opaque = YES;
     [_menu.commentButton addTarget:self action:@selector(didClickedCommentButton)
                   forControlEvents:UIControlEventTouchUpInside];

@@ -12,6 +12,7 @@
 
 @property (nonatomic, strong) QMUITextView *textView;
 @property (nonatomic,copy) void(^textValueChangedBlock)(NSString*);
+
 + (CGFloat)cellHeight;
 
 @end

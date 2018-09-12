@@ -24,7 +24,7 @@
     if (self) {
         self.clipsToBounds = YES;
         self.show = NO;
-        self.backgroundColor = [UIColor clearColor];
+        self.backgroundColor = UIColorClear;
         self.btnArr = [NSArray arrayWithObjects:self.likeButton,self.commentButton, nil];
         self.offset = self.btnArr.count * 80.0f;
         for (UIButton *btn in self.btnArr) {
@@ -115,23 +115,13 @@
 
 #pragma mark - Getter & Setter
 
-//- (void)setStatusModel:(sws *)statusModel {
-//    if (_statusModel != statusModel) {
-//        _statusModel = statusModel;
-//    }
-//    if (self.statusModel.approveFlag) {
-//        [_likeButton setTitle:@" 取消" forState:UIControlStateNormal];
-//    } else {
-//        [_likeButton setTitle:@"  赞" forState:UIControlStateNormal];
-//    }
-//}
-
 - (SWLikeButton *)likeButton {
     if (_likeButton) {
         return _likeButton;
     }
     _likeButton = [SWLikeButton buttonWithType:UIButtonTypeCustom];
     [_likeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [_likeButton setTitle:@"  赞" forState:UIControlStateNormal];
     [_likeButton setImage:[UIImage imageNamed:@"likewhite.png"] forState:UIControlStateNormal];
     [_likeButton setImage:[UIImage imageNamed:@"Like"] forState:UIControlStateHighlighted];
     [_likeButton.titleLabel setFont:[UIFont systemFontOfSize:14]];

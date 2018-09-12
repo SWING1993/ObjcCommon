@@ -33,13 +33,9 @@
 @property (nonatomic,assign) CGRect websitePosition;
 @property (nonatomic,copy) NSArray* imagePostions;
 
-//文字过长时，折叠状态的布局模型
-- (id)initWithStatusModel:(SWStatus *)stautsModel
-                    index:(NSInteger)index;
-
-
-//文字过长时，打开状态的布局模型
-- (id)initContentOpendLayoutWithStatusModel:(SWStatus *)stautsModel
-                                      index:(NSInteger)index;
+//布局模型
+- (id)initWithStatusModel:(SWStatus *)statusModel
+                    index:(NSInteger)index
+                    opend:(BOOL)open;
 
 @end
