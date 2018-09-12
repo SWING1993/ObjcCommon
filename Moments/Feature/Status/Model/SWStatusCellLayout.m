@@ -245,49 +245,44 @@
             
             //生成时间的模型 dateTextStorage
             LWTextStorage* dateTextStorage = [[LWTextStorage alloc] init];
-            dateTextStorage.vericalAlignment = LWTextVericalAlignmentTop;
+//            dateTextStorage.vericalAlignment = LWTextVericalAlignmentCenter;
             dateTextStorage.text = kStringIsEmpty(statusModel.createdTime) ? @"现在" : statusModel.createdTime;
             dateTextStorage.font = UIFontMake(12);
             dateTextStorage.textColor = [UIColor grayColor];
             dateTextStorage.frame = CGRectMake(nameTextStorage.left,
-                                               lastImageStorage.bottom + 5,
+                                               lastImageStorage.bottom + 8,
                                                SCREEN_WIDTH - 80.0f,
-                                               10);
-            
-            //菜单按钮
-            CGRect menuPosition = CGRectZero;
-            menuPosition = CGRectMake(SCREEN_WIDTH - 54.0f,
-                                      lastImageStorage.bottom - 18.f,
-                                      44.0f,
-                                      44.0f);
-            
-            BOOL visible = YES;
-            if (visible) {
+                                               CGFLOAT_MIN);
+            if (statusModel.personal) {
                 LWImageStorage* imageStorage = [[LWImageStorage alloc] initWithIdentifier:IMAGE_IDENTIFIER];
                 imageStorage.tag = 999;
-                imageStorage.frame = CGRectMake(dateTextStorage.right + 15, dateTextStorage.frame.origin.y + 2.5, 15, 10);
+                imageStorage.frame = CGRectMake(dateTextStorage.right + 15, dateTextStorage.top, 15, 12);
                 imageStorage.contents = kGetImage(@"visibleType");
                 [self addStorage:imageStorage];
+
             }
             
             //删除模型模型 deleteTextStorage
             if (statusModel.own) {
                 LWTextStorage* deleteTextStorage = [[LWTextStorage alloc] init];
                 deleteTextStorage.text = @"删除";
-                deleteTextStorage.font = [UIFont fontWithName:@"Heiti SC" size:12.0f];
-                CGFloat deleteTextStorageY;
-                if (visible) {
-                    deleteTextStorageY = dateTextStorage.right + 45;
-                } else {
-                    deleteTextStorageY = dateTextStorage.right + 15;
-                }
-                deleteTextStorage.frame = CGRectMake(deleteTextStorageY, dateTextStorage.top, 60.0f, dateTextStorage.height);
+                deleteTextStorage.font = UIFontPFLightMake(11);
+                CGFloat deleteTextStorageY = dateTextStorage.right + (statusModel.personal ? 45 : 15);
+                deleteTextStorage.frame = CGRectMake(deleteTextStorageY, dateTextStorage.top - 1.6, 60.0f, 12);
                 [deleteTextStorage lw_addLinkWithData:kLinkDelete
                                                 range:NSMakeRange(0,deleteTextStorage.text.length)
                                             linkColor:UIColorLink
                                        highLightColor:RGBA(0, 0, 0, 0.15)];
                 [self addStorage:deleteTextStorage];
             }
+            
+            
+            //菜单按钮
+            CGRect menuPosition = CGRectZero;
+            menuPosition = CGRectMake(SCREEN_WIDTH - 54.0f,
+                                      lastImageStorage.bottom - 9.f,
+                                      44.0f,
+                                      44.0f);
             
             //生成评论背景Storage
             LWImageStorage* commentBgStorage = [[LWImageStorage alloc] init];

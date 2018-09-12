@@ -41,8 +41,8 @@
     }
     NSString *imageName = [SWStatus generateRandomString];
     UIImage *imageSave = [image qmui_imageResizedInLimitedSize:CGSizeMake(1080, 1920)];
-    NSString *pathSandox = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-    NSString *imagePath = [pathSandox stringByAppendingString:[NSString stringWithFormat:@"%@.png",imageName]];
+    NSString *pathSandox = NSHomeDirectory();
+    NSString *imagePath = [pathSandox stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",imageName]];
     [UIImagePNGRepresentation(imageSave) writeToFile:imagePath atomically:YES];
     NSLog(@"保存照片%@到%@",imageName,imagePath);
     return imageName;
@@ -52,8 +52,8 @@
     if (kStringIsEmpty(name)) {
         return nil;
     }
-    NSString *path_sandox = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-    NSString *aPath = [NSString stringWithFormat:@"%@%@.png",path_sandox,name];
+    NSString *pathSandox = NSHomeDirectory();
+    NSString *aPath = [NSString stringWithFormat:@"%@/Documents/%@.png",pathSandox,name];
     UIImage *image = [[UIImage alloc]initWithContentsOfFile:aPath];
     return image;
 }

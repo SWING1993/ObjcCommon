@@ -116,7 +116,7 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
         }
             break;
         default:
-            return 5;
+            return self.status.own ? 5 : 4;
             break;
     }
 }
@@ -203,17 +203,6 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
                     break;
                     
                 case 1:{
-                    QMUITableViewCell *cell = (QMUITableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"cell4"];
-                    if (!cell) {
-                        cell = [[QMUITableViewCell alloc] initForTableView:tableView withStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell4"];
-                        cell.accessoryType = QMUIStaticTableViewCellAccessoryTypeDisclosureIndicator;
-                    }
-                    cell.textLabel.text = @"提醒谁看";
-                    return cell;
-                }
-                    break;
-                    
-                case 2:{
                     QMUITableViewCell *cell = (QMUITableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"cell5"];
                     if (!cell) {
                         cell = [[QMUITableViewCell alloc] initForTableView:tableView withStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell5"];
@@ -225,7 +214,7 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
                 }
                     break;
                     
-                case 3:{
+                case 2:{
                     QMUITableViewCell *cell = (QMUITableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"section1cell0"];
                     if (!cell) {
                         cell = [[QMUITableViewCell alloc] initForTableView:tableView withStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"section1cell0"];
@@ -237,7 +226,7 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
                 }
                     break;
                     
-                case 4:{
+                case 3:{
                     QMUITableViewCell *cell = (QMUITableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"section1cell1"];
                     if (!cell) {
                         cell = [[QMUITableViewCell alloc] initForTableView:tableView withStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"section1cell1"];
@@ -246,7 +235,6 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
                         self.personalSwitch.on = self.status.personal;
                         cell.accessoryView = self.personalSwitch;
                         cell.textLabel.text = @"部分人可见";
-
                     } else {
                         cell.accessoryType = QMUIStaticTableViewCellAccessoryTypeDisclosureIndicator;
                         cell.textLabel.text = @"发布人";
@@ -254,6 +242,19 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
                     return cell;
                 }
                     break;
+                    
+                    
+                case 4:{
+                    QMUITableViewCell *cell = (QMUITableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"cell4"];
+                    if (!cell) {
+                        cell = [[QMUITableViewCell alloc] initForTableView:tableView withStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell4"];
+                        cell.accessoryType = QMUIStaticTableViewCellAccessoryTypeDisclosureIndicator;
+                    }
+                    cell.textLabel.text = @"提醒谁看";
+                    return cell;
+                }
+                    break;
+
                     
                 default:
                     return nil;
@@ -282,11 +283,8 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
                     
                 }
                 break;
-            case 1:{
                 
-            }
-                break;
-            case 2:{
+            case 1:{
                 SWStatusTimeViewController *controller = [[SWStatusTimeViewController alloc] init];
                 STPopupController *popupController = [[STPopupController alloc] initWithRootViewController:controller];
                 popupController.style = STPopupStyleBottomSheet;
@@ -297,6 +295,12 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
                 };
             }
                 break;
+                
+            case 2:{
+                
+            }
+                break;
+          
             case 3:{
                 
             }

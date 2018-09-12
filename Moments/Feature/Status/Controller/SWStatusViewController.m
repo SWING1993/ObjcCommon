@@ -57,7 +57,7 @@
     // 从默认 Realm 中，检索所有的状态
     RLMResults<SWStatus *> *allStatus = [SWStatus allObjects];
     self.dataSource = [NSMutableArray arrayWithCapacity:allStatus.count];
-    for (NSInteger index = 0; index < allStatus.count; index ++) {
+    for (NSInteger index = allStatus.count - 1; index > -1; index --) {
         SWStatus *status = [allStatus objectAtIndex:index];
         SWStatusCellLayout *layout = [[SWStatusCellLayout alloc] initWithStatusModel:status index:index opend:NO];
         [self.dataSource addObject:layout];
