@@ -13,5 +13,5 @@ target "Moments" do
   pod 'SDWebImage'
   pod 'TZImagePickerController'
   pod 'TPKeyboardAvoiding'
-
+  pod 'Realm'
 end

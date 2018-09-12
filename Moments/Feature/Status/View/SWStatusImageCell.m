@@ -100,7 +100,7 @@ static NSString *const Identifier = @"CollectionCellIdentifier";
         layout.itemSize = CGSizeMake(kThumbnail, kThumbnail);
         layout.scrollDirection = UICollectionViewScrollDirectionVertical;
         _collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(20, 0, kScreenW-40, kScreenW-40) collectionViewLayout:layout];
-        _collectionView.backgroundColor = UIColorClear;
+        _collectionView.backgroundColor = UIColorWhite;
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
         _collectionView.showsHorizontalScrollIndicator = NO;
@@ -205,6 +205,11 @@ static NSString *const Identifier = @"CollectionCellIdentifier";
             [self.collectionView cancelInteractiveMovement];
             break;
     }
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    self.collectionView.frame = CGRectMake(20, 0, kScreenW-40, CGRectGetHeight(self.frame));
 }
 
 @end

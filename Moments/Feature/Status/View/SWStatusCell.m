@@ -64,17 +64,17 @@
                      touch:(UITouch *)touch{
     [self.menu menuHide];
     if ([imageStorage.identifier isEqualToString:MESSAGE_TYPE_VIDEO]) {
-        NSDictionary *imageDict = [self.cellLayout.statusModel.images firstObject];
-        //1、创建AVPlayer
-        AVPlayer *player1 = [AVPlayer playerWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://img2.ultimavip.cn/%@",imageDict[@"videoUrl"]]]];
-        //2、创建视频播放视图的控制器
-        AVPlayerViewController *playerVC = [[AVPlayerViewController alloc]init];
-        //3、将创建的AVPlayer赋值给控制器自带的player
-        playerVC.player = player1;
-        //4、跳转到控制器播放
-        UIWindow * window = [[UIApplication sharedApplication] keyWindow];
-        [window.rootViewController presentViewController:playerVC animated:YES completion:NULL];
-        [playerVC.player play];
+//        NSDictionary *imageDict = [self.cellLayout.statusModel.images firstObject];
+//        //1、创建AVPlayer
+//        AVPlayer *player1 = [AVPlayer playerWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://img2.ultimavip.cn/%@",imageDict[@"videoUrl"]]]];
+//        //2、创建视频播放视图的控制器
+//        AVPlayerViewController *playerVC = [[AVPlayerViewController alloc]init];
+//        //3、将创建的AVPlayer赋值给控制器自带的player
+//        playerVC.player = player1;
+//        //4、跳转到控制器播放
+//        UIWindow * window = [[UIApplication sharedApplication] keyWindow];
+//        [window.rootViewController presentViewController:playerVC animated:YES completion:NULL];
+//        [playerVC.player play];
         
     } else {
         NSInteger tag = imageStorage.tag;

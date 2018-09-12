@@ -58,4 +58,19 @@
 }
 
 
+#pragma mark TextView Delegate
+- (void)textViewDidChange:(UITextView *)textView{
+    if (self.textValueChangedBlock) {
+        self.textValueChangedBlock(textView.text);
+    }
+}
+
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView{
+    return YES;
+}
+
+- (BOOL)textViewShouldEndEditing:(UITextView *)textView{
+    return YES;
+}
+
 @end

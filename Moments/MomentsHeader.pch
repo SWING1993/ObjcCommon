@@ -10,6 +10,7 @@
 #define MomentsHeader_pch
 
 #import <QMUIKit/QMUIKit.h>
+#import <Realm/Realm.h>
 #import <YTKKeyValueStore/YTKKeyValueStore.h>
 #import <BlocksKit/BlocksKit.h>
 #import <BlocksKit/BlocksKit+UIKit.h>

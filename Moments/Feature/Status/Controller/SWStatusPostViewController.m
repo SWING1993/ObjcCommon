@@ -14,8 +14,8 @@
 @interface SWStatusPostViewController ()<QMUITableViewDelegate, QMUITableViewDataSource>
 
 @property (nonatomic, strong) QMUITableView *tableView;
-
 @property (nonatomic, strong) SWStatus *status;
+@property (nonatomic, strong) NSMutableArray <UIImage *>*originImages;
 
 @end
 
@@ -39,25 +39,45 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
 
 - (void)setupNavigationItems {
     [super setupNavigationItems];
-//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:kGetImage(@"Moment_Post") style:UIBarButtonItemStyleDone target:self action:@selector(postStatusAction)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"发送" style:UIBarButtonItemStyleDone target:self action:@selector(savaStatusAction)];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.status = [[SWStatus alloc] init];
+    self.originImages = [NSMutableArray array];
 }
 
 #pragma mark - Actions
 - (void)addPictAction {
-    TZImagePickerController *imagePickerVc = [[TZImagePickerController alloc] initWithMaxImagesCount:9 - self.status.images.count delegate:nil];
+    TZImagePickerController *imagePickerVc = [[TZImagePickerController alloc] initWithMaxImagesCount:9 delegate:nil];
     @weakify(self)
     [imagePickerVc setDidFinishPickingPhotosHandle:^(NSArray<UIImage *> *photos, NSArray *assets, BOOL isSelectOriginalPhoto) {
         @strongify(self)
-        self.status.images = [NSMutableArray arrayWithArray:photos];;
+        self.originImages = [NSMutableArray arrayWithArray:photos];;
         [self.tableView reloadData];
     }];
     [self presentViewController:imagePickerVc animated:YES completion:nil];
+}
+
+- (void)savaStatusAction {
+    if (self.originImages.count > 0) {
+        NSMutableArray *imageNames = [NSMutableArray arrayWithCapacity:self.originImages.count];
+        for (UIImage *image in self.originImages) {
+            [imageNames addObject:[SWStatus saveImage:image]];
+        }
+        self.status.imagesJson = [imageNames mj_JSONString];
+        NSLog(@"%@",self.status.imagesJson);
+    }
+    
+    // 获取默认的 Realm 存储对象
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    
+    // 通过处理添加数据到 Realm 中
+    [realm beginWriteTransaction];
+    [realm addObject:self.status];
+    [realm commitWriteTransaction];
 }
 
 #pragma mark - UITableViewDataSource
@@ -73,7 +93,7 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
         }
             break;
         default:
-            return 7;
+            return 6;
             break;
     }
 }
@@ -87,7 +107,7 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
                     break;
                     
                 case 1:
-                    return [SWStatusImageCell cellHeightWithCount:self.status.images.count];
+                    return [SWStatusImageCell cellHeightWithCount:self.originImages.count];
                     break;
                     
                 default:
@@ -112,13 +132,18 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
                 case 0:{
                     SWTextViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SWTextViewCellIdentifier forIndexPath:indexPath];
                     cell.textView.text = self.status.content;
+                    @weakify(self)
+                    cell.textValueChangedBlock = ^(NSString *valueStr){
+                        @strongify(self)
+                        self.status.content = valueStr;
+                    };
                     return cell;
                 }
                     break;
                     
                 case 1:{
                     SWStatusImageCell *cell = [tableView dequeueReusableCellWithIdentifier:SWStatusImageCellIdentifier forIndexPath:indexPath];
-                    cell.images = self.status.images;
+                    cell.images = self.originImages;
                     @weakify(self)
                     cell.addPicturesBlock = ^(){
                         @strongify(self)
@@ -127,7 +152,7 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
                     };
                     cell.deleteImageBlock = ^(NSInteger index) {
                         @strongify(self)
-                        [self.status.images removeObjectAtIndex:index];
+                        [self.originImages removeObjectAtIndex:index];
                         [self.tableView reloadData];
                     };
                     return cell;
@@ -157,17 +182,6 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
                     break;
                     
                 case 1:{
-                    QMUITableViewCell *cell = (QMUITableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"cell3"];
-                    if (!cell) {
-                        cell = [[QMUITableViewCell alloc] initForTableView:tableView withStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell3"];
-                        cell.selectionStyle = UITableViewCellSeparatorStyleNone;
-                    }
-                    cell.textLabel.text = @"谁可以看";
-                    return cell;
-                }
-                    break;
-                    
-                case 2:{
                     QMUITableViewCell *cell = (QMUITableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"cell4"];
                     if (!cell) {
                         cell = [[QMUITableViewCell alloc] initForTableView:tableView withStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell4"];
@@ -178,7 +192,7 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
                 }
                     break;
                     
-                case 3:{
+                case 2:{
                     QMUITableViewCell *cell = (QMUITableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"cell5"];
                     if (!cell) {
                         cell = [[QMUITableViewCell alloc] initForTableView:tableView withStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell5"];
@@ -189,7 +203,7 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
                 }
                     break;
                     
-                case 4:{
+                case 3:{
                     QMUITableViewCell *cell = (QMUITableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"section1cell0"];
                     if (!cell) {
                         cell = [[QMUITableViewCell alloc] initForTableView:tableView withStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"section1cell0"];
@@ -200,7 +214,7 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
                 }
                     break;
                     
-                case 5:{
+                case 4:{
                     QMUITableViewCell *cell = (QMUITableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"section1cell1"];
                     if (!cell) {
                         cell = [[QMUITableViewCell alloc] initForTableView:tableView withStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"section1cell1"];
@@ -211,7 +225,7 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
                 }
                     break;
                     
-                case 6:{
+                case 5:{
                     QMUITableViewCell *cell = (QMUITableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"section1cell2"];
                     if (!cell) {
                         cell = [[QMUITableViewCell alloc] initForTableView:tableView withStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"section1cell2"];

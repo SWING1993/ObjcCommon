@@ -275,6 +275,9 @@ PODS:
   - QMUIKit/QMUIResources (2.7.6)
   - QMUIKit/QMUIWeakObjectContainer (2.7.6)
   - ReactiveObjC (3.1.0)
+  - Realm (3.9.0):
+    - Realm/Headers (= 3.9.0)
+  - Realm/Headers (3.9.0)
   - SDWebImage (4.4.2):
     - SDWebImage/Core (= 4.4.2)
   - SDWebImage/Core (4.4.2)
@@ -291,6 +294,7 @@ DEPENDENCIES:
   - MJRefresh
   - QMUIKit
   - ReactiveObjC
+  - Realm
   - SDWebImage
   - TPKeyboardAvoiding
   - TZImagePickerController
@@ -306,6 +310,7 @@ SPEC REPOS:
     - MJRefresh
     - QMUIKit
     - ReactiveObjC
+    - Realm
     - SDWebImage
     - TPKeyboardAvoiding
     - TZImagePickerController
@@ -320,11 +325,12 @@ SPEC CHECKSUMS:
   MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
   QMUIKit: ab15c235c8377535c7448eeafbc7f79118ca8a24
   ReactiveObjC: 2a38ea15335de4119d8b17caf1db1484f61db902
+  Realm: 3d36f208bf3aff8335dc3298742140182bde4edb
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
   TPKeyboardAvoiding: cb69d5ddbe90ce0170e4bc2db1e5e41d4a3ad9a4
   TZImagePickerController: f1cc4b5720f6d01c9804ad136c28bb8a986388d7
   YTKKeyValueStore: 4d002941540dd5108fa23009b71e0f2f937f7a0f
 
-PODFILE CHECKSUM: ae5ceb99ec4f1fa6217d0644911cfb227addc9f8
+PODFILE CHECKSUM: cd22879f727145c84106562eff40c95253dfb00d
 
 COCOAPODS: 1.5.3
