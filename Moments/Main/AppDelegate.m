@@ -22,7 +22,8 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     [AppConfigurationTemplate applyConfigurationTemplate];
-    
+    [GADMobileAds configureWithApplicationID:@"ca-app-pub-6037095993957840~7664444552"];
+
     IndexViewController *indexController = [[IndexViewController alloc] init];
     SWNavigationController *indexNav = [[SWNavigationController alloc] initWithRootViewController:indexController];
     self.window.rootViewController = indexNav;

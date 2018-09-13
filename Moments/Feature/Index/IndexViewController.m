@@ -9,9 +9,10 @@
 #import "IndexViewController.h"
 #import "SWStatusViewController.h"
 
-@interface IndexViewController ()
+@interface IndexViewController ()<GADBannerViewDelegate>
 
 @property (nonatomic, copy) NSArray *dataSource;
+@property (nonatomic, strong) GADBannerView *bannerView;
 
 @end
 
@@ -26,6 +27,18 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.dataSource = @[@"制作状态",@"制作状态详情",@"制作消息",@"制作浏览页"];
+    
+    self.bannerView = [[GADBannerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 50 - self.qmui_navigationBarMaxYInViewCoordinator, self.view.frame.size.width, 50)];
+    //广告单元的ID
+    self.bannerView.adUnitID = @"ca-app-pub-6037095993957840/9771733149";
+    self.bannerView.rootViewController = self;
+    self.bannerView.backgroundColor = UIColorRandom;
+    GADRequest *request = [GADRequest request];
+    //如果是开发阶段，需要填写测试手机的UUID，不填写可能会误会你自己刷展示量
+    request.testDevices = @[kGADSimulatorID];
+    self.bannerView.delegate = self;
+    [self.bannerView loadRequest:request];
+    [self.tableView addSubview:self.bannerView];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -57,6 +70,21 @@
 
 - (BOOL)shouldCustomNavigationBarTransitionWhenPopDisappearing {
     return YES;
+}
+
+- (void)adViewDidReceiveAd:(GADBannerView *)bannerView {
+    NSLog(@"adView:didSuccess");
+//    [UIView beginAnimations:@"BannerSlide" context:nil];
+//    bannerView.frame = CGRectMake(0.0,
+//                                  self.view.frame.size.height -
+//                                  bannerView.frame.size.height,
+//                                  bannerView.frame.size.width,
+//                                  bannerView.frame.size.height);
+//    [UIView commitAnimations];
+}
+
+- (void)adView:(GADBannerView *)bannerView didFailToReceiveAdWithError:(GADRequestError *)error {
+    NSLog(@"adView:didFailToReceiveAdWithError:%@", [error localizedDescription]);
 }
 
 @end

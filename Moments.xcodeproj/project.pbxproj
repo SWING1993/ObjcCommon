@@ -340,6 +340,8 @@
 		897EBBD92147C33200CC32BF /* UIViewController+Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBBCA2147C33100CC32BF /* UIViewController+Animation.m */; };
 		897EBBDA2147C33200CC32BF /* UIImage+UI.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBBCB2147C33100CC32BF /* UIImage+UI.m */; };
 		897EBBDD2148F00700CC32BF /* SWStatusTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBBDC2148F00700CC32BF /* SWStatusTimeViewController.m */; };
+		897EBBE1214A04DD00CC32BF /* SWStatusLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBBE0214A04DD00CC32BF /* SWStatusLocationViewController.m */; };
+		897EBBE4214A2F8D00CC32BF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 897EBBE3214A2F8D00CC32BF /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -773,6 +775,9 @@
 		897EBBCB2147C33100CC32BF /* UIImage+UI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+UI.m"; sourceTree = "<group>"; };
 		897EBBDB2148F00700CC32BF /* SWStatusTimeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWStatusTimeViewController.h; sourceTree = "<group>"; };
 		897EBBDC2148F00700CC32BF /* SWStatusTimeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWStatusTimeViewController.m; sourceTree = "<group>"; };
+		897EBBDF214A04DD00CC32BF /* SWStatusLocationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWStatusLocationViewController.h; sourceTree = "<group>"; };
+		897EBBE0214A04DD00CC32BF /* SWStatusLocationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWStatusLocationViewController.m; sourceTree = "<group>"; };
+		897EBBE3214A2F8D00CC32BF /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9EA9D01FD7A1B70092AD68B9 /* Pods_Moments.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Moments.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A61FFE8889B53E330545BB1B /* Pods-Moments.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moments.release.xcconfig"; path = "Pods/Target Support Files/Pods-Moments/Pods-Moments.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -819,6 +824,7 @@
 				0314195721469BB60030B553 /* Info.plist */,
 				03141AA12146AADB0030B553 /* MomentsHeader.pch */,
 				0314195821469BB60030B553 /* main.m */,
+				897EBBE3214A2F8D00CC32BF /* GoogleService-Info.plist */,
 			);
 			path = Moments;
 			sourceTree = "<group>";
@@ -2186,8 +2192,8 @@
 		897EBB762147644100CC32BF /* Feature */ = {
 			isa = PBXGroup;
 			children = (
-				897EBB8521476E3B00CC32BF /* Status */,
 				897EBB77214765E600CC32BF /* Index */,
+				897EBB8521476E3B00CC32BF /* Status */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -2265,6 +2271,8 @@
 				897EBBA42147A78A00CC32BF /* SWStatusPostViewController.m */,
 				897EBBDB2148F00700CC32BF /* SWStatusTimeViewController.h */,
 				897EBBDC2148F00700CC32BF /* SWStatusTimeViewController.m */,
+				897EBBDF214A04DD00CC32BF /* SWStatusLocationViewController.h */,
+				897EBBE0214A04DD00CC32BF /* SWStatusLocationViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2424,6 +2432,7 @@
 				03141C672146B34D0030B553 /* f_static_045@3x.png in Resources */,
 				03141CA32146B34D0030B553 /* f_static_093@3x.png in Resources */,
 				03141C5B2146B34D0030B553 /* f_static_018@2x.png in Resources */,
+				897EBBE4214A2F8D00CC32BF /* GoogleService-Info.plist in Resources */,
 				03141CAC2146B34D0030B553 /* f_static_069@3x.png in Resources */,
 				03141CBB2146B34D0030B553 /* f_static_105@3x.png in Resources */,
 				03141C7F2146B34D0030B553 /* f_static_072@3x.png in Resources */,
@@ -2630,7 +2639,6 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Moments/Pods-Moments-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BlocksKit/BlocksKit.framework",
 				"${BUILT_PRODUCTS_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
@@ -2641,13 +2649,12 @@
 				"${BUILT_PRODUCTS_DIR}/STPopup/STPopup.framework",
 				"${BUILT_PRODUCTS_DIR}/TPKeyboardAvoiding/TPKeyboardAvoiding.framework",
 				"${BUILT_PRODUCTS_DIR}/TZImagePickerController/TZImagePickerController.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${BUILT_PRODUCTS_DIR}/XLForm/XLForm.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BlocksKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DZNEmptyDataSet.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJExtension.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
@@ -2658,7 +2665,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/STPopup.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TPKeyboardAvoiding.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TZImagePickerController.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XLForm.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2720,6 +2727,7 @@
 				897EBBA82147A9D700CC32BF /* SWTextViewCell.m in Sources */,
 				03141D3D2146B34D0030B553 /* FaceButton.m in Sources */,
 				03141A552146A3FB0030B553 /* LWTextParser.m in Sources */,
+				897EBBE1214A04DD00CC32BF /* SWStatusLocationViewController.m in Sources */,
 				897EBBD92147C33200CC32BF /* UIViewController+Animation.m in Sources */,
 				897EBBD32147C33200CC32BF /* UIAlertAction+CM.m in Sources */,
 				03141C4A2146B34D0030B553 /* ChatToolBarItem.m in Sources */,

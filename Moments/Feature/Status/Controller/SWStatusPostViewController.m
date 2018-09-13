@@ -11,6 +11,7 @@
 #import "SWStatusImageCell.h"
 #import "SWStatus.h"
 #import "SWStatusTimeViewController.h"
+#import "SWStatusLocationViewController.h"
 
 @interface SWStatusPostViewController ()<QMUITableViewDelegate, QMUITableViewDataSource>
 
@@ -66,6 +67,7 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
     // Do any additional setup after loading the view.
     self.status = [[SWStatus alloc] init];
     self.status.createdTime = @"现在";
+    self.status.own = YES;
     self.originImages = [NSMutableArray array];
 }
 
@@ -234,7 +236,7 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
                     if (self.status.own) {
                         self.personalSwitch.on = self.status.personal;
                         cell.accessoryView = self.personalSwitch;
-                        cell.textLabel.text = @"部分人可见";
+                        cell.textLabel.text = @"部分可见";
                     } else {
                         cell.accessoryType = QMUIStaticTableViewCellAccessoryTypeDisclosureIndicator;
                         cell.textLabel.text = @"发布人";
@@ -280,8 +282,9 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
     if (indexPath.section == 1) {
         switch (indexPath.row) {
             case 0:{
-                    
-                }
+                SWStatusLocationViewController *controller = [[SWStatusLocationViewController alloc] init];
+                [self.navigationController pushViewController:controller animated:YES];
+            }
                 break;
                 
             case 1:{

@@ -100,7 +100,7 @@
             //发布的图片模型 imgsStorage
             
             NSArray *imageArray = [statusModel.images mj_JSONObject];
-            CGFloat imageWidth = (SCREEN_WIDTH - 110.0f)/3.0f;
+            CGFloat imageWidth = (SCREEN_WIDTH - 140.0f)/3.0f;
             NSInteger imageCount = [imageArray count];
             NSMutableArray* imageStorageArray = [[NSMutableArray alloc] initWithCapacity:imageCount];
             NSMutableArray* imagePositionArray = [[NSMutableArray alloc] initWithCapacity:imageCount];
@@ -160,18 +160,18 @@
                     height = firstImage.size.height;
                     width = firstImage.size.width;
                     CGFloat x = width/height;
+                    CGRect imageRect;
                     if (x > 2.5f) {
                         x = 2.5f;
                     }
                     if (x < 0.4f) {
                         x = 0.4f;
                     }
-                    CGRect imageRect;
                     if (x == 1.0f) {
                         imageRect = CGRectMake(nameTextStorage.left,
                                                contentBottom + 5.0f + (row * (imageWidth + 5.0f)),
-                                               imageWidth*1.7,
-                                               imageWidth*1.7);
+                                               imageWidth*2,
+                                               imageWidth*2);
                     } else if (x > 1.0f) {
                         CGFloat h = imageWidth*1.7;
                         CGFloat w = MIN(h*x, imageWidth*3);

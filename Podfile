@@ -14,6 +14,8 @@ target "Moments" do
   pod 'TZImagePickerController'
   pod 'TPKeyboardAvoiding'
   pod 'Realm'
-  pod 'Firebase/Core'
-  pod 'Firebase/AdMob'
+#  pod 'Firebase/Core'
+#  pod 'Firebase/AdMob'
+  pod 'Google-Mobile-Ads-SDK'
+  pod 'XLForm'
 end
