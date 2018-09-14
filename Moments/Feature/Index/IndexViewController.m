@@ -34,7 +34,7 @@
     self.bannerView.rootViewController = self;
     self.bannerView.backgroundColor = UIColorRandom;
     GADRequest *request = [GADRequest request];
-    //如果是开发阶段，需要填写测试手机的UUID，不填写可能会误会你自己刷展示量
+    //如果是开发阶段，需要填写测试手机的UUID
     request.testDevices = @[@"081bbfd61c06743f7c07d230dc3199b0"];
     self.bannerView.delegate = self;
     [self.bannerView loadRequest:request];
