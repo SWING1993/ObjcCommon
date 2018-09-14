@@ -23,6 +23,8 @@ RLM_ARRAY_TYPE(NSString)
 @property NSString *content;
 // 图片数组 jsonarray 格式
 @property NSString *images;
+// 所在位置
+@property NSString *location;
 // 发布时间
 @property NSString *createdTime;
 // 发布人昵称

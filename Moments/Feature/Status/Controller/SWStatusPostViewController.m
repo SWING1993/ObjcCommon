@@ -200,6 +200,7 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
                         cell.accessoryType = QMUIStaticTableViewCellAccessoryTypeDisclosureIndicator;
                     }
                     cell.textLabel.text = @"所在位置";
+                    cell.detailTextLabel.text = self.status.location;
                     return cell;
                 }
                     break;
@@ -220,6 +221,7 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
                     QMUITableViewCell *cell = (QMUITableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"section1cell0"];
                     if (!cell) {
                         cell = [[QMUITableViewCell alloc] initForTableView:tableView withStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"section1cell0"];
+                        cell.selectionStyle = UITableViewCellSelectionStyleNone;
                     }
                     self.ownSwitch.on = self.status.own;
                     cell.accessoryView = self.ownSwitch;
@@ -237,9 +239,11 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
                         self.personalSwitch.on = self.status.personal;
                         cell.accessoryView = self.personalSwitch;
                         cell.textLabel.text = @"部分可见";
+                        cell.selectionStyle = UITableViewCellSelectionStyleNone;
                     } else {
                         cell.accessoryType = QMUIStaticTableViewCellAccessoryTypeDisclosureIndicator;
                         cell.textLabel.text = @"发布人";
+                        cell.selectionStyle = UITableViewCellSelectionStyleBlue;
                     }
                     return cell;
                 }
@@ -283,6 +287,10 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
         switch (indexPath.row) {
             case 0:{
                 SWStatusLocationViewController *controller = [[SWStatusLocationViewController alloc] init];
+                controller.completeBlock = ^(NSString *valueStr) {
+                    self.status.location = valueStr;
+                    [self.tableView reloadData];
+                };
                 [self.navigationController pushViewController:controller animated:YES];
             }
                 break;

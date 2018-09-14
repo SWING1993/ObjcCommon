@@ -10,4 +10,6 @@
 
 @interface SWStatusLocationViewController : XLFormViewController
 
+@property (nonatomic,copy) void(^completeBlock)(NSString*);
+
 @end

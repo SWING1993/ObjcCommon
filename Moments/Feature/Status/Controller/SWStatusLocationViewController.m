@@ -82,21 +82,38 @@ NSString * const kValidationEmail = @"kSecond";
 #pragma mark - actions
 
 -(void)validateForm {
+    __block BOOL error;
     NSArray * array = [self formValidationErrors];
     [array enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         XLFormValidationStatus * validationStatus = [[obj userInfo] objectForKey:XLValidationStatusErrorKey];
         if ([validationStatus.rowDescriptor.tag isEqualToString:kValidationName]){
-            UITableViewCell * cell = [self.tableView cellForRowAtIndexPath:[self.form indexPathOfFormRow:validationStatus.rowDescriptor]];
-            cell.backgroundColor = [UIColor orangeColor];
-            [UIView animateWithDuration:0.3 animations:^{
-                cell.backgroundColor = [UIColor whiteColor];
-            }];
+            NSString *valueStr = validationStatus.rowDescriptor.value;
+            if (valueStr.length > 30) {
+                UITableViewCell * cell = [self.tableView cellForRowAtIndexPath:[self.form indexPathOfFormRow:validationStatus.rowDescriptor]];
+                [self animateCell:cell];
+                error = YES;
+            }
+           
         }
         else if ([validationStatus.rowDescriptor.tag isEqualToString:kValidationEmail]){
-            UITableViewCell * cell = [self.tableView cellForRowAtIndexPath:[self.form indexPathOfFormRow:validationStatus.rowDescriptor]];
-            [self animateCell:cell];
+            NSString *valueStr = validationStatus.rowDescriptor.value;
+            if (valueStr.length > 30) {
+                UITableViewCell * cell = [self.tableView cellForRowAtIndexPath:[self.form indexPathOfFormRow:validationStatus.rowDescriptor]];
+                [self animateCell:cell];
+                error = YES;
+            }
         }
     }];
+    
+    if (error) {
+        kTipAlert(@"字符太长");
+    } else {
+        if (self.completeBlock) {
+            self.completeBlock([NSString stringWithFormat:@"%@·%@",self.firstValueStr,self.secondValueStr]);
+        }
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    
 }
 
 
