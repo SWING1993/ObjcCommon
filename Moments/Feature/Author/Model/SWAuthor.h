@@ -15,6 +15,8 @@
 @property NSString *nickname;
 // 发布人头像
 @property NSString *avator;
+// 选中
+@property (nonatomic,assign) Boolean selected;
 
 + (NSInteger)incrementaID;
 

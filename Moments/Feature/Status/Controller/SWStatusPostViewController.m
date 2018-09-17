@@ -12,6 +12,7 @@
 #import "SWStatus.h"
 #import "SWStatusTimeViewController.h"
 #import "SWStatusLocationViewController.h"
+#import "SWAuthorViewController.h"
 
 @interface SWStatusPostViewController ()<QMUITableViewDelegate, QMUITableViewDataSource>
 
@@ -314,14 +315,14 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
                 break;
           
             case 3:{
-                
+                SWAuthorViewController *controller = [[SWAuthorViewController alloc] init];
+                [self.navigationController pushViewController:controller animated:YES];
             }
                 break;
                 
             default:
                 break;
         }
-        
     }
 }
 

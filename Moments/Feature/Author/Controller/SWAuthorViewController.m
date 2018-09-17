@@ -69,7 +69,7 @@ static NSString *const Identifier = @"CollectionCellIdentifier";
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
         layout.minimumLineSpacing = kSpacing;
         layout.minimumInteritemSpacing = kSpacing;
-        layout.itemSize = CGSizeMake(kThumbnail, kThumbnail + 30);
+        layout.itemSize = CGSizeMake(kThumbnail, kThumbnail + 20);
         layout.scrollDirection = UICollectionViewScrollDirectionVertical;
         _collectionView = [[UICollectionView alloc]initWithFrame:kScreenBounds collectionViewLayout:layout];
         _collectionView.backgroundColor = UIColorWhite;
@@ -114,11 +114,25 @@ static NSString *const Identifier = @"CollectionCellIdentifier";
         make.top.mas_equalTo(avator.mas_bottom);
     }];
     
+    QMUIButton *btn = [[QMUIButton alloc] init];
+    btn.userInteractionEnabled = NO;
+    btn.tag = indexPath.row;
+    btn.selected = author.selected;
+    [btn setImage:UIImageMake(@"SWAuthor_def") forState:UIControlStateNormal];
+    [btn setImage:UIImageMake(@"SWAuthor_sel") forState:UIControlStateSelected];
+    [cell.contentView addSubview:btn];
+    [btn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(35, 35));
+        make.top.right.equalTo(cell.contentView);
+    }];
+
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-
+    SWAuthor *author = self.dataSource[indexPath.row];
+    author.selected = !author.selected;
+    [self.collectionView reloadData];
 }
 
 @end
