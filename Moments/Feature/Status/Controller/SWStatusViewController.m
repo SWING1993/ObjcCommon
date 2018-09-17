@@ -45,9 +45,7 @@
     [self reloadData];
 }
 
-
 #pragma mark - Actions
-
 - (void)postStatusAction {
     SWStatusPostViewController *postViewController = [[SWStatusPostViewController alloc] init];
     [self.navigationController pushViewController:postViewController animated:YES];

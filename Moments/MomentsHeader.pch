@@ -32,5 +32,6 @@
 #import "SWTableViewController.h"
 #import "SWNavigationController.h"
 #import "Gallop.h"
+#import "SWStatus.h"
 
 #endif /* MomentsHeader_pch */

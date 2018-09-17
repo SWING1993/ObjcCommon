@@ -8,6 +8,7 @@
 
 #import "IndexViewController.h"
 #import "SWStatusViewController.h"
+#import "SWAuthorViewController.h"
 
 @interface IndexViewController ()<GADBannerViewDelegate>
 
@@ -21,24 +22,26 @@
 - (void)initSubviews {
     [super initSubviews];
     self.view.backgroundColor = UIColorWhite;
+    [self setTitle:@"朋友圈制作神器"];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.dataSource = @[@"制作状态",@"制作状态详情",@"制作消息",@"制作浏览页"];
-    
+    self.dataSource = @[@"朋友",@"我的朋友圈",@"状态详情",@"消息",@"浏览页"];
     self.bannerView = [[GADBannerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 50 - self.qmui_navigationBarMaxYInViewCoordinator, self.view.frame.size.width, 50)];
-    //广告单元的ID
     self.bannerView.adUnitID = @"ca-app-pub-6037095993957840/9771733149";
     self.bannerView.rootViewController = self;
-    self.bannerView.backgroundColor = UIColorRandom;
+    [self.tableView addSubview:self.bannerView];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     GADRequest *request = [GADRequest request];
     //如果是开发阶段，需要填写测试手机的UUID
-    request.testDevices = @[@"081bbfd61c06743f7c07d230dc3199b0"];
+    request.testDevices = @[@"081bbfd61c06743f7c07d230dc3199b0",kGADSimulatorID];
     self.bannerView.delegate = self;
     [self.bannerView loadRequest:request];
-    [self.tableView addSubview:self.bannerView];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -60,8 +63,23 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    SWStatusViewController *statusController = [[SWStatusViewController alloc] init];
-    [self.navigationController pushViewController:statusController animated:YES];
+    switch (indexPath.section) {
+        case 0: {
+            SWAuthorViewController *controller = [[SWAuthorViewController alloc] init];
+            [self.navigationController pushViewController:controller animated:YES];
+            }
+            break;
+            
+        case 1: {
+            SWStatusViewController *controller = [[SWStatusViewController alloc] init];
+            [self.navigationController pushViewController:controller animated:YES];
+        }
+            break;
+            
+        default:
+            break;
+    }
+   
 }
 
 - (BOOL)shouldCustomNavigationBarTransitionWhenPushDisappearing {

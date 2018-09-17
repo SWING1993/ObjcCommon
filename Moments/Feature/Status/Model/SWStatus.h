@@ -8,8 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-RLM_ARRAY_TYPE(NSString)
-
 @interface SWStatus : RLMObject
 // id
 @property NSInteger id;
@@ -32,8 +30,8 @@ RLM_ARRAY_TYPE(NSString)
 // 发布人头像
 @property NSString *avator;
 // 评论
-@property (readonly) NSArray *essayComments;
-// 昵称
+@property (readonly) NSArray *comments;
+// 点赞的人
 @property (readonly) NSArray *essayApproves;
 
 + (NSInteger)incrementaID;

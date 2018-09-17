@@ -131,12 +131,11 @@ NSString * const kValidationEmail = @"kSecond";
 }
 
 #pragma mark - XLFormDescriptorDelegate
-
 -(void)formRowDescriptorValueHasChanged:(XLFormRowDescriptor *)rowDescriptor oldValue:(id)oldValue newValue:(id)newValue {
     [super formRowDescriptorValueHasChanged:rowDescriptor oldValue:oldValue newValue:newValue];
-    if ([rowDescriptor.tag isEqualToString:kValidationName]){
+    if ([rowDescriptor.tag isEqualToString:kValidationName]) {
         self.firstValueStr = newValue;
-    } else if ([rowDescriptor.tag isEqualToString:kValidationEmail]){
+    } else if ([rowDescriptor.tag isEqualToString:kValidationEmail]) {
         self.secondValueStr = newValue;
     }
 }

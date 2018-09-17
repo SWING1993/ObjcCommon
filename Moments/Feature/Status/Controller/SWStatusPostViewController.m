@@ -192,11 +192,12 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
             break;
             
         case 1: {
+            NSString *cellWithIdentifier = [NSString stringWithFormat:@"section:%zi-row:%zi",indexPath.section,indexPath.row];
             switch (indexPath.row) {
                 case 0:{
-                    QMUITableViewCell *cell = (QMUITableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"cell2"];
+                    QMUITableViewCell *cell = (QMUITableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellWithIdentifier];
                     if (!cell) {
-                        cell = [[QMUITableViewCell alloc] initForTableView:tableView withStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell2"];
+                        cell = [[QMUITableViewCell alloc] initForTableView:tableView withStyle:UITableViewCellStyleValue1 reuseIdentifier:cellWithIdentifier];
                         cell.accessoryType = QMUIStaticTableViewCellAccessoryTypeDisclosureIndicator;
                     }
                     cell.textLabel.text = @"所在位置";
@@ -206,9 +207,9 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
                     break;
                     
                 case 1:{
-                    QMUITableViewCell *cell = (QMUITableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"cell5"];
+                    QMUITableViewCell *cell = (QMUITableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellWithIdentifier];
                     if (!cell) {
-                        cell = [[QMUITableViewCell alloc] initForTableView:tableView withStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell5"];
+                        cell = [[QMUITableViewCell alloc] initForTableView:tableView withStyle:UITableViewCellStyleValue1 reuseIdentifier:cellWithIdentifier];
                         cell.accessoryType = QMUIStaticTableViewCellAccessoryTypeDisclosureIndicator;
                     }
                     cell.textLabel.text = @"发布时间";
@@ -218,9 +219,9 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
                     break;
                     
                 case 2:{
-                    QMUITableViewCell *cell = (QMUITableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"section1cell0"];
+                    QMUITableViewCell *cell = (QMUITableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellWithIdentifier];
                     if (!cell) {
-                        cell = [[QMUITableViewCell alloc] initForTableView:tableView withStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"section1cell0"];
+                        cell = [[QMUITableViewCell alloc] initForTableView:tableView withStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellWithIdentifier];
                         cell.selectionStyle = UITableViewCellSelectionStyleNone;
                     }
                     self.ownSwitch.on = self.status.own;
@@ -231,9 +232,9 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
                     break;
                     
                 case 3:{
-                    QMUITableViewCell *cell = (QMUITableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"section1cell1"];
+                    QMUITableViewCell *cell = (QMUITableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellWithIdentifier];
                     if (!cell) {
-                        cell = [[QMUITableViewCell alloc] initForTableView:tableView withStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"section1cell1"];
+                        cell = [[QMUITableViewCell alloc] initForTableView:tableView withStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellWithIdentifier];
                     }
                     if (self.status.own) {
                         self.personalSwitch.on = self.status.personal;
@@ -251,9 +252,9 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
                     
                     
                 case 4:{
-                    QMUITableViewCell *cell = (QMUITableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"cell4"];
+                    QMUITableViewCell *cell = (QMUITableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellWithIdentifier];
                     if (!cell) {
-                        cell = [[QMUITableViewCell alloc] initForTableView:tableView withStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell4"];
+                        cell = [[QMUITableViewCell alloc] initForTableView:tableView withStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellWithIdentifier];
                         cell.accessoryType = QMUIStaticTableViewCellAccessoryTypeDisclosureIndicator;
                     }
                     cell.textLabel.text = @"提醒谁看";

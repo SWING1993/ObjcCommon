@@ -340,7 +340,7 @@
                 }
                 offsetY += likeTextStorage.height + 5.0f;
             }
-            if (statusModel.essayComments.count != 0 && statusModel.essayComments != nil) {
+            if (statusModel.comments.count != 0 && statusModel.comments != nil) {
                 if (self.statusModel.essayApproves.count != 0) {
                     self.lineRect = CGRectMake(nameTextStorage.left,
                                                likeTextStorage.bottom + 2.5f,
@@ -348,8 +348,8 @@
                                                0.5f);
                 }
                 
-                NSMutableArray* tmp = [[NSMutableArray alloc] initWithCapacity:statusModel.essayComments.count];
-                for (SWStatusComment *commentM in statusModel.essayComments) {
+                NSMutableArray* tmp = [[NSMutableArray alloc] initWithCapacity:statusModel.comments.count];
+                for (SWStatusComment *commentM in statusModel.comments) {
                     commentM.index = index;
                     if (kStringIsEmpty(commentM.commentId) == false) {
                         NSString* commentString = [NSString stringWithFormat:@"%@回复%@：%@",
@@ -426,9 +426,9 @@
                 //如果有评论，设置评论背景Storage
                 commentTextStorages = tmp;
             }
-            if (statusModel.essayApproves.count > 0 || statusModel.essayComments.count > 0) {
+            if (statusModel.essayApproves.count > 0 || statusModel.comments.count > 0) {
                 CGFloat commentBgPositionH = 15.0f;
-                if (statusModel.essayComments.count == 0) {
+                if (statusModel.comments.count == 0) {
                     commentBgPositionH = 5.0f;
                 }
                 commentBgPosition = CGRectMake(60.0f,
