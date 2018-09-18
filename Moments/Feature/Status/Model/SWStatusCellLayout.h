@@ -19,8 +19,7 @@
 #define kLinkOpen  @"open"
 #define kLinkClose  @"close"
 #define kLinkDelete @"delete"
-#define kLinkUserId @"userId"
-#define kLinkHref   @"href://"
+
 
 @interface SWStatusCellLayout : LWLayout <NSCopying>
 

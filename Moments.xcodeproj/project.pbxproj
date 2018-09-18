@@ -321,8 +321,6 @@
 		897EBB922147720300CC32BF /* SWStatusCellLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBB912147720300CC32BF /* SWStatusCellLayout.m */; };
 		897EBB952147843F00CC32BF /* SWMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBB942147843F00CC32BF /* SWMenu.m */; };
 		897EBB982147848300CC32BF /* SWStatusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBB972147848300CC32BF /* SWStatusCell.m */; };
-		897EBB9B214785CD00CC32BF /* SWLikeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBB9A214785CD00CC32BF /* SWLikeButton.m */; };
-		897EBB9E21478D7900CC32BF /* SWStatusLike.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBB9D21478D7900CC32BF /* SWStatusLike.m */; };
 		897EBBA121478D9B00CC32BF /* SWStatusComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBBA021478D9B00CC32BF /* SWStatusComment.m */; };
 		897EBBA52147A78A00CC32BF /* SWStatusPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBBA42147A78A00CC32BF /* SWStatusPostViewController.m */; };
 		897EBBA82147A9D700CC32BF /* SWTextViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBBA72147A9D700CC32BF /* SWTextViewCell.m */; };
@@ -739,10 +737,6 @@
 		897EBB942147843F00CC32BF /* SWMenu.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWMenu.m; sourceTree = "<group>"; };
 		897EBB962147848300CC32BF /* SWStatusCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWStatusCell.h; sourceTree = "<group>"; };
 		897EBB972147848300CC32BF /* SWStatusCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWStatusCell.m; sourceTree = "<group>"; };
-		897EBB99214785CD00CC32BF /* SWLikeButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWLikeButton.h; sourceTree = "<group>"; };
-		897EBB9A214785CD00CC32BF /* SWLikeButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWLikeButton.m; sourceTree = "<group>"; };
-		897EBB9C21478D7900CC32BF /* SWStatusLike.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWStatusLike.h; sourceTree = "<group>"; };
-		897EBB9D21478D7900CC32BF /* SWStatusLike.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWStatusLike.m; sourceTree = "<group>"; };
 		897EBB9F21478D9B00CC32BF /* SWStatusComment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWStatusComment.h; sourceTree = "<group>"; };
 		897EBBA021478D9B00CC32BF /* SWStatusComment.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWStatusComment.m; sourceTree = "<group>"; };
 		897EBBA32147A78A00CC32BF /* SWStatusPostViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWStatusPostViewController.h; sourceTree = "<group>"; };
@@ -2282,8 +2276,6 @@
 			children = (
 				897EBB8721476E6B00CC32BF /* SWStatus.h */,
 				897EBB8821476E6B00CC32BF /* SWStatus.m */,
-				897EBB9C21478D7900CC32BF /* SWStatusLike.h */,
-				897EBB9D21478D7900CC32BF /* SWStatusLike.m */,
 				897EBB9F21478D9B00CC32BF /* SWStatusComment.h */,
 				897EBBA021478D9B00CC32BF /* SWStatusComment.m */,
 				897EBB902147720300CC32BF /* SWStatusCellLayout.h */,
@@ -2299,8 +2291,6 @@
 				897EBB942147843F00CC32BF /* SWMenu.m */,
 				897EBB962147848300CC32BF /* SWStatusCell.h */,
 				897EBB972147848300CC32BF /* SWStatusCell.m */,
-				897EBB99214785CD00CC32BF /* SWLikeButton.h */,
-				897EBB9A214785CD00CC32BF /* SWLikeButton.m */,
 				897EBBA62147A9D700CC32BF /* SWTextViewCell.h */,
 				897EBBA72147A9D700CC32BF /* SWTextViewCell.m */,
 				897EBBA92147AE6400CC32BF /* SWStatusImageCell.h */,
@@ -2764,7 +2754,6 @@
 				897EBBD02147C33200CC32BF /* UIScrollView+EmptyDataSet.m in Sources */,
 				897EBBD42147C33200CC32BF /* NSString+Common.m in Sources */,
 				03141A3A2146A3FB0030B553 /* LWTextGlyph.m in Sources */,
-				897EBB9E21478D7900CC32BF /* SWStatusLike.m in Sources */,
 				03141A532146A3FB0030B553 /* LWImageProcessor.m in Sources */,
 				897EBBAB2147AE6400CC32BF /* SWStatusImageCell.m in Sources */,
 				03141A412146A3FB0030B553 /* NSMutableAttributedString+Gallop.m in Sources */,
@@ -2790,7 +2779,6 @@
 				03141A4E2146A3FB0030B553 /* LWImageStorage.m in Sources */,
 				03141A512146A3FB0030B553 /* CALayer+WebCache.m in Sources */,
 				03141A482146A3FB0030B553 /* LWFlag.m in Sources */,
-				897EBB9B214785CD00CC32BF /* SWLikeButton.m in Sources */,
 				03141A382146A3FB0030B553 /* LWCGRectTransform.m in Sources */,
 				03141A4B2146A3FB0030B553 /* LWTextStorage.m in Sources */,
 				897EBB81214767DC00CC32BF /* IndexViewController.m in Sources */,

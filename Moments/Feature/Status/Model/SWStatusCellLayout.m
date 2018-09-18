@@ -7,7 +7,6 @@
 //
 
 #import "SWStatusCellLayout.h"
-#import "SWStatusLike.h"
 #import "SWStatusComment.h"
 
 #define kWXBlue  UIColorMakeWithRGBA(87, 107, 149, 1)
@@ -49,12 +48,13 @@
             LWTextStorage* nameTextStorage = [[LWTextStorage alloc] init];
             nameTextStorage.text = statusModel.nickname;
             nameTextStorage.vericalAlignment = LWTextVericalAlignmentTop;
-            nameTextStorage.font = UIFontPFMediumMake(15);
+            nameTextStorage.font = UIFontPFMediumMake(14);
+            nameTextStorage.textColor = kWXBlue;
             nameTextStorage.frame = CGRectMake(60.0f, 15.0f, SCREEN_WIDTH - 80.0f, 15);
             
             //正文内容模型 contentTextStorage
             LWTextStorage* contentTextStorage = [[LWTextStorage alloc] init];
-            contentTextStorage.maxNumberOfLines = 5;//设置最大行数，超过则折叠
+            contentTextStorage.maxNumberOfLines = open?10:5;//设置最大行数，超过则折叠
             contentTextStorage.linespacing = 1.0f;
             contentTextStorage.font = UIFontMake(15);
             contentTextStorage.textColor = RGBA(40, 40, 40, 1);
@@ -63,42 +63,59 @@
                                                   nameTextStorage.bottom,
                                                   SCREEN_WIDTH - 80.0f,
                                                   CGFLOAT_MAX);
-            CGFloat contentBottom = contentTextStorage.bottom;
-            //折叠的条件
-            if (contentTextStorage.isTruncation) {
-                contentTextStorage.frame = CGRectMake(nameTextStorage.left,
-                                                      nameTextStorage.bottom,
-                                                      SCREEN_WIDTH - 80.0f,
-                                                      CGFLOAT_MAX);
-                
-                LWTextStorage* openStorage = [[LWTextStorage alloc] init];
-                openStorage.font = UIFontMake(15);
-                openStorage.textColor = RGBA(40, 40, 40, 1);
-                openStorage.frame = CGRectMake(nameTextStorage.left,
-                                               contentTextStorage.bottom + 5.0f,
-                                               200.0f,
-                                               30.0f);
-                openStorage.text = @"全文";
-                [openStorage lw_addLinkWithData:kLinkOpen
-                                          range:NSMakeRange(0, openStorage.text.length)
-                                      linkColor:UIColorLink
-                                 highLightColor:RGBA(0, 0, 0, 0.15f)];
-                [self addStorage:openStorage];
-                contentBottom = openStorage.bottom;
+            
+            CGFloat contentBottom;
+            
+            if (open) {
+                //折叠文字
+                LWTextStorage* closeStorage = [[LWTextStorage alloc] init];
+                closeStorage.text = @"收起";
+                closeStorage.font = UIFontMake(15);
+                closeStorage.textColor = RGBA(40, 40, 40, 1);
+                closeStorage.frame = CGRectMake(nameTextStorage.left,
+                                                contentTextStorage.bottom + 5.0f,
+                                                200.0f,
+                                                20.0f);
+                [closeStorage lw_addLinkWithData:kLinkClose
+                                           range:NSMakeRange(0, closeStorage.text.length)
+                                       linkColor:kWXBlue
+                                  highLightColor:UIColorHighLightColor];
+                [self addStorage:closeStorage];
+                contentBottom = closeStorage.bottom;
+            } else {
+                //折叠的条件
+                if (contentTextStorage.isTruncation) {
+                    LWTextStorage* openStorage = [[LWTextStorage alloc] init];
+                    openStorage.text = @"全文";
+                    openStorage.font = UIFontMake(15);
+                    openStorage.textColor = RGBA(40, 40, 40, 1);
+                    openStorage.frame = CGRectMake(nameTextStorage.left,
+                                                   contentTextStorage.bottom + 5.0f,
+                                                   200.0f,
+                                                   20.0f);
+                    [openStorage lw_addLinkWithData:kLinkOpen
+                                              range:NSMakeRange(0, openStorage.text.length)
+                                          linkColor:kWXBlue
+                                     highLightColor:UIColorHighLightColor];
+                    [self addStorage:openStorage];
+                    contentBottom = openStorage.bottom;
+                } else {
+                    contentBottom = contentTextStorage.bottom;
+                }
             }
+
             //解析表情和主题
             //解析表情、主题、网址
             [LWTextParser parseEmojiWithTextStorage:contentTextStorage];
             [LWTextParser parseHttpURLWithTextStorage:contentTextStorage
                                             linkColor:UIColorLink
-                                       highlightColor:RGBA(0, 0, 0, 0.15f)];
+                                       highlightColor:UIColorHighLightColor];
             
             //添加长按复制
             [contentTextStorage lw_addLongPressActionWithData:contentTextStorage.text
-                                               highLightColor:RGBA(0, 0, 0, 0.25f)];
+                                               highLightColor:UIColorHighLightColor];
             
             //发布的图片模型 imgsStorage
-            
             NSArray *imageArray = [statusModel.images mj_JSONObject];
             CGFloat imageWidth = (SCREEN_WIDTH - 140.0f)/3.0f;
             NSInteger imageCount = [imageArray count];
@@ -148,7 +165,6 @@
                 imageStorage.clipsToBounds = YES;
                 imageStorage.frame = imageRect;
                 imageStorage.backgroundColor = RGBA(240, 240, 240, 1);
-//                imageStorage.contents = [HKConfig complementedImageURLWithComponent:imageDict[@"videoImageUrl"] withImageLongEdge:imageWidth*3 withImageShortEdge:imageWidth*3];
                 [imageStorageArray addObject:imageStorage];
             } else {
                 NSInteger row = 0;
@@ -237,20 +253,30 @@
             } else {
                 lastImageStorage = [[LWImageStorage alloc] init];
                 CGRect imageRect = CGRectMake(nameTextStorage.left,
-                                              contentBottom + 5.0f,
+                                              contentBottom,
                                               0,
                                               0);
                 lastImageStorage.frame = imageRect;
             }
             
             //生成时间的模型 dateTextStorage
+            LWTextStorage* locationStorage = [[LWTextStorage alloc] init];
+            locationStorage.text = statusModel.location;
+            locationStorage.font = UIFontMake(12);
+            locationStorage.textColor = [UIColor grayColor];
+            locationStorage.frame = CGRectMake(nameTextStorage.left,
+                                               lastImageStorage.bottom + 8,
+                                               SCREEN_WIDTH - 80.0f,
+                                               CGFLOAT_MIN);
+          
+            
+            //生成时间的模型 dateTextStorage
             LWTextStorage* dateTextStorage = [[LWTextStorage alloc] init];
-//            dateTextStorage.vericalAlignment = LWTextVericalAlignmentCenter;
             dateTextStorage.text = kStringIsEmpty(statusModel.createdTime) ? @"现在" : statusModel.createdTime;
             dateTextStorage.font = UIFontMake(12);
             dateTextStorage.textColor = [UIColor grayColor];
             dateTextStorage.frame = CGRectMake(nameTextStorage.left,
-                                               lastImageStorage.bottom + 8,
+                                               locationStorage.bottom + 8,
                                                SCREEN_WIDTH - 80.0f,
                                                CGFLOAT_MIN);
             if (statusModel.personal) {
@@ -259,7 +285,6 @@
                 imageStorage.frame = CGRectMake(dateTextStorage.right + 15, dateTextStorage.top, 15, 12);
                 imageStorage.contents = kGetImage(@"visibleType");
                 [self addStorage:imageStorage];
-
             }
             
             //删除模型模型 deleteTextStorage
@@ -271,8 +296,8 @@
                 deleteTextStorage.frame = CGRectMake(deleteTextStorageY, dateTextStorage.top - 1.6, 60.0f, 12);
                 [deleteTextStorage lw_addLinkWithData:kLinkDelete
                                                 range:NSMakeRange(0,deleteTextStorage.text.length)
-                                            linkColor:UIColorLink
-                                       highLightColor:RGBA(0, 0, 0, 0.15)];
+                                            linkColor:kWXBlue
+                                       highLightColor:UIColorHighLightColor];
                 [self addStorage:deleteTextStorage];
             }
             
@@ -297,7 +322,9 @@
             //点赞
             LWImageStorage* likeImageSotrage = [[LWImageStorage alloc] init];
             LWTextStorage* likeTextStorage = [[LWTextStorage alloc] init];
-            if (statusModel.essayApproves.count != 0) {
+            NSArray *likeArray = [statusModel.likeNames componentsSeparatedByString:@","];
+            
+            if (likeArray.count != 0) {
                 likeImageSotrage.contents = [UIImage imageNamed:@"Like"];
                 likeImageSotrage.frame = CGRectMake(rect.origin.x + 10.0f,
                                                     rect.origin.y + 10.5f + offsetY,
@@ -308,18 +335,16 @@
                 NSMutableArray* composeArray = [[NSMutableArray alloc] init];
                 
                 int rangeOffset = 0;
-                for (NSInteger i = 0;i < statusModel.essayApproves.count; i ++) {
-                    SWStatusLike *model = statusModel.essayApproves[i];
-                    if (kStringIsEmpty(model.fromUserNickname) == false) {
-                        [mutableString appendString:model.fromUserNickname];
-                    }
-                    NSRange range = NSMakeRange(rangeOffset, model.fromUserNickname.length);
+                for (NSInteger i = 0;i < likeArray.count; i ++) {
+                    NSString *likeName = likeArray[i];
+                    [mutableString appendString:likeName];
+                    NSRange range = NSMakeRange(rangeOffset, likeName.length);
                     [composeArray addObject:[NSValue valueWithRange:range]];
-                    rangeOffset += model.fromUserNickname.length;
-                    if (i != statusModel.essayApproves.count - 1) {
-                        NSString* dotString = @"，";
+                    rangeOffset += likeName.length;
+                    if (i != likeArray.count - 1) {
+                        NSString* dotString = @",";
                         [mutableString appendString:dotString];
-                        rangeOffset += 1;
+                        rangeOffset += dotString.length;
                     }
                 }
                 
@@ -329,19 +354,18 @@
                                                    rect.origin.y + 7.0f,
                                                    SCREEN_WIDTH - 110.0f,
                                                    CGFLOAT_MAX);
-                for (int index = 0; index < composeArray.count; index ++) {
-                    NSValue* rangeValue = composeArray[index];
+                for (NSValue* rangeValue in composeArray) {
                     NSRange range = [rangeValue rangeValue];
-                    SWStatusLike *model = statusModel.essayApproves[index];
-                    [likeTextStorage lw_addLinkWithData:model
+                    [likeTextStorage lw_addLinkWithData:@""
                                                   range:range
-                                              linkColor:UIColorLink
-                                         highLightColor:RGBA(0, 0, 0, 0.15)];
+                                              linkColor:kWXBlue
+                                         highLightColor:UIColorHighLightColor];
                 }
+
                 offsetY += likeTextStorage.height + 5.0f;
             }
             if (statusModel.comments.count != 0 && statusModel.comments != nil) {
-                if (self.statusModel.essayApproves.count != 0) {
+                if (likeArray.count != 0) {
                     self.lineRect = CGRectMake(nameTextStorage.left,
                                                likeTextStorage.bottom + 2.5f,
                                                SCREEN_WIDTH - 80,
@@ -367,25 +391,11 @@
                                                               CGFLOAT_MAX);
                         
                         [commentTextStorage lw_addLinkForWholeTextStorageWithData:commentM
-                                                                   highLightColor:RGBA(0, 0, 0, 0.15)];
-                        
-                        [commentTextStorage lw_addLinkWithData:@{kLinkUserId:commentM.fromUserId?:@""}
-                                                         range:NSMakeRange(0,[commentM.fromNickname length])
-                                                     linkColor:kWXBlue
-                                                      linkFont:UIFontMake(14)
-                                                highLightColor:RGBA(0, 0, 0, 0.15)];
-                        
-                        [commentTextStorage lw_addLinkWithData:@{kLinkUserId:commentM.toUserId?:@""}
-                                                         range:NSMakeRange([commentM.fromNickname length] + 2,
-                                                                           [commentM.toNickname length])
-                                                     linkColor:kWXBlue
-                                                      linkFont:UIFontPFMediumMake(14)
-                                                highLightColor:RGBA(0, 0, 0, 0.15)];
-                        
-                        
+                                                                   highLightColor:UIColorHighLightColor];
+                    
                         [LWTextParser parseTopicWithLWTextStorage:commentTextStorage
                                                         linkColor:kWXBlue
-                                                   highlightColor:RGBA(0, 0, 0, 0.15)];
+                                                   highlightColor:UIColorHighLightColor];
                         [LWTextParser parseEmojiWithTextStorage:commentTextStorage];
                         
                         [tmp addObject:commentTextStorage];
@@ -407,17 +417,10 @@
                                                               CGFLOAT_MAX);
                         
                         [commentTextStorage lw_addLinkForWholeTextStorageWithData:commentM
-                                                                   highLightColor:RGBA(0, 0, 0, 0.15)];
-                        
-                        [commentTextStorage lw_addLinkWithData:@{kLinkUserId:commentM.fromUserId?:@""}
-                                                         range:NSMakeRange(0,[commentM.fromNickname length])
-                                                     linkColor:kWXBlue
-                                                      linkFont:UIFontPFMediumMake(14)
-                                                highLightColor:RGBA(0, 0, 0, 0.15)];
-                        
+                                                                   highLightColor:UIColorHighLightColor];
                         [LWTextParser parseTopicWithLWTextStorage:commentTextStorage
                                                         linkColor:kWXBlue
-                                                   highlightColor:RGBA(0, 0, 0, 0.15)];
+                                                   highlightColor:UIColorHighLightColor];
                         [LWTextParser parseEmojiWithTextStorage:commentTextStorage];
                         [tmp addObject:commentTextStorage];
                         offsetY += commentTextStorage.height;
@@ -426,7 +429,7 @@
                 //如果有评论，设置评论背景Storage
                 commentTextStorages = tmp;
             }
-            if (statusModel.essayApproves.count > 0 || statusModel.comments.count > 0) {
+            if (likeArray.count > 0 || statusModel.comments.count > 0) {
                 CGFloat commentBgPositionH = 15.0f;
                 if (statusModel.comments.count == 0) {
                     commentBgPositionH = 5.0f;
@@ -442,14 +445,15 @@
                                                       topCapHeight:15];
             }
             
+            [self addStorage:avatarStorage];
             [self addStorage:nameTextStorage];//将Storage添加到遵循LWLayoutProtocol协议的类
             [self addStorage:contentTextStorage];
+            [self addStorages:imageStorageArray];//通过一个数组来添加storage，使用这个方法
+            [self addStorage:locationStorage];
             [self addStorage:dateTextStorage];
             [self addStorages:commentTextStorages];//通过一个数组来添加storage，使用这个方法
-            [self addStorage:avatarStorage];
             [self addStorage:commentBgStorage];
             [self addStorage:likeImageSotrage];
-            [self addStorages:imageStorageArray];//通过一个数组来添加storage，使用这个方法
             if (likeTextStorage) {
                 [self addStorage:likeTextStorage];
             }

@@ -29,10 +29,12 @@
 @property NSString *nickname;
 // 发布人头像
 @property NSString *avator;
+// 点赞
+@property NSString *likeNames;
 // 评论
 @property (readonly) NSArray *comments;
-// 点赞的人
-@property (readonly) NSArray *essayApproves;
+//// 点赞的人
+//@property (readonly) NSArray *essayApproves;
 
 + (NSInteger)incrementaID;
 + (NSString *)generateRandomString;

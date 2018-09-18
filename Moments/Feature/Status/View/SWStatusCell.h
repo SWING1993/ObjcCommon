@@ -18,14 +18,12 @@
 @property (nonatomic,strong) SWStatusCellLayout* cellLayout;
 @property (nonatomic,strong) NSIndexPath* indexPath;
 @property (nonatomic,copy) void(^clickedImageCallback)(SWStatusCell* cell,NSInteger imageIndex);
-@property (nonatomic,copy) void(^clickedLikeButtonCallback)(SWStatusCell* cell,BOOL isLike);
-@property (nonatomic,copy) void(^clickedAvatarCallback)(SWStatusCell* cell);
-//@property (nonatomic,copy) void(^clickedReCommentCallback)(SWStatusCell* cell,CommentModel* model);
+@property (nonatomic,copy) void(^clickedLikeButtonCallback)(SWStatusCell* cell);
 @property (nonatomic,copy) void(^clickedCommentButtonCallback)(SWStatusCell* cell);
+@property (nonatomic,copy) void(^clickedAvatarCallback)(SWStatusCell* cell);
 @property (nonatomic,copy) void(^clickedOpenCellCallback)(SWStatusCell* cell);
 @property (nonatomic,copy) void(^clickedCloseCellCallback)(SWStatusCell* cell);
 @property (nonatomic,copy) void(^clickedDeleteCellCallback)(SWStatusCell* cell);
-@property (nonatomic,copy) void(^clickedVisibleCellCallback)(SWStatusCell* cell);
 @property (nonatomic,copy) void(^clickedMenuCallback)(SWStatusCell* cell);
 
 @end

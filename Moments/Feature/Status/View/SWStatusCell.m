@@ -7,7 +7,6 @@
 //
 
 #import "SWStatusCell.h"
-#import "SWLikeButton.h"
 #import <AVFoundation/AVFoundation.h>
 #import <AVKit/AVKit.h>
 
@@ -105,11 +104,7 @@
 //                    }
                 }
             }break;
-            case 999: {
-                if (self.clickedVisibleCellCallback) {
-                    self.clickedVisibleCellCallback(self);
-                }
-            }break;
+
         }
     }
 }
@@ -119,20 +114,7 @@
     didCilickedTextStorage:(LWTextStorage *)textStorage
                   linkdata:(id)data {
     [self.menu menuHide];
-//    //回复评论
-//    if ([data isKindOfClass:[CommentModel class]]) {
-//        if (self.clickedReCommentCallback) {
-//            self.clickedReCommentCallback(self,data);
-//        }
-//    } else if ([data isKindOfClass:[ApproveModel class]]) {
-//        ApproveModel *model = (ApproveModel *)data;
-//        if (kStringIsEmpty(model.fromUserId) == false) {
-//            if (self.clickedToUserInfoCallback) {
-//                self.clickedToUserInfoCallback(model.fromUserId);
-//            }
-//        }
-//    } else
-        if ([data isKindOfClass:[NSString class]]) {
+    if ([data isKindOfClass:[NSString class]]) {
         //折叠Cell
         if ([data isEqualToString:kLinkClose]) {
             if (self.clickedCloseCellCallback) {
@@ -152,24 +134,11 @@
                 self.clickedDeleteCellCallback(self);
             }
         }
-        //链接
-        else if ([data hasPrefix:kLinkHref]) {
-            NSString *result = [data substringFromIndex:kLinkHref.length];
-//            if (kStringIsEmpty(result) == false) {
-//                if (self.clickedToLinkURLCallback) {
-//                    self.clickedToLinkURLCallback(result);
-//                }
-//            }
-        }
         //其他
         else {
         }
     } else if ([data isKindOfClass:[NSDictionary class]]) {
-        if (kStringIsEmpty(data[kLinkUserId]) == false) {
-//            if (self.clickedToUserInfoCallback) {
-//                self.clickedToUserInfoCallback(data[kLinkUserId]);
-//            }
-        }
+
     }
 }
 
@@ -227,22 +196,14 @@
 }
 
 //点赞
-- (void)didclickedLikeButton:(SWLikeButton *)likeButton {
-    __weak typeof(self) weakSelf = self;
-    likeButton.userInteractionEnabled = NO;
-    [likeButton likeButtonAnimationCompletion:^(BOOL isSelectd) {
-        __strong typeof(weakSelf) sself = weakSelf;
-        likeButton.userInteractionEnabled = YES;
-        [sself.menu menuHide];
-        if (sself.clickedLikeButtonCallback) {
-//            sself.clickedLikeButtonCallback(sself,!sself.cellLayout.statusModel.approveFlag);
-        }
-    }];
+- (void)didclickedLikeButton {
+    if (self.clickedLikeButtonCallback) {
+        [self.menu menuHide];
+        self.clickedLikeButtonCallback(self);
+    }
 }
 
-
 #pragma mark -
-
 - (void)layoutSubviews {
     [super layoutSubviews];
     self.asyncDisplayView.frame = CGRectMake(0,0,SCREEN_WIDTH,self.cellLayout.cellHeight);
@@ -321,7 +282,7 @@
     _menu.opaque = YES;
     [_menu.commentButton addTarget:self action:@selector(didClickedCommentButton)
                   forControlEvents:UIControlEventTouchUpInside];
-    [_menu.likeButton addTarget:self action:@selector(didclickedLikeButton:)
+    [_menu.likeButton addTarget:self action:@selector(didclickedLikeButton)
                forControlEvents:UIControlEventTouchUpInside];
     return _menu;
 }

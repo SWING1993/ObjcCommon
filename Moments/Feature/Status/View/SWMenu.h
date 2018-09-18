@@ -7,13 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SWLikeButton.h"
 #import "SWStatus.h"
 
 @interface SWMenu : UIView
 
 @property (nonatomic,strong) SWStatus *statusModel;
-@property (nonatomic,strong) SWLikeButton *likeButton;
+@property (nonatomic,strong) UIButton *likeButton;
 @property (nonatomic,strong) UIButton *commentButton;
 
 - (void)clickedMenu;

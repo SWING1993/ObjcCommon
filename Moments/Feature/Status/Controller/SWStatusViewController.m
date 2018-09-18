@@ -10,6 +10,7 @@
 #import "SWStatusPostViewController.h"
 #import "SWStatusCellLayout.h"
 #import "SWStatusCell.h"
+#import "SWAuthorViewController.h"
 
 @interface SWStatusViewController () <QMUITableViewDelegate, QMUITableViewDataSource>
 
@@ -26,6 +27,9 @@
     self.tableView = [[QMUITableView alloc] initWithFrame:kScreenBounds style:UITableViewStyleGrouped];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    self.tableView.estimatedRowHeight = CGFLOAT_MIN;
+    self.tableView.estimatedSectionFooterHeight = CGFLOAT_MIN;
+    self.tableView.estimatedSectionHeaderHeight = CGFLOAT_MIN;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:self.tableView];
 }
@@ -105,39 +109,115 @@
     cell.indexPath = indexPath;
     SWStatusCellLayout* cellLayout = self.dataSource[indexPath.row];
     cell.cellLayout = cellLayout;
-//    [self callbackWithCell:cell];
+    [self callbackWithCell:cell];
+}
+
+- (void)callbackWithCell:(SWStatusCell *)cell {
+    @weakify(self)
+    cell.clickedLikeButtonCallback = ^(SWStatusCell* cell) {
+        @strongify(self)
+        [self likeTableViewCell:cell];
+    };
+    
+    cell.clickedCommentButtonCallback = ^(SWStatusCell* cell) {
+//        @strongify(self)
+//        [sself commentWithCell:cell];
+    };
+    
+//    cell.clickedReCommentCallback = ^(SWStatusCell* cell,CommentModel* model) {
+//        __strong typeof(weakSelf) sself = weakSelf;
+//        [sself reCommentWithCell:cell commentModel:model];
+//    };
+    
+    cell.clickedOpenCellCallback = ^(SWStatusCell* cell) {
+        @strongify(self)
+        [self openTableViewCell:cell];
+    };
+    
+    cell.clickedCloseCellCallback = ^(SWStatusCell* cell) {
+        @strongify(self)
+        [self closeTableViewCell:cell];
+    };
+    
+//    cell.clickedDeleteCellCallback= ^(SWStatusCell* cell) {
+//        @strongify(self)
+//        [self deleteTableViewCell:cell];
+//    };
+}
+
+//点赞cell
+- (void)likeTableViewCell:(SWStatusCell *)cell {
+    SWAuthorViewController *controller = [[SWAuthorViewController alloc] init];
+    controller.allowsMultipleSelection = YES;
+    @weakify(self)
+    controller.multipleCompleteBlock = ^(NSArray *authors) {
+        @strongify(self)
+
+        NSMutableString *likeNmaes = [[NSMutableString alloc] init];
+        for (SWAuthor *author in authors) {
+            if (likeNmaes.length == 0) {
+                [likeNmaes appendFormat:@"%@",author.nickname];
+            } else {
+                [likeNmaes appendFormat:@",%@",author.nickname];
+            }
+        }
+        
+        SWStatusCellLayout* layout =  [self.dataSource objectAtIndex:cell.indexPath.row];
+        SWStatus* model = layout.statusModel;
+        RLMRealm *realm = [RLMRealm defaultRealm];
+        // 更新对象数据
+        [realm beginWriteTransaction];
+        model.likeNames = likeNmaes;
+        [realm commitWriteTransaction];
+
+        SWStatusCellLayout* newLayout = [[SWStatusCellLayout alloc] initWithStatusModel:model index:cell.indexPath.row opend:NO];
+        [self coverScreenshotAndDelayRemoveWithCell:cell cellHeight:newLayout.cellHeight];
+        [self.dataSource replaceObjectAtIndex:cell.indexPath.row withObject:newLayout];
+        [self.tableView reloadRowsAtIndexPaths:@[cell.indexPath]
+                              withRowAnimation:UITableViewRowAnimationNone];
+
+    };
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+//展开Cell
+- (void)openTableViewCell:(SWStatusCell *)cell {
+    SWStatusCellLayout* layout =  [self.dataSource objectAtIndex:cell.indexPath.row];
+    SWStatus* model = layout.statusModel;
+    SWStatusCellLayout* newLayout = [[SWStatusCellLayout alloc] initWithStatusModel:model index:cell.indexPath.row opend:YES];
+    [self coverScreenshotAndDelayRemoveWithCell:cell cellHeight:newLayout.cellHeight];
+    [self.dataSource replaceObjectAtIndex:cell.indexPath.row withObject:newLayout];
+    [self.tableView reloadRowsAtIndexPaths:@[cell.indexPath]
+                          withRowAnimation:UITableViewRowAnimationNone];
+}
+
+//折叠Cell
+- (void)closeTableViewCell:(SWStatusCell *)cell {
+    SWStatusCellLayout* layout =  [self.dataSource objectAtIndex:cell.indexPath.row];
+    SWStatus* model = layout.statusModel;
+    SWStatusCellLayout* newLayout = [[SWStatusCellLayout alloc] initWithStatusModel:model index:cell.indexPath.row opend:NO];
+    [self coverScreenshotAndDelayRemoveWithCell:cell cellHeight:newLayout.cellHeight];
+    [self.dataSource replaceObjectAtIndex:cell.indexPath.row withObject:newLayout];
+    [self.tableView reloadRowsAtIndexPaths:@[cell.indexPath]
+                          withRowAnimation:UITableViewRowAnimationNone];
 }
 
 
-//#pragma mark - QMUINavigationControllerDelegate
-//
-//- (UIStatusBarStyle)preferredStatusBarStyle {
-//    return UIStatusBarStyleDefault;
-//}
-//
-//- (UIImage *)navigationBarBackgroundImage {
-//    return UIImageMake(@"navigationbar_background");
-//}
-//
-//- (UIImage *)navigationBarShadowImage {
-//    return [[UIImage alloc] init];
-//}
-//
-//- (UIColor *)navigationBarTintColor {
-//    return UIColorMake(33, 33, 33);
-//}
-//
-//- (UIColor *)titleViewTintColor {
-//    return UIColorMake(33, 33, 33);
-//}
-//
-//#pragma mark - NavigationBarTransition
-//- (BOOL)shouldCustomNavigationBarTransitionWhenPushDisappearing {
-//    return YES;
-//}
-//
-//- (BOOL)shouldCustomNavigationBarTransitionWhenPopDisappearing {
-//    return YES;
-//}
-
+/* 由于是异步绘制，而且为了减少View的层级，整个显示内容都是在同一个UIView上面，所以会在刷新的时候闪一下，这里可以先把原先Cell的内容截图覆盖在Cell上，
+ 延迟0.25s后待刷新完成后，再将这个截图从Cell上移除 */
+- (void)coverScreenshotAndDelayRemoveWithCell:(UITableViewCell *)cell cellHeight:(CGFloat)cellHeight {
+    UIImage* screenshot = [GallopUtils screenshotFromView:cell];
+    UIImageView* imgView = [[UIImageView alloc] initWithFrame:[self.tableView convertRect:cell.frame toView:self.tableView]];
+    imgView.frame = CGRectMake(imgView.frame.origin.x,
+                               imgView.frame.origin.y,
+                               imgView.frame.size.width,
+                               cellHeight);
+    imgView.contentMode = UIViewContentModeTop;
+    imgView.backgroundColor = [UIColor whiteColor];
+    imgView.image = screenshot;
+    [self.tableView addSubview:imgView];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.28f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [imgView removeFromSuperview];
+    });
+}
 @end

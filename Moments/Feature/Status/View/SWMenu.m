@@ -115,11 +115,11 @@
 
 #pragma mark - Getter & Setter
 
-- (SWLikeButton *)likeButton {
+- (UIButton *)likeButton {
     if (_likeButton) {
         return _likeButton;
     }
-    _likeButton = [SWLikeButton buttonWithType:UIButtonTypeCustom];
+    _likeButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_likeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [_likeButton setTitle:@"  赞" forState:UIControlStateNormal];
     [_likeButton setImage:[UIImage imageNamed:@"likewhite.png"] forState:UIControlStateNormal];

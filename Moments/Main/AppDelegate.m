@@ -29,6 +29,10 @@
     self.window.rootViewController = indexNav;
     [self.window makeKeyAndVisible];
     
+//    [[RLMRealm defaultRealm] beginWriteTransaction];
+//    [[RLMRealm defaultRealm] deleteAllObjects];
+//    [[RLMRealm defaultRealm] commitWriteTransaction];
+    
     return YES;
 }
 

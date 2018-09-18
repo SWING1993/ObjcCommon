@@ -11,6 +11,7 @@
 #define UIColorMakeX(x) UIColorMake(x, x, x)
 #define UIColorRandom [UIColor qmui_randomColor]
 #define UIColorThemeDeepPurple UIColorMake(239, 83, 98) // 主题紫
+#define UIColorHighLightColor UIColorMakeWithRGBA(0, 0, 0, 0.15)
 #define UIColorTheme1 UIColorMake(239, 83, 98) // Grapefruit
 #define UIColorTheme2 UIColorMake(254, 109, 75) // Bittersweet
 #define UIColorTheme3 UIColorMake(255, 207, 71) // Sunflower
