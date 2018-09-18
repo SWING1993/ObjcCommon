@@ -7,7 +7,16 @@
 //
 
 #import "SWViewController.h"
+#import "SWAuthor.h"
 
 @interface SWAuthorViewController : SWViewController
+
+@property (nonatomic,copy) void(^singleCompleteBlock)(SWAuthor *author);
+
+@property (nonatomic,copy) void(^multipleCompleteBlock)(NSArray *authors);
+
+
+/// 控制是否允许多选，默认为NO。
+@property(nonatomic, assign) BOOL allowsMultipleSelection;
 
 @end

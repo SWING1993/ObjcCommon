@@ -37,7 +37,7 @@
             self.statusModel = statusModel;
             //头像模型 avatarImageStorage
             LWImageStorage* avatarStorage = [[LWImageStorage alloc] initWithIdentifier:AVATAR_IDENTIFIER];
-//            avatarStorage.contents = @"头像";
+            avatarStorage.contents = [SWStatus getDocumentImageWithName:statusModel.avator];
 //            avatarStorage.placeholder = kPlaceholderImage;
             avatarStorage.backgroundColor = UIColorRandom;
             avatarStorage.frame = CGRectMake(10, 15, 40, 40);

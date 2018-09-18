@@ -8,7 +8,6 @@
 
 #import "IndexViewController.h"
 #import "SWStatusViewController.h"
-#import "SWAuthorViewController.h"
 
 @interface IndexViewController ()<GADBannerViewDelegate>
 
@@ -28,8 +27,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.dataSource = @[@"朋友",@"我的朋友圈",@"状态详情",@"消息",@"浏览页"];
-    self.bannerView = [[GADBannerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 50 - self.qmui_navigationBarMaxYInViewCoordinator, self.view.frame.size.width, 50)];
+    self.dataSource = @[@"我的朋友圈",@"状态详情",@"消息",@"浏览页"];
+    self.bannerView = [[GADBannerView alloc] initWithFrame:CGRectMake(0, self.view.qmui_height - 50 - self.qmui_navigationBarMaxYInViewCoordinator, self.view.qmui_width, 50)];
     self.bannerView.adUnitID = @"ca-app-pub-6037095993957840/9771733149";
     self.bannerView.rootViewController = self;
     [self.tableView addSubview:self.bannerView];
@@ -38,8 +37,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     GADRequest *request = [GADRequest request];
-    //如果是开发阶段，需要填写测试手机的UUID
-    request.testDevices = @[@"081bbfd61c06743f7c07d230dc3199b0",kGADSimulatorID];
+    request.testDevices = @[kGADSimulatorID];
     self.bannerView.delegate = self;
     [self.bannerView loadRequest:request];
 }
@@ -65,12 +63,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     switch (indexPath.section) {
         case 0: {
-            SWAuthorViewController *controller = [[SWAuthorViewController alloc] init];
-            [self.navigationController pushViewController:controller animated:YES];
-            }
-            break;
-            
-        case 1: {
             SWStatusViewController *controller = [[SWStatusViewController alloc] init];
             [self.navigationController pushViewController:controller animated:YES];
         }
@@ -92,13 +84,6 @@
 
 - (void)adViewDidReceiveAd:(GADBannerView *)bannerView {
     NSLog(@"adView:didSuccess");
-//    [UIView beginAnimations:@"BannerSlide" context:nil];
-//    bannerView.frame = CGRectMake(0.0,
-//                                  self.view.frame.size.height -
-//                                  bannerView.frame.size.height,
-//                                  bannerView.frame.size.width,
-//                                  bannerView.frame.size.height);
-//    [UIView commitAnimations];
 }
 
 - (void)adView:(GADBannerView *)bannerView didFailToReceiveAdWithError:(GADRequestError *)error {

@@ -14,7 +14,7 @@
 // 发布人昵称
 @property NSString *nickname;
 // 发布人头像
-@property NSString *avator;
+@property NSString *avatar;
 // 选中
 @property (nonatomic,assign) Boolean selected;
 

@@ -13,11 +13,13 @@
 #import "SWStatusTimeViewController.h"
 #import "SWStatusLocationViewController.h"
 #import "SWAuthorViewController.h"
+#import "SWAuthor.h"
 
 @interface SWStatusPostViewController ()<QMUITableViewDelegate, QMUITableViewDataSource>
 
 @property (nonatomic, strong) QMUITableView *tableView;
 @property (nonatomic, strong) SWStatus *status;
+@property (nonatomic, strong) SWAuthor *author;
 @property (nonatomic, strong) NSMutableArray <UIImage *>*originImages;
 @property (nonatomic, strong) UISwitch *ownSwitch;
 @property (nonatomic, strong) UISwitch *personalSwitch;
@@ -85,6 +87,10 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
 }
 
 - (void)savaStatusAction {
+    if (kStringIsEmpty(self.status.content) && self.originImages.count == 0) {
+        [QMUITips showInfo:@"请填写内容或选择图片"];
+        return;
+    }
     if (self.originImages.count > 0) {
         NSMutableArray *imageNames = [NSMutableArray arrayWithCapacity:self.originImages.count];
         for (UIImage *image in self.originImages) {
@@ -92,12 +98,20 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
         }
         self.status.images = [imageNames mj_JSONString];
     }
-//    self.status.avatar
-    self.status.nickname = @"SUPERMAN";
+    if (self.status.own) {
+        self.status.nickname = @"SUPERMAN";
+        self.status.avator = @"";
+    } else {
+        if (!self.author) {
+            [QMUITips showInfo:@"请选择发布人!"];
+            return;
+        } else {
+            self.status.nickname = self.author.nickname;
+            self.status.avator = self.author.avatar;
+        }
+    }
     self.status.id = [SWStatus incrementaID];
-    // 获取默认的 Realm 存储对象
     RLMRealm *realm = [RLMRealm defaultRealm];
-    
     // 通过处理添加数据到 Realm 中
     [realm beginWriteTransaction];
     [realm addObject:self.status];
@@ -119,7 +133,7 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
         }
             break;
         default:
-            return self.status.own ? 5 : 4;
+            return 4;
             break;
     }
 }
@@ -202,7 +216,7 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
                         cell.accessoryType = QMUIStaticTableViewCellAccessoryTypeDisclosureIndicator;
                     }
                     cell.textLabel.text = @"所在位置";
-                    cell.detailTextLabel.text = self.status.location;
+                    cell.detailTextLabel.text = kStringIsEmpty(self.status.location) ? @"可不填":self.status.location;
                     return cell;
                 }
                     break;
@@ -222,7 +236,7 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
                 case 2:{
                     QMUITableViewCell *cell = (QMUITableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellWithIdentifier];
                     if (!cell) {
-                        cell = [[QMUITableViewCell alloc] initForTableView:tableView withStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellWithIdentifier];
+                        cell = [[QMUITableViewCell alloc] initForTableView:tableView withStyle:UITableViewCellStyleValue1 reuseIdentifier:cellWithIdentifier];
                         cell.selectionStyle = UITableViewCellSelectionStyleNone;
                     }
                     self.ownSwitch.on = self.status.own;
@@ -235,17 +249,19 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
                 case 3:{
                     QMUITableViewCell *cell = (QMUITableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellWithIdentifier];
                     if (!cell) {
-                        cell = [[QMUITableViewCell alloc] initForTableView:tableView withStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellWithIdentifier];
+                        cell = [[QMUITableViewCell alloc] initForTableView:tableView withStyle:UITableViewCellStyleValue1 reuseIdentifier:cellWithIdentifier];
                     }
                     if (self.status.own) {
                         self.personalSwitch.on = self.status.personal;
                         cell.accessoryView = self.personalSwitch;
                         cell.textLabel.text = @"部分可见";
                         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                        cell.detailTextLabel.text = @"";
                     } else {
                         cell.accessoryType = QMUIStaticTableViewCellAccessoryTypeDisclosureIndicator;
                         cell.textLabel.text = @"发布人";
                         cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+                        cell.detailTextLabel.text = self.author ? self.author.nickname : @"请选择";
                     }
                     return cell;
                 }
@@ -255,7 +271,7 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
                 case 4:{
                     QMUITableViewCell *cell = (QMUITableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellWithIdentifier];
                     if (!cell) {
-                        cell = [[QMUITableViewCell alloc] initForTableView:tableView withStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellWithIdentifier];
+                        cell = [[QMUITableViewCell alloc] initForTableView:tableView withStyle:UITableViewCellStyleValue1 reuseIdentifier:cellWithIdentifier];
                         cell.accessoryType = QMUIStaticTableViewCellAccessoryTypeDisclosureIndicator;
                     }
                     cell.textLabel.text = @"提醒谁看";
@@ -316,6 +332,13 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
           
             case 3:{
                 SWAuthorViewController *controller = [[SWAuthorViewController alloc] init];
+                controller.allowsMultipleSelection = NO;
+                @weakify(self)
+                controller.singleCompleteBlock = ^(SWAuthor *author) {
+                    @strongify(self)
+                    self.author = author;
+                    [self.tableView reloadData];
+                };
                 [self.navigationController pushViewController:controller animated:YES];
             }
                 break;

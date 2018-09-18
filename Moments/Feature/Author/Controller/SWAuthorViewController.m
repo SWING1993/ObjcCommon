@@ -18,6 +18,7 @@ static NSString *const Identifier = @"CollectionCellIdentifier";
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) NSMutableArray *dataSource;
+//@property (nonatomic, strong) NSMutableArray *multipleSelection;
 
 @end
 
@@ -35,7 +36,7 @@ static NSString *const Identifier = @"CollectionCellIdentifier";
     RLMResults *allAuthor = [SWAuthor allObjects];
     self.dataSource = [NSMutableArray arrayWithCapacity:allAuthor.count];
     for (NSInteger index = allAuthor.count - 1; index > -1; index --) {
-        SWStatus *author = [allAuthor objectAtIndex:index];
+        SWAuthor *author = [allAuthor objectAtIndex:index];
         [self.dataSource addObject:author];
     }
     [self.collectionView reloadData];
@@ -44,16 +45,16 @@ static NSString *const Identifier = @"CollectionCellIdentifier";
 - (void)setupNavigationItems {
     [super setupNavigationItems];
     @weakify(self)
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] bk_initWithBarButtonSystemItem:UIBarButtonSystemItemAdd handler:^(id sender) {
+    UIBarButtonItem *addBtn = [[UIBarButtonItem alloc] bk_initWithTitle:@"新增" style:UIBarButtonItemStyleDone handler:^(id sender) {
         @strongify(self)
         SWAuthorAddViewController *controller = [[SWAuthorAddViewController alloc] init];
+        @weakify(self)
         controller.completeBlock = ^(SWAuthor *author) {
             if (author) {
+                @strongify(self)
                 [self.dataSource insertObject:author atIndex:0];
                 [self.collectionView reloadData];
-                // 获取默认的 Realm 存储对象
                 RLMRealm *realm = [RLMRealm defaultRealm];
-                // 通过处理添加数据到 Realm 中
                 [realm beginWriteTransaction];
                 [realm addObject:author];
                 [realm commitWriteTransaction];
@@ -61,6 +62,23 @@ static NSString *const Identifier = @"CollectionCellIdentifier";
         };
         [self.navigationController pushViewController:controller animated:YES];
     }];
+    
+    if (self.allowsMultipleSelection) {
+        UIBarButtonItem *completeBtn = [[UIBarButtonItem alloc] bk_initWithTitle:@"完成" style:UIBarButtonItemStyleDone handler:^(id sender) {
+            @strongify(self)
+            NSArray *array = [self.dataSource bk_select:^BOOL(SWAuthor *author) {
+                return author.selected;
+            }];
+            if (self.multipleCompleteBlock) {
+                self.multipleCompleteBlock(array);
+            }
+            [self.navigationController popViewControllerAnimated:YES];
+        }];
+        self.navigationItem.rightBarButtonItems = @[completeBtn, addBtn];
+    } else {
+        self.navigationItem.rightBarButtonItem = addBtn;
+    }
+
 }
 
 #pragma mark - UICollectionView
@@ -98,7 +116,7 @@ static NSString *const Identifier = @"CollectionCellIdentifier";
     SWAuthor *author = self.dataSource[indexPath.row];
     
     UIImageView *avator = [[UIImageView alloc] init];
-    avator.image = [SWStatus getDocumentImageWithName:author.avator];
+    avator.image = [SWStatus getDocumentImageWithName:author.avatar];
     [cell.contentView addSubview:avator];
     [avator mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.right.equalTo(cell.contentView);
@@ -114,25 +132,35 @@ static NSString *const Identifier = @"CollectionCellIdentifier";
         make.top.mas_equalTo(avator.mas_bottom);
     }];
     
-    QMUIButton *btn = [[QMUIButton alloc] init];
-    btn.userInteractionEnabled = NO;
-    btn.tag = indexPath.row;
-    btn.selected = author.selected;
-    [btn setImage:UIImageMake(@"SWAuthor_def") forState:UIControlStateNormal];
-    [btn setImage:UIImageMake(@"SWAuthor_sel") forState:UIControlStateSelected];
-    [cell.contentView addSubview:btn];
-    [btn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(35, 35));
-        make.top.right.equalTo(cell.contentView);
-    }];
-
+    if (self.allowsMultipleSelection) {
+        QMUIButton *btn = [[QMUIButton alloc] init];
+        btn.userInteractionEnabled = NO;
+        btn.tag = indexPath.row;
+        btn.selected = author.selected;
+        [btn setImage:UIImageMake(@"SWAuthor_def") forState:UIControlStateNormal];
+        [btn setImage:UIImageMake(@"SWAuthor_sel") forState:UIControlStateSelected];
+        [cell.contentView addSubview:btn];
+        [btn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.size.mas_equalTo(CGSizeMake(35, 35));
+            make.top.right.equalTo(cell.contentView);
+        }];
+    }
+   
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     SWAuthor *author = self.dataSource[indexPath.row];
-    author.selected = !author.selected;
-    [self.collectionView reloadData];
+    if (self.allowsMultipleSelection) {
+        author.selected = !author.selected;
+        [self.collectionView reloadData];
+    } else {
+        if (self.singleCompleteBlock) {
+            self.singleCompleteBlock(author);
+        }
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+
 }
 
 @end

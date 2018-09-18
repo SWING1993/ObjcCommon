@@ -72,10 +72,10 @@ NSString * const kAvator = @"kAvator";
 
 -(void)validateForm {
     if (kStringIsEmpty(self.author.nickname)) {
-        kTipAlert(@"请填写昵称");
+        [QMUITips showInfo:@"请填写昵称"];
         return;
-    } else if (kStringIsEmpty(self.author.avator)) {
-        kTipAlert(@"请选择头像");
+    } else if (kStringIsEmpty(self.author.avatar)) {
+        [QMUITips showInfo:@"请选择头像"];
         return;
     }
     if (self.completeBlock) {
@@ -91,7 +91,7 @@ NSString * const kAvator = @"kAvator";
     if ([rowDescriptor.tag isEqualToString:kNickname]){
         self.author.nickname = newValue;
     } else if ([rowDescriptor.tag isEqualToString:kAvator]){
-        self.author.avator = [SWStatus saveImage:newValue];
+        self.author.avatar = [SWStatus saveImage:newValue];
     }
 }
 
