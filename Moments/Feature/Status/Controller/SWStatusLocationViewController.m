@@ -82,52 +82,27 @@ NSString * const kValidationEmail = @"kSecond";
 #pragma mark - actions
 
 -(void)validateForm {
-    __block BOOL error;
-    NSArray * array = [self formValidationErrors];
-    [array enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        XLFormValidationStatus * validationStatus = [[obj userInfo] objectForKey:XLValidationStatusErrorKey];
-        if ([validationStatus.rowDescriptor.tag isEqualToString:kValidationName]){
-            NSString *valueStr = validationStatus.rowDescriptor.value;
-            if (valueStr.length > 30) {
-                UITableViewCell * cell = [self.tableView cellForRowAtIndexPath:[self.form indexPathOfFormRow:validationStatus.rowDescriptor]];
-                [self animateCell:cell];
-                error = YES;
-            }
-           
+    NSMutableString *result = [[NSMutableString alloc] initWithString:self.firstValueStr];
+    if (kStringIsEmpty(result)) {
+        if (!kStringIsEmpty(self.secondValueStr)) {
+            [result appendString:self.secondValueStr];
         }
-        else if ([validationStatus.rowDescriptor.tag isEqualToString:kValidationEmail]){
-            NSString *valueStr = validationStatus.rowDescriptor.value;
-            if (valueStr.length > 30) {
-                UITableViewCell * cell = [self.tableView cellForRowAtIndexPath:[self.form indexPathOfFormRow:validationStatus.rowDescriptor]];
-                [self animateCell:cell];
-                error = YES;
-            }
-        }
-    }];
-    
-    if (error) {
-        kTipAlert(@"字符太长");
     } else {
-        if (self.completeBlock) {
-            self.completeBlock([NSString stringWithFormat:@"%@·%@",self.firstValueStr,self.secondValueStr]);
+        if (!kStringIsEmpty(self.secondValueStr)) {
+            [result appendFormat:@"·%@",self.secondValueStr];
         }
-        [self.navigationController popViewControllerAnimated:YES];
+    }
+   
+    if (kStringIsEmpty(result)) {
+        [QMUITips showInfo:@"请填写位置信息!"];
+        return;
     }
     
-}
-
-
-#pragma mark - Helper
-
--(void)animateCell:(UITableViewCell *)cell {
-    CAKeyframeAnimation *animation = [CAKeyframeAnimation animation];
-    animation.keyPath = @"position.x";
-    animation.values =  @[ @0, @20, @-20, @10, @0];
-    animation.keyTimes = @[@0, @(1 / 6.0), @(3 / 6.0), @(5 / 6.0), @1];
-    animation.duration = 0.3;
-    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
-    animation.additive = YES;
-    [cell.layer addAnimation:animation forKey:@"shake"];
+    if (self.completeBlock) {
+        self.completeBlock(result);
+    }
+    [self.navigationController popViewControllerAnimated:YES];
+    
 }
 
 #pragma mark - XLFormDescriptorDelegate

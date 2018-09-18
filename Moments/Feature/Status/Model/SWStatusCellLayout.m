@@ -278,7 +278,7 @@
             dateTextStorage.frame = CGRectMake(nameTextStorage.left,
                                                locationStorage.bottom + 8,
                                                SCREEN_WIDTH - 80.0f,
-                                               CGFLOAT_MIN);
+                                               12);
             if (statusModel.personal) {
                 LWImageStorage* imageStorage = [[LWImageStorage alloc] initWithIdentifier:IMAGE_IDENTIFIER];
                 imageStorage.tag = 999;
@@ -291,9 +291,9 @@
             if (statusModel.own) {
                 LWTextStorage* deleteTextStorage = [[LWTextStorage alloc] init];
                 deleteTextStorage.text = @"删除";
-                deleteTextStorage.font = UIFontPFLightMake(11);
+                deleteTextStorage.font = UIFontMake(12);
                 CGFloat deleteTextStorageY = dateTextStorage.right + (statusModel.personal ? 45 : 15);
-                deleteTextStorage.frame = CGRectMake(deleteTextStorageY, dateTextStorage.top - 1.6, 60.0f, 12);
+                deleteTextStorage.frame = CGRectMake(deleteTextStorageY, dateTextStorage.top, 60.0f, 12);
                 [deleteTextStorage lw_addLinkWithData:kLinkDelete
                                                 range:NSMakeRange(0,deleteTextStorage.text.length)
                                             linkColor:kWXBlue
