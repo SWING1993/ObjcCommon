@@ -16,12 +16,9 @@
     struct utsname systemInfo;
     uname(&systemInfo);
     NSString *deviceString = [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];
-    
     if ([deviceString isEqualToString:@"iPhone10,3"])   return @"iPhone X";
-    
     if ([deviceString isEqualToString:@"i386"])         return @"Simulator";
     if ([deviceString isEqualToString:@"x86_64"])       return @"Simulator";
-    
     return deviceString;
 }
 
@@ -32,13 +29,12 @@
 
 // 获取UUID
 + (NSString *)getUUID {
-    return  [[[UIDevice currentDevice]identifierForVendor] UUIDString];
+    return  [[[UIDevice currentDevice] identifierForVendor] UUIDString];
 }
 
 
  //获取手机系统版本
 + (NSString *)systemVersion {
-    
     return [[UIDevice currentDevice] systemVersion];
 }
 @end

@@ -15,6 +15,16 @@
 @end
 
 @implementation AppDelegate
+- (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(nullable NSDictionary *)launchOptions {
+    NSString *realmVersion = [[NSUserDefaults standardUserDefaults] objectForKey:@"RLMRealmVersion"];
+    if (![realmVersion isEqualToString:kVersionBuild]) {
+        NSLog(@"!!!!!RLMRealmVersiong:%zi 与本地版本:%@不匹配,删除Document文件夹",[RLMRealm version],kVersionBuild);
+        [self removeDocumentItems];
+        [[NSUserDefaults standardUserDefaults] setObject:kVersionBuild forKey:@"RLMRealmVersion"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    return YES;
+}
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -28,14 +38,22 @@
     SWNavigationController *indexNav = [[SWNavigationController alloc] initWithRootViewController:indexController];
     self.window.rootViewController = indexNav;
     [self.window makeKeyAndVisible];
-    
-//    [[RLMRealm defaultRealm] beginWriteTransaction];
-//    [[RLMRealm defaultRealm] deleteAllObjects];
-//    [[RLMRealm defaultRealm] commitWriteTransaction];
-    
+
     return YES;
 }
 
+- (void)removeDocumentItems {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSArray *contents = [fileManager contentsOfDirectoryAtPath:documentsDirectory error:NULL];
+    NSEnumerator *e = [contents objectEnumerator];
+    NSString *filename;
+    while ((filename = [e nextObject])) {
+        BOOL successd = [fileManager removeItemAtPath:[documentsDirectory stringByAppendingPathComponent:filename] error:NULL];
+        NSLog(@"%@删除%@",successd?@"成功":@"失败",filename);
+    }
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

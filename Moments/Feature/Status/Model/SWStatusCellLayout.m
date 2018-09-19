@@ -195,7 +195,7 @@
                                                contentBottom + 5.0f + (row * (imageWidth + 5.0f)),
                                                w,
                                                h);
-                    } else  {
+                    } else {
                         CGFloat w = imageWidth*1.7;
                         CGFloat h = MIN(w/x, imageWidth*3);
                         imageRect = CGRectMake(nameTextStorage.left,
@@ -301,7 +301,6 @@
                 [self addStorage:deleteTextStorage];
             }
             
-            
             //菜单按钮
             CGRect menuPosition = CGRectZero;
             menuPosition = CGRectMake(SCREEN_WIDTH - 54.0f,
@@ -356,7 +355,7 @@
                                                    CGFLOAT_MAX);
                 for (NSValue* rangeValue in composeArray) {
                     NSRange range = [rangeValue rangeValue];
-                    [likeTextStorage lw_addLinkWithData:@""
+                    [likeTextStorage lw_addLinkWithData:kLinkLike
                                                   range:range
                                               linkColor:kWXBlue
                                          highLightColor:UIColorHighLightColor];

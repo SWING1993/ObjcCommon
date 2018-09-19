@@ -19,6 +19,7 @@
 #define kLinkOpen  @"open"
 #define kLinkClose  @"close"
 #define kLinkDelete @"delete"
+#define kLinkLike @"like"
 
 
 @interface SWStatusCellLayout : LWLayout <NSCopying>

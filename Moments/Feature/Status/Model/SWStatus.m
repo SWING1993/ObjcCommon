@@ -44,7 +44,6 @@
     NSString *pathSandox = NSHomeDirectory();
     NSString *imagePath = [pathSandox stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",imageName]];
     [UIImagePNGRepresentation(imageSave) writeToFile:imagePath atomically:YES];
-    NSLog(@"保存照片%@到%@",imageName,imagePath);
     return imageName;
 }
 

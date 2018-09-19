@@ -208,22 +208,24 @@
     [super layoutSubviews];
     self.asyncDisplayView.frame = CGRectMake(0,0,SCREEN_WIDTH,self.cellLayout.cellHeight);
     
-    //主线程runloop空闲时执行
-    LWTransaction* layerAsyncTransaction = self.layer.lw_asyncTransaction;
-    [layerAsyncTransaction
-     addAsyncOperationWithTarget:self
-     selector:@selector(_layouSubViews)
-     object:nil
-     completion:^(BOOL canceled) {}];
-}
-
-- (void)_layouSubViews {
     self.menuButton.frame = self.cellLayout.menuPosition;
     self.menu.frame = CGRectMake(self.cellLayout.menuPosition.origin.x + 10.0f,
                                  self.cellLayout.menuPosition.origin.y - 9.0f + 14.5f,0.0f,34.0f);
     self.line.frame = self.cellLayout.lineRect;
     CGRect videoImageRect = CGRectFromString([self.cellLayout.imagePostions firstObject]);
     self.videoIconView.frame = CGRectMake(videoImageRect.origin.x + videoImageRect.size.width/2-25, videoImageRect.origin.y + videoImageRect.size.height/2-25, 50, 50);
+    
+//    //主线程runloop空闲时执行
+//    LWTransaction* layerAsyncTransaction = self.layer.lw_asyncTransaction;
+//    [layerAsyncTransaction
+//     addAsyncOperationWithTarget:self
+//     selector:@selector(_layouSubViews)
+//     object:nil
+//     completion:^(BOOL canceled) {}];
+}
+
+- (void)_layouSubViews {
+   
 }
 
 - (void)setCellLayout:(SWStatusCellLayout *)cellLayout {
