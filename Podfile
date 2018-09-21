@@ -13,6 +13,7 @@ target "Moments" do
   pod 'SDWebImage'
   pod 'TZImagePickerController'
   pod 'TPKeyboardAvoiding'
+  pod 'TBActionSheet'
   pod 'Realm'
 #  pod 'Firebase/Core'
 #  pod 'Firebase/AdMob'

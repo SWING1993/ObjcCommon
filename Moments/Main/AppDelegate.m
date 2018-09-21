@@ -8,8 +8,10 @@
 
 #import "AppDelegate.h"
 #import "AppConfigurationTemplate.h"
+#import "SWStatusViewController.h"
 #import "IndexViewController.h"
 #import "SWStatus.h"
+
 @interface AppDelegate ()
 
 @end
@@ -34,7 +36,8 @@
     [AppConfigurationTemplate applyConfigurationTemplate];
     [GADMobileAds configureWithApplicationID:@"ca-app-pub-6037095993957840~7664444552"];
 
-    IndexViewController *indexController = [[IndexViewController alloc] init];
+    SWStatusViewController * indexController= [[SWStatusViewController alloc] init];
+//    IndexViewController *indexController = [[IndexViewController alloc] init];
     SWNavigationController *indexNav = [[SWNavigationController alloc] initWithRootViewController:indexController];
     self.window.rootViewController = indexNav;
     [self.window makeKeyAndVisible];

@@ -343,6 +343,9 @@
 		897EBBDD2148F00700CC32BF /* SWStatusTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBBDC2148F00700CC32BF /* SWStatusTimeViewController.m */; };
 		897EBBE1214A04DD00CC32BF /* SWStatusLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBBE0214A04DD00CC32BF /* SWStatusLocationViewController.m */; };
 		897EBBE4214A2F8D00CC32BF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 897EBBE3214A2F8D00CC32BF /* GoogleService-Info.plist */; };
+		89EE01572154E54600D13FD4 /* SWStatusHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89EE01562154E54600D13FD4 /* SWStatusHeaderView.m */; };
+		89EE01592154E8FA00D13FD4 /* WechatIMG4.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 89EE01582154E8FA00D13FD4 /* WechatIMG4.jpeg */; };
+		89EE015C2154F03300D13FD4 /* SWUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 89EE015B2154F03300D13FD4 /* SWUser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -781,6 +784,11 @@
 		897EBBDF214A04DD00CC32BF /* SWStatusLocationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWStatusLocationViewController.h; sourceTree = "<group>"; };
 		897EBBE0214A04DD00CC32BF /* SWStatusLocationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWStatusLocationViewController.m; sourceTree = "<group>"; };
 		897EBBE3214A2F8D00CC32BF /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		89EE01552154E54600D13FD4 /* SWStatusHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWStatusHeaderView.h; sourceTree = "<group>"; };
+		89EE01562154E54600D13FD4 /* SWStatusHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWStatusHeaderView.m; sourceTree = "<group>"; };
+		89EE01582154E8FA00D13FD4 /* WechatIMG4.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = WechatIMG4.jpeg; sourceTree = "<group>"; };
+		89EE015A2154F03300D13FD4 /* SWUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWUser.h; sourceTree = "<group>"; };
+		89EE015B2154F03300D13FD4 /* SWUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWUser.m; sourceTree = "<group>"; };
 		9EA9D01FD7A1B70092AD68B9 /* Pods_Moments.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Moments.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A61FFE8889B53E330545BB1B /* Pods-Moments.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moments.release.xcconfig"; path = "Pods/Target Support Files/Pods-Moments/Pods-Moments.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -828,6 +836,7 @@
 				03141AA12146AADB0030B553 /* MomentsHeader.pch */,
 				0314195821469BB60030B553 /* main.m */,
 				897EBBE3214A2F8D00CC32BF /* GoogleService-Info.plist */,
+				89EE01582154E8FA00D13FD4 /* WechatIMG4.jpeg */,
 			);
 			path = Moments;
 			sourceTree = "<group>";
@@ -2225,6 +2234,8 @@
 			isa = PBXGroup;
 			children = (
 				897EBB782147660000CC32BF /* Controller */,
+				89EE015A2154F03300D13FD4 /* SWUser.h */,
+				89EE015B2154F03300D13FD4 /* SWUser.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -2295,6 +2306,8 @@
 				897EBBA72147A9D700CC32BF /* SWTextViewCell.m */,
 				897EBBA92147AE6400CC32BF /* SWStatusImageCell.h */,
 				897EBBAA2147AE6400CC32BF /* SWStatusImageCell.m */,
+				89EE01552154E54600D13FD4 /* SWStatusHeaderView.h */,
+				89EE01562154E54600D13FD4 /* SWStatusHeaderView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2594,6 +2607,7 @@
 				03141C9D2146B34D0030B553 /* f_static_003@3x.png in Resources */,
 				03141C7C2146B34D0030B553 /* f_static_044@2x.png in Resources */,
 				03141D352146B34D0030B553 /* voice_HL@2x.png in Resources */,
+				89EE01592154E8FA00D13FD4 /* WechatIMG4.jpeg in Resources */,
 				03141CC62146B34D0030B553 /* f_static_083@3x.png in Resources */,
 				03141CB32146B34D0030B553 /* f_static_033@3x.png in Resources */,
 				03141CFB2146B34D0030B553 /* f_static_053@3x.png in Resources */,
@@ -2684,6 +2698,7 @@
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/STPopup/STPopup.framework",
+				"${BUILT_PRODUCTS_DIR}/TBActionSheet/TBActionSheet.framework",
 				"${BUILT_PRODUCTS_DIR}/TPKeyboardAvoiding/TPKeyboardAvoiding.framework",
 				"${BUILT_PRODUCTS_DIR}/TZImagePickerController/TZImagePickerController.framework",
 				"${BUILT_PRODUCTS_DIR}/XLForm/XLForm.framework",
@@ -2700,6 +2715,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/STPopup.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TBActionSheet.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TPKeyboardAvoiding.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TZImagePickerController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XLForm.framework",
@@ -2743,6 +2759,7 @@
 				897EBB8421476B6900CC32BF /* SWTableViewController.m in Sources */,
 				897EBBD82147C33200CC32BF /* NSDictionary+Safe.m in Sources */,
 				03141C492146B34D0030B553 /* MoreItem.m in Sources */,
+				89EE015C2154F03300D13FD4 /* SWUser.m in Sources */,
 				03141D402146B34D0030B553 /* ChatToolBar.m in Sources */,
 				897EBBCE2147C33200CC32BF /* UIColor+layer.m in Sources */,
 				89744C6D214F4BDD00761E08 /* SWAuthorAddViewController.m in Sources */,
@@ -2783,6 +2800,7 @@
 				03141A4B2146A3FB0030B553 /* LWTextStorage.m in Sources */,
 				897EBB81214767DC00CC32BF /* IndexViewController.m in Sources */,
 				0314195921469BB60030B553 /* main.m in Sources */,
+				89EE01572154E54600D13FD4 /* SWStatusHeaderView.m in Sources */,
 				03141A4C2146A3FB0030B553 /* LWStorageBuilder.m in Sources */,
 				03141A592146A3FB0030B553 /* LWHTMLParser.m in Sources */,
 				03141A372146A3FA0030B553 /* LWTextLayout.m in Sources */,
