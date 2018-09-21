@@ -33,6 +33,13 @@
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
+    
+    [TBActionSheet appearance].sheetWidth = kScreenW;
+    [TBActionSheet appearance].backgroundTransparentEnabled = NO;
+    [TBActionSheet appearance].rectCornerRadius = 0;
+    [TBActionSheet appearance].buttonFont = UIFontMake(18);
+    [TBActionSheet appearance].buttonHeight = 50.0f;
+    
     [AppConfigurationTemplate applyConfigurationTemplate];
     [GADMobileAds configureWithApplicationID:@"ca-app-pub-6037095993957840~7664444552"];
 

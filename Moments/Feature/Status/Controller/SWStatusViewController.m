@@ -16,7 +16,7 @@
 
 const CGFloat kRefreshBoundary = 100.0f;
 
-@interface SWStatusViewController () <QMUITableViewDelegate, QMUITableViewDataSource, QMUIImagePickerViewControllerDelegate, QMUIAlbumViewControllerDelegate>
+@interface SWStatusViewController () <QMUITableViewDelegate, QMUITableViewDataSource>
 
 @property (nonatomic, strong) SWStatusHeaderView* tableViewHeader;
 @property (nonatomic, strong) QMUITableView *tableView;
@@ -31,6 +31,7 @@ const CGFloat kRefreshBoundary = 100.0f;
 - (void)initSubviews {
     [super initSubviews];
     [self setTitle:@"朋友圈"];
+    self.view.backgroundColor = UIColorWhite;
     self.tableView = [[QMUITableView alloc] initWithFrame:kScreenBounds style:UITableViewStyleGrouped];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
@@ -39,6 +40,7 @@ const CGFloat kRefreshBoundary = 100.0f;
     self.tableView.estimatedSectionHeaderHeight = CGFLOAT_MIN;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.tableHeaderView = self.tableViewHeader;
+    self.tableView.backgroundColor = UIColorWhite;
     [self.view addSubview:self.tableView];
 }
 
@@ -90,7 +92,6 @@ const CGFloat kRefreshBoundary = 100.0f;
         cell = [[SWStatusCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     [self confirgueCell:cell atIndexPath:indexPath];
-    cell.asyncDisplayView.backgroundColor = UIColorRandom;
     return cell;
 }
 
