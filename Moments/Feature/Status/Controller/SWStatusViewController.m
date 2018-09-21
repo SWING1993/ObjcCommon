@@ -316,7 +316,7 @@ const CGFloat kRefreshBoundary = 100.0f;
     [[SWStatusHeaderView alloc] initWithFrame:CGRectMake(0.0f,
                                                       0.0f,
                                                       SCREEN_WIDTH,
-                                                      SCREEN_WIDTH*0.65)];
+                                                      SCREEN_WIDTH*0.75)];
     @weakify(self)
     [_tableViewHeader.bg bk_whenTapped:^{
         @strongify(self)
