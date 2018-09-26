@@ -92,17 +92,14 @@ NSString * const kValidationEmail = @"kSecond";
             [result appendFormat:@"·%@",self.secondValueStr];
         }
     }
-   
     if (kStringIsEmpty(result)) {
         [QMUITips showInfo:@"请填写位置信息!"];
         return;
     }
-    
     if (self.completeBlock) {
         self.completeBlock(result);
     }
     [self.navigationController popViewControllerAnimated:YES];
-    
 }
 
 #pragma mark - XLFormDescriptorDelegate

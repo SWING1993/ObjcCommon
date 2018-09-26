@@ -13,7 +13,7 @@
 #import "SWAuthorViewController.h"
 #import "SWStatusHeaderView.h"
 #import "SWUser.h"
-
+#import "SWAuthorAddViewController.h"
 
 @interface SWStatusViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -35,7 +35,6 @@
 - (void)initSubviews {
     [super initSubviews];
     [self setTitle:@"朋友圈"];
-    self.view.backgroundColor = UIColorWhite;
     self.tableView = [[UITableView alloc] initWithFrame:kScreenBounds style:UITableViewStyleGrouped];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
@@ -44,7 +43,7 @@
     self.tableView.estimatedSectionHeaderHeight = CGFLOAT_MIN;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.tableHeaderView = self.tableViewHeader;
-    self.tableView.backgroundColor = UIColorWhite;
+    self.tableView.backgroundColor = UIColorMake(46, 49, 50);
     [self.view addSubview:self.tableView];
 }
 
@@ -56,27 +55,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self configUserInfo];
+    [self refreshBegin];
     self.barImageView = self.navigationController.navigationBar.subviews.firstObject;
-
     self.minAlphaOffset = SCREEN_WIDTH*0.65 - 2*self.qmui_navigationBarMaxYInViewCoordinator;
     self.maxAlphaOffset = SCREEN_WIDTH*0.65 - self.qmui_navigationBarMaxYInViewCoordinator;
     self.kRefreshBoundary = self.qmui_navigationBarMaxYInViewCoordinator + 36;
-    // 从默认 Realm 中，检索所有的状态
-    RLMResults<SWUser *> *users = [SWUser allObjects];
-    self.user = [users firstObject];
-    if (!self.user) {
-        self.user = [[SWUser alloc] init];
-        [[RLMRealm defaultRealm] beginWriteTransaction];
-        self.user.nickname = @"昵称";
-        [[RLMRealm defaultRealm] addObject:self.user];
-        [[RLMRealm defaultRealm] commitWriteTransaction];
-    }
-    if (!kStringIsEmpty(self.user.bgImageName)) {
-        self.tableViewHeader.bg.image = [SWStatus getDocumentImageWithName:self.user.bgImageName];
-    }
-    self.tableViewHeader.nickname.text = self.user.nickname;
-    
-    [self refreshBegin];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -262,14 +246,13 @@
 
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-   
     CGFloat offset = scrollView.contentOffset.y;
     CGFloat alpha = (offset - self.minAlphaOffset) / (self.maxAlphaOffset - self.minAlphaOffset);
     self.barImageView.alpha = alpha;
     UIColor *tintColor = alpha > 0.1 ? UIColorMake(33, 33, 33) : UIColorWhite;
     self.changeStatusBarStyle = alpha > 0.1;
     self.titleView.tintColor = tintColor;
-    self.navigationController.navigationBar.tintColor = tintColor;
+    self.navigationItem.rightBarButtonItem.tintColor = tintColor;
     [self setNeedsStatusBarAppearanceUpdate];
     
     [self.tableViewHeader loadingViewAnimateWithScrollViewContentOffset:offset];
@@ -290,6 +273,7 @@
 #pragma mark - Actions
 - (void)postStatusAction {
     SWStatusPostViewController *postViewController = [[SWStatusPostViewController alloc] init];
+    postViewController.user = self.user;
     [self.navigationController pushViewController:postViewController animated:YES];
 }
 
@@ -300,7 +284,6 @@
         @strongify(self)
         UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
         imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-//        imagePickerController.mediaTypes = @[(NSString *)kUTTypeImage];
         [self presentViewController:imagePickerController animated:YES completion:nil];
         imagePickerController.bk_didFinishPickingMediaBlock = ^(UIImagePickerController *picker, NSDictionary *info) {
             [picker dismissViewControllerAnimated:YES completion:NULL];
@@ -347,11 +330,11 @@
     if (_tableViewHeader) {
         return _tableViewHeader;
     }
-    _tableViewHeader =
-    [[SWStatusHeaderView alloc] initWithFrame:CGRectMake(0.0f,
+    _tableViewHeader = [[SWStatusHeaderView alloc] initWithFrame:CGRectMake(0.0f,
                                                       0.0f,
                                                       SCREEN_WIDTH,
                                                       SCREEN_WIDTH*0.65)];
+    _tableViewHeader.navHeight = self.qmui_navigationBarMaxYInViewCoordinator;
     @weakify(self)
     [_tableViewHeader.bg bk_whenTapped:^{
         @strongify(self)
@@ -359,8 +342,26 @@
     }];
     [_tableViewHeader.avtar bk_whenTapped:^{
         @strongify(self)
-//        NSString *str_id = [NSString stringWithFormat:@"%@",@([User sharedManager].id)];
-//        [self goToUserDetailControllerWithUserId:str_id];
+        SWAuthorAddViewController *controller = [[SWAuthorAddViewController alloc] init];
+        controller.customTitle = @"修改昵称和头像";
+        @weakify(self)
+        controller.completeBlock = ^(SWAuthor *author) {
+            if (author) {
+                @strongify(self)
+                [[RLMRealm defaultRealm] beginWriteTransaction];
+                if (!kStringIsEmpty(author.nickname)) {
+                    self.user.nickname = author.nickname;
+                    self.tableViewHeader.nickname.text = author.nickname;
+                }
+                if (!kStringIsEmpty(author.avatar)) {
+                    self.user.avatar = author.avatar;
+                    self.tableViewHeader.avtar.image = [SWStatus getDocumentImageWithName:author.avatar];
+                }
+                [[RLMRealm defaultRealm] addObject:self.user];
+                [[RLMRealm defaultRealm] commitWriteTransaction];
+            }
+        };
+        [self.navigationController pushViewController:controller animated:YES];
     }];
     return _tableViewHeader;
 }
@@ -374,6 +375,26 @@
         SWStatusCellLayout *layout = [[SWStatusCellLayout alloc] initWithStatusModel:status index:index opend:NO];
         [self.dataSource addObject:layout];
     }
+}
+
+- (void)configUserInfo {
+    // 从默认 Realm 中，检索所有的状态
+    RLMResults<SWUser *> *users = [SWUser allObjects];
+    self.user = [users firstObject];
+    if (!self.user) {
+        self.user = [[SWUser alloc] init];
+        [[RLMRealm defaultRealm] beginWriteTransaction];
+        self.user.nickname = @"Swift";
+        [[RLMRealm defaultRealm] addObject:self.user];
+        [[RLMRealm defaultRealm] commitWriteTransaction];
+    }
+    if (!kStringIsEmpty(self.user.bgImageName)) {
+        self.tableViewHeader.bg.image = [SWStatus getDocumentImageWithName:self.user.bgImageName];
+    }
+    if (!kStringIsEmpty(self.user.avatar)) {
+        self.tableViewHeader.avtar.image = [SWStatus getDocumentImageWithName:self.user.avatar];
+    }
+    self.tableViewHeader.nickname.text = self.user.nickname;
 }
 
 @end

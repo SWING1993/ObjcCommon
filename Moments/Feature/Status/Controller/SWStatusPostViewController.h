@@ -7,7 +7,10 @@
 //
 
 #import "SWViewController.h"
+#import "SWUser.h"
 
 @interface SWStatusPostViewController : SWViewController
+
+@property (nonatomic, strong) SWUser *user;
 
 @end

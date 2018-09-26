@@ -29,7 +29,7 @@ NSString * const kAvator = @"kAvator";
 }
 
 -(void)initializeForm {
-    XLFormDescriptor * formDescriptor = [XLFormDescriptor formDescriptorWithTitle:@"添加"];
+    XLFormDescriptor * formDescriptor = [XLFormDescriptor formDescriptorWithTitle:self.customTitle];
     XLFormSectionDescriptor * section;
     XLFormRowDescriptor * row;
     

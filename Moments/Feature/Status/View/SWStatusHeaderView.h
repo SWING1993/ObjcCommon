@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UIView *avtarBg;
 @property (nonatomic, strong) UIImageView *avtar;
 @property (nonatomic, strong) UILabel *nickname;
+@property (nonatomic, assign) CGFloat navHeight;
 
 - (void)loadingViewAnimateWithScrollViewContentOffset:(CGFloat)offset;
 - (void)refreshingAnimateBegin;

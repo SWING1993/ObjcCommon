@@ -37,12 +37,9 @@
             //头像模型 avatarImageStorage
             LWImageStorage* avatarStorage = [[LWImageStorage alloc] initWithIdentifier:AVATAR_IDENTIFIER];
             avatarStorage.contents = [SWStatus getDocumentImageWithName:statusModel.avator];
-//            avatarStorage.placeholder = kPlaceholderImage;
-            avatarStorage.backgroundColor = UIColorRandom;
+            avatarStorage.backgroundColor = UIColorForBackground;
             avatarStorage.frame = CGRectMake(10, 15, 40, 40);
             avatarStorage.tag = 9;
-            avatarStorage.cornerBorderWidth = 1.0f;
-            avatarStorage.cornerBorderColor = [UIColor grayColor];
             
             //名字模型 nameTextStorage
             LWTextStorage* nameTextStorage = [[LWTextStorage alloc] init];

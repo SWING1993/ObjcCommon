@@ -48,7 +48,6 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
     [[self.personalSwitch rac_newOnChannel] subscribeNext:^(NSNumber * _Nullable x) {
         @strongify(self)
         self.status.personal = [x boolValue];
-//        [self.tableView reloadData];
     }];
     
     self.tableView = [[QMUITableView alloc] initWithFrame:kScreenBounds style:UITableViewStyleGrouped];
@@ -99,8 +98,8 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
         self.status.images = [imageNames mj_JSONString];
     }
     if (self.status.own) {
-        self.status.nickname = @"SUPERMAN";
-        self.status.avator = @"";
+        self.status.nickname = self.user.nickname;
+        self.status.avator = self.user.avatar;
     } else {
         if (!self.author) {
             [QMUITips showInfo:@"请选择发布人!"];

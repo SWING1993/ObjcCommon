@@ -19,7 +19,7 @@
     if (self) {
         self.backgroundColor = UIColorWhite;
         
-        UIView *displayView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, -frame.size.height-30, SCREEN_WIDTH,frame.size.height*2)];
+        UIView *displayView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, -frame.size.height - 30, SCREEN_WIDTH,frame.size.height*2)];
         displayView.backgroundColor = UIColorMake(46, 49, 50);
         [self addSubview:displayView];
         [self addSubview:self.loadingView];
@@ -65,11 +65,15 @@
     return self;
 }
 
+- (void)setNavHeight:(CGFloat)navHeight {
+    self.loadingView.frame = CGRectMake(20.0f,-(navHeight + 35),25.0f,25.0f);
+}
+
 - (UIImageView *)loadingView {
     if (_loadingView) {
         return _loadingView;
     }
-    _loadingView = [[UIImageView alloc] initWithFrame:CGRectMake(20.0f,-100.0f,25.0f,25.0f)];
+    _loadingView = [[UIImageView alloc] init];
     _loadingView.contentMode = UIViewContentModeScaleAspectFill;
     _loadingView.image = [UIImage imageNamed:@"loading"];
     _loadingView.clipsToBounds = YES;
