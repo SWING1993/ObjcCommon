@@ -69,7 +69,7 @@
     if (_loadingView) {
         return _loadingView;
     }
-    _loadingView = [[UIImageView alloc] initWithFrame:CGRectMake(20.0f,-60.0f,25.0f,25.0f)];
+    _loadingView = [[UIImageView alloc] initWithFrame:CGRectMake(20.0f,-100.0f,25.0f,25.0f)];
     _loadingView.contentMode = UIViewContentModeScaleAspectFill;
     _loadingView.image = [UIImage imageNamed:@"loading"];
     _loadingView.clipsToBounds = YES;

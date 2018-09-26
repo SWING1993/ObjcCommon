@@ -14,18 +14,20 @@
 #import "SWStatusHeaderView.h"
 #import "SWUser.h"
 
-const CGFloat kRefreshBoundary = 100.0f;
 
-@interface SWStatusViewController () <QMUITableViewDelegate, QMUITableViewDataSource>
+@interface SWStatusViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) SWStatusHeaderView* tableViewHeader;
-@property (nonatomic, strong) QMUITableView *tableView;
+@property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray <SWStatusCellLayout *>*dataSource;
 @property (nonatomic, strong) NSIndexPath* lastIndexPath;
 @property (nonatomic, strong) SWUser *user;
 @property (nonatomic, assign) BOOL changeStatusBarStyle;
 @property (nonatomic, assign) CGFloat minAlphaOffset;
 @property (nonatomic, assign) CGFloat maxAlphaOffset;
+@property (nonatomic, assign) CGFloat kRefreshBoundary;
+@property (nonatomic, strong) UIView *barImageView;
+
 @end
 
 @implementation SWStatusViewController
@@ -34,7 +36,7 @@ const CGFloat kRefreshBoundary = 100.0f;
     [super initSubviews];
     [self setTitle:@"朋友圈"];
     self.view.backgroundColor = UIColorWhite;
-    self.tableView = [[QMUITableView alloc] initWithFrame:kScreenBounds style:UITableViewStyleGrouped];
+    self.tableView = [[UITableView alloc] initWithFrame:kScreenBounds style:UITableViewStyleGrouped];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.estimatedRowHeight = CGFLOAT_MIN;
@@ -54,10 +56,11 @@ const CGFloat kRefreshBoundary = 100.0f;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    self.barImageView = self.navigationController.navigationBar.subviews.firstObject;
+
     self.minAlphaOffset = SCREEN_WIDTH*0.65 - 2*self.qmui_navigationBarMaxYInViewCoordinator;
     self.maxAlphaOffset = SCREEN_WIDTH*0.65 - self.qmui_navigationBarMaxYInViewCoordinator;
-    
+    self.kRefreshBoundary = self.qmui_navigationBarMaxYInViewCoordinator + 36;
     // 从默认 Realm 中，检索所有的状态
     RLMResults<SWUser *> *users = [SWUser allObjects];
     self.user = [users firstObject];
@@ -72,16 +75,19 @@ const CGFloat kRefreshBoundary = 100.0f;
         self.tableViewHeader.bg.image = [SWStatus getDocumentImageWithName:self.user.bgImageName];
     }
     self.tableViewHeader.nickname.text = self.user.nickname;
+    
+    [self refreshBegin];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    self.barImageView.alpha = 0;
     self.tableView.delegate = self;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self fakeDownload];
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -259,8 +265,7 @@ const CGFloat kRefreshBoundary = 100.0f;
    
     CGFloat offset = scrollView.contentOffset.y;
     CGFloat alpha = (offset - self.minAlphaOffset) / (self.maxAlphaOffset - self.minAlphaOffset);
-    UIView *barImageView = self.navigationController.navigationBar.subviews.firstObject;
-    barImageView.alpha = alpha;
+    self.barImageView.alpha = alpha;
     UIColor *tintColor = alpha > 0.1 ? UIColorMake(33, 33, 33) : UIColorWhite;
     self.changeStatusBarStyle = alpha > 0.1;
     self.titleView.tintColor = tintColor;
@@ -276,7 +281,7 @@ const CGFloat kRefreshBoundary = 100.0f;
 
 - (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
     CGFloat offset = scrollView.contentOffset.y;
-    if (offset <= -kRefreshBoundary) {
+    if (offset <= -self.kRefreshBoundary) {
         [self refreshBegin];
     }
 }
@@ -316,7 +321,7 @@ const CGFloat kRefreshBoundary = 100.0f;
     self.view.userInteractionEnabled = NO;
     [self fakeDownload];
     [UIView animateWithDuration:0.2f animations:^{
-        self.tableView.contentInset = UIEdgeInsetsMake(kRefreshBoundary, 0.0f, 0.0f, 0.0f);
+        self.tableView.contentInset = UIEdgeInsetsMake(self.kRefreshBoundary, 0.0f, 0.0f, 0.0f);
     } completion:^(BOOL finished) {
         [self.tableViewHeader refreshingAnimateBegin];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5f * NSEC_PER_SEC)),
