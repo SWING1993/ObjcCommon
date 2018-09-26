@@ -23,7 +23,9 @@ const CGFloat kRefreshBoundary = 100.0f;
 @property (nonatomic, strong) NSMutableArray <SWStatusCellLayout *>*dataSource;
 @property (nonatomic, strong) NSIndexPath* lastIndexPath;
 @property (nonatomic, strong) SWUser *user;
-
+@property (nonatomic, assign) BOOL changeStatusBarStyle;
+@property (nonatomic, assign) CGFloat minAlphaOffset;
+@property (nonatomic, assign) CGFloat maxAlphaOffset;
 @end
 
 @implementation SWStatusViewController
@@ -53,7 +55,9 @@ const CGFloat kRefreshBoundary = 100.0f;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self refreshBegin];
+    self.minAlphaOffset = SCREEN_WIDTH*0.65 - 2*self.qmui_navigationBarMaxYInViewCoordinator;
+    self.maxAlphaOffset = SCREEN_WIDTH*0.65 - self.qmui_navigationBarMaxYInViewCoordinator;
+    
     // 从默认 Realm 中，检索所有的状态
     RLMResults<SWUser *> *users = [SWUser allObjects];
     self.user = [users firstObject];
@@ -70,8 +74,23 @@ const CGFloat kRefreshBoundary = 100.0f;
     self.tableViewHeader.nickname.text = self.user.nickname;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.tableView.delegate = self;
+}
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    [self fakeDownload];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    self.tableView.delegate = nil;
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return self.changeStatusBarStyle ? UIStatusBarStyleDefault : UIStatusBarStyleLightContent;
 }
 
 #pragma mark - UITableViewDataSource
@@ -237,7 +256,17 @@ const CGFloat kRefreshBoundary = 100.0f;
 
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+   
     CGFloat offset = scrollView.contentOffset.y;
+    CGFloat alpha = (offset - self.minAlphaOffset) / (self.maxAlphaOffset - self.minAlphaOffset);
+    UIView *barImageView = self.navigationController.navigationBar.subviews.firstObject;
+    barImageView.alpha = alpha;
+    UIColor *tintColor = alpha > 0.1 ? UIColorMake(33, 33, 33) : UIColorWhite;
+    self.changeStatusBarStyle = alpha > 0.1;
+    self.titleView.tintColor = tintColor;
+    self.navigationController.navigationBar.tintColor = tintColor;
+    [self setNeedsStatusBarAppearanceUpdate];
+    
     [self.tableViewHeader loadingViewAnimateWithScrollViewContentOffset:offset];
     if (self.lastIndexPath) {
         SWStatusCell *cell = [self.tableView cellForRowAtIndexPath:self.lastIndexPath];
@@ -317,7 +346,7 @@ const CGFloat kRefreshBoundary = 100.0f;
     [[SWStatusHeaderView alloc] initWithFrame:CGRectMake(0.0f,
                                                       0.0f,
                                                       SCREEN_WIDTH,
-                                                      SCREEN_WIDTH*0.75)];
+                                                      SCREEN_WIDTH*0.65)];
     @weakify(self)
     [_tableViewHeader.bg bk_whenTapped:^{
         @strongify(self)
