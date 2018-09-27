@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SWStatusComment.h"
 
 @interface SWStatus : RLMObject
 // id
@@ -32,9 +33,7 @@
 // 点赞
 @property NSString *likeNames;
 // 评论
-@property (readonly) NSArray *comments;
-//// 点赞的人
-//@property (readonly) NSArray *essayApproves;
+@property RLMArray<SWStatusComment> *comments;
 
 + (NSInteger)incrementaID;
 + (NSString *)generateRandomString;

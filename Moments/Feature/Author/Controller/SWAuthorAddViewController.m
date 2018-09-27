@@ -29,7 +29,7 @@ NSString * const kAvator = @"kAvator";
 }
 
 -(void)initializeForm {
-    XLFormDescriptor * formDescriptor = [XLFormDescriptor formDescriptorWithTitle:self.customTitle];
+    XLFormDescriptor * formDescriptor = [XLFormDescriptor formDescriptorWithTitle:@""];
     XLFormSectionDescriptor * section;
     XLFormRowDescriptor * row;
     
@@ -40,7 +40,7 @@ NSString * const kAvator = @"kAvator";
     // Name
     row = [XLFormRowDescriptor formRowDescriptorWithTag:kNickname rowType:XLFormRowDescriptorTypeText title:@"昵称"];
 //    [row.cellConfigAtConfigure setObject:@"昵称" forKey:@"textField.placeholder"];
-    [row.cellConfigAtConfigure setObject:@(NSTextAlignmentLeft) forKey:@"textField.textAlignment"];
+    [row.cellConfigAtConfigure setObject:@(NSTextAlignmentRight) forKey:@"textField.textAlignment"];
     [section addFormRow:row];
     
     // Image

@@ -14,6 +14,7 @@
 #import "SWStatusHeaderView.h"
 #import "SWUser.h"
 #import "SWAuthorAddViewController.h"
+#import "SWStatusCommentViewController.h"
 
 @interface SWStatusViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -42,7 +43,7 @@
     self.tableView.estimatedSectionHeaderHeight = CGFLOAT_MIN;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.tableHeaderView = self.tableViewHeader;
-    self.tableView.backgroundColor = UIColorMake(46, 49, 50);
+    self.tableView.backgroundColor = UIColorWhite;
     [self.view addSubview:self.tableView];
 }
 
@@ -65,7 +66,6 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-//    self.barImageView.alpha = 0;
     self.tableView.delegate = self;
     [self scrollViewDidScroll:self.tableView];
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
@@ -135,8 +135,8 @@
     };
     
     cell.clickedCommentButtonCallback = ^(SWStatusCell* cell) {
-//        @strongify(self)
-//        [sself commentWithCell:cell];
+        @strongify(self)
+        [self commentWithCell:cell];
     };
     
 //    cell.clickedReCommentCallback = ^(SWStatusCell* cell,CommentModel* model) {
@@ -197,8 +197,33 @@
         SWStatusCellLayout* newLayout = [[SWStatusCellLayout alloc] initWithStatusModel:model index:cell.indexPath.row opend:NO];
         [self coverScreenshotAndDelayRemoveWithCell:cell cellHeight:newLayout.cellHeight];
         [self.dataSource replaceObjectAtIndex:cell.indexPath.row withObject:newLayout];
-        [self.tableView reloadRowsAtIndexPaths:@[cell.indexPath]
-                              withRowAnimation:UITableViewRowAnimationNone];
+        [self.tableView reloadData];
+
+    };
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+- (void)commentWithCell:(SWStatusCell *)cell {
+    SWStatusCommentViewController *controller = [[SWStatusCommentViewController alloc] init];
+    @weakify(self)
+    controller.completeBlock = ^(NSString *from, NSString *to, NSString *comment) {
+        @strongify(self)
+        SWStatusCellLayout* layout =  [self.dataSource objectAtIndex:cell.indexPath.row];
+        SWStatus* model = layout.statusModel;
+        RLMRealm *realm = [RLMRealm defaultRealm];
+        // 更新对象数据
+        [realm beginWriteTransaction];
+        SWStatusComment *statusCcomment = [[SWStatusComment alloc] init];
+        statusCcomment.fromNickname = from;
+        statusCcomment.toNickname = to;
+        statusCcomment.comment = comment;
+        [model.comments addObject:statusCcomment];
+        [realm commitWriteTransaction];
+        
+        SWStatusCellLayout* newLayout = [[SWStatusCellLayout alloc] initWithStatusModel:model index:cell.indexPath.row opend:NO];
+        [self coverScreenshotAndDelayRemoveWithCell:cell cellHeight:newLayout.cellHeight];
+        [self.dataSource replaceObjectAtIndex:cell.indexPath.row withObject:newLayout];
+        [self.tableView reloadData];
 
     };
     [self.navigationController pushViewController:controller animated:YES];
@@ -252,7 +277,6 @@
     CGFloat alpha = (offsetY - self.minAlphaOffset) / (self.maxAlphaOffset - self.minAlphaOffset);
     UIColor *tintColor = alpha > 0.1 ? QMUICMI.navBarTintColor : UIColorWhite;
     self.changeStatusBarStyle = alpha > 0.1;
-    
     [self.navigationController.navigationBar lt_setBackgroundColor:[UIColorMakeX(250) colorWithAlphaComponent:alpha]];
     self.titleView.tintColor = tintColor;
     self.navigationItem.rightBarButtonItem.tintColor = tintColor;
@@ -347,7 +371,6 @@
     [_tableViewHeader.avtar bk_whenTapped:^{
         @strongify(self)
         SWAuthorAddViewController *controller = [[SWAuthorAddViewController alloc] init];
-        controller.customTitle = @"修改昵称和头像";
         @weakify(self)
         controller.completeBlock = ^(SWAuthor *author) {
             if (author) {

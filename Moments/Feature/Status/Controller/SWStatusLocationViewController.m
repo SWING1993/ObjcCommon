@@ -41,7 +41,6 @@ NSString * const kValidationEmail = @"kSecond";
     [row.cellConfigAtConfigure setObject:@"位置" forKey:@"textField.placeholder"];
     [row.cellConfigAtConfigure setObject:@(NSTextAlignmentLeft) forKey:@"textField.textAlignment"];
     row.required = YES;
-//    row.value = @"Martin";
     [section addFormRow:row];
     
     // Email Section

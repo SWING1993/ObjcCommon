@@ -19,38 +19,36 @@
     if (self) {
         self.backgroundColor = UIColorWhite;
         
-        UIView *displayView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, -frame.size.height - 30, SCREEN_WIDTH,frame.size.height*2)];
+        UIView *displayView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, -SCREEN_HEIGHT, SCREEN_WIDTH,SCREEN_HEIGHT)];
         displayView.backgroundColor = UIColorMake(46, 49, 50);
         [self addSubview:displayView];
-        [self addSubview:self.loadingView];
         
         self.bg = [[UIImageView alloc] init];
         self.bg.userInteractionEnabled = YES;
         self.bg.image = UIImageMake(@"WechatIMG4.jpeg");
         self.bg.contentMode = UIViewContentModeScaleAspectFill;
-        self.bg.frame = CGRectMake(0.0f, displayView.bounds.size.height - SCREEN_WIDTH - 50, SCREEN_WIDTH, SCREEN_WIDTH + 50);
+        self.bg.frame = CGRectMake(0.0f, frame.size.height - 20.0f - SCREEN_WIDTH - 50, SCREEN_WIDTH, SCREEN_WIDTH + 50);
         self.bg.clipsToBounds = YES;
-        [displayView addSubview:self.bg];
+        [self addSubview:self.bg];
         
         UIImage *imgMask = [UIImage imageNamed:@"MaskPPAlbum"];
         imgMask = [imgMask stretchableImageWithLeftCapWidth:kScreenW/2 topCapHeight:0];
         UIImageView * imageMask = [[UIImageView alloc] initWithFrame:CGRectMake(0, self.bg.frame.size.height - 45, kScreenW, 45)];
-        [imageMask setBackgroundColor:UIColorClear];
         [imageMask setImage:imgMask];
         [imageMask setContentMode:UIViewContentModeScaleAspectFill];
         [imageMask setClipsToBounds:YES];
         [self.bg addSubview:imageMask];
         
         self.avtarBg = [[UIView alloc] init];
-        self.avtarBg.frame = CGRectMake(SCREEN_WIDTH - 80.0f, displayView.bounds.size.height - 50.0f, 70.0f, 70.0f);
+        self.avtarBg.frame = CGRectMake(SCREEN_WIDTH - 80.0f, frame.size.height - 70.0f, 70.0f, 70.0f);
         self.avtarBg.backgroundColor = UIColorForBackground;
-        [displayView addSubview:self.avtarBg];
+        self.avtarBg.layer.borderColor = UIColorMakeX(195).CGColor;
+        self.avtarBg.layer.borderWidth = 0.5f;
+        [self addSubview:self.avtarBg];
         
         self.avtar = [[UIImageView alloc] init];
         self.avtar.userInteractionEnabled = YES;
-        self.avtar.frame = CGRectMake(0.5f, 0.5f, 69.0f, 69.0f);
-        self.avtar.layer.borderColor = UIColorWhite.CGColor;
-        self.avtar.layer.borderWidth = 2.5f;
+        self.avtar.frame = CGRectMake(2.f, 2.f, 66.0f, 66.0f);
         [self.avtarBg addSubview:self.avtar];
         
         self.nickname = [[UILabel alloc] init];
@@ -59,8 +57,11 @@
         self.nickname.textColor = UIColorWhite;
         [self.nickname setShadowColor:UIColorMake(33,34,39)];
         [self.nickname setShadowOffset:CGSizeMake(0, 1)];
-        self.nickname.frame = CGRectMake(10.0f,displayView.bounds.size.height - 30, SCREEN_WIDTH - 110.0f, 25);
-        [displayView addSubview:self.nickname];
+        self.nickname.frame = CGRectMake(10.0f,frame.size.height - 47.5, SCREEN_WIDTH - 110.0f, 25);
+        [self addSubview:self.nickname];
+        
+        [self addSubview:self.loadingView];
+
     }
     return self;
 }

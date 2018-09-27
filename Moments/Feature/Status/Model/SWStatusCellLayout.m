@@ -45,7 +45,7 @@
             LWTextStorage* nameTextStorage = [[LWTextStorage alloc] init];
             nameTextStorage.text = statusModel.nickname;
             nameTextStorage.vericalAlignment = LWTextVericalAlignmentTop;
-            nameTextStorage.font = UIFontPFMediumMake(14);
+            nameTextStorage.font = UIFontPFMediumMake(15);
             nameTextStorage.textColor = kWXBlue;
             nameTextStorage.frame = CGRectMake(60.0f, 15.0f, SCREEN_WIDTH - 80.0f, 15);
             
@@ -323,7 +323,7 @@
             if (likeArray.count != 0) {
                 likeImageSotrage.contents = [UIImage imageNamed:@"Like"];
                 likeImageSotrage.frame = CGRectMake(rect.origin.x + 10.0f,
-                                                    rect.origin.y + 10.5f + offsetY,
+                                                    rect.origin.y + 12.0f + offsetY,
                                                     13.0f,
                                                     13.0f);
                 
@@ -345,9 +345,9 @@
                 }
                 
                 likeTextStorage.text = mutableString;
-                likeTextStorage.font = UIFontMake(14);
+                likeTextStorage.font = UIFontPFMediumMake(14);
                 likeTextStorage.frame = CGRectMake(likeImageSotrage.right + 5.0f,
-                                                   rect.origin.y + 7.0f,
+                                                   rect.origin.y + 8.0f,
                                                    SCREEN_WIDTH - 110.0f,
                                                    CGFLOAT_MAX);
                 for (NSValue* rangeValue in composeArray) {
@@ -360,7 +360,7 @@
 
                 offsetY += likeTextStorage.height + 5.0f;
             }
-            if (statusModel.comments.count != 0 && statusModel.comments != nil) {
+            if (statusModel.comments.count != 0) {
                 if (likeArray.count != 0) {
                     self.lineRect = CGRectMake(nameTextStorage.left,
                                                likeTextStorage.bottom + 2.5f,
@@ -370,8 +370,7 @@
                 
                 NSMutableArray* tmp = [[NSMutableArray alloc] initWithCapacity:statusModel.comments.count];
                 for (SWStatusComment *commentM in statusModel.comments) {
-                    commentM.index = index;
-                    if (kStringIsEmpty(commentM.commentId) == false) {
+                    if (kStringIsEmpty(commentM.toNickname) == false) {
                         NSString* commentString = [NSString stringWithFormat:@"%@回复%@：%@",
                                                    commentM.fromNickname,
                                                    commentM.toNickname,
@@ -389,10 +388,24 @@
                         [commentTextStorage lw_addLinkForWholeTextStorageWithData:commentM
                                                                    highLightColor:UIColorHighLightColor];
                     
+                        [commentTextStorage lw_addLinkWithData:kLinkLike
+                                                         range:NSMakeRange(0,commentM.fromNickname.length)
+                                                     linkColor:kWXBlue
+                                                      linkFont:UIFontPFMediumMake(14)
+                                                highLightColor:UIColorHighLightColor];
+                        
+                        [commentTextStorage lw_addLinkWithData:kLinkLike
+                                                         range:NSMakeRange(commentM.fromNickname.length + 2,commentM.toNickname.length)
+                                                     linkColor:kWXBlue
+                                                      linkFont:UIFontPFMediumMake(14)
+                                                highLightColor:UIColorHighLightColor];
+                        
                         [LWTextParser parseTopicWithLWTextStorage:commentTextStorage
                                                         linkColor:kWXBlue
                                                    highlightColor:UIColorHighLightColor];
                         [LWTextParser parseEmojiWithTextStorage:commentTextStorage];
+                        
+                        
                         
                         [tmp addObject:commentTextStorage];
                         offsetY += commentTextStorage.height;
@@ -414,6 +427,11 @@
                         
                         [commentTextStorage lw_addLinkForWholeTextStorageWithData:commentM
                                                                    highLightColor:UIColorHighLightColor];
+                        [commentTextStorage lw_addLinkWithData:kLinkLike
+                                                         range:NSMakeRange(0,commentM.fromNickname.length)
+                                                     linkColor:kWXBlue
+                                                      linkFont:UIFontPFMediumMake(14)
+                                                highLightColor:UIColorHighLightColor];
                         [LWTextParser parseTopicWithLWTextStorage:commentTextStorage
                                                         linkColor:kWXBlue
                                                    highlightColor:UIColorHighLightColor];
@@ -450,9 +468,7 @@
             [self addStorages:commentTextStorages];//通过一个数组来添加storage，使用这个方法
             [self addStorage:commentBgStorage];
             [self addStorage:likeImageSotrage];
-            if (likeTextStorage) {
-                [self addStorage:likeTextStorage];
-            }
+            [self addStorage:likeTextStorage];
             self.avatarPosition = CGRectMake(10, 20, 40, 40);//头像的位置
             self.menuPosition = menuPosition;//右下角菜单按钮的位置
             self.commentBgPosition = commentBgPosition;//评论灰色背景位置

@@ -48,7 +48,6 @@ static NSString *const Identifier = @"CollectionCellIdentifier";
     UIBarButtonItem *addBtn = [[UIBarButtonItem alloc] bk_initWithTitle:@"添加" style:UIBarButtonItemStyleDone handler:^(id sender) {
         @strongify(self)
         SWAuthorAddViewController *controller = [[SWAuthorAddViewController alloc] init];
-        controller.customTitle = @"添加";
         @weakify(self)
         controller.completeBlock = ^(SWAuthor *author) {
             if (author) {

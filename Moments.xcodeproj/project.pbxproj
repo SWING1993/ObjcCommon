@@ -343,6 +343,7 @@
 		897EBBDD2148F00700CC32BF /* SWStatusTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBBDC2148F00700CC32BF /* SWStatusTimeViewController.m */; };
 		897EBBE1214A04DD00CC32BF /* SWStatusLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBBE0214A04DD00CC32BF /* SWStatusLocationViewController.m */; };
 		897EBBE4214A2F8D00CC32BF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 897EBBE3214A2F8D00CC32BF /* GoogleService-Info.plist */; };
+		89DF9154215CA2E700AFE6B2 /* SWStatusCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DF9153215CA2E700AFE6B2 /* SWStatusCommentViewController.m */; };
 		89EE01572154E54600D13FD4 /* SWStatusHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89EE01562154E54600D13FD4 /* SWStatusHeaderView.m */; };
 		89EE01592154E8FA00D13FD4 /* WechatIMG4.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 89EE01582154E8FA00D13FD4 /* WechatIMG4.jpeg */; };
 		89EE015C2154F03300D13FD4 /* SWUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 89EE015B2154F03300D13FD4 /* SWUser.m */; };
@@ -785,6 +786,8 @@
 		897EBBDF214A04DD00CC32BF /* SWStatusLocationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWStatusLocationViewController.h; sourceTree = "<group>"; };
 		897EBBE0214A04DD00CC32BF /* SWStatusLocationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWStatusLocationViewController.m; sourceTree = "<group>"; };
 		897EBBE3214A2F8D00CC32BF /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		89DF9152215CA2E700AFE6B2 /* SWStatusCommentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWStatusCommentViewController.h; sourceTree = "<group>"; };
+		89DF9153215CA2E700AFE6B2 /* SWStatusCommentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWStatusCommentViewController.m; sourceTree = "<group>"; };
 		89EE01552154E54600D13FD4 /* SWStatusHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWStatusHeaderView.h; sourceTree = "<group>"; };
 		89EE01562154E54600D13FD4 /* SWStatusHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWStatusHeaderView.m; sourceTree = "<group>"; };
 		89EE01582154E8FA00D13FD4 /* WechatIMG4.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = WechatIMG4.jpeg; sourceTree = "<group>"; };
@@ -2326,6 +2329,8 @@
 				897EBBDC2148F00700CC32BF /* SWStatusTimeViewController.m */,
 				897EBBDF214A04DD00CC32BF /* SWStatusLocationViewController.h */,
 				897EBBE0214A04DD00CC32BF /* SWStatusLocationViewController.m */,
+				89DF9152215CA2E700AFE6B2 /* SWStatusCommentViewController.h */,
+				89DF9153215CA2E700AFE6B2 /* SWStatusCommentViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2762,6 +2767,7 @@
 				897EBBD12147C33200CC32BF /* NSDate+Utilities.m in Sources */,
 				03141A3D2146A3FB0030B553 /* CALayer+WebCacheOperation.m in Sources */,
 				897EBB8421476B6900CC32BF /* SWTableViewController.m in Sources */,
+				89DF9154215CA2E700AFE6B2 /* SWStatusCommentViewController.m in Sources */,
 				897EBBD82147C33200CC32BF /* NSDictionary+Safe.m in Sources */,
 				03141C492146B34D0030B553 /* MoreItem.m in Sources */,
 				89EE015C2154F03300D13FD4 /* SWUser.m in Sources */,
