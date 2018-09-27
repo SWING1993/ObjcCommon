@@ -45,9 +45,9 @@ static NSString *const Identifier = @"CollectionCellIdentifier";
         if (!_addPhotoBtn) {
             _addPhotoBtn = [UIButton buttonWithType:UIButtonTypeCustom];
             [_addPhotoBtn setImage:[UIImage imageNamed:@"addPic"] forState:UIControlStateNormal];
-            _addPhotoBtn.backgroundColor = [UIColor whiteColor];
-            _addPhotoBtn.layer.borderColor = UIColorMakeWithRGBA(204, 204, 204, 0.7).CGColor;
-            _addPhotoBtn.layer.borderWidth = 1.f;
+            _addPhotoBtn.backgroundColor = UIColorMakeX(240);
+//            _addPhotoBtn.layer.borderColor = UIColorMakeWithRGBA(204, 204, 204, 0.7).CGColor;
+//            _addPhotoBtn.layer.borderWidth = 1.f;
             _addPhotoBtn.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
             _addPhotoBtn.enabled = NO;
             [self addSubview:_addPhotoBtn];

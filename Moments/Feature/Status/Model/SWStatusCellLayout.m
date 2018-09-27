@@ -39,6 +39,7 @@
             avatarStorage.contents = [SWStatus getDocumentImageWithName:statusModel.avator];
             avatarStorage.backgroundColor = UIColorForBackground;
             avatarStorage.frame = CGRectMake(10, 15, 40, 40);
+            avatarStorage.placeholder = UIImageMake(@"defaultHead");
             avatarStorage.tag = 9;
             
             //名字模型 nameTextStorage

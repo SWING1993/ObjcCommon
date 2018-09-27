@@ -49,6 +49,7 @@
         self.avtar = [[UIImageView alloc] init];
         self.avtar.userInteractionEnabled = YES;
         self.avtar.frame = CGRectMake(2.f, 2.f, 66.0f, 66.0f);
+        self.avtar.image = UIImageMake(@"defaultHead");
         [self.avtarBg addSubview:self.avtar];
         
         self.nickname = [[UILabel alloc] init];
@@ -76,7 +77,7 @@
     }
     _loadingView = [[UIImageView alloc] init];
     _loadingView.contentMode = UIViewContentModeScaleAspectFill;
-    _loadingView.image = [UIImage imageNamed:@"loading"];
+    _loadingView.image = [UIImage imageNamed:@"shareMoment"];
     _loadingView.clipsToBounds = YES;
     _loadingView.backgroundColor = [UIColor clearColor];
     return _loadingView;
