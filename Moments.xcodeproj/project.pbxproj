@@ -346,6 +346,7 @@
 		89EE01572154E54600D13FD4 /* SWStatusHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89EE01562154E54600D13FD4 /* SWStatusHeaderView.m */; };
 		89EE01592154E8FA00D13FD4 /* WechatIMG4.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 89EE01582154E8FA00D13FD4 /* WechatIMG4.jpeg */; };
 		89EE015C2154F03300D13FD4 /* SWUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 89EE015B2154F03300D13FD4 /* SWUser.m */; };
+		89EE0164215C67D100D13FD4 /* UINavigationBar+Awesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 89EE0162215C67D000D13FD4 /* UINavigationBar+Awesome.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -789,6 +790,8 @@
 		89EE01582154E8FA00D13FD4 /* WechatIMG4.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = WechatIMG4.jpeg; sourceTree = "<group>"; };
 		89EE015A2154F03300D13FD4 /* SWUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWUser.h; sourceTree = "<group>"; };
 		89EE015B2154F03300D13FD4 /* SWUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWUser.m; sourceTree = "<group>"; };
+		89EE0162215C67D000D13FD4 /* UINavigationBar+Awesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Awesome.m"; sourceTree = "<group>"; };
+		89EE0163215C67D000D13FD4 /* UINavigationBar+Awesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+Awesome.h"; sourceTree = "<group>"; };
 		9EA9D01FD7A1B70092AD68B9 /* Pods_Moments.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Moments.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A61FFE8889B53E330545BB1B /* Pods-Moments.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moments.release.xcconfig"; path = "Pods/Target Support Files/Pods-Moments/Pods-Moments.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -2330,6 +2333,8 @@
 		897EBBAC2147C33100CC32BF /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				89EE0163215C67D000D13FD4 /* UINavigationBar+Awesome.h */,
+				89EE0162215C67D000D13FD4 /* UINavigationBar+Awesome.m */,
 				897EBBAD2147C33100CC32BF /* UITableView+Common.m */,
 				897EBBAE2147C33100CC32BF /* NSDictionary+HandleNSNull.m */,
 				897EBBAF2147C33100CC32BF /* NSString+Common.h */,
@@ -2769,6 +2774,7 @@
 				03141A362146A3FA0030B553 /* LWTransaction.m in Sources */,
 				03141C4B2146B34D0030B553 /* FaceThemeModel.m in Sources */,
 				897EBBD02147C33200CC32BF /* UIScrollView+EmptyDataSet.m in Sources */,
+				89EE0164215C67D100D13FD4 /* UINavigationBar+Awesome.m in Sources */,
 				897EBBD42147C33200CC32BF /* NSString+Common.m in Sources */,
 				03141A3A2146A3FB0030B553 /* LWTextGlyph.m in Sources */,
 				03141A532146A3FB0030B553 /* LWImageProcessor.m in Sources */,

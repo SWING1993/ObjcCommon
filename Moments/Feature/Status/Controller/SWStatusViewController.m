@@ -26,7 +26,6 @@
 @property (nonatomic, assign) CGFloat minAlphaOffset;
 @property (nonatomic, assign) CGFloat maxAlphaOffset;
 @property (nonatomic, assign) CGFloat kRefreshBoundary;
-@property (nonatomic, strong) UIView *barImageView;
 
 @end
 
@@ -57,26 +56,29 @@
     // Do any additional setup after loading the view.
     [self configUserInfo];
     [self refreshBegin];
-    self.barImageView = self.navigationController.navigationBar.subviews.firstObject;
     self.minAlphaOffset = SCREEN_WIDTH*0.65 - 2*self.qmui_navigationBarMaxYInViewCoordinator;
     self.maxAlphaOffset = SCREEN_WIDTH*0.65 - self.qmui_navigationBarMaxYInViewCoordinator;
     self.kRefreshBoundary = self.qmui_navigationBarMaxYInViewCoordinator + 36;
+    [self.navigationController.navigationBar lt_setBackgroundColor:[UIColor clearColor]];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.barImageView.alpha = 0;
+//    self.barImageView.alpha = 0;
     self.tableView.delegate = self;
+    [self scrollViewDidScroll:self.tableView];
+    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     self.tableView.delegate = nil;
+    [self.navigationController.navigationBar lt_reset];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
@@ -246,16 +248,17 @@
 
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    CGFloat offset = scrollView.contentOffset.y;
-    CGFloat alpha = (offset - self.minAlphaOffset) / (self.maxAlphaOffset - self.minAlphaOffset);
-    self.barImageView.alpha = alpha;
-    UIColor *tintColor = alpha > 0.1 ? UIColorMake(33, 33, 33) : UIColorWhite;
+    CGFloat offsetY = scrollView.contentOffset.y;
+    CGFloat alpha = (offsetY - self.minAlphaOffset) / (self.maxAlphaOffset - self.minAlphaOffset);
+    UIColor *tintColor = alpha > 0.1 ? QMUICMI.navBarTintColor : UIColorWhite;
     self.changeStatusBarStyle = alpha > 0.1;
+    
+    [self.navigationController.navigationBar lt_setBackgroundColor:[UIColorMakeX(250) colorWithAlphaComponent:alpha]];
     self.titleView.tintColor = tintColor;
     self.navigationItem.rightBarButtonItem.tintColor = tintColor;
     [self setNeedsStatusBarAppearanceUpdate];
     
-    [self.tableViewHeader loadingViewAnimateWithScrollViewContentOffset:offset];
+    [self.tableViewHeader loadingViewAnimateWithScrollViewContentOffset:offsetY];
     if (self.lastIndexPath) {
         SWStatusCell *cell = [self.tableView cellForRowAtIndexPath:self.lastIndexPath];
         [cell.menu menuHide];
@@ -285,14 +288,15 @@
         UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
         imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
         [self presentViewController:imagePickerController animated:YES completion:nil];
+        @weakify(self)
         imagePickerController.bk_didFinishPickingMediaBlock = ^(UIImagePickerController *picker, NSDictionary *info) {
+            @strongify(self)
             [picker dismissViewControllerAnimated:YES completion:NULL];
             self.tableViewHeader.bg.image = info[UIImagePickerControllerOriginalImage];
             [[RLMRealm defaultRealm] beginWriteTransaction];
             self.user.bgImageName = [SWStatus saveImage:self.tableViewHeader.bg.image];
             [[RLMRealm defaultRealm] commitWriteTransaction];
         };
-   
     }];
     [actionSheet addButtonWithTitle:@"取消" style:TBActionButtonStyleCancel];
     [actionSheet show];

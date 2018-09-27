@@ -8,6 +8,6 @@
 
 #import <QMUIKit/QMUIKit.h>
 
-@interface SWNavigationController : QMUINavigationController
+@interface SWNavigationController : UINavigationController
 
 @end
