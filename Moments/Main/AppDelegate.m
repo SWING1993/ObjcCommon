@@ -11,6 +11,7 @@
 #import "SWStatusViewController.h"
 #import "IndexViewController.h"
 #import "SWStatus.h"
+#import <UMCommon/UMCommon.h>
 
 @interface AppDelegate ()
 
@@ -33,7 +34,14 @@
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
-    
+    NSString *channel;
+#if DEBUG
+    channel = @"Debug";
+#else
+    channel = @"AppStore";
+#endif
+    [UMConfigure initWithAppkey:@"5badcc98b465f55447000177" channel:channel];
+
     [TBActionSheet appearance].sheetWidth = kScreenW;
     [TBActionSheet appearance].backgroundTransparentEnabled = NO;
     [TBActionSheet appearance].rectCornerRadius = 0;
