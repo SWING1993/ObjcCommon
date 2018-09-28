@@ -68,6 +68,7 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.status = [[SWStatus alloc] init];
+    self.status.type = 0;
     self.status.createdTime = @"现在";
     self.status.own = YES;
     self.originImages = [NSMutableArray array];
@@ -79,7 +80,15 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
     @weakify(self)
     [imagePickerVc setDidFinishPickingPhotosHandle:^(NSArray<UIImage *> *photos, NSArray *assets, BOOL isSelectOriginalPhoto) {
         @strongify(self)
+        self.status.type = 0;
         self.originImages = [NSMutableArray arrayWithArray:photos];;
+        [self.tableView reloadData];
+    }];
+    [imagePickerVc setDidFinishPickingVideoHandle:^(UIImage *coverImage, PHAsset *asset) {
+        @strongify(self)
+        self.status.type = 1;
+        self.originImages = [NSMutableArray array];
+        [self.originImages addObject:coverImage];
         [self.tableView reloadData];
     }];
     [self presentViewController:imagePickerVc animated:YES completion:nil];
@@ -161,7 +170,6 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
         }
             break;
     }
-    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -182,6 +190,7 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
                     
                 case 1:{
                     SWStatusImageCell *cell = [tableView dequeueReusableCellWithIdentifier:SWStatusImageCellIdentifier forIndexPath:indexPath];
+                    cell.video = self.status.type == 1;
                     cell.images = self.originImages;
                     @weakify(self)
                     cell.addPicturesBlock = ^(){

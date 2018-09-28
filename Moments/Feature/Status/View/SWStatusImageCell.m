@@ -18,6 +18,7 @@ static NSString *const Identifier = @"CollectionCellIdentifier";
 @property (nonatomic, strong)UIButton *addPhotoBtn;
 @property (nonatomic, strong)UIImageView *imageView;
 @property (nonatomic, strong)UIButton *deleteBtn;
+@property (nonatomic, strong)UIImageView *videoTag;
 
 @end
 
@@ -40,14 +41,18 @@ static NSString *const Identifier = @"CollectionCellIdentifier";
             _deleteBtn.frame = CGRectMake(_imageView.frame.size.width-25, 0, 25, 25);
             [_deleteBtn setBackgroundImage:[UIImage imageNamed:@"moments_删除"] forState:UIControlStateNormal];
             [_imageView addSubview:_deleteBtn];
+            
+            _videoTag = [[UIImageView alloc]init];
+            _videoTag.frame = CGRectMake(_imageView.qmui_width/2 - 25, _imageView.qmui_height/2 - 25, 50, 50);
+            _videoTag.image = UIImageMake(@"moment_video");
+            _videoTag.hidden = YES;
+            [_imageView addSubview:_videoTag];
         }
         
         if (!_addPhotoBtn) {
             _addPhotoBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-            [_addPhotoBtn setImage:[UIImage imageNamed:@"addPic"] forState:UIControlStateNormal];
+            [_addPhotoBtn setImage:[[UIImage imageNamed:@"addPic"] qmui_imageWithTintColor:UIColorMakeX(165)] forState:UIControlStateNormal];
             _addPhotoBtn.backgroundColor = UIColorMakeX(240);
-//            _addPhotoBtn.layer.borderColor = UIColorMakeWithRGBA(204, 204, 204, 0.7).CGColor;
-//            _addPhotoBtn.layer.borderWidth = 1.f;
             _addPhotoBtn.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
             _addPhotoBtn.enabled = NO;
             [self addSubview:_addPhotoBtn];
@@ -130,6 +135,7 @@ static NSString *const Identifier = @"CollectionCellIdentifier";
     } else {
         cell.addPhotoBtn.hidden = YES;
         cell.imageView.hidden = NO;
+        cell.videoTag.hidden = !self.video;
         cell.imageView.image = self.images[indexPath.row];
         cell.deleteBtn.tag = indexPath.row;
         [cell.deleteBtn addTarget:self action:@selector(deletePhoto:) forControlEvents:UIControlEventTouchUpInside];

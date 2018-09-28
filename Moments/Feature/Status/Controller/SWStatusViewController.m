@@ -16,7 +16,7 @@
 #import "SWAuthorAddViewController.h"
 #import "SWStatusCommentViewController.h"
 
-@interface SWStatusViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface SWStatusViewController () <UITableViewDelegate, UITableViewDataSource, GADBannerViewDelegate>
 
 @property (nonatomic, strong) SWStatusHeaderView* tableViewHeader;
 @property (nonatomic, strong) UITableView *tableView;
@@ -27,6 +27,8 @@
 @property (nonatomic, assign) CGFloat minAlphaOffset;
 @property (nonatomic, assign) CGFloat maxAlphaOffset;
 @property (nonatomic, assign) CGFloat kRefreshBoundary;
+@property (nonatomic, strong) QMUINavigationButton *discoverBtn;
+@property (nonatomic, strong) GADBannerView *bannerView;
 
 @end
 
@@ -35,6 +37,7 @@
 - (void)initSubviews {
     [super initSubviews];
     [self setTitle:@"朋友圈"];
+    self.discoverBtn = [[QMUINavigationButton alloc] initWithType:QMUINavigationButtonTypeBack title:@"发现"];
     self.tableView = [[UITableView alloc] initWithFrame:kScreenBounds style:UITableViewStyleGrouped];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
@@ -45,11 +48,18 @@
     self.tableView.tableHeaderView = self.tableViewHeader;
     self.tableView.backgroundColor = UIColorWhite;
     [self.view addSubview:self.tableView];
+    
+    self.bannerView = [[GADBannerView alloc] initWithFrame:CGRectMake(0, self.view.qmui_bottom - 50, self.view.qmui_width, 50)];
+    self.bannerView.adUnitID = @"ca-app-pub-6037095993957840/9771733149";
+    self.bannerView.rootViewController = self;
+    [self.view addSubview:self.bannerView];
+
 }
 
 - (void)setupNavigationItems {
     [super setupNavigationItems];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:kGetImage(@"Moment_Post") style:UIBarButtonItemStyleDone target:self action:@selector(postStatusAction)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.discoverBtn];
 }
 
 - (void)viewDidLoad {
@@ -73,6 +83,10 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    GADRequest *request = [GADRequest request];
+    request.testDevices = @[kGADSimulatorID];
+    self.bannerView.delegate = self;
+    [self.bannerView loadRequest:request];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -280,6 +294,7 @@
     [self.navigationController.navigationBar lt_setBackgroundColor:[UIColorMakeX(250) colorWithAlphaComponent:alpha]];
     self.titleView.tintColor = tintColor;
     self.navigationItem.rightBarButtonItem.tintColor = tintColor;
+    self.discoverBtn.tintColor = tintColor;
     [self setNeedsStatusBarAppearanceUpdate];
     
     [self.tableViewHeader loadingViewAnimateWithScrollViewContentOffset:offsetY];
@@ -422,6 +437,14 @@
         self.tableViewHeader.avtar.image = [SWStatus getDocumentImageWithName:self.user.avatar];
     }
     self.tableViewHeader.nickname.text = self.user.nickname;
+}
+
+- (void)adViewDidReceiveAd:(GADBannerView *)bannerView {
+    NSLog(@"adView:didSuccess");
+}
+
+- (void)adView:(GADBannerView *)bannerView didFailToReceiveAdWithError:(GADRequestError *)error {
+    NSLog(@"adView:didFailToReceiveAdWithError:%@", [error localizedDescription]);
 }
 
 @end

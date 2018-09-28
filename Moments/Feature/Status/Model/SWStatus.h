@@ -12,8 +12,8 @@
 @interface SWStatus : RLMObject
 // id
 @property NSInteger id;
-// 类型：1=文本，2=图片，3=图文 4=视频
-@property NSString *type;
+// 类型：0=图片+文字 1=视频+文字 2=链接+文字
+@property NSInteger type;
 // 我的
 @property BOOL own;
 // 部分人可见标志

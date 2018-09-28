@@ -11,6 +11,7 @@
 @interface SWStatusImageCell : UITableViewCell
 
 @property (copy, nonatomic) NSMutableArray *images;
+@property (assign, nonatomic) BOOL video;
 @property (copy, nonatomic) void (^addPicturesBlock)(void);
 @property (copy, nonatomic) void (^deleteImageBlock)(NSInteger index);
 

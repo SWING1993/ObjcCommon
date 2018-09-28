@@ -50,7 +50,7 @@
         CGContextSetLineWidth(context, 0.5f);
         CGContextSetStrokeColorWithColor(context,UIColorSeparator.CGColor);
         CGContextStrokePath(context);
-        if ([self.cellLayout.statusModel.type isEqualToString:MESSAGE_TYPE_WEBSITE]) {
+        if (self.cellLayout.statusModel.type == 2) {
             CGContextAddRect(context, self.cellLayout.websitePosition);
             CGContextSetFillColorWithColor(context, RGBA(240, 240, 240, 1).CGColor);
             CGContextFillPath(context);
@@ -233,7 +233,7 @@
     if (_cellLayout != cellLayout) {
         _cellLayout = cellLayout;
         self.asyncDisplayView.layout = _cellLayout;
-        if ([cellLayout.statusModel.type isEqualToString:@"4"]) {
+        if (cellLayout.statusModel.type == 1) {
             [self.contentView addSubview:self.videoIconView];
         } else {
             [self.videoIconView removeFromSuperview];
@@ -269,7 +269,7 @@
         return _menuButton;
     }
     _menuButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [_menuButton setImage:[UIImage imageNamed:@"[menu]"] forState:UIControlStateNormal];
+    [_menuButton setImage:[UIImage imageNamed:@"menu"] forState:UIControlStateNormal];
     _menuButton.imageEdgeInsets = UIEdgeInsetsMake(14.5f, 12.0f, 14.5f, 12.0f);
     [_menuButton addTarget:self action:@selector(didClickedMenuButton)
           forControlEvents:UIControlEventTouchUpInside];

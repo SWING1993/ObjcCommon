@@ -53,7 +53,7 @@
             //正文内容模型 contentTextStorage
             LWTextStorage* contentTextStorage = [[LWTextStorage alloc] init];
             contentTextStorage.maxNumberOfLines = open?10:5;//设置最大行数，超过则折叠
-            contentTextStorage.linespacing = 1.0f;
+            contentTextStorage.linespacing = 1.5f;
             contentTextStorage.font = UIFontMake(15);
             contentTextStorage.textColor = RGBA(40, 40, 40, 1);
             contentTextStorage.text = statusModel.content;
@@ -120,12 +120,14 @@
             NSMutableArray* imageStorageArray = [[NSMutableArray alloc] initWithCapacity:imageCount];
             NSMutableArray* imagePositionArray = [[NSMutableArray alloc] initWithCapacity:imageCount];
             
-            // type 4 视频
-            if ([statusModel.type isEqualToString:@"4"]) {
-                NSDictionary *imageDict = [imageArray objectAtIndex:0];
-                CGFloat height = [imageDict[@"videoHeight"] floatValue];
-                CGFloat width = [imageDict[@"videoWidth"] floatValue];
-                
+            if (statusModel.type == 1) {
+                // type 2 视频
+                UIImage *firstImage = [SWStatus getDocumentImageWithName:[imageArray firstObject]];
+                CGFloat height;
+                CGFloat width;
+                height = firstImage.size.height;
+                width = firstImage.size.width;
+                CGRect imageRect;
                 CGFloat x = width/height;
                 if (x > 2.5f) {
                     x = 2.5f;
@@ -133,8 +135,6 @@
                 if (x < 0.4f) {
                     x = 0.4f;
                 }
-                
-                CGRect imageRect;
                 if (x == 1.0f) {
                     imageRect = CGRectMake(nameTextStorage.left,
                                            contentBottom + 5.0f,
@@ -163,7 +163,11 @@
                 imageStorage.clipsToBounds = YES;
                 imageStorage.frame = imageRect;
                 imageStorage.backgroundColor = RGBA(240, 240, 240, 1);
+                imageStorage.contents = firstImage;
                 [imageStorageArray addObject:imageStorage];
+            } else if (statusModel.type == 2) {
+                // 链接
+                
             } else {
                 NSInteger row = 0;
                 NSInteger column = 0;
@@ -286,6 +290,7 @@
             }
             
             //删除模型模型 deleteTextStorage
+            /*
             if (statusModel.own) {
                 LWTextStorage* deleteTextStorage = [[LWTextStorage alloc] init];
                 deleteTextStorage.text = @"删除";
@@ -298,6 +303,7 @@
                                        highLightColor:UIColorHighLightColor];
                 [self addStorage:deleteTextStorage];
             }
+             */
             
             //菜单按钮
             CGRect menuPosition = CGRectZero;
