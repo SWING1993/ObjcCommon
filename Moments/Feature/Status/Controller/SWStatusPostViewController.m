@@ -18,7 +18,6 @@
 @interface SWStatusPostViewController ()<QMUITableViewDelegate, QMUITableViewDataSource>
 
 @property (nonatomic, strong) QMUITableView *tableView;
-@property (nonatomic, strong) SWStatus *status;
 @property (nonatomic, strong) SWAuthor *author;
 @property (nonatomic, strong) NSMutableArray <UIImage *>*originImages;
 @property (nonatomic, strong) UISwitch *ownSwitch;
@@ -67,8 +66,9 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.status = [[SWStatus alloc] init];
-    self.status.type = 0;
+    if (!self.status) {
+        self.status = [[SWStatus alloc] init];
+    }
     self.status.createdTime = @"现在";
     self.status.own = YES;
     self.originImages = [NSMutableArray array];
@@ -125,7 +125,7 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
     [realm addObject:self.status];
     [realm commitWriteTransaction];
     
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 #pragma mark - UITableViewDataSource
@@ -137,7 +137,7 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     switch (section) {
         case 0: {
-            return 2;
+            return self.status.type == 2 ? 1 : 2;
         }
             break;
         default:

@@ -30,6 +30,10 @@
 @property NSString *nickname;
 // 发布人头像
 @property NSString *avator;
+
+@property NSString *webSiteUrl;
+@property NSString *webSiteDesc;
+@property NSString *webSiteImage;
 // 点赞
 @property NSString *likeNames;
 // 评论

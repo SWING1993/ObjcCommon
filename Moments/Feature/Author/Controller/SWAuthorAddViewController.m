@@ -45,7 +45,7 @@ NSString * const kAvator = @"kAvator";
     
     // Image
     row = [XLFormRowDescriptor formRowDescriptorWithTag:kAvator rowType:XLFormRowDescriptorTypeImage title:@"头像"];
-    row.value = [UIImage imageNamed:@"default_avatar"];
+    row.value = [UIImage imageNamed:@"defaultHead"];
     [section addFormRow:row];
     self.form = formDescriptor;
 }

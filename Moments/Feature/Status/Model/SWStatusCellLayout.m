@@ -167,6 +167,40 @@
                 [imageStorageArray addObject:imageStorage];
             } else if (statusModel.type == 2) {
                 // 链接
+                //这个CGRect用来绘制背景颜色
+                self.websitePosition = CGRectMake(nameTextStorage.left,
+                                                  contentBottom + 5.0f,
+                                                  SCREEN_WIDTH - 80.0f,
+                                                  50.0f);
+                
+                //左边的图片
+                LWImageStorage* imageStorage = [[LWImageStorage alloc] initWithIdentifier:WEBSITE_COVER_IDENTIFIER];
+                imageStorage.contents = [SWStatus getDocumentImageWithName:statusModel.webSiteImage];
+                imageStorage.clipsToBounds = YES;
+                imageStorage.contentMode = UIViewContentModeScaleAspectFill;
+                imageStorage.placeholder = UIImageMake(@"defaultLink");
+                imageStorage.frame = CGRectMake(nameTextStorage.left + 5.0f,
+                                                contentBottom + 10.0f ,
+                                                40.0f,
+                                                40.0f);
+                [imageStorageArray addObject:imageStorage];
+                
+                //右边的文字
+                LWTextStorage* detailTextStorage = [[LWTextStorage alloc] init];
+                detailTextStorage.text = statusModel.webSiteDesc;
+                detailTextStorage.font = UIFontMake(13);
+                detailTextStorage.textColor = RGB(40, 40, 40, 1);
+                detailTextStorage.maxNumberOfLines = 2;
+                detailTextStorage.vericalAlignment = LWTextVericalAlignmentCenter;
+                detailTextStorage.frame = CGRectMake(imageStorage.right + 10.0f,
+                                                     contentBottom + 5.0f,
+                                                     SCREEN_WIDTH - 140.0f,
+                                                     50.0f);
+                
+                detailTextStorage.linespacing = 0.5f;
+                [detailTextStorage lw_addLinkForWholeTextStorageWithData:statusModel.webSiteUrl
+                                                          highLightColor:UIColorHighLightColor];
+                [self addStorage:detailTextStorage];
                 
             } else {
                 NSInteger row = 0;
@@ -265,7 +299,7 @@
             LWTextStorage* locationStorage = [[LWTextStorage alloc] init];
             locationStorage.text = statusModel.location;
             locationStorage.font = UIFontMake(12);
-            locationStorage.textColor = [UIColor grayColor];
+            locationStorage.textColor = kWXBlue;
             locationStorage.frame = CGRectMake(nameTextStorage.left,
                                                lastImageStorage.bottom + 8,
                                                SCREEN_WIDTH - 80.0f,
@@ -308,7 +342,7 @@
             //菜单按钮
             CGRect menuPosition = CGRectZero;
             menuPosition = CGRectMake(SCREEN_WIDTH - 54.0f,
-                                      lastImageStorage.bottom - 9.f,
+                                      lastImageStorage.bottom,
                                       44.0f,
                                       44.0f);
             

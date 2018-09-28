@@ -15,6 +15,7 @@
 #import "SWUser.h"
 #import "SWAuthorAddViewController.h"
 #import "SWStatusCommentViewController.h"
+#import "SWStatusLinkViewController.h"
 
 @interface SWStatusViewController () <UITableViewDelegate, UITableViewDataSource, GADBannerViewDelegate>
 
@@ -83,6 +84,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    [self fakeDownload];
     GADRequest *request = [GADRequest request];
     request.testDevices = @[kGADSimulatorID];
     self.bannerView.delegate = self;
@@ -314,9 +316,22 @@
 
 #pragma mark - Actions
 - (void)postStatusAction {
-    SWStatusPostViewController *postViewController = [[SWStatusPostViewController alloc] init];
-    postViewController.user = self.user;
-    [self.navigationController pushViewController:postViewController animated:YES];
+    TBActionSheet *actionSheet =  [[TBActionSheet alloc] init];
+    @weakify(self)
+    [actionSheet addButtonWithTitle:@"视频或图文" style:TBActionButtonStyleDefault handler:^(TBActionButton * _Nonnull button) {
+        @strongify(self)
+        SWStatusPostViewController *postViewController = [[SWStatusPostViewController alloc] init];
+        postViewController.user = self.user;
+        [self.navigationController pushViewController:postViewController animated:YES];
+    }];
+    [actionSheet addButtonWithTitle:@"链接" style:TBActionButtonStyleDefault handler:^(TBActionButton * _Nonnull button) {
+        @strongify(self)
+        SWStatusLinkViewController *postViewController = [[SWStatusLinkViewController alloc] init];
+        postViewController.user = self.user;
+        [self.navigationController pushViewController:postViewController animated:YES];
+    }];
+    [actionSheet addButtonWithTitle:@"取消" style:TBActionButtonStyleCancel];
+    [actionSheet show];
 }
 
 - (void)changeHeaderBG {
