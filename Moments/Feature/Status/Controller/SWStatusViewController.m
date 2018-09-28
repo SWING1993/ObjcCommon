@@ -17,10 +17,10 @@
 #import "SWStatusCommentViewController.h"
 #import "SWStatusLinkViewController.h"
 
-@interface SWStatusViewController () <UITableViewDelegate, UITableViewDataSource, GADBannerViewDelegate>
+@interface SWStatusViewController () <QMUITableViewDelegate, QMUITableViewDataSource, GADBannerViewDelegate>
 
 @property (nonatomic, strong) SWStatusHeaderView* tableViewHeader;
-@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) QMUITableView *tableView;
 @property (nonatomic, strong) NSMutableArray <SWStatusCellLayout *>*dataSource;
 @property (nonatomic, strong) NSIndexPath* lastIndexPath;
 @property (nonatomic, strong) SWUser *user;
@@ -39,7 +39,7 @@
     [super initSubviews];
     [self setTitle:@"朋友圈"];
     self.discoverBtn = [[QMUINavigationButton alloc] initWithType:QMUINavigationButtonTypeBack title:@"发现"];
-    self.tableView = [[UITableView alloc] initWithFrame:kScreenBounds style:UITableViewStyleGrouped];
+    self.tableView = [[QMUITableView alloc] initWithFrame:kScreenBounds style:UITableViewStyleGrouped];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.estimatedRowHeight = CGFLOAT_MIN;

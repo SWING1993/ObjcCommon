@@ -41,20 +41,15 @@
 - (void)extraAsyncDisplayIncontext:(CGContextRef)context
                               size:(CGSize)size
                        isCancelled:(LWAsyncDisplayIsCanclledBlock)isCancelled {
-    if (self.notNeedLine) {
-        return;
-    }
-    if (!isCancelled()) {
-        CGContextMoveToPoint(context, 0.0f, self.bounds.size.height);
-        CGContextAddLineToPoint(context, self.bounds.size.width, self.bounds.size.height);
-        CGContextSetLineWidth(context, 0.5f);
-        CGContextSetStrokeColorWithColor(context,UIColorSeparator.CGColor);
-        CGContextStrokePath(context);
-        if (self.cellLayout.statusModel.type == 2) {
-            CGContextAddRect(context, self.cellLayout.websitePosition);
-            CGContextSetFillColorWithColor(context, RGBA(240, 240, 240, 1).CGColor);
-            CGContextFillPath(context);
-        }
+    CGContextMoveToPoint(context, 0.0f, self.bounds.size.height);
+    CGContextAddLineToPoint(context, self.bounds.size.width, self.bounds.size.height);
+    CGContextSetLineWidth(context, 0.5f);
+    CGContextSetStrokeColorWithColor(context,UIColorSeparator.CGColor);
+    CGContextStrokePath(context);
+    if (self.cellLayout.statusModel.type == 2) {
+        CGContextAddRect(context, self.cellLayout.websitePosition);
+        CGContextSetFillColorWithColor(context, RGBA(240, 240, 240, 1).CGColor);
+        CGContextFillPath(context);
     }
 }
 //点击LWImageStorage
@@ -97,14 +92,6 @@
                     self.clickedAvatarCallback(self);
                 }
             }break;
-            case 233: {
-                if (kStringIsEmpty(imageStorage.identifier) == false) {
-//                    if (self.clickedToUserInfoCallback) {
-//                        self.clickedToUserInfoCallback(imageStorage.identifier);
-//                    }
-                }
-            }break;
-
         }
     }
 }
@@ -162,7 +149,6 @@
 - (void)copyText {
     UIPasteboard* pasteboard = [UIPasteboard generalPasteboard];
     pasteboard.string = self.preCopyText;
-    
     [self resignFirstResponder];
     [self.asyncDisplayView removeHighlightIfNeed];
 }
@@ -214,18 +200,6 @@
     self.line.frame = self.cellLayout.lineRect;
     CGRect videoImageRect = CGRectFromString([self.cellLayout.imagePostions firstObject]);
     self.videoIconView.frame = CGRectMake(videoImageRect.origin.x + videoImageRect.size.width/2-25, videoImageRect.origin.y + videoImageRect.size.height/2-25, 50, 50);
-    
-//    //主线程runloop空闲时执行
-//    LWTransaction* layerAsyncTransaction = self.layer.lw_asyncTransaction;
-//    [layerAsyncTransaction
-//     addAsyncOperationWithTarget:self
-//     selector:@selector(_layouSubViews)
-//     object:nil
-//     completion:^(BOOL canceled) {}];
-}
-
-- (void)_layouSubViews {
-   
 }
 
 - (void)setCellLayout:(SWStatusCellLayout *)cellLayout {
@@ -238,22 +212,11 @@
         } else {
             [self.videoIconView removeFromSuperview];
         }
-        //主线程runloop空闲时执行
-        LWTransaction* layerAsyncTransaction = self.layer.lw_asyncTransaction;
-        [layerAsyncTransaction
-         addAsyncOperationWithTarget:self
-         selector:@selector(_setCellLayout)
-         object:nil
-         completion:^(BOOL canceled) {}];
+        self.menu.statusModel = self.cellLayout.statusModel;
     }
 }
 
-- (void)_setCellLayout {
-    self.menu.statusModel = self.cellLayout.statusModel;
-}
-
 #pragma mark - Getter
-
 - (LWAsyncDisplayView *)asyncDisplayView {
     if (_asyncDisplayView) {
         return _asyncDisplayView;
