@@ -175,10 +175,13 @@
                 
                 //左边的图片
                 LWImageStorage* imageStorage = [[LWImageStorage alloc] initWithIdentifier:WEBSITE_COVER_IDENTIFIER];
-                imageStorage.contents = [SWStatus getDocumentImageWithName:statusModel.webSiteImage];
+                if (kStringIsEmpty(statusModel.webSiteImage)) {
+                    imageStorage.contents = UIImageMake(@"defaultLink");
+                } else {
+                    imageStorage.contents = [SWStatus getDocumentImageWithName:statusModel.webSiteImage];
+                }
                 imageStorage.clipsToBounds = YES;
                 imageStorage.contentMode = UIViewContentModeScaleAspectFill;
-                imageStorage.placeholder = UIImageMake(@"defaultLink");
                 imageStorage.frame = CGRectMake(nameTextStorage.left + 5.0f,
                                                 contentBottom + 10.0f ,
                                                 40.0f,

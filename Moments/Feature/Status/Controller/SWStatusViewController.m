@@ -433,10 +433,10 @@
         [self.dataSource addObject:layout];
     }
     
-    NSArray *nicknames = @[@"可儿",@"煎饼侠",@"Jennifer",@"开心鸭"];
-    NSArray *avatars = @[UIImageMake(@"avatar10.jpg"),UIImageMake(@"avatar32.jpg"),UIImageMake(@"avatar35.jpg"),UIImageMake(@"avatar2.jpg")];
-    NSArray *contents = @[@"",@"Zepp DiverCity",@"今日の東京。",@"每一天都很快乐!!!"];
-    NSArray *times = @[@"1天前",@"2小时前",@"10分钟前",@"现在"];
+    NSArray *nicknames = @[@"爱范儿呀",@"可儿",@"煎饼侠",@"Jennifer",@"开心鸭"];
+    NSArray *avatars = @[UIImageMake(@"avatar29.jpg"),UIImageMake(@"avatar10.jpg"),UIImageMake(@"avatar32.jpg"),UIImageMake(@"avatar35.jpg"),UIImageMake(@"avatar2.jpg")];
+    NSArray *contents = @[@"",@"",@"Zepp DiverCity",@"今日の東京。",@"每一天都很快乐!!!"];
+    NSArray *times = @[@"1天前",@"1天前",@"2小时前",@"10分钟前",@"现在"];
     if (self.dataSource.count == 0) {
         RLMRealm *realm = [RLMRealm defaultRealm];
         [realm beginWriteTransaction];
@@ -448,14 +448,17 @@
             status.content = contents[i];
             status.createdTime = times[i];
             if (i == 0) {
+                status.webSiteDesc = @"索尼推出 PS1 迷你复刻主机，你准备好剁手了吗";
+                status.type = 2;
+            } else if (i == 1) {
                 UIImage *image = [UIImage imageNamed:@"WechatIMG5.jpeg"];
                 status.images = [@[[SWStatus saveImage:image]] mj_JSONString];
                 status.type = 1;
-            } else if (i == 1) {
+            } else if (i == 2) {
                 UIImage *image = [UIImage imageNamed:@"WechatIMG6.jpeg"];
                 status.images = [@[[SWStatus saveImage:image]] mj_JSONString];
                 
-            } else if (i == 2) {
+            } else if (i == 3) {
                 NSMutableArray *imageNames = [NSMutableArray arrayWithCapacity:9];
                 for (int z = 0; z < 9; z ++) {
                     UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"tokyo%d.jpg",z]];
