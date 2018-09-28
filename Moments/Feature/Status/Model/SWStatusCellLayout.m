@@ -338,6 +338,14 @@
                 [self addStorage:deleteTextStorage];
             }
              */
+            
+            //菜单按钮
+            CGRect menuPosition = CGRectZero;
+            menuPosition = CGRectMake(SCREEN_WIDTH - 54.0f,
+                                      lastImageStorage.bottom,
+                                      44.0f,
+                                      44.0f);
+
 
             //生成评论背景Storage
             LWImageStorage* commentBgStorage = [[LWImageStorage alloc] init];
@@ -504,16 +512,11 @@
             [self addStorage:likeImageSotrage];
             [self addStorage:likeTextStorage];
             self.avatarPosition = CGRectMake(10, 20, 40, 40);//头像的位置
-           
+            self.menuPosition = menuPosition;//右下角菜单按钮的位置
             self.commentBgPosition = commentBgPosition;//评论灰色背景位置
             self.imagePostions = imagePositionArray;//保存图片位置的数组
             //如果是使用在UITableViewCell上面，可以通过以下方法快速的得到Cell的高度
             self.cellHeight = [self suggestHeightWithBottomMargin:10.0f];
-            //菜单按钮
-            self.menuPosition = CGRectMake(SCREEN_WIDTH - 54.0f,
-                                           self.cellHeight - 44.0f,
-                                           44.0f,
-                                           44.0f);//右下角菜单按钮的位置
         }
     }
     return self;

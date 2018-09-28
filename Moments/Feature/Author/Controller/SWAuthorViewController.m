@@ -40,6 +40,8 @@ static NSString *const Identifier = @"CollectionCellIdentifier";
         [self.dataSource addObject:author];
     }
     [self.collectionView reloadData];
+    
+    
 }
 
 - (void)setupNavigationItems {
@@ -126,6 +128,7 @@ static NSString *const Identifier = @"CollectionCellIdentifier";
     UILabel *nickname = [[UILabel alloc] init];
     nickname.text = author.nickname;
     nickname.textAlignment = NSTextAlignmentCenter;
+    nickname.font = UIFontMake(14);
     [cell.contentView addSubview:nickname];
     [nickname mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.bottom.right.equalTo(cell.contentView);

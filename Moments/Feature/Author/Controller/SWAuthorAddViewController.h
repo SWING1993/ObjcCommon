@@ -10,6 +10,7 @@
 #import "SWAuthor.h"
 
 @interface SWAuthorAddViewController : XLFormViewController
+
 @property (nonatomic, copy) void(^completeBlock)(SWAuthor *author);
 
 @end

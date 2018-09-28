@@ -25,7 +25,7 @@
         
         self.bg = [[UIImageView alloc] init];
         self.bg.userInteractionEnabled = YES;
-        self.bg.image = UIImageMake(@"WechatIMG4.jpeg");
+        self.bg.image = UIImageMake(@"bg.jpg");
         self.bg.contentMode = UIViewContentModeScaleAspectFill;
         self.bg.frame = CGRectMake(0.0f, frame.size.height - 20.0f - SCREEN_WIDTH - 50, SCREEN_WIDTH, SCREEN_WIDTH + 50);
         self.bg.clipsToBounds = YES;

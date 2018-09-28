@@ -72,7 +72,8 @@
     self.maxAlphaOffset = SCREEN_WIDTH*0.65 - self.qmui_navigationBarMaxYInViewCoordinator;
     self.kRefreshBoundary = self.qmui_navigationBarMaxYInViewCoordinator + 36;
     [self.navigationController.navigationBar lt_setBackgroundColor:[UIColor clearColor]];
-
+    
+    [self addAuthor];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -84,7 +85,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self fakeDownload];
+    [self fakeDownloadNeedReloadTable:YES];
     GADRequest *request = [GADRequest request];
     request.testDevices = @[kGADSimulatorID];
     self.bannerView.delegate = self;
@@ -360,7 +361,7 @@
 //模拟下拉刷新
 - (void)refreshBegin {
     self.view.userInteractionEnabled = NO;
-    [self fakeDownload];
+    [self fakeDownloadNeedReloadTable:NO];
     [UIView animateWithDuration:0.2f animations:^{
         self.tableView.contentInset = UIEdgeInsetsMake(self.kRefreshBoundary, 0.0f, 0.0f, 0.0f);
     } completion:^(BOOL finished) {
@@ -376,7 +377,6 @@
 //模拟刷新完成
 - (void)refreshComplete {
     [self.tableViewHeader refreshingAnimateStop];
-    [self.tableView reloadData];
     [UIView animateWithDuration:0.35f animations:^{
         self.tableView.contentInset = UIEdgeInsetsMake(0.0f, 0.0f, 0.0f, 0.0f);
     } completion:^(BOOL finished) {
@@ -423,7 +423,7 @@
     return _tableViewHeader;
 }
 
-- (void)fakeDownload {
+- (void)fakeDownloadNeedReloadTable:(BOOL)need {
     // 从默认 Realm 中，检索所有的状态
     RLMResults<SWStatus *> *allStatus = [SWStatus allObjects];
     self.dataSource = [NSMutableArray arrayWithCapacity:allStatus.count];
@@ -431,6 +431,48 @@
         SWStatus *status = [allStatus objectAtIndex:index];
         SWStatusCellLayout *layout = [[SWStatusCellLayout alloc] initWithStatusModel:status index:index opend:NO];
         [self.dataSource addObject:layout];
+    }
+    
+    NSArray *nicknames = @[@"可儿",@"煎饼侠",@"Jennifer",@"开心鸭"];
+    NSArray *avatars = @[UIImageMake(@"avatar10.jpg"),UIImageMake(@"avatar32.jpg"),UIImageMake(@"avatar35.jpg"),UIImageMake(@"avatar2.jpg")];
+    NSArray *contents = @[@"",@"Zepp DiverCity",@"今日の東京。",@"每一天都很快乐!!!"];
+    NSArray *times = @[@"1天前",@"2小时前",@"10分钟前",@"现在"];
+    if (self.dataSource.count == 0) {
+        RLMRealm *realm = [RLMRealm defaultRealm];
+        [realm beginWriteTransaction];
+        for (int i = 0; i < nicknames.count; i ++) {
+            SWStatus *status = [[SWStatus alloc] init];
+            status.id = i;
+            status.avator = [SWStatus saveImage:avatars[i]];
+            status.nickname = nicknames[i];
+            status.content = contents[i];
+            status.createdTime = times[i];
+            if (i == 0) {
+                UIImage *image = [UIImage imageNamed:@"WechatIMG5.jpeg"];
+                status.images = [@[[SWStatus saveImage:image]] mj_JSONString];
+                status.type = 1;
+            } else if (i == 1) {
+                UIImage *image = [UIImage imageNamed:@"WechatIMG6.jpeg"];
+                status.images = [@[[SWStatus saveImage:image]] mj_JSONString];
+                
+            } else if (i == 2) {
+                NSMutableArray *imageNames = [NSMutableArray arrayWithCapacity:9];
+                for (int z = 0; z < 9; z ++) {
+                    UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"tokyo%d.jpg",z]];
+                    [imageNames addObject:[SWStatus saveImage:image]];
+                }
+                status.images = [imageNames mj_JSONString];
+                status.location = @"日本·东京";
+                
+            }
+            SWStatusCellLayout *layout = [[SWStatusCellLayout alloc] initWithStatusModel:status index:i opend:NO];
+            [self.dataSource addObject:layout];
+            [realm addObject:status];
+        }
+        [realm commitWriteTransaction];
+    }
+    if (need) {
+        [self.tableView reloadData];
     }
 }
 
@@ -441,7 +483,8 @@
     if (!self.user) {
         self.user = [[SWUser alloc] init];
         [[RLMRealm defaultRealm] beginWriteTransaction];
-        self.user.nickname = @"Swift";
+        self.user.nickname = @"开心鸭";
+        self.user.avatar = [SWStatus saveImage:UIImageMake(@"avatar2.jpg")];
         [[RLMRealm defaultRealm] addObject:self.user];
         [[RLMRealm defaultRealm] commitWriteTransaction];
     }
@@ -460,6 +503,28 @@
 
 - (void)adView:(GADBannerView *)bannerView didFailToReceiveAdWithError:(GADRequestError *)error {
     NSLog(@"adView:didFailToReceiveAdWithError:%@", [error localizedDescription]);
+}
+
+- (void)addAuthor {
+    //串行队列
+    dispatch_queue_t queue = dispatch_queue_create("kk", DISPATCH_QUEUE_SERIAL);
+    dispatch_async(queue, ^{
+        RLMResults *allAuthor = [SWAuthor allObjects];
+        if (allAuthor.count == 0) {
+            NSArray *nicknames = @[@"煎饼侠",@"萌萌",@"皮卡丘",@"凹凸曼",@"拉克丝",@"小鑫鑫",@"琪琪",@"喵",@"Laurinda",@"阿狸",@"Fiona",@"Lee",@"雅彤",@"璐璐",@"SuperMan",@"可儿",@"雅静",@"Jennifer",@"路飞",@"达孟",@"蛋儿",@"茉莉",@"小薇",@"小翔",@"Adele",@"李菲菲",@"haha",@"ZZ",@"Lacey",@"星爷",@"Selena",@"周归璨",@"Wendy",@"Queenie",@"Lana",@"阿颖"];
+            RLMRealm *realm = [RLMRealm defaultRealm];
+            [realm beginWriteTransaction];
+            for (int i = 0; i < nicknames.count; i ++) {
+                SWAuthor *author = [[SWAuthor alloc] init];
+                author.id = i;
+                author.nickname = nicknames[i];
+                NSString *imageName = [NSString stringWithFormat:@"avatar%d.jpg",i];
+                author.avatar = [SWStatus saveImage:[UIImage imageNamed:imageName]];
+                [realm addObject:author];
+            }
+            [realm commitWriteTransaction];
+        }
+    });
 }
 
 @end
