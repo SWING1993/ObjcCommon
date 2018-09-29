@@ -24,7 +24,6 @@
 @property (nonatomic, strong) NSMutableArray <SWStatusCellLayout *>*dataSource;
 @property (nonatomic, strong) NSIndexPath* lastIndexPath;
 @property (nonatomic, strong) SWUser *user;
-@property (nonatomic, assign) BOOL changeStatusBarStyle;
 @property (nonatomic, assign) CGFloat minAlphaOffset;
 @property (nonatomic, assign) CGFloat maxAlphaOffset;
 @property (nonatomic, assign) CGFloat kRefreshBoundary;
@@ -98,10 +97,6 @@
     [self.navigationController.navigationBar lt_reset];
 }
 
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return self.changeStatusBarStyle ? UIStatusBarStyleDefault : UIStatusBarStyleLightContent;
-}
-
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -147,7 +142,14 @@
 - (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
     @weakify(self);
     UITableViewRowAction *deleteBtn = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"删除" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
-        
+        @strongify(self);
+        SWStatusCellLayout* cellLayout = self.dataSource[indexPath.row];
+        RLMRealm *realm = [RLMRealm defaultRealm];
+        [realm beginWriteTransaction];
+        [realm deleteObject:cellLayout.statusModel];
+        [realm commitWriteTransaction];
+        [self.dataSource removeObjectAtIndex:indexPath.row];
+        [self.tableView reloadData];
     }];
     deleteBtn.backgroundColor = UIColorRed;
     return @[deleteBtn];
@@ -310,12 +312,16 @@
     CGFloat offsetY = scrollView.contentOffset.y;
     CGFloat alpha = (offsetY - self.minAlphaOffset) / (self.maxAlphaOffset - self.minAlphaOffset);
     UIColor *tintColor = alpha > 0.1 ? QMUICMI.navBarTintColor : UIColorWhite;
-    self.changeStatusBarStyle = alpha > 0.1;
     [self.navigationController.navigationBar lt_setBackgroundColor:[UIColorMakeX(250) colorWithAlphaComponent:alpha]];
     self.titleView.tintColor = tintColor;
     self.navigationItem.rightBarButtonItem.tintColor = tintColor;
     self.discoverBtn.tintColor = tintColor;
     [self setNeedsStatusBarAppearanceUpdate];
+    if (alpha > 0.1) {
+        self.navigationController.navigationBar.barStyle = UIBarStyleDefault;
+    } else {
+        self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+    }
     
     [self.tableViewHeader loadingViewAnimateWithScrollViewContentOffset:offsetY];
     if (self.lastIndexPath) {
