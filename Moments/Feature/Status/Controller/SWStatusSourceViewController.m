@@ -14,8 +14,6 @@
 
 @implementation SWStatusSourceViewController
 
-NSString * const kSourceName = @"kFirst";
-
 - (instancetype)init {
     self = [super init];
     if (self) {

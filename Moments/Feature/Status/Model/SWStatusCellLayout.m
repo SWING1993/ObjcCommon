@@ -311,7 +311,7 @@
             
             //生成时间的模型 dateTextStorage
             LWTextStorage* dateTextStorage = [[LWTextStorage alloc] init];
-            dateTextStorage.text = kStringIsEmpty(statusModel.createdTime) ? @"现在" : statusModel.createdTime;
+            dateTextStorage.text = kStringIsEmpty(statusModel.createdTime) ? @"1分钟前" : statusModel.createdTime;
             dateTextStorage.font = UIFontMake(12);
             dateTextStorage.textColor = [UIColor grayColor];
             dateTextStorage.frame = CGRectMake(nameTextStorage.left,

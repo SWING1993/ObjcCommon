@@ -53,8 +53,7 @@
     [AppConfigurationTemplate applyConfigurationTemplate];
     [GADMobileAds configureWithApplicationID:@"ca-app-pub-6037095993957840~7664444552"];
 
-    SWStatusViewController * indexController= [[SWStatusViewController alloc] init];
-//    IndexViewController *indexController = [[IndexViewController alloc] init];
+    IndexViewController *indexController = [[IndexViewController alloc] init];
     SWNavigationController *indexNav = [[SWNavigationController alloc] initWithRootViewController:indexController];
     self.window.rootViewController = indexNav;
     [self.window makeKeyAndVisible];

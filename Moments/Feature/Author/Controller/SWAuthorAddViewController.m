@@ -15,8 +15,6 @@
 @end
 
 @implementation SWAuthorAddViewController
-NSString * const kNickname = @"kNickname";
-NSString * const kAvator = @"kAvator";
 
 - (instancetype)init {
     self = [super init];
@@ -44,7 +42,7 @@ NSString * const kAvator = @"kAvator";
     [section addFormRow:row];
     
     // Image
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:kAvator rowType:XLFormRowDescriptorTypeImage title:@"头像"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:kAvatar rowType:XLFormRowDescriptorTypeImage title:@"头像"];
     row.value = [UIImage imageNamed:@"defaultHead"];
     [section addFormRow:row];
     self.form = formDescriptor;
@@ -102,7 +100,7 @@ NSString * const kAvator = @"kAvator";
     [super formRowDescriptorValueHasChanged:rowDescriptor oldValue:oldValue newValue:newValue];
     if ([rowDescriptor.tag isEqualToString:kNickname]){
         self.author.nickname = newValue;
-    } else if ([rowDescriptor.tag isEqualToString:kAvator]){
+    } else if ([rowDescriptor.tag isEqualToString:kAvatar]){
         self.author.avatar = [SWStatus saveImage:newValue];
     }
 }

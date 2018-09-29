@@ -77,7 +77,7 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
     if (!self.status) {
         self.status = [[SWStatus alloc] init];
     }
-    self.status.createdTime = @"现在";
+    self.status.createdTime = @"1分钟前";
     self.status.own = YES;
     self.originImages = [NSMutableArray array];
 }

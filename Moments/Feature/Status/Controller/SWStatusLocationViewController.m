@@ -16,8 +16,6 @@
 @end
 
 @implementation SWStatusLocationViewController
-NSString * const kValidationName = @"kFirst";
-NSString * const kValidationEmail = @"kSecond";
 
 - (instancetype)init {
     self = [super init];

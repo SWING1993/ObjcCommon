@@ -169,6 +169,18 @@
 || ([_object respondsToSelector:@selector(length)] && [(NSData *)_object length] == 0) \
 || ([_object respondsToSelector:@selector(count)] && [(NSArray *)_object count] == 0))
 
+#define kAvatar  @"avatar"
+#define kNickname @"nickname"
+#define kTime  @"time"
+#define kMessage  @"message"
+#define kStatus  @"status"
+#define kForm  @"form"
+#define kTo  @"to"
+#define kComment  @"comment"
+#define kValidationName  @"first"
+#define kValidationEmail  @"second"
+#define kSourceName  @"sourceName"
+
 /**
  *  CMConfigurationTemplate 是一份配置表，用于配合 QMUIConfiguration 来管理整个 App 的全局样式，使用方式：
  *  在 QMUI 项目代码的文件夹里找到 QMUIConfigurationTemplate 目录，把里面所有文件复制到自己项目里，保证能被编译到即可，不需要在某些地方 import，也不需要手动运行。

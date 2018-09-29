@@ -398,6 +398,11 @@
 		89DF91CB215F2C9300AFE6B2 /* NSObject+CMAutoTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DF91C5215F2C9300AFE6B2 /* NSObject+CMAutoTracker.m */; };
 		89DF91CC215F2C9300AFE6B2 /* CMAutoTrackerOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DF91C6215F2C9300AFE6B2 /* CMAutoTrackerOperation.m */; };
 		89DF91CD215F2C9300AFE6B2 /* UIViewController+CMAutoTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DF91C7215F2C9300AFE6B2 /* UIViewController+CMAutoTracker.m */; };
+		89DF91D1215F47A000AFE6B2 /* SWMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DF91D0215F47A000AFE6B2 /* SWMessageViewController.m */; };
+		89DF91D7215F488200AFE6B2 /* SWMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DF91D6215F488200AFE6B2 /* SWMessage.m */; };
+		89DF91DA215F4F9200AFE6B2 /* SWMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DF91D9215F4F9200AFE6B2 /* SWMessageCell.m */; };
+		89DF91DD215F5BD400AFE6B2 /* SWCreateMsgViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DF91DC215F5BD400AFE6B2 /* SWCreateMsgViewController.m */; };
+		89DF91E0215F666B00AFE6B2 /* SWCreateLikeMsgViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DF91DF215F666B00AFE6B2 /* SWCreateLikeMsgViewController.m */; };
 		89EE01572154E54600D13FD4 /* SWStatusHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89EE01562154E54600D13FD4 /* SWStatusHeaderView.m */; };
 		89EE015C2154F03300D13FD4 /* SWUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 89EE015B2154F03300D13FD4 /* SWUser.m */; };
 		89EE0164215C67D100D13FD4 /* UINavigationBar+Awesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 89EE0162215C67D000D13FD4 /* UINavigationBar+Awesome.m */; };
@@ -900,6 +905,16 @@
 		89DF91C8215F2C9300AFE6B2 /* NSObject+CMAutoTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+CMAutoTracker.h"; sourceTree = "<group>"; };
 		89DF91C9215F2C9300AFE6B2 /* CMAutoTrackerOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMAutoTrackerOperation.h; sourceTree = "<group>"; };
 		89DF91CA215F2C9300AFE6B2 /* UIViewController+CMAutoTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+CMAutoTracker.h"; sourceTree = "<group>"; };
+		89DF91CF215F47A000AFE6B2 /* SWMessageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWMessageViewController.h; sourceTree = "<group>"; };
+		89DF91D0215F47A000AFE6B2 /* SWMessageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWMessageViewController.m; sourceTree = "<group>"; };
+		89DF91D5215F488200AFE6B2 /* SWMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWMessage.h; sourceTree = "<group>"; };
+		89DF91D6215F488200AFE6B2 /* SWMessage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWMessage.m; sourceTree = "<group>"; };
+		89DF91D8215F4F9200AFE6B2 /* SWMessageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWMessageCell.h; sourceTree = "<group>"; };
+		89DF91D9215F4F9200AFE6B2 /* SWMessageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWMessageCell.m; sourceTree = "<group>"; };
+		89DF91DB215F5BD400AFE6B2 /* SWCreateMsgViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWCreateMsgViewController.h; sourceTree = "<group>"; };
+		89DF91DC215F5BD400AFE6B2 /* SWCreateMsgViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWCreateMsgViewController.m; sourceTree = "<group>"; };
+		89DF91DE215F666B00AFE6B2 /* SWCreateLikeMsgViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWCreateLikeMsgViewController.h; sourceTree = "<group>"; };
+		89DF91DF215F666B00AFE6B2 /* SWCreateLikeMsgViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWCreateLikeMsgViewController.m; sourceTree = "<group>"; };
 		89EE01552154E54600D13FD4 /* SWStatusHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWStatusHeaderView.h; sourceTree = "<group>"; };
 		89EE01562154E54600D13FD4 /* SWStatusHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWStatusHeaderView.m; sourceTree = "<group>"; };
 		89EE015A2154F03300D13FD4 /* SWUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWUser.h; sourceTree = "<group>"; };
@@ -2361,8 +2376,9 @@
 		897EBB762147644100CC32BF /* Feature */ = {
 			isa = PBXGroup;
 			children = (
-				89744C60214F455900761E08 /* Author */,
+				89DF91CE215F477D00AFE6B2 /* Message */,
 				897EBB77214765E600CC32BF /* Index */,
+				89744C60214F455900761E08 /* Author */,
 				897EBB8521476E3B00CC32BF /* Status */,
 			);
 			path = Feature;
@@ -2574,6 +2590,47 @@
 				89DF91C7215F2C9300AFE6B2 /* UIViewController+CMAutoTracker.m */,
 			);
 			path = CMAutoTracker;
+			sourceTree = "<group>";
+		};
+		89DF91CE215F477D00AFE6B2 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				89DF91D4215F484100AFE6B2 /* Model */,
+				89DF91D3215F483400AFE6B2 /* View */,
+				89DF91D2215F482700AFE6B2 /* Controller */,
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
+		89DF91D2215F482700AFE6B2 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				89DF91CF215F47A000AFE6B2 /* SWMessageViewController.h */,
+				89DF91D0215F47A000AFE6B2 /* SWMessageViewController.m */,
+				89DF91DB215F5BD400AFE6B2 /* SWCreateMsgViewController.h */,
+				89DF91DC215F5BD400AFE6B2 /* SWCreateMsgViewController.m */,
+				89DF91DE215F666B00AFE6B2 /* SWCreateLikeMsgViewController.h */,
+				89DF91DF215F666B00AFE6B2 /* SWCreateLikeMsgViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		89DF91D3215F483400AFE6B2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				89DF91D8215F4F9200AFE6B2 /* SWMessageCell.h */,
+				89DF91D9215F4F9200AFE6B2 /* SWMessageCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		89DF91D4215F484100AFE6B2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				89DF91D5215F488200AFE6B2 /* SWMessage.h */,
+				89DF91D6215F488200AFE6B2 /* SWMessage.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		AD8237014271D1CACE5D2039 /* Frameworks */ = {
@@ -3011,6 +3068,7 @@
 			files = (
 				897EBBCC2147C33200CC32BF /* UITableView+Common.m in Sources */,
 				897EBBCF2147C33200CC32BF /* NSString+Device.m in Sources */,
+				89DF91DD215F5BD400AFE6B2 /* SWCreateMsgViewController.m in Sources */,
 				03141A402146A3FB0030B553 /* LWTransactionGroup.m in Sources */,
 				03141D3A2146B34D0030B553 /* PanelBottomView.m in Sources */,
 				897EBBD12147C33200CC32BF /* NSDate+Utilities.m in Sources */,
@@ -3046,6 +3104,8 @@
 				03141D3D2146B34D0030B553 /* FaceButton.m in Sources */,
 				03141A552146A3FB0030B553 /* LWTextParser.m in Sources */,
 				897EBBE1214A04DD00CC32BF /* SWStatusLocationViewController.m in Sources */,
+				89DF91D7215F488200AFE6B2 /* SWMessage.m in Sources */,
+				89DF91DA215F4F9200AFE6B2 /* SWMessageCell.m in Sources */,
 				897EBBD92147C33200CC32BF /* UIViewController+Animation.m in Sources */,
 				897EBBD32147C33200CC32BF /* UIAlertAction+CM.m in Sources */,
 				03141C4A2146B34D0030B553 /* ChatToolBarItem.m in Sources */,
@@ -3064,6 +3124,7 @@
 				03141A4B2146A3FB0030B553 /* LWTextStorage.m in Sources */,
 				897EBB81214767DC00CC32BF /* IndexViewController.m in Sources */,
 				0314195921469BB60030B553 /* main.m in Sources */,
+				89DF91E0215F666B00AFE6B2 /* SWCreateLikeMsgViewController.m in Sources */,
 				89EE01572154E54600D13FD4 /* SWStatusHeaderView.m in Sources */,
 				89DF91CD215F2C9300AFE6B2 /* UIViewController+CMAutoTracker.m in Sources */,
 				03141A4C2146A3FB0030B553 /* LWStorageBuilder.m in Sources */,
@@ -3093,6 +3154,7 @@
 				03141A462146A3FB0030B553 /* LWHTMLTextConfig.m in Sources */,
 				03141D3C2146B34D0030B553 /* FacePageView.m in Sources */,
 				897EBBD22147C33200CC32BF /* UIView+Common.m in Sources */,
+				89DF91D1215F47A000AFE6B2 /* SWMessageViewController.m in Sources */,
 				03141A3C2146A3FB0030B553 /* LWHTMLImageConfig.m in Sources */,
 				03141A4F2146A3FB0030B553 /* LWHTMLNode.m in Sources */,
 				03141D3E2146B34D0030B553 /* FaceSourceManager.m in Sources */,

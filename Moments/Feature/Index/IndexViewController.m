@@ -8,6 +8,7 @@
 
 #import "IndexViewController.h"
 #import "SWStatusViewController.h"
+#import "SWMessageViewController.h"
 
 @interface IndexViewController ()<GADBannerViewDelegate>
 
@@ -21,13 +22,13 @@
 - (void)initSubviews {
     [super initSubviews];
     self.view.backgroundColor = UIColorWhite;
-    [self setTitle:@"朋友圈制作神器"];
+    [self setTitle:@"朋友圈制作"];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.dataSource = @[@"我的朋友圈",@"状态详情",@"消息",@"浏览页"];
+    self.dataSource = @[@"朋友圈",@"状态详情",@"浏览页",@"消息"];
     self.bannerView = [[GADBannerView alloc] initWithFrame:CGRectMake(0, self.view.qmui_height - 50 - self.qmui_navigationBarMaxYInViewCoordinator, self.view.qmui_width, 50)];
     self.bannerView.adUnitID = @"ca-app-pub-6037095993957840/9771733149";
     self.bannerView.rootViewController = self;
@@ -68,6 +69,22 @@
         }
             break;
             
+        case 1: {
+           
+        }
+            break;
+            
+        case 2: {
+           
+        }
+            break;
+            
+        case 3: {
+            SWMessageViewController *controller = [[SWMessageViewController alloc] init];
+            [self.navigationController pushViewController:controller animated:YES];
+        }
+            break;
+    
         default:
             break;
     }

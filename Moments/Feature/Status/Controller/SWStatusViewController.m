@@ -37,6 +37,11 @@
     [super initSubviews];
     [self setTitle:@"朋友圈"];
     self.discoverBtn = [[QMUINavigationButton alloc] initWithType:QMUINavigationButtonTypeBack title:@"发现"];
+    @weakify(self)
+    [self.discoverBtn bk_addEventHandler:^(id sender) {
+        @strongify(self)
+        [self.navigationController popViewControllerAnimated:YES];
+    } forControlEvents:UIControlEventTouchUpInside];
     self.tableView = [[QMUITableView alloc] initWithFrame:kScreenBounds style:UITableViewStyleGrouped];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
@@ -65,7 +70,6 @@
     self.maxAlphaOffset = SCREEN_WIDTH*0.65 - self.qmui_navigationBarMaxYInViewCoordinator;
     self.kRefreshBoundary = self.qmui_navigationBarMaxYInViewCoordinator + 36;
     [self.navigationController.navigationBar lt_setBackgroundColor:[UIColor clearColor]];
-    
     [self addAuthor];
 }
 
@@ -89,7 +93,6 @@
 }
 
 #pragma mark - UITableViewDataSource
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.dataSource.count;
 }
@@ -450,7 +453,7 @@
     NSArray *nicknames = @[@"爱范儿呀",@"可儿",@"煎饼侠",@"Jennifer",@"开心鸭"];
     NSArray *avatars = @[UIImageMake(@"avatar29.jpg"),UIImageMake(@"avatar10.jpg"),UIImageMake(@"avatar32.jpg"),UIImageMake(@"avatar35.jpg"),UIImageMake(@"avatar2.jpg")];
     NSArray *contents = @[@"",@"",@"Zepp DiverCity",@"今日の東京。",@"每一天都很快乐!!!"];
-    NSArray *times = @[@"1天前",@"1天前",@"2小时前",@"10分钟前",@"现在"];
+    NSArray *times = @[@"1天前",@"1天前",@"2小时前",@"10分钟前",@"1分钟前"];
     if (self.dataSource.count == 0) {
         RLMRealm *realm = [RLMRealm defaultRealm];
         [realm beginWriteTransaction];
