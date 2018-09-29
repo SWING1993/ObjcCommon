@@ -54,7 +54,7 @@ NSString *const kComment = @"comment";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(savePressed:)];
-    self.tableView.tableHeaderView.backgroundColor = UIColorRandom;
+    self.navigationItem.rightBarButtonItem.tintColor = UIColorGreen;
     self.tableView.sectionHeaderHeight = 0.01;
     self.tableView.sectionFooterHeight = 20;
     self.tableView.backgroundColor = UIColorForBackground;

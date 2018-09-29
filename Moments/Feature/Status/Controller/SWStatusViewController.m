@@ -136,6 +136,23 @@
     return CGFLOAT_MIN;
 }
 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+    return YES;
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return UITableViewCellEditingStyleDelete;
+}
+
+- (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
+    @weakify(self);
+    UITableViewRowAction *deleteBtn = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"删除" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+        
+    }];
+    deleteBtn.backgroundColor = UIColorRed;
+    return @[deleteBtn];
+}
+
 - (void)confirgueCell:(SWStatusCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.indexPath = indexPath;
@@ -453,6 +470,7 @@
             } else if (i == 1) {
                 UIImage *image = [UIImage imageNamed:@"WechatIMG5.jpeg"];
                 status.images = [@[[SWStatus saveImage:image]] mj_JSONString];
+                status.likeNames = @"路飞,雅静,Jennifer";
                 status.type = 1;
             } else if (i == 2) {
                 UIImage *image = [UIImage imageNamed:@"WechatIMG6.jpeg"];
@@ -466,7 +484,23 @@
                 }
                 status.images = [imageNames mj_JSONString];
                 status.location = @"日本·东京";
-                
+                status.likeNames = @"雅静,Jennifer,路飞,达孟,蛋儿,茉莉,小薇";
+                SWStatusComment *comment1 = [[SWStatusComment alloc] init];
+                comment1.fromNickname = @"萌萌";
+                comment1.comment = @"Beautiful!!!";
+                [status.comments addObject:comment1];
+                SWStatusComment *comment2 = [[SWStatusComment alloc] init];
+                comment2.fromNickname = @"Jennifer";
+                comment2.toNickname = @"萌萌";
+                comment2.comment = @"thanks...";
+                [status.comments addObject:comment2];
+
+            } else if (i == 4) {
+                status.likeNames = @"Queenie,Lana,阿颖";
+                SWStatusComment *comment1 = [[SWStatusComment alloc] init];
+                comment1.fromNickname = @"小鑫鑫";
+                comment1.comment = @"🤪";
+                [status.comments addObject:comment1];
             }
             SWStatusCellLayout *layout = [[SWStatusCellLayout alloc] initWithStatusModel:status index:i opend:NO];
             [self.dataSource addObject:layout];

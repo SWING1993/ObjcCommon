@@ -49,6 +49,7 @@ NSString *const kWebTitle = @"webTitle";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"下一步" style:UIBarButtonItemStylePlain target:self action:@selector(savePressed:)];
+    self.navigationItem.rightBarButtonItem.tintColor = UIColorGreen;
     self.tableView.tableHeaderView.backgroundColor = UIColorRandom;
     self.tableView.sectionHeaderHeight = 0.01;
     self.tableView.sectionFooterHeight = 20;

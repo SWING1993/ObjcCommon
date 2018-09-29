@@ -76,6 +76,7 @@ static NSString *const Identifier = @"CollectionCellIdentifier";
             }
             [self.navigationController popViewControllerAnimated:YES];
         }];
+        completeBtn.tintColor = UIColorGreen;
         self.navigationItem.rightBarButtonItems = @[completeBtn, addBtn];
     } else {
         self.navigationItem.rightBarButtonItem = addBtn;
@@ -148,7 +149,6 @@ static NSString *const Identifier = @"CollectionCellIdentifier";
             make.top.right.equalTo(cell.contentView);
         }];
     }
-   
     return cell;
 }
 
@@ -156,7 +156,7 @@ static NSString *const Identifier = @"CollectionCellIdentifier";
     SWAuthor *author = self.dataSource[indexPath.row];
     if (self.allowsMultipleSelection) {
         author.selected = !author.selected;
-        [self.collectionView reloadData];
+        [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
     } else {
         if (self.singleCompleteBlock) {
             self.singleCompleteBlock(author);

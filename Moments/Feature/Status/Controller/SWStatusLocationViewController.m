@@ -67,7 +67,8 @@ NSString * const kValidationEmail = @"kSecond";
     // Do any additional setup after loading the view.
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"确定" style:UIBarButtonItemStyleDone target:self action:@selector(validateForm)];
-    
+    self.navigationItem.rightBarButtonItem.tintColor = UIColorGreen;
+
     self.tableView.sectionHeaderHeight = 30;
     self.tableView.sectionFooterHeight = CGFLOAT_MIN;
     self.tableView.backgroundColor = UIColorForBackground;
@@ -92,7 +93,13 @@ NSString * const kValidationEmail = @"kSecond";
         }
     }
     if (kStringIsEmpty(result)) {
-        [QMUITips showInfo:@"请填写位置信息!"];
+        UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"请填写位置信息!"
+                                                                                  message:nil
+                                                                           preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"OK"
+                                                            style:UIAlertActionStyleDefault
+                                                          handler:nil]];
+        [self presentViewController:alertController animated:YES completion:nil];
         return;
     }
     if (self.completeBlock) {

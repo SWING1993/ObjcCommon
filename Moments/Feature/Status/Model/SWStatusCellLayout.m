@@ -318,6 +318,10 @@
                                                locationStorage.bottom + 8,
                                                SCREEN_WIDTH - 80.0f,
                                                12);
+            if (!kStringIsEmpty(statusModel.source)) {
+                dateTextStorage.text = [NSString stringWithFormat:@"%@  %@",dateTextStorage.text,statusModel.source];
+            }
+            
             if (statusModel.personal) {
                 LWImageStorage* imageStorage = [[LWImageStorage alloc] initWithIdentifier:IMAGE_IDENTIFIER];
                 imageStorage.tag = 999;

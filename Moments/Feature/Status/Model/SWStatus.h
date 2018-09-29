@@ -26,6 +26,8 @@
 @property NSString *location;
 // 发布时间
 @property NSString *createdTime;
+// 来源
+@property NSString *source;
 // 发布人昵称
 @property NSString *nickname;
 // 发布人头像

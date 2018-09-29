@@ -394,6 +394,7 @@
 		89DF91BC215E274800AFE6B2 /* tokyo8.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 89DF91B3215E274800AFE6B2 /* tokyo8.jpg */; };
 		89DF91BE215E29B700AFE6B2 /* WechatIMG5.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 89DF91BD215E29B700AFE6B2 /* WechatIMG5.jpeg */; };
 		89DF91C0215E2A8600AFE6B2 /* WechatIMG6.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 89DF91BF215E2A8600AFE6B2 /* WechatIMG6.jpeg */; };
+		89DF91C3215F0B9500AFE6B2 /* SWStatusSourceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DF91C2215F0B9500AFE6B2 /* SWStatusSourceViewController.m */; };
 		89EE01572154E54600D13FD4 /* SWStatusHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89EE01562154E54600D13FD4 /* SWStatusHeaderView.m */; };
 		89EE015C2154F03300D13FD4 /* SWUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 89EE015B2154F03300D13FD4 /* SWUser.m */; };
 		89EE0164215C67D100D13FD4 /* UINavigationBar+Awesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 89EE0162215C67D000D13FD4 /* UINavigationBar+Awesome.m */; };
@@ -888,6 +889,8 @@
 		89DF91B3215E274800AFE6B2 /* tokyo8.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tokyo8.jpg; sourceTree = "<group>"; };
 		89DF91BD215E29B700AFE6B2 /* WechatIMG5.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = WechatIMG5.jpeg; sourceTree = "<group>"; };
 		89DF91BF215E2A8600AFE6B2 /* WechatIMG6.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = WechatIMG6.jpeg; sourceTree = "<group>"; };
+		89DF91C1215F0B9500AFE6B2 /* SWStatusSourceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWStatusSourceViewController.h; sourceTree = "<group>"; };
+		89DF91C2215F0B9500AFE6B2 /* SWStatusSourceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWStatusSourceViewController.m; sourceTree = "<group>"; };
 		89EE01552154E54600D13FD4 /* SWStatusHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWStatusHeaderView.h; sourceTree = "<group>"; };
 		89EE01562154E54600D13FD4 /* SWStatusHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWStatusHeaderView.m; sourceTree = "<group>"; };
 		89EE015A2154F03300D13FD4 /* SWUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWUser.h; sourceTree = "<group>"; };
@@ -2428,6 +2431,8 @@
 				897EBBA42147A78A00CC32BF /* SWStatusPostViewController.m */,
 				897EBBDB2148F00700CC32BF /* SWStatusTimeViewController.h */,
 				897EBBDC2148F00700CC32BF /* SWStatusTimeViewController.m */,
+				89DF91C1215F0B9500AFE6B2 /* SWStatusSourceViewController.h */,
+				89DF91C2215F0B9500AFE6B2 /* SWStatusSourceViewController.m */,
 				897EBBDF214A04DD00CC32BF /* SWStatusLocationViewController.h */,
 				897EBBE0214A04DD00CC32BF /* SWStatusLocationViewController.m */,
 				89DF9152215CA2E700AFE6B2 /* SWStatusCommentViewController.h */,
@@ -3020,6 +3025,7 @@
 				897EBBD92147C33200CC32BF /* UIViewController+Animation.m in Sources */,
 				897EBBD32147C33200CC32BF /* UIAlertAction+CM.m in Sources */,
 				03141C4A2146B34D0030B553 /* ChatToolBarItem.m in Sources */,
+				89DF91C3215F0B9500AFE6B2 /* SWStatusSourceViewController.m in Sources */,
 				897EBBCD2147C33200CC32BF /* NSDictionary+HandleNSNull.m in Sources */,
 				03141A672146A64A0030B553 /* AppConfigurationTemplate.m in Sources */,
 				03141A502146A3FB0030B553 /* LWAsyncImageView.m in Sources */,

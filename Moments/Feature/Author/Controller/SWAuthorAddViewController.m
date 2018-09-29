@@ -56,8 +56,8 @@ NSString * const kAvator = @"kAvator";
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"确定" style:UIBarButtonItemStyleDone target:self action:@selector(validateForm)];
-    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStyleDone target:self action:@selector(validateForm)];
+    self.navigationItem.rightBarButtonItem.tintColor = UIColorGreen;
     self.tableView.sectionHeaderHeight = 30;
     self.tableView.sectionFooterHeight = CGFLOAT_MIN;
     self.tableView.backgroundColor = UIColorForBackground;
@@ -72,10 +72,22 @@ NSString * const kAvator = @"kAvator";
 
 -(void)validateForm {
     if (kStringIsEmpty(self.author.nickname)) {
-        [QMUITips showInfo:@"请填写昵称"];
+        UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"请填写昵称!"
+                                                                                  message:nil
+                                                                           preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"OK"
+                                                            style:UIAlertActionStyleDefault
+                                                          handler:nil]];
+        [self presentViewController:alertController animated:YES completion:nil];
         return;
     } else if (kStringIsEmpty(self.author.avatar)) {
-        [QMUITips showInfo:@"请选择头像"];
+        UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"请选择头像!"
+                                                                                  message:nil
+                                                                           preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"OK"
+                                                            style:UIAlertActionStyleDefault
+                                                          handler:nil]];
+        [self presentViewController:alertController animated:YES completion:nil];
         return;
     }
     if (self.completeBlock) {

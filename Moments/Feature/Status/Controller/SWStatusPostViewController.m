@@ -14,6 +14,7 @@
 #import "SWStatusLocationViewController.h"
 #import "SWAuthorViewController.h"
 #import "SWAuthor.h"
+#import "SWStatusSourceViewController.h"
 
 @interface SWStatusPostViewController ()<QMUITableViewDelegate, QMUITableViewDataSource>
 
@@ -61,6 +62,7 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
 - (void)setupNavigationItems {
     [super setupNavigationItems];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"发送" style:UIBarButtonItemStyleDone target:self action:@selector(savaStatusAction)];
+    self.navigationItem.rightBarButtonItem.tintColor = UIColorGreen;
 }
 
 - (void)viewDidLoad {
@@ -96,7 +98,13 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
 
 - (void)savaStatusAction {
     if (kStringIsEmpty(self.status.content) && self.originImages.count == 0) {
-        [QMUITips showInfo:@"请填写内容或选择图片"];
+        UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"请填写内容或选择图片!"
+                                                                                  message:nil
+                                                                           preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"OK"
+                                                            style:UIAlertActionStyleDefault
+                                                          handler:nil]];
+        [self presentViewController:alertController animated:YES completion:nil];
         return;
     }
     if (self.originImages.count > 0) {
@@ -111,7 +119,13 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
         self.status.avator = self.user.avatar;
     } else {
         if (!self.author) {
-            [QMUITips showInfo:@"请选择发布人!"];
+            UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"请选择发布人!"
+                                                                                      message:nil
+                                                                               preferredStyle:UIAlertControllerStyleAlert];
+            [alertController addAction:[UIAlertAction actionWithTitle:@"OK"
+                                                                style:UIAlertActionStyleDefault
+                                                              handler:nil]];
+            [self presentViewController:alertController animated:YES completion:nil];
             return;
         } else {
             self.status.nickname = self.author.nickname;
@@ -141,7 +155,7 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
         }
             break;
         default:
-            return 4;
+            return 5;
             break;
     }
 }
@@ -224,7 +238,7 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
                         cell.accessoryType = QMUIStaticTableViewCellAccessoryTypeDisclosureIndicator;
                     }
                     cell.textLabel.text = @"所在位置";
-                    cell.detailTextLabel.text = kStringIsEmpty(self.status.location) ? @"可不填":self.status.location;
+                    cell.detailTextLabel.text = kStringIsEmpty(self.status.location) ? @"选填":self.status.location;
                     return cell;
                 }
                     break;
@@ -245,6 +259,20 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
                     QMUITableViewCell *cell = (QMUITableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellWithIdentifier];
                     if (!cell) {
                         cell = [[QMUITableViewCell alloc] initForTableView:tableView withStyle:UITableViewCellStyleValue1 reuseIdentifier:cellWithIdentifier];
+                        cell.accessoryType = QMUIStaticTableViewCellAccessoryTypeDisclosureIndicator;
+                    }
+                    cell.textLabel.text = @"来源";
+                    cell.detailTextLabel.text = self.status.source;
+                    cell.detailTextLabel.text = kStringIsEmpty(self.status.source) ? @"选填":self.status.source;
+
+                    return cell;
+                }
+                    break;
+                    
+                case 3:{
+                    QMUITableViewCell *cell = (QMUITableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellWithIdentifier];
+                    if (!cell) {
+                        cell = [[QMUITableViewCell alloc] initForTableView:tableView withStyle:UITableViewCellStyleValue1 reuseIdentifier:cellWithIdentifier];
                         cell.selectionStyle = UITableViewCellSelectionStyleNone;
                     }
                     self.ownSwitch.on = self.status.own;
@@ -254,7 +282,7 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
                 }
                     break;
                     
-                case 3:{
+                case 4:{
                     QMUITableViewCell *cell = (QMUITableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellWithIdentifier];
                     if (!cell) {
                         cell = [[QMUITableViewCell alloc] initForTableView:tableView withStyle:UITableViewCellStyleValue1 reuseIdentifier:cellWithIdentifier];
@@ -276,7 +304,7 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
                     break;
                     
                     
-                case 4:{
+                case 5:{
                     QMUITableViewCell *cell = (QMUITableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellWithIdentifier];
                     if (!cell) {
                         cell = [[QMUITableViewCell alloc] initForTableView:tableView withStyle:UITableViewCellStyleValue1 reuseIdentifier:cellWithIdentifier];
@@ -334,11 +362,17 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
                 break;
                 
             case 2:{
+                SWStatusSourceViewController *controller = [[SWStatusSourceViewController alloc] init];
+                controller.completeBlock = ^(NSString * _Nonnull valueStr) {
+                    self.status.source = valueStr;
+                    [self.tableView reloadData];
+                };
+                [self.navigationController pushViewController:controller animated:YES];
                 
             }
                 break;
           
-            case 3:{
+            case 4:{
                 SWAuthorViewController *controller = [[SWAuthorViewController alloc] init];
                 controller.allowsMultipleSelection = NO;
                 @weakify(self)
@@ -363,6 +397,14 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return CGFLOAT_MIN;
+}
+
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    CGFloat offsetY = scrollView.contentOffset.y;
+    if (offsetY != 0) {
+        [self.tableView endEditing:YES];
+    }
 }
 
 @end
