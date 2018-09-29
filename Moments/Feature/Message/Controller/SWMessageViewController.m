@@ -10,7 +10,6 @@
 #import "SWMessage.h"
 #import "SWMessageCell.h"
 #import "SWCreateMsgViewController.h"
-#import "SWCreateLikeMsgViewController.h"
 
 @interface SWMessageViewController ()<QMUITableViewDelegate, QMUITableViewDataSource>
 
@@ -81,12 +80,12 @@
     @weakify(self)
     [actionSheet addButtonWithTitle:@"添加评论消息" style:TBActionButtonStyleDefault handler:^(TBActionButton * _Nonnull button) {
         @strongify(self)
-        SWCreateMsgViewController *controller = [[SWCreateMsgViewController alloc] init];
+        SWCreateMsgViewController *controller = [[SWCreateMsgViewController alloc] initWithType:1];
         [self.navigationController pushViewController:controller animated:YES];
     }];
     [actionSheet addButtonWithTitle:@"添加点赞消息" style:TBActionButtonStyleDefault handler:^(TBActionButton * _Nonnull button) {
         @strongify(self)
-        SWCreateLikeMsgViewController *controller = [[SWCreateLikeMsgViewController alloc] init];
+        SWCreateMsgViewController *controller = [[SWCreateMsgViewController alloc] initWithType:0];
         [self.navigationController pushViewController:controller animated:YES];
     }];
     [actionSheet addButtonWithTitle:@"取消" style:TBActionButtonStyleCancel];

@@ -402,7 +402,6 @@
 		89DF91D7215F488200AFE6B2 /* SWMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DF91D6215F488200AFE6B2 /* SWMessage.m */; };
 		89DF91DA215F4F9200AFE6B2 /* SWMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DF91D9215F4F9200AFE6B2 /* SWMessageCell.m */; };
 		89DF91DD215F5BD400AFE6B2 /* SWCreateMsgViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DF91DC215F5BD400AFE6B2 /* SWCreateMsgViewController.m */; };
-		89DF91E0215F666B00AFE6B2 /* SWCreateLikeMsgViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DF91DF215F666B00AFE6B2 /* SWCreateLikeMsgViewController.m */; };
 		89EE01572154E54600D13FD4 /* SWStatusHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89EE01562154E54600D13FD4 /* SWStatusHeaderView.m */; };
 		89EE015C2154F03300D13FD4 /* SWUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 89EE015B2154F03300D13FD4 /* SWUser.m */; };
 		89EE0164215C67D100D13FD4 /* UINavigationBar+Awesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 89EE0162215C67D000D13FD4 /* UINavigationBar+Awesome.m */; };
@@ -913,8 +912,6 @@
 		89DF91D9215F4F9200AFE6B2 /* SWMessageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWMessageCell.m; sourceTree = "<group>"; };
 		89DF91DB215F5BD400AFE6B2 /* SWCreateMsgViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWCreateMsgViewController.h; sourceTree = "<group>"; };
 		89DF91DC215F5BD400AFE6B2 /* SWCreateMsgViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWCreateMsgViewController.m; sourceTree = "<group>"; };
-		89DF91DE215F666B00AFE6B2 /* SWCreateLikeMsgViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWCreateLikeMsgViewController.h; sourceTree = "<group>"; };
-		89DF91DF215F666B00AFE6B2 /* SWCreateLikeMsgViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWCreateLikeMsgViewController.m; sourceTree = "<group>"; };
 		89EE01552154E54600D13FD4 /* SWStatusHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWStatusHeaderView.h; sourceTree = "<group>"; };
 		89EE01562154E54600D13FD4 /* SWStatusHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWStatusHeaderView.m; sourceTree = "<group>"; };
 		89EE015A2154F03300D13FD4 /* SWUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWUser.h; sourceTree = "<group>"; };
@@ -2609,8 +2606,6 @@
 				89DF91D0215F47A000AFE6B2 /* SWMessageViewController.m */,
 				89DF91DB215F5BD400AFE6B2 /* SWCreateMsgViewController.h */,
 				89DF91DC215F5BD400AFE6B2 /* SWCreateMsgViewController.m */,
-				89DF91DE215F666B00AFE6B2 /* SWCreateLikeMsgViewController.h */,
-				89DF91DF215F666B00AFE6B2 /* SWCreateLikeMsgViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -3124,7 +3119,6 @@
 				03141A4B2146A3FB0030B553 /* LWTextStorage.m in Sources */,
 				897EBB81214767DC00CC32BF /* IndexViewController.m in Sources */,
 				0314195921469BB60030B553 /* main.m in Sources */,
-				89DF91E0215F666B00AFE6B2 /* SWCreateLikeMsgViewController.m in Sources */,
 				89EE01572154E54600D13FD4 /* SWStatusHeaderView.m in Sources */,
 				89DF91CD215F2C9300AFE6B2 /* UIViewController+CMAutoTracker.m in Sources */,
 				03141A4C2146A3FB0030B553 /* LWStorageBuilder.m in Sources */,

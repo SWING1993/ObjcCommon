@@ -7,35 +7,83 @@
 //
 
 #import "SWCreateMsgViewController.h"
+#import "SWAuthorViewController.h"
+#import "SWAuthor.h"
+
+@interface XLFormSWAuthorCell : XLFormBaseCell
+
+@end
+
+@implementation XLFormSWAuthorCell
+
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        // Initialization code
+    }
+    return self;
+}
+
+- (void)configure {
+    [super configure];
+    //override
+}
+
+- (void)update {
+    [super update];
+    // override
+    self.textLabel.text = self.rowDescriptor.title;
+    self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    if (self.rowDescriptor.value) {
+        self.detailTextLabel.text = self.rowDescriptor.value[@"nickname"];
+        self.detailTextLabel.textColor = UIColorBlack;
+    } else {
+        self.detailTextLabel.text = @"请选择";
+        self.detailTextLabel.textColor = [UIColor grayColor];
+    }
+}
+
+-(void)formDescriptorCellDidSelectedWithFormController:(XLFormViewController *)controller {
+    // custom code here
+    // i.e new behaviour when cell has been selected
+    
+    SWAuthorViewController *authorViewController = [[SWAuthorViewController alloc] init];
+    authorViewController.allowsMultipleSelection = NO;
+    @weakify(self)
+    authorViewController.singleCompleteBlock = ^(SWAuthor *author) {
+        @strongify(self)
+        self.rowDescriptor.value = @{@"nickname":author.nickname?:@"",@"avatar":author.avatar?:@""};
+    };
+    [controller.navigationController pushViewController:authorViewController animated:YES];
+}
+
+@end
 
 
 @interface SWCreateMsgViewController ()
+
+@property (nonatomic, assign) int type;
 
 @end
 
 @implementation SWCreateMsgViewController
 
-- (id)init {
-    XLFormDescriptor * formDescriptor = [XLFormDescriptor formDescriptorWithTitle:@"评论"];
+- (instancetype)initWithType:(int)type {
+    
+    self.type = type;
+    
+    XLFormDescriptor * formDescriptor = [XLFormDescriptor formDescriptorWithTitle:self.type == 0 ? @"点赞消息":@"评论消息"];
     XLFormSectionDescriptor * section;
     XLFormRowDescriptor * row;
-    
-    formDescriptor.assignFirstResponderOnShow = YES;
-    
+        
     // Basic Information - Section
     section = [XLFormSectionDescriptor formSection];
     [formDescriptor addFormSection:section];
     
-    // 消息头像
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:kAvatar rowType:XLFormRowDescriptorTypeImage title:@"头像"];
-    row.value = [UIImage imageNamed:@"defaultHead"];
-    [section addFormRow:row];
-    
-    // 昵称
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:kNickname rowType:XLFormRowDescriptorTypeText title:@"昵称"];
-    row.required = YES;
-    [row.cellConfigAtConfigure setObject:@"必填" forKey:@"textField.placeholder"];
-    [row.cellConfigAtConfigure setObject:@(NSTextAlignmentRight) forKey:@"textField.textAlignment"];
+    // 息发送人
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:kAvatar rowType:@"XLFormRowDescriptorTypeCustom" title:@"消息发送人"];
+    row.cellClass = [XLFormSWAuthorCell class];
+    row.cellStyle = UITableViewCellStyleValue1;
     [section addFormRow:row];
     
     // 时间
@@ -54,27 +102,17 @@
     
     [section addFormRow:row];
     
-    // 评论内容
-    section = [XLFormSectionDescriptor formSection];
-    [formDescriptor addFormSection:section];
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:kMessage rowType:XLFormRowDescriptorTypeTextView title:@"评论内容"];
-    row.required = YES;
-    [row.cellConfigAtConfigure setObject:@"必填" forKey:@"textView.placeholder"];
-    [section addFormRow:row];
+    if (type == 1) {
+        // 评论内容
+        section = [XLFormSectionDescriptor formSection];
+        [formDescriptor addFormSection:section];
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:kMessage rowType:XLFormRowDescriptorTypeTextView title:@"评论内容"];
+        row.required = YES;
+        [row.cellConfigAtConfigure setObject:@"必填" forKey:@"textView.placeholder"];
+        [section addFormRow:row];
+    }
     
     return [super initWithForm:formDescriptor];
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // change cell height of a particular cell
-    if ([[self.form formRowAtIndex:indexPath].tag isEqualToString:@"Name"]){
-        return 60.0;
-    }
-    else if ([[self.form formRowAtIndex:indexPath].tag isEqualToString:kStatus]){
-        return 100.0;
-    }
-    return [super tableView:tableView heightForRowAtIndexPath:indexPath];
 }
 
 - (void)viewDidLoad {
@@ -92,18 +130,18 @@
 - (void)savePressed:(UIBarButtonItem * __unused)button {
     [self.tableView endEditing:YES];
 
-    UIImage *avatar = [[self formValues] objectForKey:kAvatar];
-    NSString *nickname = [[self formValues] objectForKey:kNickname];
+    NSDictionary *authorDict = [[self formValues] objectForKey:kAuthor];
+    NSString *avatar = authorDict[@"avatar"];
+    NSString *nickname = authorDict[@"nickname"];
     NSString *time = [[self formValues] objectForKey:kTime];
     UIImage *status = [[self formValues] objectForKey:kStatus];
     NSString *message = [[self formValues] objectForKey:kMessage];
 
-    
     NSString *errorMessage;
     if (kStringIsEmpty(nickname)) {
-        errorMessage = @"昵称不能为空";
+        errorMessage = @"消息发布人不能为空";
     }
-    if (kStringIsEmpty(message)) {
+    if (kStringIsEmpty(message) && self.type == 1) {
         errorMessage = @"回复内容不能为空";
     }
     if (!kStringIsEmpty(errorMessage)) {
@@ -118,10 +156,10 @@
     }
     
     SWMessage *msgObj = [[SWMessage alloc] init];
-    msgObj.avator = [SWStatus saveImage:avatar];
+    msgObj.avatar = avatar;
     msgObj.nickname = nickname;
     msgObj.createdTime = time;
-    msgObj.type = 1;
+    msgObj.type = self.type;
     msgObj.contentImage = [SWStatus saveImage:status];
     msgObj.content = message;
     

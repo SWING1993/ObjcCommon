@@ -13,5 +13,7 @@
 
 @property (nonatomic, copy) void(^completeBlock)(SWMessage *message);
 
+- (instancetype)initWithType:(int)type;
+
 @end
 

@@ -180,6 +180,7 @@
 #define kValidationName  @"first"
 #define kValidationEmail  @"second"
 #define kSourceName  @"sourceName"
+#define kAuthor  @"author"
 
 /**
  *  CMConfigurationTemplate 是一份配置表，用于配合 QMUIConfiguration 来管理整个 App 的全局样式，使用方式：

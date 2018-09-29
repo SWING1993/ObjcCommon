@@ -9,6 +9,7 @@
 #import "IndexViewController.h"
 #import "SWStatusViewController.h"
 #import "SWMessageViewController.h"
+#import "SWAuthor.h"
 
 @interface IndexViewController ()<GADBannerViewDelegate>
 
@@ -33,6 +34,14 @@
     self.bannerView.adUnitID = @"ca-app-pub-6037095993957840/9771733149";
     self.bannerView.rootViewController = self;
     [self.tableView addSubview:self.bannerView];
+    
+    @weakify(self)
+    dispatch_queue_t queue = dispatch_queue_create("kk", DISPATCH_QUEUE_SERIAL);
+    dispatch_async(queue, ^{
+        @strongify(self)
+        [self addAuthor];
+
+    });
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -106,5 +115,28 @@
 - (void)adView:(GADBannerView *)bannerView didFailToReceiveAdWithError:(GADRequestError *)error {
     NSLog(@"adView:didFailToReceiveAdWithError:%@", [error localizedDescription]);
 }
+
+- (void)addAuthor {
+    //串行队列
+    dispatch_queue_t queue = dispatch_queue_create("kk", DISPATCH_QUEUE_SERIAL);
+    dispatch_async(queue, ^{
+        RLMResults *allAuthor = [SWAuthor allObjects];
+        if (allAuthor.count == 0) {
+            NSArray *nicknames = @[@"煎饼侠",@"萌萌",@"皮卡丘",@"凹凸曼",@"拉克丝",@"小鑫鑫",@"琪琪",@"喵",@"Laurinda",@"阿狸",@"Fiona",@"Lee",@"雅彤",@"璐璐",@"SuperMan",@"可儿",@"雅静",@"Jennifer",@"路飞",@"达孟",@"蛋儿",@"茉莉",@"小薇",@"小翔",@"Adele",@"李菲菲",@"haha",@"ZZ",@"Lacey",@"星爷",@"Selena",@"周归璨",@"Wendy",@"Queenie",@"Lana",@"阿颖"];
+            RLMRealm *realm = [RLMRealm defaultRealm];
+            [realm beginWriteTransaction];
+            for (int i = 0; i < nicknames.count; i ++) {
+                SWAuthor *author = [[SWAuthor alloc] init];
+                author.id = i;
+                author.nickname = nicknames[i];
+                NSString *imageName = [NSString stringWithFormat:@"avatar%d.jpg",i];
+                author.avatar = [SWStatus saveImage:[UIImage imageNamed:imageName]];
+                [realm addObject:author];
+            }
+            [realm commitWriteTransaction];
+        }
+    });
+}
+
 
 @end
