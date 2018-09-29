@@ -34,5 +34,6 @@
 #import "SWNavigationController.h"
 #import "Gallop.h"
 #import "SWStatus.h"
+#import "CMAutoTrackerOperation.h"
 
 #endif /* MomentsHeader_pch */

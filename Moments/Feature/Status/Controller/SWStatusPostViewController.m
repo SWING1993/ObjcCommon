@@ -16,7 +16,7 @@
 #import "SWAuthor.h"
 #import "SWStatusSourceViewController.h"
 
-@interface SWStatusPostViewController ()<QMUITableViewDelegate, QMUITableViewDataSource>
+@interface SWStatusPostViewController ()<QMUITableViewDelegate, QMUITableViewDataSource, GADBannerViewDelegate>
 
 @property (nonatomic, strong) QMUITableView *tableView;
 @property (nonatomic, strong) SWAuthor *author;
@@ -24,13 +24,14 @@
 @property (nonatomic, strong) UISwitch *ownSwitch;
 @property (nonatomic, strong) UISwitch *personalSwitch;
 
+@property (nonatomic, strong) GADBannerView *bannerView;
+
 @end
 
 static NSString *SWTextViewCellIdentifier = @"SWTextViewCellIdentifier";
 static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
 
 @implementation SWStatusPostViewController
-
 
 - (void)initSubviews {
     [super initSubviews];
@@ -57,11 +58,16 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
     [self.tableView registerClass:[SWTextViewCell class] forCellReuseIdentifier:SWTextViewCellIdentifier];
     [self.tableView registerClass:[SWStatusImageCell class] forCellReuseIdentifier:SWStatusImageCellIdentifier];
     [self.view addSubview:self.tableView];
+    
+    self.bannerView = [[GADBannerView alloc] initWithFrame:CGRectMake(0, self.view.qmui_bottom - 50, self.view.qmui_width, 50)];
+    self.bannerView.adUnitID = @"ca-app-pub-6037095993957840/9771733149";
+    self.bannerView.rootViewController = self;
+    [self.view addSubview:self.bannerView];
 }
 
 - (void)setupNavigationItems {
     [super setupNavigationItems];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"发送" style:UIBarButtonItemStyleDone target:self action:@selector(savaStatusAction)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"发表" style:UIBarButtonItemStyleDone target:self action:@selector(savaStatusAction)];
     self.navigationItem.rightBarButtonItem.tintColor = UIColorGreen;
 }
 
@@ -74,6 +80,12 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
     self.status.createdTime = @"现在";
     self.status.own = YES;
     self.originImages = [NSMutableArray array];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    GADRequest *request = [GADRequest request];
+    request.testDevices = @[kGADSimulatorID];
 }
 
 #pragma mark - Actions
@@ -140,6 +152,7 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
     [realm commitWriteTransaction];
     
     [self.navigationController popToRootViewControllerAnimated:YES];
+    [[CMAutoTrackerOperation sharedInstance] sendEvent:@"post_event"];
 }
 
 #pragma mark - UITableViewDataSource
@@ -405,6 +418,15 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
     if (offsetY != 0) {
         [self.tableView endEditing:YES];
     }
+}
+
+#pragma mark - GADBannerViewDelegate
+- (void)adViewDidReceiveAd:(GADBannerView *)bannerView {
+    NSLog(@"adView:didSuccess");
+}
+
+- (void)adView:(GADBannerView *)bannerView didFailToReceiveAdWithError:(GADRequestError *)error {
+    NSLog(@"adView:didFailToReceiveAdWithError:%@", [error localizedDescription]);
 }
 
 @end

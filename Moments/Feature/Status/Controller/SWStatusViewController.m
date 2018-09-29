@@ -17,7 +17,7 @@
 #import "SWStatusCommentViewController.h"
 #import "SWStatusLinkViewController.h"
 
-@interface SWStatusViewController () <QMUITableViewDelegate, QMUITableViewDataSource, GADBannerViewDelegate>
+@interface SWStatusViewController () <QMUITableViewDelegate, QMUITableViewDataSource>
 
 @property (nonatomic, strong) SWStatusHeaderView* tableViewHeader;
 @property (nonatomic, strong) QMUITableView *tableView;
@@ -28,7 +28,6 @@
 @property (nonatomic, assign) CGFloat maxAlphaOffset;
 @property (nonatomic, assign) CGFloat kRefreshBoundary;
 @property (nonatomic, strong) QMUINavigationButton *discoverBtn;
-@property (nonatomic, strong) GADBannerView *bannerView;
 
 @end
 
@@ -49,11 +48,6 @@
     self.tableView.backgroundColor = UIColorWhite;
     [self.view addSubview:self.tableView];
     
-    self.bannerView = [[GADBannerView alloc] initWithFrame:CGRectMake(0, self.view.qmui_bottom - 50, self.view.qmui_width, 50)];
-    self.bannerView.adUnitID = @"ca-app-pub-6037095993957840/9771733149";
-    self.bannerView.rootViewController = self;
-    [self.view addSubview:self.bannerView];
-
 }
 
 - (void)setupNavigationItems {
@@ -85,16 +79,13 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self fakeDownloadNeedReloadTable:YES];
-    GADRequest *request = [GADRequest request];
-    request.testDevices = @[kGADSimulatorID];
-    self.bannerView.delegate = self;
-    [self.bannerView loadRequest:request];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     self.tableView.delegate = nil;
     [self.navigationController.navigationBar lt_reset];
+    self.navigationController.navigationBar.barStyle = UIBarStyleDefault;
 }
 
 #pragma mark - UITableViewDataSource
@@ -538,14 +529,6 @@
         self.tableViewHeader.avtar.image = [SWStatus getDocumentImageWithName:self.user.avatar];
     }
     self.tableViewHeader.nickname.text = self.user.nickname;
-}
-
-- (void)adViewDidReceiveAd:(GADBannerView *)bannerView {
-    NSLog(@"adView:didSuccess");
-}
-
-- (void)adView:(GADBannerView *)bannerView didFailToReceiveAdWithError:(GADRequestError *)error {
-    NSLog(@"adView:didFailToReceiveAdWithError:%@", [error localizedDescription]);
 }
 
 - (void)addAuthor {

@@ -40,6 +40,7 @@
     channel = @"Debug";
 #else
     channel = @"AppStore";
+    [CMAutoTrackerOperation sharedInstance];
 #endif
     [UMConfigure initWithAppkey:@"5badcc98b465f55447000177" channel:channel];
 

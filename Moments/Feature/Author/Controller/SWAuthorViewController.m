@@ -60,6 +60,7 @@ static NSString *const Identifier = @"CollectionCellIdentifier";
                 [realm beginWriteTransaction];
                 [realm addObject:author];
                 [realm commitWriteTransaction];
+                [[CMAutoTrackerOperation sharedInstance] sendEvent:@"add_author_event"];
             }
         };
         [self.navigationController pushViewController:controller animated:YES];

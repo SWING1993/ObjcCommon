@@ -395,6 +395,9 @@
 		89DF91BE215E29B700AFE6B2 /* WechatIMG5.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 89DF91BD215E29B700AFE6B2 /* WechatIMG5.jpeg */; };
 		89DF91C0215E2A8600AFE6B2 /* WechatIMG6.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 89DF91BF215E2A8600AFE6B2 /* WechatIMG6.jpeg */; };
 		89DF91C3215F0B9500AFE6B2 /* SWStatusSourceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DF91C2215F0B9500AFE6B2 /* SWStatusSourceViewController.m */; };
+		89DF91CB215F2C9300AFE6B2 /* NSObject+CMAutoTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DF91C5215F2C9300AFE6B2 /* NSObject+CMAutoTracker.m */; };
+		89DF91CC215F2C9300AFE6B2 /* CMAutoTrackerOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DF91C6215F2C9300AFE6B2 /* CMAutoTrackerOperation.m */; };
+		89DF91CD215F2C9300AFE6B2 /* UIViewController+CMAutoTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DF91C7215F2C9300AFE6B2 /* UIViewController+CMAutoTracker.m */; };
 		89EE01572154E54600D13FD4 /* SWStatusHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89EE01562154E54600D13FD4 /* SWStatusHeaderView.m */; };
 		89EE015C2154F03300D13FD4 /* SWUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 89EE015B2154F03300D13FD4 /* SWUser.m */; };
 		89EE0164215C67D100D13FD4 /* UINavigationBar+Awesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 89EE0162215C67D000D13FD4 /* UINavigationBar+Awesome.m */; };
@@ -891,6 +894,12 @@
 		89DF91BF215E2A8600AFE6B2 /* WechatIMG6.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = WechatIMG6.jpeg; sourceTree = "<group>"; };
 		89DF91C1215F0B9500AFE6B2 /* SWStatusSourceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWStatusSourceViewController.h; sourceTree = "<group>"; };
 		89DF91C2215F0B9500AFE6B2 /* SWStatusSourceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWStatusSourceViewController.m; sourceTree = "<group>"; };
+		89DF91C5215F2C9300AFE6B2 /* NSObject+CMAutoTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CMAutoTracker.m"; sourceTree = "<group>"; };
+		89DF91C6215F2C9300AFE6B2 /* CMAutoTrackerOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMAutoTrackerOperation.m; sourceTree = "<group>"; };
+		89DF91C7215F2C9300AFE6B2 /* UIViewController+CMAutoTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+CMAutoTracker.m"; sourceTree = "<group>"; };
+		89DF91C8215F2C9300AFE6B2 /* NSObject+CMAutoTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+CMAutoTracker.h"; sourceTree = "<group>"; };
+		89DF91C9215F2C9300AFE6B2 /* CMAutoTrackerOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMAutoTrackerOperation.h; sourceTree = "<group>"; };
+		89DF91CA215F2C9300AFE6B2 /* UIViewController+CMAutoTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+CMAutoTracker.h"; sourceTree = "<group>"; };
 		89EE01552154E54600D13FD4 /* SWStatusHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWStatusHeaderView.h; sourceTree = "<group>"; };
 		89EE01562154E54600D13FD4 /* SWStatusHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWStatusHeaderView.m; sourceTree = "<group>"; };
 		89EE015A2154F03300D13FD4 /* SWUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWUser.h; sourceTree = "<group>"; };
@@ -1063,6 +1072,7 @@
 		03141A642146A6340030B553 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				89DF91C4215F2C9300AFE6B2 /* CMAutoTracker */,
 				897EBBAC2147C33100CC32BF /* Category */,
 				897EBB752147641E00CC32BF /* Base */,
 			);
@@ -2553,6 +2563,19 @@
 			path = tokyo;
 			sourceTree = "<group>";
 		};
+		89DF91C4215F2C9300AFE6B2 /* CMAutoTracker */ = {
+			isa = PBXGroup;
+			children = (
+				89DF91C9215F2C9300AFE6B2 /* CMAutoTrackerOperation.h */,
+				89DF91C6215F2C9300AFE6B2 /* CMAutoTrackerOperation.m */,
+				89DF91C8215F2C9300AFE6B2 /* NSObject+CMAutoTracker.h */,
+				89DF91C5215F2C9300AFE6B2 /* NSObject+CMAutoTracker.m */,
+				89DF91CA215F2C9300AFE6B2 /* UIViewController+CMAutoTracker.h */,
+				89DF91C7215F2C9300AFE6B2 /* UIViewController+CMAutoTracker.m */,
+			);
+			path = CMAutoTracker;
+			sourceTree = "<group>";
+		};
 		AD8237014271D1CACE5D2039 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -3010,6 +3033,7 @@
 				89EE0164215C67D100D13FD4 /* UINavigationBar+Awesome.m in Sources */,
 				897EBBD42147C33200CC32BF /* NSString+Common.m in Sources */,
 				03141A3A2146A3FB0030B553 /* LWTextGlyph.m in Sources */,
+				89DF91CC215F2C9300AFE6B2 /* CMAutoTrackerOperation.m in Sources */,
 				03141A532146A3FB0030B553 /* LWImageProcessor.m in Sources */,
 				897EBBAB2147AE6400CC32BF /* SWStatusImageCell.m in Sources */,
 				03141A412146A3FB0030B553 /* NSMutableAttributedString+Gallop.m in Sources */,
@@ -3041,6 +3065,7 @@
 				897EBB81214767DC00CC32BF /* IndexViewController.m in Sources */,
 				0314195921469BB60030B553 /* main.m in Sources */,
 				89EE01572154E54600D13FD4 /* SWStatusHeaderView.m in Sources */,
+				89DF91CD215F2C9300AFE6B2 /* UIViewController+CMAutoTracker.m in Sources */,
 				03141A4C2146A3FB0030B553 /* LWStorageBuilder.m in Sources */,
 				03141A592146A3FB0030B553 /* LWHTMLParser.m in Sources */,
 				03141A372146A3FA0030B553 /* LWTextLayout.m in Sources */,
@@ -3061,6 +3086,7 @@
 				897EBBDD2148F00700CC32BF /* SWStatusTimeViewController.m in Sources */,
 				03141A432146A3FB0030B553 /* LWTextAttachment.m in Sources */,
 				897EBBD62147C33200CC32BF /* NSDate+Extension.m in Sources */,
+				89DF91CB215F2C9300AFE6B2 /* NSObject+CMAutoTracker.m in Sources */,
 				03141A5D2146A3FB0030B553 /* LWAsyncImageView+WebCache.m in Sources */,
 				897EBB922147720300CC32BF /* SWStatusCellLayout.m in Sources */,
 				897EBBD72147C33200CC32BF /* UIView+GesAdditions.m in Sources */,
