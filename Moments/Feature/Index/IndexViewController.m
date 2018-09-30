@@ -29,6 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
     self.dataSource = @[@"朋友圈",@"状态详情",@"浏览页",@"消息"];
     self.bannerView = [[GADBannerView alloc] initWithFrame:CGRectMake(0, self.view.qmui_height - 50 - self.qmui_navigationBarMaxYInViewCoordinator, self.view.qmui_width, 50)];
     self.bannerView.adUnitID = @"ca-app-pub-6037095993957840/9771733149";

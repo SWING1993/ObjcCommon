@@ -7,7 +7,7 @@
 //
 
 #import <QMUIKit/QMUIKit.h>
-
+#import <YPNavigationBarTransition/YPNavigationBarTransition.h>
 @interface SWTableViewController : QMUICommonTableViewController
 
 @end

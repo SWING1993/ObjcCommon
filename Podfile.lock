@@ -287,6 +287,7 @@ PODS:
     - UMCCommon
   - UMCCommon (1.5.2)
   - UMCSecurityPlugins (1.0.6)
+  - YPNavigationBarTransition (2.0.9)
 
 DEPENDENCIES:
   - BlocksKit
@@ -306,6 +307,7 @@ DEPENDENCIES:
   - UMCAnalytics
   - UMCCommon
   - UMCSecurityPlugins
+  - YPNavigationBarTransition (~> 2.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -326,6 +328,7 @@ SPEC REPOS:
     - UMCAnalytics
     - UMCCommon
     - UMCSecurityPlugins
+    - YPNavigationBarTransition
 
 SPEC CHECKSUMS:
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
@@ -345,7 +348,8 @@ SPEC CHECKSUMS:
   UMCAnalytics: 0aff87e39008e2a650e5917430db0da2de2f8495
   UMCCommon: 4392868ac47ff1b101663106bb114ba616fabbad
   UMCSecurityPlugins: 0831a08f3988f3cea9f1d3a7626cd9bee4fef150
+  YPNavigationBarTransition: 928a8a3d944cecfd2f10a0847710384a9cdf9039
 
-PODFILE CHECKSUM: 9ad051bd099c7c6b9dfe9d82d1f842d9e741e38f
+PODFILE CHECKSUM: 5c84a2b1fd396636a158955174182d8598875d18
 
 COCOAPODS: 1.5.3

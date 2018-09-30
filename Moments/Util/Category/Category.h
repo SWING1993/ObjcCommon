@@ -23,6 +23,5 @@
 #import "UIAlertAction+CM.h"
 #import "UIScrollView+EmptyDataSet.h"
 #import "UIView+GesAdditions.h"
-#import "UINavigationBar+Awesome.h"
 
 #endif /* CMCategory_h */

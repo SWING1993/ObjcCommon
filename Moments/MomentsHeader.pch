@@ -30,10 +30,9 @@
 #import "TPKeyboardAvoidingCollectionView.h"
 #import "AppConfigurationTemplate.h"
 #import "SWViewController.h"
-#import "SWTableViewController.h"
-#import "SWNavigationController.h"
 #import "Gallop.h"
 #import "SWStatus.h"
 #import "CMAutoTrackerOperation.h"
-
+#import <YPNavigationBarTransition/YPNavigationBarTransition.h>
+#import "SWTableViewController.h"
 #endif /* MomentsHeader_pch */

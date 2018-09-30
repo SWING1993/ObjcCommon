@@ -309,13 +309,13 @@
 		03141D432146B34D0030B553 /* MorePanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 03141C432146B34C0030B553 /* MorePanel.m */; };
 		03141D442146B34D0030B553 /* ChatKeyBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 03141C452146B34C0030B553 /* ChatKeyBoard.m */; };
 		499416C83B006E9CF274A068 /* Pods_Moments.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EA9D01FD7A1B70092AD68B9 /* Pods_Moments.framework */; };
+		892720C62160CCD2006E066F /* SWTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 892720C52160CCD2006E066F /* SWTableViewController.m */; };
+		892720C92160CED5006E066F /* YPNavigationController+Configure.m in Sources */ = {isa = PBXBuildFile; fileRef = 892720C72160CED5006E066F /* YPNavigationController+Configure.m */; };
 		89744C63214F457800761E08 /* SWAuthor.m in Sources */ = {isa = PBXBuildFile; fileRef = 89744C62214F457800761E08 /* SWAuthor.m */; };
 		89744C6A214F462200761E08 /* SWAuthorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89744C69214F462200761E08 /* SWAuthorViewController.m */; };
 		89744C6D214F4BDD00761E08 /* SWAuthorAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89744C6C214F4BDD00761E08 /* SWAuthorAddViewController.m */; };
 		897EBB7B2147664800CC32BF /* SWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBB7A2147664800CC32BF /* SWViewController.m */; };
-		897EBB7E214767A300CC32BF /* SWNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBB7D214767A300CC32BF /* SWNavigationController.m */; };
 		897EBB81214767DC00CC32BF /* IndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBB80214767DC00CC32BF /* IndexViewController.m */; };
-		897EBB8421476B6900CC32BF /* SWTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBB8321476B6900CC32BF /* SWTableViewController.m */; };
 		897EBB8921476E6B00CC32BF /* SWStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBB8821476E6B00CC32BF /* SWStatus.m */; };
 		897EBB8E21476EAF00CC32BF /* SWStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBB8D21476EAF00CC32BF /* SWStatusViewController.m */; };
 		897EBB922147720300CC32BF /* SWStatusCellLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBB912147720300CC32BF /* SWStatusCellLayout.m */; };
@@ -441,7 +441,6 @@
 		89DF925D2160645600AFE6B2 /* XLFormValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DF92352160645600AFE6B2 /* XLFormValidator.m */; };
 		89EE01572154E54600D13FD4 /* SWStatusHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89EE01562154E54600D13FD4 /* SWStatusHeaderView.m */; };
 		89EE015C2154F03300D13FD4 /* SWUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 89EE015B2154F03300D13FD4 /* SWUser.m */; };
-		89EE0164215C67D100D13FD4 /* UINavigationBar+Awesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 89EE0162215C67D000D13FD4 /* UINavigationBar+Awesome.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -812,6 +811,10 @@
 		03141C442146B34C0030B553 /* MorePanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MorePanel.h; sourceTree = "<group>"; };
 		03141C452146B34C0030B553 /* ChatKeyBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatKeyBoard.m; sourceTree = "<group>"; };
 		05BDC4358F3399D37FD7F08F /* Pods-Moments.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moments.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Moments/Pods-Moments.debug.xcconfig"; sourceTree = "<group>"; };
+		892720C42160CCD1006E066F /* SWTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWTableViewController.h; sourceTree = "<group>"; };
+		892720C52160CCD2006E066F /* SWTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWTableViewController.m; sourceTree = "<group>"; };
+		892720C72160CED5006E066F /* YPNavigationController+Configure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YPNavigationController+Configure.m"; sourceTree = "<group>"; };
+		892720C82160CED5006E066F /* YPNavigationController+Configure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YPNavigationController+Configure.h"; sourceTree = "<group>"; };
 		89744C61214F457800761E08 /* SWAuthor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWAuthor.h; sourceTree = "<group>"; };
 		89744C62214F457800761E08 /* SWAuthor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWAuthor.m; sourceTree = "<group>"; };
 		89744C68214F462200761E08 /* SWAuthorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWAuthorViewController.h; sourceTree = "<group>"; };
@@ -820,12 +823,8 @@
 		89744C6C214F4BDD00761E08 /* SWAuthorAddViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWAuthorAddViewController.m; sourceTree = "<group>"; };
 		897EBB792147664800CC32BF /* SWViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWViewController.h; sourceTree = "<group>"; };
 		897EBB7A2147664800CC32BF /* SWViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWViewController.m; sourceTree = "<group>"; };
-		897EBB7C214767A300CC32BF /* SWNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWNavigationController.h; sourceTree = "<group>"; };
-		897EBB7D214767A300CC32BF /* SWNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWNavigationController.m; sourceTree = "<group>"; };
 		897EBB7F214767DC00CC32BF /* IndexViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IndexViewController.h; sourceTree = "<group>"; };
 		897EBB80214767DC00CC32BF /* IndexViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IndexViewController.m; sourceTree = "<group>"; };
-		897EBB8221476B6900CC32BF /* SWTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWTableViewController.h; sourceTree = "<group>"; };
-		897EBB8321476B6900CC32BF /* SWTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWTableViewController.m; sourceTree = "<group>"; };
 		897EBB8721476E6B00CC32BF /* SWStatus.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWStatus.h; sourceTree = "<group>"; };
 		897EBB8821476E6B00CC32BF /* SWStatus.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWStatus.m; sourceTree = "<group>"; };
 		897EBB8C21476EAF00CC32BF /* SWStatusViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWStatusViewController.h; sourceTree = "<group>"; };
@@ -1031,8 +1030,6 @@
 		89EE01562154E54600D13FD4 /* SWStatusHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWStatusHeaderView.m; sourceTree = "<group>"; };
 		89EE015A2154F03300D13FD4 /* SWUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWUser.h; sourceTree = "<group>"; };
 		89EE015B2154F03300D13FD4 /* SWUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWUser.m; sourceTree = "<group>"; };
-		89EE0162215C67D000D13FD4 /* UINavigationBar+Awesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Awesome.m"; sourceTree = "<group>"; };
-		89EE0163215C67D000D13FD4 /* UINavigationBar+Awesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+Awesome.h"; sourceTree = "<group>"; };
 		9EA9D01FD7A1B70092AD68B9 /* Pods_Moments.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Moments.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A61FFE8889B53E330545BB1B /* Pods-Moments.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moments.release.xcconfig"; path = "Pods/Target Support Files/Pods-Moments/Pods-Moments.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -2439,6 +2436,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		892720CA2160CF16006E066F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				89EE015A2154F03300D13FD4 /* SWUser.h */,
+				89EE015B2154F03300D13FD4 /* SWUser.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		89744C60214F455900761E08 /* Author */ = {
 			isa = PBXGroup;
 			children = (
@@ -2479,9 +2485,8 @@
 		897EBB752147641E00CC32BF /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				892720CA2160CF16006E066F /* Model */,
 				897EBB782147660000CC32BF /* Controller */,
-				89EE015A2154F03300D13FD4 /* SWUser.h */,
-				89EE015B2154F03300D13FD4 /* SWUser.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -2509,12 +2514,12 @@
 		897EBB782147660000CC32BF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				892720C82160CED5006E066F /* YPNavigationController+Configure.h */,
+				892720C72160CED5006E066F /* YPNavigationController+Configure.m */,
+				892720C42160CCD1006E066F /* SWTableViewController.h */,
+				892720C52160CCD2006E066F /* SWTableViewController.m */,
 				897EBB792147664800CC32BF /* SWViewController.h */,
 				897EBB7A2147664800CC32BF /* SWViewController.m */,
-				897EBB8221476B6900CC32BF /* SWTableViewController.h */,
-				897EBB8321476B6900CC32BF /* SWTableViewController.m */,
-				897EBB7C214767A300CC32BF /* SWNavigationController.h */,
-				897EBB7D214767A300CC32BF /* SWNavigationController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2602,8 +2607,6 @@
 				897EBBB12147C33100CC32BF /* UIColor+layer.m */,
 				897EBBBB2147C33100CC32BF /* UIImage+UI.h */,
 				897EBBCB2147C33100CC32BF /* UIImage+UI.m */,
-				89EE0163215C67D000D13FD4 /* UINavigationBar+Awesome.h */,
-				89EE0162215C67D000D13FD4 /* UINavigationBar+Awesome.m */,
 				897EBBC92147C33100CC32BF /* UIScrollView+EmptyDataSet.h */,
 				897EBBB52147C33100CC32BF /* UIScrollView+EmptyDataSet.m */,
 				897EBBC02147C33100CC32BF /* UITableView+Common.h */,
@@ -2742,9 +2745,9 @@
 				89DF91D6215F488200AFE6B2 /* SWMessage.m */,
 			);
 			path = Model;
-            sourceTree = "<group>";
-        };
-        89DF91E32160645600AFE6B2 /* XLForm */ = {
+			sourceTree = "<group>";
+		};
+		89DF91E32160645600AFE6B2 /* XLForm */ = {
 			isa = PBXGroup;
 			children = (
 				89DF91E52160645600AFE6B2 /* XL */,
@@ -3270,6 +3273,7 @@
 				"${BUILT_PRODUCTS_DIR}/TBActionSheet/TBActionSheet.framework",
 				"${BUILT_PRODUCTS_DIR}/TPKeyboardAvoiding/TPKeyboardAvoiding.framework",
 				"${BUILT_PRODUCTS_DIR}/TZImagePickerController/TZImagePickerController.framework",
+				"${BUILT_PRODUCTS_DIR}/YPNavigationBarTransition/YPNavigationBarTransition.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -3286,6 +3290,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TBActionSheet.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TPKeyboardAvoiding.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TZImagePickerController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YPNavigationBarTransition.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -3325,7 +3330,6 @@
 				89DF92572160645600AFE6B2 /* XLFormRowNavigationAccessoryView.m in Sources */,
 				897EBBD12147C33200CC32BF /* NSDate+Utilities.m in Sources */,
 				03141A3D2146A3FB0030B553 /* CALayer+WebCacheOperation.m in Sources */,
-				897EBB8421476B6900CC32BF /* SWTableViewController.m in Sources */,
 				89DF923E2160645600AFE6B2 /* XLFormButtonCell.m in Sources */,
 				89DF9154215CA2E700AFE6B2 /* SWStatusCommentViewController.m in Sources */,
 				89DF925B2160645600AFE6B2 /* XLFormRegexValidator.m in Sources */,
@@ -3349,7 +3353,6 @@
 				03141A362146A3FA0030B553 /* LWTransaction.m in Sources */,
 				03141C4B2146B34D0030B553 /* FaceThemeModel.m in Sources */,
 				897EBBD02147C33200CC32BF /* UIScrollView+EmptyDataSet.m in Sources */,
-				89EE0164215C67D100D13FD4 /* UINavigationBar+Awesome.m in Sources */,
 				897EBBD42147C33200CC32BF /* NSString+Common.m in Sources */,
 				03141A3A2146A3FB0030B553 /* LWTextGlyph.m in Sources */,
 				89DF91CC215F2C9300AFE6B2 /* CMAutoTrackerOperation.m in Sources */,
@@ -3366,6 +3369,7 @@
 				897EBBA82147A9D700CC32BF /* SWTextViewCell.m in Sources */,
 				89DF92412160645600AFE6B2 /* XLFormSliderCell.m in Sources */,
 				89DF92582160645600AFE6B2 /* XLFormRightDetailCell.m in Sources */,
+				892720C62160CCD2006E066F /* SWTableViewController.m in Sources */,
 				89DF92562160645600AFE6B2 /* XLFormTextView.m in Sources */,
 				03141D3D2146B34D0030B553 /* FaceButton.m in Sources */,
 				03141A552146A3FB0030B553 /* LWTextParser.m in Sources */,
@@ -3439,11 +3443,11 @@
 				03141A3F2146A3FB0030B553 /* LWLayout.m in Sources */,
 				03141A442146A3FB0030B553 /* NSString+HKMD5.m in Sources */,
 				03141A3B2146A3FB0030B553 /* LWGIFImage.m in Sources */,
+				892720C92160CED5006E066F /* YPNavigationController+Configure.m in Sources */,
 				897EBB982147848300CC32BF /* SWStatusCell.m in Sources */,
 				89DF92522160645600AFE6B2 /* NSPredicate+XLFormAdditions.m in Sources */,
 				03141A472146A3FB0030B553 /* SDWebImageManager+Gallop.m in Sources */,
 				89DF92472160645600AFE6B2 /* XLFormSelectorCell.m in Sources */,
-				897EBB7E214767A300CC32BF /* SWNavigationController.m in Sources */,
 				89DF925C2160645600AFE6B2 /* XLFormValidationStatus.m in Sources */,
 				89DF92492160645600AFE6B2 /* XLFormDatePickerCell.m in Sources */,
 				897EBB8921476E6B00CC32BF /* SWStatus.m in Sources */,

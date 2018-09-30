@@ -8,6 +8,6 @@
 
 #import "SWViewController.h"
 
-@interface SWStatusViewController : SWViewController
+@interface SWStatusViewController : SWViewController<YPNavigationBarConfigureStyle>
 
 @end

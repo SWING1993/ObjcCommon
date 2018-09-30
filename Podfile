@@ -21,5 +21,6 @@ target "Moments" do
   pod 'UMCCommon'
   pod 'UMCAnalytics'
   pod 'UMCSecurityPlugins'
-  
+  pod 'YPNavigationBarTransition', '~> 2.0'
+
 end

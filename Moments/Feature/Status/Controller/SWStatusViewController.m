@@ -31,7 +31,9 @@
 
 @end
 
-@implementation SWStatusViewController
+@implementation SWStatusViewController {
+    CGFloat _gradientProgress;
+}
 
 - (void)initSubviews {
     [super initSubviews];
@@ -71,14 +73,12 @@
     self.minAlphaOffset = SCREEN_WIDTH*0.65 - 2*self.qmui_navigationBarMaxYInViewCoordinator;
     self.maxAlphaOffset = SCREEN_WIDTH*0.65 - self.qmui_navigationBarMaxYInViewCoordinator;
     self.kRefreshBoundary = self.qmui_navigationBarMaxYInViewCoordinator + 36;
-    [self.navigationController.navigationBar lt_setBackgroundColor:[UIColor clearColor]];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.tableView.delegate = self;
     [self scrollViewDidScroll:self.tableView];
-    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -89,9 +89,8 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     self.tableView.delegate = nil;
-    [self.navigationController.navigationBar lt_reset];
 //    self.navigationController.navigationBar.barStyle = UIBarStyleDefault;
-    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+//    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
 }
 
 #pragma mark - UITableViewDataSource
@@ -301,37 +300,6 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.28f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [imgView removeFromSuperview];
     });
-}
-
-
-#pragma mark - UIScrollViewDelegate
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    CGFloat offsetY = scrollView.contentOffset.y;
-    CGFloat alpha = (offsetY - self.minAlphaOffset) / (self.maxAlphaOffset - self.minAlphaOffset);
-    UIColor *tintColor = alpha > 0.1 ? UIColorMakeX(31) : UIColorWhite;
-    [self.navigationController.navigationBar lt_setBackgroundColor:[UIColorMakeX(250) colorWithAlphaComponent:alpha]];
-    self.titleView.tintColor = tintColor;
-    self.navigationItem.rightBarButtonItem.tintColor = tintColor;
-    self.discoverBtn.tintColor = tintColor;
-    [self setNeedsStatusBarAppearanceUpdate];
-    if (alpha > 0.1) {
-        self.navigationController.navigationBar.barStyle = UIBarStyleDefault;
-    } else {
-        self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
-    }
-    
-    [self.tableViewHeader loadingViewAnimateWithScrollViewContentOffset:offsetY];
-    if (self.lastIndexPath) {
-        SWStatusCell *cell = [self.tableView cellForRowAtIndexPath:self.lastIndexPath];
-        [cell.menu menuHide];
-    }
-}
-
-- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
-    CGFloat offset = scrollView.contentOffset.y;
-    if (offset <= -self.kRefreshBoundary) {
-        [self refreshBegin];
-    }
 }
 
 
@@ -545,5 +513,56 @@
 
 - (BOOL)emptyDataSetShouldAllowScroll:(UIScrollView *)scrollView {
     return YES;
+}
+
+#pragma mark - YPNavigationBarConfigureStyle
+
+- (YPNavigationBarConfigurations) yp_navigtionBarConfiguration {
+    YPNavigationBarConfigurations configurations = YPNavigationBarShow;
+    if (_gradientProgress < 0.5) {
+        configurations |= YPNavigationBarStyleBlack;
+    }
+    
+    if (_gradientProgress == 1) {
+        configurations |= YPNavigationBarBackgroundStyleOpaque;
+    }
+    
+    configurations |= YPNavigationBarBackgroundStyleColor;
+    return configurations;
+}
+
+- (UIColor *) yp_navigationBarTintColor {
+    return [UIColor colorWithWhite:1 - _gradientProgress alpha:1];
+}
+
+- (UIColor *) yp_navigationBackgroundColor {
+    return [UIColor colorWithWhite:1 alpha:_gradientProgress];
+}
+
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    CGFloat offsetY = scrollView.contentOffset.y;
+    CGFloat progress = (offsetY - self.minAlphaOffset) / (self.maxAlphaOffset - self.minAlphaOffset);
+    CGFloat gradientProgress = MIN(1, MAX(0, progress));
+    gradientProgress = gradientProgress * gradientProgress * gradientProgress * gradientProgress;
+    if (gradientProgress != _gradientProgress) {
+        _gradientProgress = gradientProgress;
+        self.titleView.tintColor = _gradientProgress == 1 ? [self yp_navigationBarTintColor] : [UIColor clearColor];
+        self.navigationItem.rightBarButtonItem.tintColor = self.titleView.tintColor;
+        self.discoverBtn.tintColor = self.titleView.tintColor;
+        [self yp_refreshNavigationBarStyle];
+    }
+    [self.tableViewHeader loadingViewAnimateWithScrollViewContentOffset:offsetY];
+    if (self.lastIndexPath) {
+        SWStatusCell *cell = [self.tableView cellForRowAtIndexPath:self.lastIndexPath];
+        [cell.menu menuHide];
+    }    
+}
+
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
+    CGFloat offset = scrollView.contentOffset.y;
+    if (offset <= -self.kRefreshBoundary) {
+        [self refreshBegin];
+    }
 }
 @end

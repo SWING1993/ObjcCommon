@@ -55,8 +55,7 @@
     [GADMobileAds configureWithApplicationID:@"ca-app-pub-6037095993957840~7664444552"];
 
     IndexViewController *indexController = [[IndexViewController alloc] init];
-    SWNavigationController *indexNav = [[SWNavigationController alloc] initWithRootViewController:indexController];
-    indexNav.navigationBar.barStyle = UIBarStyleBlack;
+    YPNavigationController *indexNav = [[YPNavigationController alloc] initWithRootViewController:indexController];
     self.window.rootViewController = indexNav;
     
     [self.window makeKeyAndVisible];
