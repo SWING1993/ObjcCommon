@@ -22,7 +22,8 @@
 }
 
 - (UIImage *) yp_navigationBackgroundImageWithIdentifier:(NSString **)identifier {
-    return [UIImage imageNamed:@"purple"];
+//    return [UIImage imageNamed:@"purple"];
+    return [UIImage qmui_imageWithColor:UIColorMakeX(33)];
 }
 
 @end
