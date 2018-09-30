@@ -499,7 +499,7 @@
                 status.likeNames = @"Queenie,Lana,阿颖";
                 SWStatusComment *comment1 = [[SWStatusComment alloc] init];
                 comment1.fromNickname = @"小鑫鑫";
-                comment1.comment = @"🤪";
+                comment1.comment = @"赞";
                 [status.comments addObject:comment1];
             }
             SWStatusCellLayout *layout = [[SWStatusCellLayout alloc] initWithStatusModel:status index:i opend:NO];

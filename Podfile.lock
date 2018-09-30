@@ -287,7 +287,6 @@ PODS:
     - UMCCommon
   - UMCCommon (1.5.2)
   - UMCSecurityPlugins (1.0.6)
-  - XLForm (3.3.0)
 
 DEPENDENCIES:
   - BlocksKit
@@ -307,7 +306,6 @@ DEPENDENCIES:
   - UMCAnalytics
   - UMCCommon
   - UMCSecurityPlugins
-  - XLForm
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -328,7 +326,6 @@ SPEC REPOS:
     - UMCAnalytics
     - UMCCommon
     - UMCSecurityPlugins
-    - XLForm
 
 SPEC CHECKSUMS:
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
@@ -348,8 +345,7 @@ SPEC CHECKSUMS:
   UMCAnalytics: 0aff87e39008e2a650e5917430db0da2de2f8495
   UMCCommon: 4392868ac47ff1b101663106bb114ba616fabbad
   UMCSecurityPlugins: 0831a08f3988f3cea9f1d3a7626cd9bee4fef150
-  XLForm: d5c391dfc62865927b5bcab0a5a0dbfb3e02b0ec
 
-PODFILE CHECKSUM: ed6cf1af636bb369209d5947ae10406669653bac
+PODFILE CHECKSUM: 9ad051bd099c7c6b9dfe9d82d1f842d9e741e38f
 
 COCOAPODS: 1.5.3
