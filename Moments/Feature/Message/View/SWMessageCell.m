@@ -13,7 +13,7 @@
 
 @property (nonatomic, strong) UIImageView *avatarView;
 @property (nonatomic, strong) UILabel *nicknameLabel;
-@property (nonatomic, strong) UIImageView *likeView;
+@property (nonatomic, strong) UIButton *likeView;
 @property (nonatomic, strong) UILabel *messageLabel;
 @property (nonatomic, strong) UILabel *createTimeLabel;
 @property (nonatomic, strong) UIImageView *statusContentView;
@@ -28,6 +28,8 @@
     
     self.avatarView = [[UIImageView alloc] initWithImage:UIImageMake(@"defaultHead")];
     self.avatarView.contentMode = UIViewContentModeScaleAspectFill;
+    self.avatarView.layer.cornerRadius = 4.0f;
+    self.avatarView.layer.masksToBounds = YES;
     [self.contentView addSubview:self.avatarView];
     
     _nicknameLabel = [[UILabel alloc] qmui_initWithFont:UIFontPFMediumMake(15) textColor:kWXBlue];
@@ -37,12 +39,20 @@
     self.messageLabel.numberOfLines = 1;
     [self.contentView addSubview:self.messageLabel];
     
+    self.likeView = [[UIButton alloc] init];
+    self.likeView.userInteractionEnabled = NO;
+    self.likeView.hidden = YES;
+    [self.likeView setImage:UIImageMake(@"Like") forState:UIControlStateNormal];
+    [self.contentView addSubview:self.likeView];
+    
     self.createTimeLabel = [[UILabel alloc] qmui_initWithFont:UIFontMake(15) textColor:[UIColor grayColor]];
     [self.contentView addSubview:self.createTimeLabel];
     
     self.statusContentView = [[UIImageView alloc] init];
+    self.statusContentView.image =UIImageMake(@"fileicon_pic120");
     self.statusContentView.backgroundColor = UIColorMakeX(240);
     self.statusContentView.contentMode = UIViewContentModeScaleAspectFill;
+    self.statusContentView.clipsToBounds = YES;
     [self.contentView addSubview:self.statusContentView];
     
 //    self.contentView.qmui_shouldShowDebugColor = YES;
@@ -50,11 +60,25 @@
 }
 
 - (void)configCellWithModel:(SWMessage *)message {
-    
+    self.avatarView.image = [SWStatus getDocumentImageWithName:message.avatar];
+    self.nicknameLabel.text = message.nickname;
+    self.createTimeLabel.text = message.createdTime;
+
+    if (message.type == 1) {
+        self.likeView.hidden = YES;
+        self.messageLabel.hidden = NO;
+        self.messageLabel.text = message.content;
+    } else {
+        self.likeView.hidden = NO;
+        self.messageLabel.hidden = YES;
+    }
+    if (!kStringIsEmpty(message.contentImage)) {
+        self.statusContentView.image = [SWStatus getDocumentImageWithName:message.contentImage];
+    }
 }
 
 + (CGFloat)cellHeight {
-    return 75;
+    return 80;
 }
 
 - (void)layoutSubviews {
@@ -72,6 +96,7 @@
     self.nicknameLabel.frame = CGRectMake(lableX, space, lableWidth, lableHieht);
     self.messageLabel.frame = CGRectMake(lableX, self.nicknameLabel.qmui_bottom, lableWidth, lableHieht);
     self.createTimeLabel.frame = CGRectMake(lableX, self.messageLabel.qmui_bottom, lableWidth, lableHieht);
+    self.likeView.frame = CGRectMake(lableX, self.nicknameLabel.qmui_bottom + 2.5, self.messageLabel.qmui_height - 5, self.messageLabel.qmui_height - 5);
 }
 
 

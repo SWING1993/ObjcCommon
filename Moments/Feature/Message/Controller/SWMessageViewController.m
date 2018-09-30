@@ -11,7 +11,7 @@
 #import "SWMessageCell.h"
 #import "SWCreateMsgViewController.h"
 
-@interface SWMessageViewController ()<QMUITableViewDelegate, QMUITableViewDataSource>
+@interface SWMessageViewController ()<QMUITableViewDelegate, QMUITableViewDataSource, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
 @property (nonatomic, strong) QMUINavigationButton *discoverBtn;
 @property (nonatomic, strong) QMUITableView *tableView;
@@ -34,11 +34,13 @@
     self.tableView = [[QMUITableView alloc] initWithFrame:kScreenBounds style:UITableViewStyleGrouped];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    self.tableView.emptyDataSetSource = self;
+    self.tableView.emptyDataSetDelegate = self;
     self.tableView.estimatedRowHeight = CGFLOAT_MIN;
     self.tableView.estimatedSectionFooterHeight = CGFLOAT_MIN;
     self.tableView.estimatedSectionHeaderHeight = CGFLOAT_MIN;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-    self.tableView.backgroundColor = UIColorForBackground;
+    self.tableView.backgroundColor = UIColorWhite;
     self.tableView.separatorColor = UIColorSeparator;
     [self.view addSubview:self.tableView];
 }
@@ -46,7 +48,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-//    self.t
+    
+    RLMResults *allMessage = [SWMessage allObjects];
+    self.dataSource = [NSMutableArray arrayWithCapacity:allMessage.count];
+    for (NSInteger index = allMessage.count - 1; index > -1; index --) {
+        SWMessage *message = [allMessage objectAtIndex:index];
+        [self.dataSource addObject:message];
+    }
+//    SWMessage *message = [[SWMessage alloc] init];
+    
+    [self.tableView reloadData];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -81,11 +92,17 @@
     [actionSheet addButtonWithTitle:@"添加评论消息" style:TBActionButtonStyleDefault handler:^(TBActionButton * _Nonnull button) {
         @strongify(self)
         SWCreateMsgViewController *controller = [[SWCreateMsgViewController alloc] initWithType:1];
+        controller.completeBlock = ^(SWMessage *message) {
+            [self savaMessage:message];
+        };
         [self.navigationController pushViewController:controller animated:YES];
     }];
     [actionSheet addButtonWithTitle:@"添加点赞消息" style:TBActionButtonStyleDefault handler:^(TBActionButton * _Nonnull button) {
         @strongify(self)
         SWCreateMsgViewController *controller = [[SWCreateMsgViewController alloc] initWithType:0];
+        controller.completeBlock = ^(SWMessage *message) {
+            [self savaMessage:message];
+        };
         [self.navigationController pushViewController:controller animated:YES];
     }];
     [actionSheet addButtonWithTitle:@"取消" style:TBActionButtonStyleCancel];
@@ -93,6 +110,13 @@
 }
 
 - (void)savaMessage:(SWMessage *)message {
+    [self.dataSource insertObject:message atIndex:0];
+    [self.tableView reloadData];
+    
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    [realm beginWriteTransaction];
+    [realm addObject:message];
+    [realm commitWriteTransaction];
     
 }
 
@@ -111,6 +135,7 @@
     if (!cell) {
         cell = [[SWMessageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
+    [cell configCellWithModel:self.dataSource[indexPath.row]];
     return cell;
 }
 
@@ -138,17 +163,26 @@
     @weakify(self);
     UITableViewRowAction *deleteBtn = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"删除" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
         @strongify(self);
-//        SWStatusCellLayout* cellLayout = self.dataSource[indexPath.row];
-//        RLMRealm *realm = [RLMRealm defaultRealm];
-//        [realm beginWriteTransaction];
-//        [realm deleteObject:cellLayout.statusModel];
-//        [realm commitWriteTransaction];
-//        [self.dataSource removeObjectAtIndex:indexPath.row];
-//        [self.tableView reloadData];
+        SWMessage *message = self.dataSource[indexPath.row];
+        RLMRealm *realm = [RLMRealm defaultRealm];
+        [realm beginWriteTransaction];
+        [realm deleteObject:message];
+        [realm commitWriteTransaction];
+        [self.dataSource removeObjectAtIndex:indexPath.row];
+        [self.tableView reloadData];
     }];
     deleteBtn.backgroundColor = UIColorRed;
     return @[deleteBtn];
 }
 
+
+#pragma mark - DZNEmptyDataSetSource
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
+    return [[NSAttributedString alloc]initWithString:@"点击清空添加消息" attributes:@{NSFontAttributeName:UIFontPFRegularMake(15),NSForegroundColorAttributeName:UIColorSubTextBlack}];
+}
+
+- (BOOL)emptyDataSetShouldAllowScroll:(UIScrollView *)scrollView {
+    return YES;
+}
 
 @end

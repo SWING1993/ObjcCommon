@@ -46,13 +46,14 @@
 -(void)formDescriptorCellDidSelectedWithFormController:(XLFormViewController *)controller {
     // custom code here
     // i.e new behaviour when cell has been selected
-    
     SWAuthorViewController *authorViewController = [[SWAuthorViewController alloc] init];
     authorViewController.allowsMultipleSelection = NO;
     @weakify(self)
     authorViewController.singleCompleteBlock = ^(SWAuthor *author) {
         @strongify(self)
         self.rowDescriptor.value = @{@"nickname":author.nickname?:@"",@"avatar":author.avatar?:@""};
+        [self.formViewController updateFormRow:self.rowDescriptor];
+        [controller.tableView deselectRowAtIndexPath:[controller.form indexPathOfFormRow:self.rowDescriptor] animated:YES];
     };
     [controller.navigationController pushViewController:authorViewController animated:YES];
 }
@@ -81,7 +82,7 @@
     [formDescriptor addFormSection:section];
     
     // 息发送人
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:kAvatar rowType:@"XLFormRowDescriptorTypeCustom" title:@"消息发送人"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:kAuthor rowType:@"XLFormRowDescriptorTypeCustom" title:@"消息发送人"];
     row.cellClass = [XLFormSWAuthorCell class];
     row.cellStyle = UITableViewCellStyleValue1;
     [section addFormRow:row];
@@ -131,8 +132,12 @@
     [self.tableView endEditing:YES];
 
     NSDictionary *authorDict = [[self formValues] objectForKey:kAuthor];
-    NSString *avatar = authorDict[@"avatar"];
-    NSString *nickname = authorDict[@"nickname"];
+    NSString *avatar;
+    NSString *nickname;
+    if ([authorDict isKindOfClass:[NSDictionary class]]) {
+        avatar = authorDict[@"avatar"];
+        nickname = authorDict[@"nickname"];
+    }
     NSString *time = [[self formValues] objectForKey:kTime];
     UIImage *status = [[self formValues] objectForKey:kStatus];
     NSString *message = [[self formValues] objectForKey:kMessage];
@@ -142,7 +147,7 @@
         errorMessage = @"消息发布人不能为空";
     }
     if (kStringIsEmpty(message) && self.type == 1) {
-        errorMessage = @"回复内容不能为空";
+        errorMessage = @"评论消息不能为空";
     }
     if (!kStringIsEmpty(errorMessage)) {
         UIAlertController * alertController = [UIAlertController alertControllerWithTitle:errorMessage

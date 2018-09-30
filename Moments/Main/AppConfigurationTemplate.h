@@ -10,17 +10,12 @@
 
 #define UIColorMakeX(x) UIColorMake(x, x, x)
 #define UIColorRandom [UIColor qmui_randomColor]
-#define UIColorThemeDeepPurple UIColorMake(239, 83, 98) // 主题紫
 #define UIColorHighLightColor UIColorMakeWithRGBA(0, 0, 0, 0.15)
-#define UIColorTheme1 UIColorMake(239, 83, 98) // Grapefruit
-#define UIColorTheme2 UIColorMake(254, 109, 75) // Bittersweet
-#define UIColorTheme3 UIColorMake(255, 207, 71) // Sunflower
-#define UIColorTheme4 UIColorMake(159, 214, 97) // Grass
-#define UIColorTheme5 UIColorMake(63, 208, 173) // Mint
-#define UIColorTheme6 UIColorMake(49, 189, 243) // Aqua
-#define UIColorTheme7 UIColorMake(90, 154, 239) // Blue Jeans
-#define UIColorTheme8 UIColorMake(172, 143, 239) // Lavender
-#define UIColorTheme9 UIColorMake(238, 133, 193) // Pink Rose
+#define UIColorGreen1 UIColorMake(26, 173, 76)
+#define UIColorGreen2 UIColorMake(43, 162, 69)
+#define UIColorBlack1 UIColorMake(77, 77, 77)
+#define UIColorTextBlack UIColorMake(33, 33, 33)
+#define UIColorSubTextBlack UIColorMake(170, 170, 170)
 
 #define UIFontPFRegularMake(aSize)    [UIFont fontWithName:@"PingFangSC-Regular" size:aSize]
 #define UIFontPFMediumMake(aSize)  [UIFont fontWithName:@"PingFangSC-Medium" size:aSize]

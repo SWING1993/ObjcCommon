@@ -28,7 +28,7 @@
     QMUICMI.yellowColor = UIColorMake(255, 190, 0);                                        // UIColorYellow : 黄色
     QMUICMI.linkColor = UIColorMake(56, 116, 171);                              // UIColorLink : 文字链接颜色
     QMUICMI.disabledColor = UIColorGray;                                        // UIColorDisabled : 全局 disabled 的颜色，一般用于 UIControl 等控件
-    QMUICMI.backgroundColor = UIColorMakeX(245);                                     // UIColorForBackground : 界面背景色，默认用于 QMUICommonViewController.view 的背景色
+    QMUICMI.backgroundColor = UIColorMakeX(241);                                     // UIColorForBackground : 界面背景色，默认用于 QMUICommonViewController.view 的背景色
     QMUICMI.maskDarkColor = UIColorMakeWithRGBA(0, 0, 0, .35f);                 // UIColorMask : 深色的背景遮罩，默认用于 QMAlertController、QMUIDialogViewController 等弹出控件的遮罩
     QMUICMI.maskLightColor = UIColorMakeWithRGBA(255, 255, 255, .5f);           // UIColorMaskWhite : 浅色的背景遮罩，QMUIKit 里默认没用到，只是占个位
     QMUICMI.separatorColor = UIColorMake(222, 224, 226);                        // UIColorSeparator : 全局默认的分割线颜色，默认用于列表分隔线颜色、UIView (QMUI_Border) 分隔线颜色
@@ -207,7 +207,7 @@
     QMUICMI.navigationBarHiddenInitially = NO;                                  // NavigationBarHiddenInitially : QMUINavigationControllerDelegate preferredNavigationBarHidden 的初始值，默认为NO
     QMUICMI.shouldFixTabBarTransitionBugInIPhoneX = YES;                        // ShouldFixTabBarTransitionBugInIPhoneX : 是否需要自动修复 iOS 11 下，iPhone X 的设备在 push 界面时，tabBar 会瞬间往上跳的 bug
     
-    [QMUIDialogViewController appearance].buttonTitleAttributes = @{NSForegroundColorAttributeName: UIColorThemeDeepPurple};
+    [QMUIDialogViewController appearance].buttonTitleAttributes = @{NSForegroundColorAttributeName: UIColorBlue};
     [QMUIDialogViewController appearance].buttonHighlightedBackgroundColor = UIColorMakeX(245);
     
 }

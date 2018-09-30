@@ -17,7 +17,7 @@
 #import "SWStatusCommentViewController.h"
 #import "SWStatusLinkViewController.h"
 
-@interface SWStatusViewController () <QMUITableViewDelegate, QMUITableViewDataSource>
+@interface SWStatusViewController () <QMUITableViewDelegate, QMUITableViewDataSource, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
 @property (nonatomic, strong) SWStatusHeaderView* tableViewHeader;
 @property (nonatomic, strong) QMUITableView *tableView;
@@ -45,6 +45,8 @@
     self.tableView = [[QMUITableView alloc] initWithFrame:kScreenBounds style:UITableViewStyleGrouped];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    self.tableView.emptyDataSetSource = self;
+    self.tableView.emptyDataSetDelegate = self;
     self.tableView.estimatedRowHeight = CGFLOAT_MIN;
     self.tableView.estimatedSectionFooterHeight = CGFLOAT_MIN;
     self.tableView.estimatedSectionHeaderHeight = CGFLOAT_MIN;
@@ -534,4 +536,13 @@
     self.tableViewHeader.nickname.text = self.user.nickname;
 }
 
+
+#pragma mark - DZNEmptyDataSetSource
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
+    return [[NSAttributedString alloc]initWithString:@"点击右上角相机发布朋友圈" attributes:@{NSFontAttributeName:UIFontPFRegularMake(15),NSForegroundColorAttributeName:UIColorSubTextBlack}];
+}
+
+- (BOOL)emptyDataSetShouldAllowScroll:(UIScrollView *)scrollView {
+    return YES;
+}
 @end
