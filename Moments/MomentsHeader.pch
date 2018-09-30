@@ -20,7 +20,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
 #import <Masonry/Masonry.h>
-#import <XLForm/XLForm.h>
+#import "XLForm.h"
 #import <TBActionSheet/TBActionSheet.h>
 #import <TZImagePickerController/TZImagePickerController.h>
 #import <GoogleMobileAds/GoogleMobileAds.h>

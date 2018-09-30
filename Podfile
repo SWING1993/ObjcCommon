@@ -18,7 +18,6 @@ target "Moments" do
 #  pod 'Firebase/Core'
 #  pod 'Firebase/AdMob'
   pod 'Google-Mobile-Ads-SDK'
-  pod 'XLForm'
   pod 'UMCCommon'
   pod 'UMCAnalytics'
   pod 'UMCSecurityPlugins'
