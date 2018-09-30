@@ -21,4 +21,5 @@ target "Moments" do
   pod 'UMCCommon'
   pod 'UMCAnalytics'
   pod 'UMCSecurityPlugins'
+  
 end

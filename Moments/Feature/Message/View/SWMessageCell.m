@@ -54,9 +54,6 @@
     self.statusContentView.contentMode = UIViewContentModeScaleAspectFill;
     self.statusContentView.clipsToBounds = YES;
     [self.contentView addSubview:self.statusContentView];
-    
-//    self.contentView.qmui_shouldShowDebugColor = YES;
-//    self.contentView.qmui_needsDifferentDebugColor = YES;
 }
 
 - (void)configCellWithModel:(SWMessage *)message {

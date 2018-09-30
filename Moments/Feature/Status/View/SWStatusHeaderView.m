@@ -77,7 +77,7 @@
     }
     _loadingView = [[UIImageView alloc] init];
     _loadingView.contentMode = UIViewContentModeScaleAspectFill;
-    _loadingView.image = [UIImage imageNamed:@"shareMoment"];
+    _loadingView.image = [UIImage imageNamed:@"AlbumReflashIcon"];
     _loadingView.clipsToBounds = YES;
     _loadingView.backgroundColor = [UIColor clearColor];
     return _loadingView;

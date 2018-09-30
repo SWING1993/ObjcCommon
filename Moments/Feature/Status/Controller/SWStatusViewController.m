@@ -90,7 +90,8 @@
     [super viewWillDisappear:animated];
     self.tableView.delegate = nil;
     [self.navigationController.navigationBar lt_reset];
-    self.navigationController.navigationBar.barStyle = UIBarStyleDefault;
+//    self.navigationController.navigationBar.barStyle = UIBarStyleDefault;
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
 }
 
 #pragma mark - UITableViewDataSource
@@ -307,7 +308,7 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat offsetY = scrollView.contentOffset.y;
     CGFloat alpha = (offsetY - self.minAlphaOffset) / (self.maxAlphaOffset - self.minAlphaOffset);
-    UIColor *tintColor = alpha > 0.1 ? QMUICMI.navBarTintColor : UIColorWhite;
+    UIColor *tintColor = alpha > 0.1 ? UIColorMakeX(31) : UIColorWhite;
     [self.navigationController.navigationBar lt_setBackgroundColor:[UIColorMakeX(250) colorWithAlphaComponent:alpha]];
     self.titleView.tintColor = tintColor;
     self.navigationItem.rightBarButtonItem.tintColor = tintColor;

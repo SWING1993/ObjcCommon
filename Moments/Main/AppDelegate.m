@@ -35,6 +35,7 @@
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
+    
     NSString *channel;
 #if DEBUG
     channel = @"Debug";
@@ -55,7 +56,9 @@
 
     IndexViewController *indexController = [[IndexViewController alloc] init];
     SWNavigationController *indexNav = [[SWNavigationController alloc] initWithRootViewController:indexController];
+    indexNav.navigationBar.barStyle = UIBarStyleBlack;
     self.window.rootViewController = indexNav;
+    
     [self.window makeKeyAndVisible];
 
     return YES;

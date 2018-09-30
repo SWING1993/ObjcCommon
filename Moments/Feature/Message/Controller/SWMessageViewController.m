@@ -64,7 +64,7 @@
     [super viewWillAppear:animated];
     [self.navigationController.navigationBar lt_setBackgroundColor:UIColorMake(45, 45, 45)];
     self.titleView.tintColor = UIColorWhite;
-    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+//    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     self.navigationController.navigationBar.tintColor = UIColorWhite;
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
 }
@@ -76,7 +76,7 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self.navigationController.navigationBar lt_reset];
-    self.navigationController.navigationBar.barStyle = UIBarStyleDefault;
+//    self.navigationController.navigationBar.barStyle = UIBarStyleDefault;
     self.navigationController.navigationBar.tintColor = QMUICMI.navBarTintColor;
 }
 
