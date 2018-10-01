@@ -9,7 +9,7 @@
 #import "SWViewController.h"
 #import "SWUser.h"
 
-@interface SWStatusLinkViewController : XLFormViewController
+@interface SWStatusLinkViewController : XLFormViewController<YPNavigationBarConfigureStyle>
 
 @property (nonatomic, strong) SWUser *user;
 

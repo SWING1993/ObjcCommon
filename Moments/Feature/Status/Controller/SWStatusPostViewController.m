@@ -429,4 +429,27 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
     NSLog(@"adView:didFailToReceiveAdWithError:%@", [error localizedDescription]);
 }
 
+#pragma mark YPNavigationBarConfigureStyle
+- (YPNavigationBarConfigurations) yp_navigtionBarConfiguration {
+    YPNavigationBarConfigurations configurations = YPNavigationBarShow;
+    configurations |= YPNavigationBarStyleLight;
+    configurations |= YPNavigationBarBackgroundStyleTranslucent;
+    configurations |= YPNavigationBarBackgroundStyleColor;
+    return configurations;
+}
+
+- (UIColor *) yp_navigationBarTintColor {
+    return UIColorMakeX(31);
+}
+
+- (UIImage *) yp_navigationBackgroundImageWithIdentifier:(NSString **)identifier {
+    return [[UIImage imageNamed:@"purple"] resizableImageWithCapInsets:UIEdgeInsetsZero
+                                                          resizingMode:UIImageResizingModeStretch];
+}
+
+- (UIColor *) yp_navigationBackgroundColor {
+    return [UIColorWhite colorWithAlphaComponent:0.95];
+}
+
+
 @end

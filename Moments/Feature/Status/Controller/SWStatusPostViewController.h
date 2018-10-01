@@ -9,7 +9,7 @@
 #import "SWViewController.h"
 #import "SWUser.h"
 
-@interface SWStatusPostViewController : SWViewController
+@interface SWStatusPostViewController : SWViewController<YPNavigationBarConfigureStyle>
 
 @property (nonatomic, strong) SWUser *user;
 @property (nonatomic, strong) SWStatus *status;
