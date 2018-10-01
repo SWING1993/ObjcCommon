@@ -13,7 +13,6 @@
 
 @interface SWMessageViewController ()<QMUITableViewDelegate, QMUITableViewDataSource, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
-@property (nonatomic, strong) QMUINavigationButton *discoverBtn;
 @property (nonatomic, strong) QMUITableView *tableView;
 @property (nonatomic, strong) NSMutableArray <SWMessage *>*dataSource;
 
@@ -24,13 +23,6 @@
 - (void)initSubviews {
     [super initSubviews];
     [self setTitle:@"消息"];
-    self.discoverBtn = [[QMUINavigationButton alloc] initWithType:QMUINavigationButtonTypeBack title:@"朋友圈"];
-    @weakify(self)
-    [self.discoverBtn bk_addEventHandler:^(id sender) {
-        @strongify(self)
-        [self.navigationController popViewControllerAnimated:YES];
-    } forControlEvents:UIControlEventTouchUpInside];
-    
     self.tableView = [[QMUITableView alloc] initWithFrame:kScreenBounds style:UITableViewStyleGrouped];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
@@ -75,7 +67,6 @@
 
 - (void)setupNavigationItems {
     [super setupNavigationItems];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.discoverBtn];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"清空" style:UIBarButtonItemStyleDone target:self action:@selector(rightAction)];
 }
 

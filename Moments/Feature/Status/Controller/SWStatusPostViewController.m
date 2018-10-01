@@ -23,7 +23,6 @@
 @property (nonatomic, strong) NSMutableArray <UIImage *>*originImages;
 @property (nonatomic, strong) UISwitch *ownSwitch;
 @property (nonatomic, strong) UISwitch *personalSwitch;
-
 @property (nonatomic, strong) GADBannerView *bannerView;
 
 @end
@@ -150,9 +149,14 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
     [realm beginWriteTransaction];
     [realm addObject:self.status];
     [realm commitWriteTransaction];
-    
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    DDPostNotification(@"newStatusNotification");
     [[CMAutoTrackerOperation sharedInstance] sendEvent:@"post_event"];
+    for (UIViewController *viewController in self.navigationController.viewControllers) {
+        if ([viewController isKindOfClass:[SWStatusViewController class]]) {
+            [self.navigationController popToViewController:viewController animated:YES];
+            return;
+        }
+    }
 }
 
 #pragma mark - UITableViewDataSource
@@ -353,8 +357,10 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
     if (indexPath.section == 1) {
         switch (indexPath.row) {
             case 0:{
+                @weakify(self)
                 SWStatusLocationViewController *controller = [[SWStatusLocationViewController alloc] init];
                 controller.completeBlock = ^(NSString *valueStr) {
+                    @strongify(self)
                     self.status.location = valueStr;
                     [self.tableView reloadData];
                 };
@@ -363,11 +369,13 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
                 break;
                 
             case 1:{
+                @weakify(self)
                 SWStatusTimeViewController *controller = [[SWStatusTimeViewController alloc] init];
                 STPopupController *popupController = [[STPopupController alloc] initWithRootViewController:controller];
                 popupController.style = STPopupStyleBottomSheet;
                 [popupController presentInViewController:self.navigationController];
                 controller.completeBlock = ^(NSString *valueStr) {
+                    @strongify(self)
                     self.status.createdTime = valueStr;
                     [self.tableView reloadData];
                 };
@@ -376,7 +384,9 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
                 
             case 2:{
                 SWStatusSourceViewController *controller = [[SWStatusSourceViewController alloc] init];
+                @weakify(self)
                 controller.completeBlock = ^(NSString * _Nonnull valueStr) {
+                    @strongify(self)
                     self.status.source = valueStr;
                     [self.tableView reloadData];
                 };
@@ -450,6 +460,5 @@ static NSString *SWStatusImageCellIdentifier = @"SWStatusImageCellIdentifier";
 - (UIColor *) yp_navigationBackgroundColor {
     return [UIColorWhite colorWithAlphaComponent:0.95];
 }
-
 
 @end

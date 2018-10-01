@@ -27,7 +27,6 @@
 @property (nonatomic, assign) CGFloat minAlphaOffset;
 @property (nonatomic, assign) CGFloat maxAlphaOffset;
 @property (nonatomic, assign) CGFloat kRefreshBoundary;
-@property (nonatomic, strong) QMUINavigationButton *discoverBtn;
 
 @end
 
@@ -38,12 +37,6 @@
 - (void)initSubviews {
     [super initSubviews];
     [self setTitle:@"朋友圈"];
-    self.discoverBtn = [[QMUINavigationButton alloc] initWithType:QMUINavigationButtonTypeBack title:@"发现"];
-    @weakify(self)
-    [self.discoverBtn bk_addEventHandler:^(id sender) {
-        @strongify(self)
-        [self.navigationController popViewControllerAnimated:YES];
-    } forControlEvents:UIControlEventTouchUpInside];
     self.tableView = [[QMUITableView alloc] initWithFrame:kScreenBounds style:UITableViewStyleGrouped];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
@@ -56,23 +49,22 @@
     self.tableView.tableHeaderView = self.tableViewHeader;
     self.tableView.backgroundColor = UIColorWhite;
     [self.view addSubview:self.tableView];
-    
 }
 
 - (void)setupNavigationItems {
     [super setupNavigationItems];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:kGetImage(@"Moment_Post") style:UIBarButtonItemStyleDone target:self action:@selector(postStatusAction)];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.discoverBtn];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self configUserInfo];
-    [self refreshBegin];
     self.minAlphaOffset = SCREEN_WIDTH*0.65 - 2*self.qmui_navigationBarMaxYInViewCoordinator;
     self.maxAlphaOffset = SCREEN_WIDTH*0.65 - self.qmui_navigationBarMaxYInViewCoordinator;
     self.kRefreshBoundary = self.qmui_navigationBarMaxYInViewCoordinator + 36;
+    [self fakeDownloadNotReloadTable:NO];
+    DDAddNotification(@selector(fakeDownloadNotReloadTable:), @"newStatusNotification");
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -83,7 +75,6 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self fakeDownloadNeedReloadTable:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -347,7 +338,7 @@
 //模拟下拉刷新
 - (void)refreshBegin {
     self.view.userInteractionEnabled = NO;
-    [self fakeDownloadNeedReloadTable:NO];
+    [self fakeDownloadNotReloadTable:YES];
     [UIView animateWithDuration:0.2f animations:^{
         self.tableView.contentInset = UIEdgeInsetsMake(self.kRefreshBoundary, 0.0f, 0.0f, 0.0f);
     } completion:^(BOOL finished) {
@@ -409,7 +400,7 @@
     return _tableViewHeader;
 }
 
-- (void)fakeDownloadNeedReloadTable:(BOOL)need {
+- (void)fakeDownloadNotReloadTable:(BOOL)value {
     // 从默认 Realm 中，检索所有的状态
     RLMResults<SWStatus *> *allStatus = [SWStatus allObjects];
     self.dataSource = [NSMutableArray arrayWithCapacity:allStatus.count];
@@ -418,12 +409,11 @@
         SWStatusCellLayout *layout = [[SWStatusCellLayout alloc] initWithStatusModel:status index:index opend:NO];
         [self.dataSource addObject:layout];
     }
-    
-    NSArray *nicknames = @[@"爱范儿呀",@"可儿",@"煎饼侠",@"Jennifer",@"开心鸭"];
-    NSArray *avatars = @[UIImageMake(@"avatar29.jpg"),UIImageMake(@"avatar10.jpg"),UIImageMake(@"avatar32.jpg"),UIImageMake(@"avatar35.jpg"),UIImageMake(@"avatar2.jpg")];
-    NSArray *contents = @[@"",@"",@"Zepp DiverCity",@"今日の東京。",@"每一天都很快乐!!!"];
-    NSArray *times = @[@"1天前",@"1天前",@"2小时前",@"10分钟前",@"1分钟前"];
     if (self.dataSource.count == 0) {
+        NSArray *nicknames = @[@"爱范儿呀",@"可儿",@"煎饼侠",@"Jennifer",@"开心鸭"];
+        NSArray *avatars = @[UIImageMake(@"avatar29.jpg"),UIImageMake(@"avatar10.jpg"),UIImageMake(@"avatar32.jpg"),UIImageMake(@"avatar35.jpg"),UIImageMake(@"avatar2.jpg")];
+        NSArray *contents = @[@"",@"",@"Zepp DiverCity",@"今日の東京。",@"每一天都很快乐!!!"];
+        NSArray *times = @[@"1天前",@"1天前",@"2小时前",@"10分钟前",@"1分钟前"];
         RLMRealm *realm = [RLMRealm defaultRealm];
         [realm beginWriteTransaction];
         for (int i = 0; i < nicknames.count; i ++) {
@@ -463,7 +453,7 @@
                 comment2.toNickname = @"萌萌";
                 comment2.comment = @"thanks...";
                 [status.comments addObject:comment2];
-
+                
             } else if (i == 4) {
                 status.likeNames = @"Queenie,Lana,阿颖";
                 SWStatusComment *comment1 = [[SWStatusComment alloc] init];
@@ -471,14 +461,14 @@
                 comment1.comment = @"赞";
                 [status.comments addObject:comment1];
             }
+            [realm addObject:status];
             SWStatusCellLayout *layout = [[SWStatusCellLayout alloc] initWithStatusModel:status index:i opend:NO];
             [self.dataSource addObject:layout];
-            [realm addObject:status];
         }
         [realm commitWriteTransaction];
     }
-    if (need) {
-        [self.tableView reloadData];
+    if (!value) {
+      [self.tableView reloadData];
     }
 }
 
@@ -520,11 +510,9 @@
     if (_gradientProgress < 0.5) {
         configurations |= YPNavigationBarStyleBlack;
     }
-    
     if (_gradientProgress == 1) {
         configurations |= YPNavigationBarBackgroundStyleOpaque;
     }
-    
     configurations |= YPNavigationBarBackgroundStyleColor;
     return configurations;
 }
@@ -545,9 +533,6 @@
     gradientProgress = gradientProgress * gradientProgress * gradientProgress * gradientProgress;
     if (gradientProgress != _gradientProgress) {
         _gradientProgress = gradientProgress;
-        self.titleView.tintColor = _gradientProgress == 1 ? [self yp_navigationBarTintColor] : [UIColor clearColor];
-        self.navigationItem.rightBarButtonItem.tintColor = self.titleView.tintColor;
-        self.discoverBtn.tintColor = self.titleView.tintColor;
         [self yp_refreshNavigationBarStyle];
     }
     [self.tableViewHeader loadingViewAnimateWithScrollViewContentOffset:offsetY];
@@ -563,4 +548,10 @@
         [self refreshBegin];
     }
 }
+
+- (void)dealloc {
+    NSLog(@"newStatusNotification 释放!!!");
+    DDRemoveNotificationObserver();
+}
+
 @end
