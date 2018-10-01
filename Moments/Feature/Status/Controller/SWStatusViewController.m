@@ -89,8 +89,6 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     self.tableView.delegate = nil;
-//    self.navigationController.navigationBar.barStyle = UIBarStyleDefault;
-//    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
 }
 
 #pragma mark - UITableViewDataSource

@@ -18,8 +18,4 @@
     [super viewDidLoad];
 }
 
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleDefault;
-}
-
 @end

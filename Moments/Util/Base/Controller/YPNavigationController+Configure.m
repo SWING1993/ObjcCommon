@@ -12,8 +12,9 @@
 
 - (YPNavigationBarConfigurations) yp_navigtionBarConfiguration {
     YPNavigationBarConfigurations configurations = YPNavigationBarShow;
-    configurations |= YPNavigationBarBackgroundStyleOpaque;
-    configurations |= YPNavigationBarBackgroundStyleImage;
+    configurations |= YPNavigationBarStyleBlack;
+    configurations |= YPNavigationBarBackgroundStyleTranslucent;
+    configurations |= YPNavigationBarBackgroundStyleColor;
     return configurations;
 }
 
@@ -22,8 +23,13 @@
 }
 
 - (UIImage *) yp_navigationBackgroundImageWithIdentifier:(NSString **)identifier {
-//    return [UIImage imageNamed:@"purple"];
-    return [UIImage qmui_imageWithColor:UIColorMakeX(33)];
+    return [[UIImage imageNamed:@"purple"] resizableImageWithCapInsets:UIEdgeInsetsZero
+                                                          resizingMode:UIImageResizingModeStretch];
 }
+
+- (UIColor *) yp_navigationBackgroundColor {
+    return UIColorMakeWithRGBA(31, 31, 31, 0.95);
+}
+
 
 @end

@@ -15,11 +15,4 @@
 @implementation SWTableViewController
 
 
-
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleDefault;
-}
-
-
-
 @end
