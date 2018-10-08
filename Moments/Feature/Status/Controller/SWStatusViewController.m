@@ -134,13 +134,8 @@
     @weakify(self);
     UITableViewRowAction *deleteBtn = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"删除" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
         @strongify(self);
-        SWStatusCellLayout* cellLayout = self.dataSource[indexPath.row];
-        RLMRealm *realm = [RLMRealm defaultRealm];
-        [realm beginWriteTransaction];
-        [realm deleteObject:cellLayout.statusModel];
-        [realm commitWriteTransaction];
-        [self.dataSource removeObjectAtIndex:indexPath.row];
-        [self.tableView reloadData];
+        SWStatusCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        [self deleteTableViewCell:cell];
     }];
     deleteBtn.backgroundColor = UIColorRed;
     return @[deleteBtn];
@@ -168,7 +163,7 @@
     
 //    cell.clickedReCommentCallback = ^(SWStatusCell* cell,CommentModel* model) {
 //        __strong typeof(weakSelf) sself = weakSelf;
-//        [sself reCommentWithCell:cell commentModel:model];
+//        [self reCommentWithCell:cell commentModel:model];
 //    };
     
     cell.clickedOpenCellCallback = ^(SWStatusCell* cell) {
@@ -181,10 +176,10 @@
         [self closeTableViewCell:cell];
     };
     
-//    cell.clickedDeleteCellCallback= ^(SWStatusCell* cell) {
-//        @strongify(self)
-//        [self deleteTableViewCell:cell];
-//    };
+    cell.clickedDeleteCellCallback= ^(SWStatusCell* cell) {
+        @strongify(self)
+        [self deleteTableViewCell:cell];
+    };
     
     cell.clickedMenuCallback = ^(SWStatusCell *cell) {
         @strongify(self)
@@ -222,6 +217,7 @@
     [self.navigationController pushViewController:controller animated:YES];
 }
 
+// 评论cell
 - (void)commentWithCell:(SWStatusCell *)cell {
     SWStatusCommentViewController *controller = [[SWStatusCommentViewController alloc] init];
     @weakify(self)
@@ -270,6 +266,26 @@
                           withRowAnimation:UITableViewRowAnimationNone];
 }
 
+//删除Cell
+- (void)deleteTableViewCell:(SWStatusCell *)cell {
+    QMUIAlertController *alertController = [QMUIAlertController alertControllerWithTitle:@"确定删除吗?" message:nil preferredStyle:QMUIAlertControllerStyleAlert];
+    
+    QMUIAlertAction *continueAction = [QMUIAlertAction actionWithTitle:@"取消" style:QMUIAlertActionStyleCancel handler:^(QMUIAlertController *aAlertController, QMUIAlertAction *action) {
+    }];
+    @weakify(self)
+    QMUIAlertAction *backActioin = [QMUIAlertAction actionWithTitle:@"确定" style:QMUIAlertActionStyleDefault handler:^(QMUIAlertController *aAlertController, QMUIAlertAction *action) {
+        @strongify(self)
+        RLMRealm *realm = [RLMRealm defaultRealm];
+        [realm beginWriteTransaction];
+        [realm deleteObject:cell.cellLayout.statusModel];
+        [realm commitWriteTransaction];
+        [self.dataSource removeObjectAtIndex:cell.indexPath.row];
+        [self.tableView reloadData];
+    }];
+    [alertController addAction:backActioin];
+    [alertController addAction:continueAction];
+    [alertController showWithAnimated:YES];
+}
 
 /* 由于是异步绘制，而且为了减少View的层级，整个显示内容都是在同一个UIView上面，所以会在刷新的时候闪一下，这里可以先把原先Cell的内容截图覆盖在Cell上，
  延迟0.25s后待刷新完成后，再将这个截图从Cell上移除 */

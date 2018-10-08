@@ -346,14 +346,12 @@
                 [self addStorage:deleteTextStorage];
             }
 
-            
             //菜单按钮
             CGRect menuPosition = CGRectZero;
             menuPosition = CGRectMake(SCREEN_WIDTH - 54.0f,
                                       lastImageStorage.bottom,
                                       44.0f,
                                       44.0f);
-
 
             //生成评论背景Storage
             LWImageStorage* commentBgStorage = [[LWImageStorage alloc] init];
