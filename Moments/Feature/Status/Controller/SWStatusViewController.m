@@ -16,6 +16,7 @@
 #import "SWAuthorAddViewController.h"
 #import "SWStatusCommentViewController.h"
 #import "SWStatusLinkViewController.h"
+#import "SWStatusDetailViewController.h"
 
 @interface SWStatusViewController () <QMUITableViewDelegate, QMUITableViewDataSource, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
@@ -37,7 +38,8 @@
 - (void)initSubviews {
     [super initSubviews];
     [self setTitle:@"朋友圈"];
-    self.tableView = [[QMUITableView alloc] initWithFrame:kScreenBounds style:UITableViewStyleGrouped];
+    self.tableView = [[QMUITableView alloc] initWithFrame:kScreenBounds
+                                                    style:UITableViewStyleGrouped];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.emptyDataSetSource = self;
@@ -106,6 +108,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     SWStatusCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     [cell.menu menuHide];
+    SWStatusCellLayout* layout = self.dataSource[indexPath.row];
+    SWStatusDetailViewController *controller = [[SWStatusDetailViewController alloc] init];
+    controller.status = layout.statusModel;
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {

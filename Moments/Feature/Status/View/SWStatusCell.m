@@ -13,7 +13,6 @@
 @interface SWStatusCell ()<LWAsyncDisplayViewDelegate>
 
 @property (nonatomic,strong) UIButton *menuButton;
-@property (nonatomic,strong) UIView *line;
 @property (nonatomic,copy) NSString *preCopyText;
 @property (nonatomic,strong) UIImageView *videoIconView;
 

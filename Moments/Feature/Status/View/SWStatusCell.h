@@ -13,7 +13,7 @@
 @interface SWStatusCell : UITableViewCell
 
 @property (nonatomic,strong) LWAsyncDisplayView* asyncDisplayView;
-//@property (nonatomic,assign) BOOL notNeedLine;
+@property (nonatomic,strong) UIView *line;
 @property (nonatomic,strong) SWMenu* menu;
 @property (nonatomic,strong) SWStatusCellLayout* cellLayout;
 @property (nonatomic,strong) NSIndexPath* indexPath;

@@ -8,6 +8,8 @@
 
 #import "LWLayout.h"
 #import "SWStatus.h"
+#import "SWStatusComment.h"
+#import "SWStatusCellLayout.h"
 
 #define MESSAGE_TYPE_IMAGE @"image"
 #define MESSAGE_TYPE_WEBSITE @"website"
@@ -37,5 +39,13 @@
 - (id)initWithStatusModel:(SWStatus *)statusModel
                     index:(NSInteger)index
                     opend:(BOOL)open;
+
+//详情布局模型
+- (id)initWithStatusDetailModel:(SWStatus *)statusModel
+                          index:(NSInteger)index;
+
+//评论界面的布局
+- (id)initWithCommentModel:(SWStatusComment *)commentModel
+                     index:(NSInteger)index;
 
 @end
