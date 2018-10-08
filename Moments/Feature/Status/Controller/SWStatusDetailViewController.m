@@ -63,7 +63,7 @@
         if (!cell) {
             cell = [[SWStatusCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            cell.line.hidden = YES;
+            cell.notNeedLine = YES;
         }
         cell.indexPath = indexPath;
         cell.cellLayout = self.cellLayout;

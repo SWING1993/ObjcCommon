@@ -333,7 +333,6 @@
             }
             
             //删除模型模型 deleteTextStorage
-            /*
             if (statusModel.own) {
                 LWTextStorage* deleteTextStorage = [[LWTextStorage alloc] init];
                 deleteTextStorage.text = @"删除";
@@ -346,7 +345,7 @@
                                        highLightColor:UIColorHighLightColor];
                 [self addStorage:deleteTextStorage];
             }
-             */
+
             
             //菜单按钮
             CGRect menuPosition = CGRectZero;
@@ -798,21 +797,17 @@
             }
             
             //删除模型模型 deleteTextStorage
-            /*
-             if (statusModel.own) {
-             LWTextStorage* deleteTextStorage = [[LWTextStorage alloc] init];
-             deleteTextStorage.text = @"删除";
-             deleteTextStorage.font = UIFontMake(12);
-             CGFloat deleteTextStorageY = dateTextStorage.right + (statusModel.personal ? 45 : 15);
-             deleteTextStorage.frame = CGRectMake(deleteTextStorageY, dateTextStorage.top, 60.0f, 12);
-             [deleteTextStorage lw_addLinkWithData:kLinkDelete
-             range:NSMakeRange(0,deleteTextStorage.text.length)
-             linkColor:kWXBlue
-             highLightColor:UIColorHighLightColor];
-             [self addStorage:deleteTextStorage];
-             }
-             */
-            
+            LWTextStorage* deleteTextStorage = [[LWTextStorage alloc] init];
+            deleteTextStorage.text = @"删除";
+            deleteTextStorage.font = UIFontMake(12);
+            CGFloat deleteTextStorageY = dateTextStorage.right + (statusModel.personal ? 45 : 15);
+            deleteTextStorage.frame = CGRectMake(deleteTextStorageY, dateTextStorage.top, 60.0f, 12);
+            [deleteTextStorage lw_addLinkWithData:kLinkDelete
+                                            range:NSMakeRange(0,deleteTextStorage.text.length)
+                                        linkColor:kWXBlue
+                                   highLightColor:UIColorHighLightColor];
+            [self addStorage:deleteTextStorage];
+
             //菜单按钮
             CGRect menuPosition = CGRectZero;
             menuPosition = CGRectMake(SCREEN_WIDTH - 54.0f,
@@ -885,10 +880,6 @@
                                                        13.0f*1.3);
                 [self addStorage:commentImageSotrage];
             }
-            
-            
-            
-            
             
             LWTextStorage* commentTextStorage = [[LWTextStorage alloc] init];
             if (kStringIsEmpty(commentModel.toAuthor.nickname) == false) {

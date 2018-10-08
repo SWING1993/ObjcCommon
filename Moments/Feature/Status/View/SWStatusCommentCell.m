@@ -101,23 +101,28 @@
     return self;
 }
 - (void)_layoutSubviews {
-    CGFloat top;
-    if (self.status.comments.count > 0) {
-        top = - 15;
+    CGFloat bgViewTop;
+    CGFloat tableViewTop;
+
+    if (self.status.likes.count > 0) {
+        bgViewTop = - 15;
+        tableViewTop = 0;
         self.lineView.hidden = NO;
         self.lineView.frame = CGRectMake(10, 0, kScreenW - 20, 0.5);
     } else {
-        top = 0.5;
+        bgViewTop = 0.5;
+        tableViewTop = 10;
         self.lineView.hidden = YES;
     }
+    
     [self.bgView mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(top);
+        make.top.mas_equalTo(bgViewTop);
         make.bottom.mas_equalTo(0);
         make.left.mas_equalTo(10);
         make.right.mas_equalTo(-10);
     }];
     [self.commentTableView mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(10);
+        make.top.mas_equalTo(tableViewTop);
         make.left.right.bottom.mas_equalTo(0);
     }];
 }
@@ -232,7 +237,7 @@
     if (status.comments.count == 0) {
         return CGFLOAT_MIN;
     }
-    CGFloat height = 10.0f;
+    CGFloat height = status.likes.count > 0 ? 0.0f : 10.0f;
     for (SWStatusComment *comment in status.comments) {
         SWStatusCellLayout *layout = [[SWStatusCellLayout alloc] initWithCommentModel:comment index:0];;
         height += layout.cellHeight;

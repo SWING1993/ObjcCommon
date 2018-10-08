@@ -13,6 +13,7 @@
 @interface SWStatusCell ()<LWAsyncDisplayViewDelegate>
 
 @property (nonatomic,strong) UIButton *menuButton;
+@property (nonatomic,strong) UIView *line;
 @property (nonatomic,copy) NSString *preCopyText;
 @property (nonatomic,strong) UIImageView *videoIconView;
 
@@ -40,11 +41,14 @@
 - (void)extraAsyncDisplayIncontext:(CGContextRef)context
                               size:(CGSize)size
                        isCancelled:(LWAsyncDisplayIsCanclledBlock)isCancelled {
-    CGContextMoveToPoint(context, 0.0f, self.bounds.size.height);
-    CGContextAddLineToPoint(context, self.bounds.size.width, self.bounds.size.height);
-    CGContextSetLineWidth(context, 0.5f);
-    CGContextSetStrokeColorWithColor(context,UIColorSeparator.CGColor);
-    CGContextStrokePath(context);
+    if (!self.notNeedLine) {
+        CGContextMoveToPoint(context, 0.0f, self.bounds.size.height);
+        CGContextAddLineToPoint(context, self.bounds.size.width, self.bounds.size.height);
+        CGContextSetLineWidth(context, 0.5f);
+        CGContextSetStrokeColorWithColor(context,UIColorSeparator.CGColor);
+        CGContextStrokePath(context);
+    }
+    
     if (self.cellLayout.statusModel.type == 2) {
         CGContextAddRect(context, self.cellLayout.websitePosition);
         CGContextSetFillColorWithColor(context, RGBA(240, 240, 240, 1).CGColor);
