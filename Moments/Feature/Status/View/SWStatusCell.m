@@ -127,8 +127,8 @@
         //其他
         else {
         }
-    } else if ([data isKindOfClass:[NSDictionary class]]) {
-
+    } else if ([data isKindOfClass:[SWStatusComment class]]) {
+        
     }
 }
 
