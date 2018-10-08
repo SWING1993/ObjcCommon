@@ -124,7 +124,6 @@
         [realm beginWriteTransaction];
         for (int i = 0; i < nicknames.count; i ++) {
             SWAuthor *author = [[SWAuthor alloc] init];
-            author.id = i;
             author.nickname = nicknames[i];
             NSString *imageName = [NSString stringWithFormat:@"avatar%d.jpg",i];
             author.avatar = [SWStatus saveImage:[UIImage imageNamed:imageName]];

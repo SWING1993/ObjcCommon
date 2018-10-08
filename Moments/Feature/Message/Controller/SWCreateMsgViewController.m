@@ -10,10 +10,6 @@
 #import "SWAuthorViewController.h"
 #import "SWAuthor.h"
 
-@interface XLFormSWAuthorCell : XLFormBaseCell
-
-@end
-
 @implementation XLFormSWAuthorCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
@@ -81,7 +77,7 @@
     section = [XLFormSectionDescriptor formSection];
     [formDescriptor addFormSection:section];
     
-    // 息发送人
+    // 消息发送人
     row = [XLFormRowDescriptor formRowDescriptorWithTag:kAuthor rowType:@"XLFormRowDescriptorTypeCustom" title:@"消息发送人"];
     row.cellClass = [XLFormSWAuthorCell class];
     row.cellStyle = UITableViewCellStyleValue1;
@@ -93,12 +89,13 @@
     [row.cellConfigAtConfigure setObject:@(NSTextAlignmentRight) forKey:@"textField.textAlignment"];
     row.value = @"1分钟前";
     [section addFormRow:row];
+    section.footerTitle = @"时间默认为1分钟前,如需修改请按照以下格式手动修改\n格式1: 10:00\n格式2:昨天 10:10\n格式3 10月1日 10:00\n格式4:10分钟前\n";
     
     // 消息封面
     section = [XLFormSectionDescriptor formSection];
     [formDescriptor addFormSection:section];
     row = [XLFormRowDescriptor formRowDescriptorWithTag:kStatus rowType:XLFormRowDescriptorTypeImage title:@"消息封面"];
-    row.value = [UIImage imageNamed:@"defaultHead"];
+    row.value = [UIImage imageNamed:@"fileicon_pic"];
     row.height = 60.0f;
     
     [section addFormRow:row];

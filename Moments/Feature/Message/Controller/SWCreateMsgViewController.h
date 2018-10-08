@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "SWMessage.h"
 
+@interface XLFormSWAuthorCell : XLFormBaseCell
+
+@end
+
 @interface SWCreateMsgViewController : XLFormViewController
 
 @property (nonatomic, copy) void(^completeBlock)(SWMessage *message);

@@ -367,9 +367,8 @@
             //点赞
             LWImageStorage* likeImageSotrage = [[LWImageStorage alloc] init];
             LWTextStorage* likeTextStorage = [[LWTextStorage alloc] init];
-            NSArray *likeArray = [statusModel.likeNames componentsSeparatedByString:@","];
             
-            if (likeArray.count != 0) {
+            if (statusModel.likes.count != 0) {
                 likeImageSotrage.contents = [UIImage imageNamed:@"Like"];
                 likeImageSotrage.frame = CGRectMake(rect.origin.x + 10.0f,
                                                     rect.origin.y + 12.0f + offsetY,
@@ -380,13 +379,14 @@
                 NSMutableArray* composeArray = [[NSMutableArray alloc] init];
                 
                 int rangeOffset = 0;
-                for (NSInteger i = 0;i < likeArray.count; i ++) {
-                    NSString *likeName = likeArray[i];
+                for (NSInteger i = 0;i < statusModel.likes.count; i ++) {
+                    SWAuthor *likeAuthor = statusModel.likes[i];
+                    NSString *likeName = likeAuthor.nickname;
                     [mutableString appendString:likeName];
                     NSRange range = NSMakeRange(rangeOffset, likeName.length);
                     [composeArray addObject:[NSValue valueWithRange:range]];
                     rangeOffset += likeName.length;
-                    if (i != likeArray.count - 1) {
+                    if (i != statusModel.likes.count - 1) {
                         NSString* dotString = @",";
                         [mutableString appendString:dotString];
                         rangeOffset += dotString.length;
@@ -410,7 +410,7 @@
                 offsetY += likeTextStorage.height + 5.0f;
             }
             if (statusModel.comments.count != 0) {
-                if (likeArray.count != 0) {
+                if (statusModel.likes.count != 0) {
                     self.lineRect = CGRectMake(nameTextStorage.left,
                                                likeTextStorage.bottom + 2.5f,
                                                SCREEN_WIDTH - 80,
@@ -419,10 +419,10 @@
                 
                 NSMutableArray* tmp = [[NSMutableArray alloc] initWithCapacity:statusModel.comments.count];
                 for (SWStatusComment *commentM in statusModel.comments) {
-                    if (kStringIsEmpty(commentM.toNickname) == false) {
+                    if (kStringIsEmpty(commentM.toAuthor.nickname) == false) {
                         NSString* commentString = [NSString stringWithFormat:@"%@回复%@：%@",
-                                                   commentM.fromNickname,
-                                                   commentM.toNickname,
+                                                   commentM.fromAuthor.nickname,
+                                                   commentM.toAuthor.nickname,
                                                    commentM.comment];
                         
                         LWTextStorage* commentTextStorage = [[LWTextStorage alloc] init];
@@ -438,13 +438,13 @@
                                                                    highLightColor:UIColorHighLightColor];
                     
                         [commentTextStorage lw_addLinkWithData:kLinkLike
-                                                         range:NSMakeRange(0,commentM.fromNickname.length)
+                                                         range:NSMakeRange(0,commentM.fromAuthor.nickname.length)
                                                      linkColor:kWXBlue
                                                       linkFont:UIFontPFMediumMake(14)
                                                 highLightColor:UIColorHighLightColor];
                         
                         [commentTextStorage lw_addLinkWithData:kLinkLike
-                                                         range:NSMakeRange(commentM.fromNickname.length + 2,commentM.toNickname.length)
+                                                         range:NSMakeRange(commentM.fromAuthor.nickname.length + 2,commentM.toAuthor.nickname.length)
                                                      linkColor:kWXBlue
                                                       linkFont:UIFontPFMediumMake(14)
                                                 highLightColor:UIColorHighLightColor];
@@ -460,7 +460,7 @@
                         offsetY += commentTextStorage.height;
                     } else {
                         NSString* commentString = [NSString stringWithFormat:@"%@：%@",
-                                                   commentM.fromNickname,
+                                                   commentM.fromAuthor.nickname,
                                                    commentM.comment];
                         
                         LWTextStorage* commentTextStorage = [[LWTextStorage alloc] init];
@@ -477,7 +477,7 @@
                         [commentTextStorage lw_addLinkForWholeTextStorageWithData:commentM
                                                                    highLightColor:UIColorHighLightColor];
                         [commentTextStorage lw_addLinkWithData:kLinkLike
-                                                         range:NSMakeRange(0,commentM.fromNickname.length)
+                                                         range:NSMakeRange(0,commentM.fromAuthor.nickname.length)
                                                      linkColor:kWXBlue
                                                       linkFont:UIFontPFMediumMake(14)
                                                 highLightColor:UIColorHighLightColor];
@@ -492,7 +492,7 @@
                 //如果有评论，设置评论背景Storage
                 commentTextStorages = tmp;
             }
-            if (likeArray.count > 0 || statusModel.comments.count > 0) {
+            if (statusModel.likes.count > 0 || statusModel.comments.count > 0) {
                 CGFloat commentBgPositionH = 15.0f;
                 if (statusModel.comments.count == 0) {
                     commentBgPositionH = 5.0f;

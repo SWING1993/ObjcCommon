@@ -7,6 +7,7 @@
 //
 
 #import "SWStatusCommentViewController.h"
+#import "SWCreateMsgViewController.h"
 
 @interface SWStatusCommentViewController ()
 
@@ -26,14 +27,15 @@
     [formDescriptor addFormSection:section];
     
     // 评论人
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:kForm rowType:XLFormRowDescriptorTypeText title:@"评论人"];
-    row.required = YES;
-    [row.cellConfigAtConfigure setObject:@"必填项" forKey:@"textField.placeholder"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:kForm rowType:@"XLFormRowDescriptorTypeCustom" title:@"评论人"];
+    row.cellClass = [XLFormSWAuthorCell class];
+    row.cellStyle = UITableViewCellStyleValue1;
     [section addFormRow:row];
     
     // 评论对象
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:kTo rowType:XLFormRowDescriptorTypeEmail title:@"评论对象"];
-    [row.cellConfigAtConfigure setObject:@"可不填" forKey:@"textField.placeholder"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:kTo rowType:@"XLFormRowDescriptorTypeCustom" title:@"评论对象"];
+    row.cellClass = [XLFormSWAuthorCell class];
+    row.cellStyle = UITableViewCellStyleValue1;
     [section addFormRow:row];
 
     // 评论内容
@@ -41,7 +43,7 @@
     [formDescriptor addFormSection:section];
     row = [XLFormRowDescriptor formRowDescriptorWithTag:kComment rowType:XLFormRowDescriptorTypeTextView title:@"评论内容"];
     row.required = YES;
-    [row.cellConfigAtConfigure setObject:@"必填项" forKey:@"textView.placeholder"];
+    [row.cellConfigAtConfigure setObject:@"必填" forKey:@"textView.placeholder"];
     [section addFormRow:row];
     
     return [super initWithForm:formDescriptor];
@@ -61,13 +63,27 @@
 - (void)savePressed:(UIBarButtonItem * __unused)button {
     [self.tableView endEditing:YES];
     
-    NSString *from = [[self formValues] objectForKey:kForm];
-    NSString *to = [[self formValues] objectForKey:kTo];
     NSString *comment = [[self formValues] objectForKey:kComment];
     
+    NSDictionary *fromAuthorDict = [[self formValues] objectForKey:kForm];
+    SWAuthor *from;
+    if ([fromAuthorDict isKindOfClass:[NSDictionary class]]) {
+        from = [[SWAuthor alloc] init];
+        from.avatar = fromAuthorDict[@"avatar"];
+        from.nickname = fromAuthorDict[@"nickname"];
+    }
+    
+    NSDictionary *toAuthorDict = [[self formValues] objectForKey:kTo];
+    SWAuthor *to;
+    if ([toAuthorDict isKindOfClass:[NSDictionary class]]) {
+        to = [[SWAuthor alloc] init];
+        to.avatar = toAuthorDict[@"avatar"];
+        to.nickname = toAuthorDict[@"nickname"];
+    }
+    
     NSString *errorMessage;
-    if (kStringIsEmpty(from)) {
-        errorMessage = @"评论昵称不能为空";
+    if (kStringIsEmpty(from.nickname)) {
+        errorMessage = @"评论人不能为空";
     }
     if (kStringIsEmpty(comment)) {
         errorMessage = @"回复内容不能为空";

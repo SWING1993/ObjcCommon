@@ -7,11 +7,11 @@
 //
 
 #import "SWViewController.h"
-
+#import "SWAuthor.h"
 
 @interface SWStatusCommentViewController : XLFormViewController
 
-@property (nonatomic,copy) void(^completeBlock)(NSString*from, NSString*to, NSString*comment);
+@property (nonatomic,copy) void(^completeBlock)(SWAuthor*from, SWAuthor*to, NSString*comment);
 
 @end
 

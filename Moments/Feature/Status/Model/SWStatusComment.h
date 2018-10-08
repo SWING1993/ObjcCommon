@@ -7,15 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SWAuthor.h"
 
 @interface SWStatusComment : RLMObject
 
+@property SWAuthor* fromAuthor;
+@property SWAuthor* toAuthor;
 @property NSString* createdTime;
 @property NSString* comment;
-@property NSString* fromNickname;
-@property NSString* fromAvator;
-@property NSString* toNickname;
-@property NSString* toAvator;
 
 @end
 

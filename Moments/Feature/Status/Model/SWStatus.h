@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "SWStatusComment.h"
+#import "SWAuthor.h"
 
 @interface SWStatus : RLMObject
 // id
@@ -37,7 +38,7 @@
 @property NSString *webSiteDesc;
 @property NSString *webSiteImage;
 // 点赞
-@property NSString *likeNames;
+@property RLMArray<SWAuthor> *likes;
 // 评论
 @property RLMArray<SWStatusComment> *comments;
 

@@ -197,22 +197,14 @@
     @weakify(self)
     controller.multipleCompleteBlock = ^(NSArray *authors) {
         @strongify(self)
-
-        NSMutableString *likeNmaes = [[NSMutableString alloc] init];
-        for (SWAuthor *author in authors) {
-            if (likeNmaes.length == 0) {
-                [likeNmaes appendFormat:@"%@",author.nickname];
-            } else {
-                [likeNmaes appendFormat:@",%@",author.nickname];
-            }
-        }
         
         SWStatusCellLayout* layout =  [self.dataSource objectAtIndex:cell.indexPath.row];
         SWStatus* model = layout.statusModel;
         RLMRealm *realm = [RLMRealm defaultRealm];
         // 更新对象数据
         [realm beginWriteTransaction];
-        model.likeNames = likeNmaes;
+        [model.likes removeAllObjects];
+        [model.likes addObjects:authors];
         [realm commitWriteTransaction];
 
         SWStatusCellLayout* newLayout = [[SWStatusCellLayout alloc] initWithStatusModel:model index:cell.indexPath.row opend:NO];
@@ -227,7 +219,7 @@
 - (void)commentWithCell:(SWStatusCell *)cell {
     SWStatusCommentViewController *controller = [[SWStatusCommentViewController alloc] init];
     @weakify(self)
-    controller.completeBlock = ^(NSString *from, NSString *to, NSString *comment) {
+    controller.completeBlock = ^(SWAuthor *from, SWAuthor *to, NSString *comment) {
         @strongify(self)
         SWStatusCellLayout* layout =  [self.dataSource objectAtIndex:cell.indexPath.row];
         SWStatus* model = layout.statusModel;
@@ -235,8 +227,8 @@
         // 更新对象数据
         [realm beginWriteTransaction];
         SWStatusComment *statusCcomment = [[SWStatusComment alloc] init];
-        statusCcomment.fromNickname = from;
-        statusCcomment.toNickname = to;
+        statusCcomment.fromAuthor = from;
+        statusCcomment.toAuthor = to;
         statusCcomment.comment = comment;
         [model.comments addObject:statusCcomment];
         [realm commitWriteTransaction];
@@ -429,7 +421,7 @@
             } else if (i == 1) {
                 UIImage *image = [UIImage imageNamed:@"WechatIMG5.jpeg"];
                 status.images = [@[[SWStatus saveImage:image]] mj_JSONString];
-                status.likeNames = @"路飞,雅静,Jennifer";
+//                status.likeNames = @"路飞,雅静,Jennifer";
                 status.type = 1;
             } else if (i == 2) {
                 UIImage *image = [UIImage imageNamed:@"WechatIMG6.jpeg"];
@@ -443,23 +435,23 @@
                 }
                 status.images = [imageNames mj_JSONString];
                 status.location = @"日本·东京";
-                status.likeNames = @"雅静,Jennifer,路飞,达孟,蛋儿,茉莉,小薇";
-                SWStatusComment *comment1 = [[SWStatusComment alloc] init];
-                comment1.fromNickname = @"萌萌";
-                comment1.comment = @"Beautiful!!!";
-                [status.comments addObject:comment1];
-                SWStatusComment *comment2 = [[SWStatusComment alloc] init];
-                comment2.fromNickname = @"Jennifer";
-                comment2.toNickname = @"萌萌";
-                comment2.comment = @"thanks...";
-                [status.comments addObject:comment2];
+//                status.likeNames = @"雅静,Jennifer,路飞,达孟,蛋儿,茉莉,小薇";
+//                SWStatusComment *comment1 = [[SWStatusComment alloc] init];
+//                comment1.fromNickname = @"萌萌";
+//                comment1.comment = @"Beautiful!!!";
+//                [status.comments addObject:comment1];
+//                SWStatusComment *comment2 = [[SWStatusComment alloc] init];
+//                comment2.fromNickname = @"Jennifer";
+//                comment2.toNickname = @"萌萌";
+//                comment2.comment = @"thanks...";
+//                [status.comments addObject:comment2];
                 
             } else if (i == 4) {
-                status.likeNames = @"Queenie,Lana,阿颖";
-                SWStatusComment *comment1 = [[SWStatusComment alloc] init];
-                comment1.fromNickname = @"小鑫鑫";
-                comment1.comment = @"赞";
-                [status.comments addObject:comment1];
+//                status.likeNames = @"Queenie,Lana,阿颖";
+//                SWStatusComment *comment1 = [[SWStatusComment alloc] init];
+//                comment1.fromNickname = @"小鑫鑫";
+//                comment1.comment = @"赞";
+//                [status.comments addObject:comment1];
             }
             [realm addObject:status];
             SWStatusCellLayout *layout = [[SWStatusCellLayout alloc] initWithStatusModel:status index:i opend:NO];

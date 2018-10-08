@@ -49,7 +49,7 @@
     [self.contentView addSubview:self.createTimeLabel];
     
     self.statusContentView = [[UIImageView alloc] init];
-    self.statusContentView.image =UIImageMake(@"fileicon_pic120");
+    self.statusContentView.image =UIImageMake(@"fileicon_pic");
     self.statusContentView.backgroundColor = UIColorMakeX(240);
     self.statusContentView.contentMode = UIViewContentModeScaleAspectFill;
     self.statusContentView.clipsToBounds = YES;

@@ -21,7 +21,6 @@
     if (self) {
         [self initializeForm];
         self.author = [[SWAuthor alloc] init];
-        self.author.id = [SWAuthor incrementaID];
     }
     return self;
 }
