@@ -22,6 +22,9 @@
     self.view.backgroundColor = UIColorForBackground;
     [self setTitle:@"反馈"];
     [self createFeedbackView];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"提交" style:UIBarButtonItemStyleDone target:self action:@selector(saveAction:)];
+    self.navigationItem.rightBarButtonItem.tintColor = UIColorGreen;
 }
 
 - (void)createFeedbackView {
@@ -33,11 +36,8 @@
     _textView.layer.borderColor = UIColorSeparator.CGColor;
     _textView.layer.borderWidth = PixelOne;
     [self.view addSubview:_textView];
-
     [self.textView becomeFirstResponder];
 
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"提交" style:UIBarButtonItemStyleDone target:self action:@selector(saveAction:)];
-    self.navigationItem.rightBarButtonItem.tintColor = UIColorGreen;
 }
 
 - (void)saveAction:(UIButton*)sender {
