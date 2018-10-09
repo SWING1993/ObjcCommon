@@ -1221,10 +1221,10 @@
 		03141ABF2146B34C0030B553 /* KeyBoard */ = {
 			isa = PBXGroup;
 			children = (
-				03141AC42146B34C0030B553 /* Cagegory */,
 				03141ACE2146B34C0030B553 /* ChatKeyBoard.h */,
 				03141C452146B34C0030B553 /* ChatKeyBoard.m */,
 				03141AC32146B34C0030B553 /* ChatKeyBoardMacroDefine.h */,
+				03141AC42146B34C0030B553 /* Cagegory */,
 				03141ACF2146B34C0030B553 /* icons */,
 				03141AC72146B34C0030B553 /* Models */,
 				03141AC02146B34C0030B553 /* plist */,
@@ -2420,14 +2420,14 @@
 		03141C392146B34C0030B553 /* ToolBarPanel */ = {
 			isa = PBXGroup;
 			children = (
-				03141C3A2146B34C0030B553 /* RFTextView.h */,
-				03141C3B2146B34C0030B553 /* RFRecordButton.m */,
-				03141C3C2146B34C0030B553 /* OfficialAccountToolbar.h */,
+				03141C412146B34C0030B553 /* ChatToolBar.h */,
 				03141C3D2146B34C0030B553 /* ChatToolBar.m */,
-				03141C3E2146B34C0030B553 /* RFTextView.m */,
+				03141C3C2146B34C0030B553 /* OfficialAccountToolbar.h */,
 				03141C3F2146B34C0030B553 /* OfficialAccountToolbar.m */,
 				03141C402146B34C0030B553 /* RFRecordButton.h */,
-				03141C412146B34C0030B553 /* ChatToolBar.h */,
+				03141C3B2146B34C0030B553 /* RFRecordButton.m */,
+				03141C3A2146B34C0030B553 /* RFTextView.h */,
+				03141C3E2146B34C0030B553 /* RFTextView.m */,
 			);
 			path = ToolBarPanel;
 			sourceTree = "<group>";
@@ -2435,8 +2435,8 @@
 		03141C422146B34C0030B553 /* MorePanel */ = {
 			isa = PBXGroup;
 			children = (
-				03141C432146B34C0030B553 /* MorePanel.m */,
 				03141C442146B34C0030B553 /* MorePanel.h */,
+				03141C432146B34C0030B553 /* MorePanel.m */,
 			);
 			path = MorePanel;
 			sourceTree = "<group>";

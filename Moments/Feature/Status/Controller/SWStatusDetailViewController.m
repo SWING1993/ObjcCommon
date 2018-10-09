@@ -18,11 +18,14 @@
 #import "SWStatusCommentViewController.h"
 #import "SWStatusLinkViewController.h"
 #import "SWStatusDetailViewController.h"
+#import "ChatKeyBoard.h"
+#import "FaceSourceManager.h"
 
-@interface SWStatusDetailViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface SWStatusDetailViewController ()<UITableViewDataSource,UITableViewDelegate,ChatKeyBoardDelegate,ChatKeyBoardDataSource>
 
 @property (nonatomic,strong) UITableView* tableView;
 @property (nonatomic,strong) SWStatusCellLayout* cellLayout;
+@property (nonatomic,strong) ChatKeyBoard *chatKeyBoard;
 
 @end
 
@@ -43,7 +46,61 @@
     // Do any additional setup after loading the view.
     [self setTitle:@"详情"];
     [self.view addSubview:self.tableView];
+    [self.view addSubview:self.chatKeyBoard];
+    [self.view bringSubviewToFront:self.chatKeyBoard];
     self.cellLayout = [[SWStatusCellLayout alloc] initWithStatusDetailModel:self.status index:0];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self.chatKeyBoard keyboardDownForComment];
+    self.chatKeyBoard.placeHolder = nil;
+}
+
+-(ChatKeyBoard *)chatKeyBoard {
+    if (_chatKeyBoard == nil) {
+        _chatKeyBoard = [ChatKeyBoard keyBoardWithNavgationBarTranslucent:NO];
+        _chatKeyBoard.delegate = self;
+        _chatKeyBoard.dataSource = self;
+        _chatKeyBoard.keyBoardStyle = KeyBoardStyleComment;
+        _chatKeyBoard.userInteractionEnabled = NO;
+        _chatKeyBoard.allowVoice = NO;
+        _chatKeyBoard.allowMore = NO;
+        _chatKeyBoard.allowSwitchBar = NO;
+        _chatKeyBoard.placeHolder = @"评论";
+    }
+    return _chatKeyBoard;
+}
+
+- (void)chatKeyBoardSendText:(NSString *)text {
+    if ([text isEmptyString]) {
+        return;
+    }
+    [self.chatKeyBoard keyboardDownForComment];
+    self.chatKeyBoard.placeHolder = nil;
+}
+- (void)chatKeyBoardFacePicked:(ChatKeyBoard *)chatKeyBoard faceStyle:(NSInteger)faceStyle faceName:(NSString *)faceName delete:(BOOL)isDeleteKey {
+    
+}
+- (void)chatKeyBoardAddFaceSubject:(ChatKeyBoard *)chatKeyBoard {
+    
+}
+
+- (void)chatKeyBoardSetFaceSubject:(ChatKeyBoard *)chatKeyBoard {
+    
+}
+
+- (NSArray<ChatToolBarItem *> *)chatKeyBoardToolbarItems {
+    ChatToolBarItem *item1 = [ChatToolBarItem barItemWithKind:kBarItemFace normal:@"face" high:@"face_HL" select:@"keyboard"];
+    return @[item1];
+}
+
+- (NSArray<FaceThemeModel *> *)chatKeyBoardFacePanelSubjectItems {
+    return [FaceSourceManager loadFaceSource];
+}
+
+- (NSArray<MoreItem *> *)chatKeyBoardMorePanelItems {
+    return nil;
 }
 
 #pragma mark - UITableViewDataSource
