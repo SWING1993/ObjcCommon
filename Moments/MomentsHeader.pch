@@ -35,4 +35,6 @@
 #import "CMAutoTrackerOperation.h"
 #import <YPNavigationBarTransition/YPNavigationBarTransition.h>
 #import "SWTableViewController.h"
+#import "SWRealmConfiguration.h"
+
 #endif /* MomentsHeader_pch */

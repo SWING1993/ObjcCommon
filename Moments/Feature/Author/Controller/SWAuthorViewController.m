@@ -18,7 +18,6 @@ static NSString *const Identifier = @"CollectionCellIdentifier";
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) NSMutableArray *dataSource;
-//@property (nonatomic, strong) NSMutableArray *multipleSelection;
 
 @end
 
@@ -33,7 +32,9 @@ static NSString *const Identifier = @"CollectionCellIdentifier";
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     // 从默认 Realm 中，检索所有的状态
-    RLMResults *allAuthor = [SWAuthor allObjects];
+
+
+    RLMResults *allAuthor = [SWAuthor allObjectsInRealm:[SWRealmConfiguration authorRealm]];
     self.dataSource = [NSMutableArray arrayWithCapacity:allAuthor.count];
     for (NSInteger index = allAuthor.count - 1; index > -1; index --) {
         SWAuthor *author = [allAuthor objectAtIndex:index];
@@ -56,7 +57,7 @@ static NSString *const Identifier = @"CollectionCellIdentifier";
                 @strongify(self)
                 [self.dataSource insertObject:author atIndex:0];
                 [self.collectionView reloadData];
-                RLMRealm *realm = [RLMRealm defaultRealm];
+                RLMRealm *realm = [SWRealmConfiguration authorRealm];
                 [realm beginWriteTransaction];
                 [realm addObject:author];
                 [realm commitWriteTransaction];
