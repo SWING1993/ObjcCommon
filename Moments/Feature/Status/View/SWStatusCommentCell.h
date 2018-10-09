@@ -11,6 +11,7 @@
 @interface SWStatusCommentCell : UITableViewCell
 
 @property (nonatomic,strong) SWStatus* status;
+@property (nonatomic,copy) void(^clickedReCommentCallback)(SWStatusComment* comment);
 
 + (CGFloat)cellHeightWithStatus:(SWStatus *)status;
 

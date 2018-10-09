@@ -178,10 +178,10 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    CellLayout* layout = self.commentLayouts[indexPath.row];
-//    if (self.clickedReCommentCallback) {
-//        self.clickedReCommentCallback(layout.commentModel);
-//    }
+    SWStatusCellLayout* layout = self.commentLayouts[indexPath.row];
+    if (self.clickedReCommentCallback) {
+        self.clickedReCommentCallback(layout.commentModel);
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {

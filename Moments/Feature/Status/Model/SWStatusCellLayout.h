@@ -28,6 +28,7 @@
 @interface SWStatusCellLayout : LWLayout <NSCopying>
 
 @property (nonatomic,strong) SWStatus* statusModel;
+@property (nonatomic,strong) SWStatusComment* commentModel;
 @property (nonatomic,assign) CGFloat cellHeight;
 @property (nonatomic,assign) CGRect lineRect;
 @property (nonatomic,assign) CGRect menuPosition;

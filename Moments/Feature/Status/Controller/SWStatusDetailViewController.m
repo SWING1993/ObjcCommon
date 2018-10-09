@@ -127,11 +127,11 @@
             cell = [[SWStatusCommentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:commentCellIdentifier];
         }
         cell.status = self.status;
-//        @weakify(self)
-//        cell.clickedReCommentCallback = ^(CommentModel *model) {
-//            @strongify(self);
-//            [self reCommentWithCell:nil commentModel:model];
-//        };
+        @weakify(self)
+        cell.clickedReCommentCallback = ^(SWStatusComment *comment) {
+            @strongify(self);
+            [self reCommentWithCell:nil commentModel:comment];
+        };
         return cell;
     }
     return nil;

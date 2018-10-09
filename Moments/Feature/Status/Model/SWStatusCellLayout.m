@@ -841,6 +841,7 @@
     self = [super init];
     if (self) {
         @autoreleasepool {
+            self.commentModel = commentModel;
             LWTextStorage* commentTimeStorage = [[LWTextStorage alloc] init];
 //            commentTimeStorage.text = [[NSDate dateWithTimeIntervalSince1970:commentModel.created/1000] timeDetail];
             commentTimeStorage.font = UIFontMake(12);
