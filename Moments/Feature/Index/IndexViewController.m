@@ -11,6 +11,7 @@
 #import "SWMessageViewController.h"
 #import "SWAuthor.h"
 #import "SWFeedbackViewController.h"
+#import "SWInstructionsViewController.h"
 
 @interface IndexViewController ()<GADBannerViewDelegate>
 
@@ -32,8 +33,8 @@
     self.gridView.separatorWidth = PixelOne;
     [self.view addSubview:self.gridView];
     
-    NSArray *dataSource = @[@"制作朋友圈",@"制作消息",@"使用说明",@"分享给朋友",@"反馈"];
-    NSArray *iconName = @[@"朋友圈",@"消息",@"说明",@"分享",@"反馈"];
+    NSArray *dataSource = @[@"制作朋友圈",@"制作消息",@"使用说明",@"反馈"];
+    NSArray *iconName = @[@"朋友圈",@"消息",@"说明",@"反馈"];
 
     for (NSInteger i = 0; i < dataSource.count; i++) {
         QMUIButton *btn = [[QMUIButton alloc] init];
@@ -89,8 +90,20 @@
                 [self.navigationController pushViewController:controller animated:YES];
             }
             break;
+            case 2: {
+                // 使用说明
+                SWInstructionsViewController *controller = [[SWInstructionsViewController alloc] init];
+                [self.navigationController pushViewController:controller animated:YES];
+            }
+            break;
+//            case 3: {
+//                // 分享
+//                SWMessageViewController *controller = [[SWMessageViewController alloc] init];
+//                [self.navigationController pushViewController:controller animated:YES];
+//            }
+//            break;
             
-            case 4:{
+            case 3:{
                 SWFeedbackViewController *controller = [[SWFeedbackViewController alloc] init];
                 [self.navigationController pushViewController:controller animated:YES];
             }

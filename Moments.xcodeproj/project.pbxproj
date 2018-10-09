@@ -100,6 +100,7 @@
 		892720F7216B4B3E006E066F /* SWStatusCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 892720F6216B4B3E006E066F /* SWStatusCommentCell.m */; };
 		892720FA216C4956006E066F /* SWRealmConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 892720F9216C4956006E066F /* SWRealmConfiguration.m */; };
 		89272110216C8B65006E066F /* SWFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8927210F216C8B65006E066F /* SWFeedbackViewController.m */; };
+		89272113216C93A4006E066F /* SWInstructionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89272112216C93A4006E066F /* SWInstructionsViewController.m */; };
 		89744C63214F457800761E08 /* SWAuthor.m in Sources */ = {isa = PBXBuildFile; fileRef = 89744C62214F457800761E08 /* SWAuthor.m */; };
 		89744C6A214F462200761E08 /* SWAuthorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89744C69214F462200761E08 /* SWAuthorViewController.m */; };
 		89744C6D214F4BDD00761E08 /* SWAuthorAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89744C6C214F4BDD00761E08 /* SWAuthorAddViewController.m */; };
@@ -398,6 +399,8 @@
 		892720F9216C4956006E066F /* SWRealmConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWRealmConfiguration.m; sourceTree = "<group>"; };
 		8927210E216C8B65006E066F /* SWFeedbackViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWFeedbackViewController.h; sourceTree = "<group>"; };
 		8927210F216C8B65006E066F /* SWFeedbackViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWFeedbackViewController.m; sourceTree = "<group>"; };
+		89272111216C93A4006E066F /* SWInstructionsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWInstructionsViewController.h; sourceTree = "<group>"; };
+		89272112216C93A4006E066F /* SWInstructionsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWInstructionsViewController.m; sourceTree = "<group>"; };
 		89744C61214F457800761E08 /* SWAuthor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWAuthor.h; sourceTree = "<group>"; };
 		89744C62214F457800761E08 /* SWAuthor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWAuthor.m; sourceTree = "<group>"; };
 		89744C68214F462200761E08 /* SWAuthorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWAuthorViewController.h; sourceTree = "<group>"; };
@@ -955,6 +958,8 @@
 			children = (
 				8927210E216C8B65006E066F /* SWFeedbackViewController.h */,
 				8927210F216C8B65006E066F /* SWFeedbackViewController.m */,
+				89272111216C93A4006E066F /* SWInstructionsViewController.h */,
+				89272112216C93A4006E066F /* SWInstructionsViewController.m */,
 			);
 			path = Feedback;
 			sourceTree = "<group>";
@@ -1641,6 +1646,7 @@
 				89DF925B2160645600AFE6B2 /* XLFormRegexValidator.m in Sources */,
 				897EBBD82147C33200CC32BF /* NSDictionary+Safe.m in Sources */,
 				03141C492146B34D0030B553 /* MoreItem.m in Sources */,
+				89272113216C93A4006E066F /* SWInstructionsViewController.m in Sources */,
 				89EE015C2154F03300D13FD4 /* SWUser.m in Sources */,
 				89DF925D2160645600AFE6B2 /* XLFormValidator.m in Sources */,
 				892720F4216B48C9006E066F /* SWStatusLikeCell.m in Sources */,

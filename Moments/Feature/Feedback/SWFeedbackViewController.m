@@ -37,7 +37,6 @@
     _textView.layer.borderWidth = PixelOne;
     [self.view addSubview:_textView];
     [self.textView becomeFirstResponder];
-
 }
 
 - (void)saveAction:(UIButton*)sender {
