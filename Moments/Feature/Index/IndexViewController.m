@@ -10,6 +10,7 @@
 #import "SWStatusViewController.h"
 #import "SWMessageViewController.h"
 #import "SWAuthor.h"
+#import "SWFeedbackViewController.h"
 
 @interface IndexViewController ()<GADBannerViewDelegate>
 
@@ -89,6 +90,11 @@
             }
             break;
             
+            case 4:{
+                SWFeedbackViewController *controller = [[SWFeedbackViewController alloc] init];
+                [self.navigationController pushViewController:controller animated:YES];
+            }
+            break;
         default:
             break;
     }

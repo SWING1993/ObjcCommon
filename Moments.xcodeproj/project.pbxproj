@@ -99,6 +99,7 @@
 		892720F4216B48C9006E066F /* SWStatusLikeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 892720F3216B48C9006E066F /* SWStatusLikeCell.m */; };
 		892720F7216B4B3E006E066F /* SWStatusCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 892720F6216B4B3E006E066F /* SWStatusCommentCell.m */; };
 		892720FA216C4956006E066F /* SWRealmConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 892720F9216C4956006E066F /* SWRealmConfiguration.m */; };
+		89272110216C8B65006E066F /* SWFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8927210F216C8B65006E066F /* SWFeedbackViewController.m */; };
 		89744C63214F457800761E08 /* SWAuthor.m in Sources */ = {isa = PBXBuildFile; fileRef = 89744C62214F457800761E08 /* SWAuthor.m */; };
 		89744C6A214F462200761E08 /* SWAuthorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89744C69214F462200761E08 /* SWAuthorViewController.m */; };
 		89744C6D214F4BDD00761E08 /* SWAuthorAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89744C6C214F4BDD00761E08 /* SWAuthorAddViewController.m */; };
@@ -395,6 +396,8 @@
 		892720F6216B4B3E006E066F /* SWStatusCommentCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWStatusCommentCell.m; sourceTree = "<group>"; };
 		892720F8216C4956006E066F /* SWRealmConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWRealmConfiguration.h; sourceTree = "<group>"; };
 		892720F9216C4956006E066F /* SWRealmConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWRealmConfiguration.m; sourceTree = "<group>"; };
+		8927210E216C8B65006E066F /* SWFeedbackViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWFeedbackViewController.h; sourceTree = "<group>"; };
+		8927210F216C8B65006E066F /* SWFeedbackViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWFeedbackViewController.m; sourceTree = "<group>"; };
 		89744C61214F457800761E08 /* SWAuthor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWAuthor.h; sourceTree = "<group>"; };
 		89744C62214F457800761E08 /* SWAuthor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWAuthor.m; sourceTree = "<group>"; };
 		89744C68214F462200761E08 /* SWAuthorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWAuthorViewController.h; sourceTree = "<group>"; };
@@ -947,6 +950,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		8927210D216C8B41006E066F /* Feedback */ = {
+			isa = PBXGroup;
+			children = (
+				8927210E216C8B65006E066F /* SWFeedbackViewController.h */,
+				8927210F216C8B65006E066F /* SWFeedbackViewController.m */,
+			);
+			path = Feedback;
+			sourceTree = "<group>";
+		};
 		89744C60214F455900761E08 /* Author */ = {
 			isa = PBXGroup;
 			children = (
@@ -996,6 +1008,7 @@
 		897EBB762147644100CC32BF /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				8927210D216C8B41006E066F /* Feedback */,
 				89DF91CE215F477D00AFE6B2 /* Message */,
 				897EBB77214765E600CC32BF /* Index */,
 				89744C60214F455900761E08 /* Author */,
@@ -1701,6 +1714,7 @@
 				03141A372146A3FA0030B553 /* LWTextLayout.m in Sources */,
 				897EBB7B2147664800CC32BF /* SWViewController.m in Sources */,
 				0314194B21469BB50030B553 /* AppDelegate.m in Sources */,
+				89272110216C8B65006E066F /* SWFeedbackViewController.m in Sources */,
 				89DF923B2160645600AFE6B2 /* XLFormStepCounterCell.m in Sources */,
 				89DF923F2160645600AFE6B2 /* XLFormBaseCell.m in Sources */,
 				89DF92462160645600AFE6B2 /* XLFormDateCell.m in Sources */,
