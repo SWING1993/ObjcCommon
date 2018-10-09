@@ -436,13 +436,13 @@
                         [commentTextStorage lw_addLinkForWholeTextStorageWithData:commentM
                                                                    highLightColor:UIColorHighLightColor];
                     
-                        [commentTextStorage lw_addLinkWithData:kLinkLike
+                        [commentTextStorage lw_addLinkWithData:kLinkUser
                                                          range:NSMakeRange(0,commentM.fromAuthor.nickname.length)
                                                      linkColor:kWXBlue
                                                       linkFont:UIFontPFMediumMake(14)
                                                 highLightColor:UIColorHighLightColor];
                         
-                        [commentTextStorage lw_addLinkWithData:kLinkLike
+                        [commentTextStorage lw_addLinkWithData:kLinkUser
                                                          range:NSMakeRange(commentM.fromAuthor.nickname.length + 2,commentM.toAuthor.nickname.length)
                                                      linkColor:kWXBlue
                                                       linkFont:UIFontPFMediumMake(14)
@@ -452,9 +452,7 @@
                                                         linkColor:kWXBlue
                                                    highlightColor:UIColorHighLightColor];
                         [LWTextParser parseEmojiWithTextStorage:commentTextStorage];
-                        
-                        
-                        
+                                                
                         [tmp addObject:commentTextStorage];
                         offsetY += commentTextStorage.height;
                     } else {
@@ -795,17 +793,19 @@
             }
             
             //删除模型模型 deleteTextStorage
-            LWTextStorage* deleteTextStorage = [[LWTextStorage alloc] init];
-            deleteTextStorage.text = @"删除";
-            deleteTextStorage.font = UIFontMake(12);
-            CGFloat deleteTextStorageY = dateTextStorage.right + (statusModel.personal ? 45 : 15);
-            deleteTextStorage.frame = CGRectMake(deleteTextStorageY, dateTextStorage.top, 60.0f, 12);
-            [deleteTextStorage lw_addLinkWithData:kLinkDelete
-                                            range:NSMakeRange(0,deleteTextStorage.text.length)
-                                        linkColor:kWXBlue
-                                   highLightColor:UIColorHighLightColor];
-            [self addStorage:deleteTextStorage];
-
+            if (statusModel.own) {
+                LWTextStorage* deleteTextStorage = [[LWTextStorage alloc] init];
+                deleteTextStorage.text = @"删除";
+                deleteTextStorage.font = UIFontMake(12);
+                CGFloat deleteTextStorageY = dateTextStorage.right + (statusModel.personal ? 45 : 15);
+                deleteTextStorage.frame = CGRectMake(deleteTextStorageY, dateTextStorage.top, 60.0f, 12);
+                [deleteTextStorage lw_addLinkWithData:kLinkDelete
+                                                range:NSMakeRange(0,deleteTextStorage.text.length)
+                                            linkColor:kWXBlue
+                                       highLightColor:UIColorHighLightColor];
+                [self addStorage:deleteTextStorage];
+            }
+            
             //菜单按钮
             CGRect menuPosition = CGRectZero;
             menuPosition = CGRectMake(SCREEN_WIDTH - 54.0f,

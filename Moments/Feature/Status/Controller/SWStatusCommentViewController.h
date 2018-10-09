@@ -11,7 +11,9 @@
 
 @interface SWStatusCommentViewController : XLFormViewController
 
-@property (nonatomic,copy) void(^completeBlock)(SWAuthor*from, SWAuthor*to, NSString*comment);
+@property (nonatomic, copy) void(^completeBlock)(SWAuthor*from, SWAuthor*to, NSString*comment);
+
+- (id)initWithTo:(SWAuthor *)to;
 
 @end
 

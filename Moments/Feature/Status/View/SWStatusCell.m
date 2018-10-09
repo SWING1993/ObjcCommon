@@ -72,7 +72,6 @@
 //        UIWindow * window = [[UIApplication sharedApplication] keyWindow];
 //        [window.rootViewController presentViewController:playerVC animated:YES completion:NULL];
 //        [playerVC.player play];
-        
     } else {
         NSInteger tag = imageStorage.tag;
         //tag 0~8 是图片，9是头像， 233点击评论头像
@@ -128,7 +127,9 @@
         else {
         }
     } else if ([data isKindOfClass:[SWStatusComment class]]) {
-        
+        if (self.clickedReCommentCallback) {
+            self.clickedReCommentCallback(self, data);
+        }
     }
 }
 

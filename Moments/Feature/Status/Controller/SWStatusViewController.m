@@ -161,10 +161,10 @@
         [self commentWithCell:cell];
     };
     
-//    cell.clickedReCommentCallback = ^(SWStatusCell* cell,CommentModel* model) {
-//        __strong typeof(weakSelf) sself = weakSelf;
-//        [self reCommentWithCell:cell commentModel:model];
-//    };
+    cell.clickedReCommentCallback = ^(SWStatusCell* cell,SWStatusComment* model) {
+        @strongify(self)
+        [self reCommentWithCell:cell commentModel:model];
+    };
     
     cell.clickedOpenCellCallback = ^(SWStatusCell* cell) {
         @strongify(self)
@@ -242,6 +242,49 @@
 
     };
     [self.navigationController pushViewController:controller animated:YES];
+}
+
+- (void)reCommentWithCell:(SWStatusCell *)cell commentModel:(SWStatusComment *)model {
+    TBActionSheet *actionSheet =  [[TBActionSheet alloc] init];
+    @weakify(self)
+    [actionSheet addButtonWithTitle:@"回复" style:TBActionButtonStyleDefault handler:^(TBActionButton * _Nonnull button) {
+        @strongify(self)
+        SWStatusCommentViewController *controller = [[SWStatusCommentViewController alloc] initWithTo:model.fromAuthor];
+        @weakify(self)
+        controller.completeBlock = ^(SWAuthor *from, SWAuthor *to, NSString *comment) {
+            @strongify(self)
+            SWStatusCellLayout* layout =  [self.dataSource objectAtIndex:cell.indexPath.row];
+            SWStatus* model = layout.statusModel;
+            RLMRealm *realm = [RLMRealm defaultRealm];
+            // 更新对象数据
+            [realm beginWriteTransaction];
+            SWStatusComment *statusCcomment = [[SWStatusComment alloc] init];
+            statusCcomment.fromAuthor = from;
+            statusCcomment.toAuthor = to;
+            statusCcomment.comment = comment;
+            [model.comments addObject:statusCcomment];
+            [realm commitWriteTransaction];
+            
+            SWStatusCellLayout* newLayout = [[SWStatusCellLayout alloc] initWithStatusModel:model index:cell.indexPath.row opend:NO];
+            [self coverScreenshotAndDelayRemoveWithCell:cell cellHeight:newLayout.cellHeight];
+            [self.dataSource replaceObjectAtIndex:cell.indexPath.row withObject:newLayout];
+            [self.tableView reloadData];
+            
+        };
+        [self.navigationController pushViewController:controller animated:YES];
+    }];
+    [actionSheet addButtonWithTitle:@"删除" style:TBActionButtonStyleDefault handler:^(TBActionButton * _Nonnull button) {
+        @strongify(self)
+        RLMRealm *realm = [RLMRealm defaultRealm];
+        [realm beginWriteTransaction];
+        [cell.cellLayout.statusModel.comments removeObjectAtIndex:[cell.cellLayout.statusModel.comments indexOfObject:model]];
+        [realm commitWriteTransaction];
+        SWStatusCellLayout* newLayout = [[SWStatusCellLayout alloc] initWithStatusModel:cell.cellLayout.statusModel index:cell.indexPath.row opend:NO];
+        [self.dataSource replaceObjectAtIndex:cell.indexPath.row withObject:newLayout];
+        [self.tableView reloadData];
+    }];
+    [actionSheet addButtonWithTitle:@"取消" style:TBActionButtonStyleCancel];
+    [actionSheet show];
 }
 
 //展开Cell

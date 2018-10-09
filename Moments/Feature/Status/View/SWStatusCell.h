@@ -20,6 +20,7 @@
 @property (nonatomic,copy) void(^clickedImageCallback)(SWStatusCell* cell,NSInteger imageIndex);
 @property (nonatomic,copy) void(^clickedLikeButtonCallback)(SWStatusCell* cell);
 @property (nonatomic,copy) void(^clickedCommentButtonCallback)(SWStatusCell* cell);
+@property (nonatomic,copy) void(^clickedReCommentCallback)(SWStatusCell* cell,SWStatusComment* model);
 @property (nonatomic,copy) void(^clickedAvatarCallback)(SWStatusCell* cell);
 @property (nonatomic,copy) void(^clickedOpenCellCallback)(SWStatusCell* cell);
 @property (nonatomic,copy) void(^clickedCloseCellCallback)(SWStatusCell* cell);

@@ -16,6 +16,10 @@
 @implementation SWStatusCommentViewController
 
 - (id)init {
+    return [self initWithTo:nil];
+}
+
+- (id)initWithTo:(SWAuthor *)to {
     XLFormDescriptor * formDescriptor = [XLFormDescriptor formDescriptorWithTitle:@"评论"];
     XLFormSectionDescriptor * section;
     XLFormRowDescriptor * row;
@@ -36,6 +40,9 @@
     row = [XLFormRowDescriptor formRowDescriptorWithTag:kTo rowType:@"XLFormRowDescriptorTypeCustom" title:@"评论对象"];
     row.cellClass = [XLFormSWAuthorCell class];
     row.cellStyle = UITableViewCellStyleValue1;
+    if (to) {
+        row.value = @{@"nickname":to.nickname?:@"",@"avatar":to.avatar?:@""};
+    }
     [section addFormRow:row];
 
     // 评论内容
@@ -82,11 +89,11 @@
     }
     
     NSString *errorMessage;
-    if (kStringIsEmpty(from.nickname)) {
-        errorMessage = @"评论人不能为空";
-    }
     if (kStringIsEmpty(comment)) {
         errorMessage = @"回复内容不能为空";
+    }
+    if (kStringIsEmpty(from.nickname)) {
+        errorMessage = @"评论人不能为空";
     }
     if (!kStringIsEmpty(errorMessage)) {
         UIAlertController * alertController = [UIAlertController alertControllerWithTitle:errorMessage
