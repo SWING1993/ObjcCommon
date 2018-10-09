@@ -36,7 +36,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     
-    NSInteger launch = [[NSUserDefaults standardUserDefaults] integerForKey:@"launch"];
+    NSInteger launch = [[NSUserDefaults standardUserDefaults] integerForKey:kLaunch];
     launch ++;
     [[NSUserDefaults standardUserDefaults] setInteger:launch forKey:kLaunch];
     
