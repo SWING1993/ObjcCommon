@@ -57,8 +57,8 @@
 }
 
 - (void)configCellWithModel:(SWMessage *)message {
-    self.avatarView.image = [SWStatus getDocumentImageWithName:message.avatar];
-    self.nicknameLabel.text = message.nickname;
+    self.avatarView.image = [SWStatus getDocumentImageWithName:message.author.avatar];
+    self.nicknameLabel.text = message.author.nickname;
     self.createTimeLabel.text = message.createdTime;
 
     if (message.type == 1) {

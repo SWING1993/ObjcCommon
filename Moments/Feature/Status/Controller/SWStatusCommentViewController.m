@@ -41,7 +41,7 @@
     row.cellClass = [XLFormSWAuthorCell class];
     row.cellStyle = UITableViewCellStyleValue1;
     if (to) {
-        row.value = @{@"nickname":to.nickname?:@"",@"avatar":to.avatar?:@""};
+        row.value = to;
     }
     [section addFormRow:row];
 
@@ -71,23 +71,8 @@
     [self.tableView endEditing:YES];
     
     NSString *comment = [[self formValues] objectForKey:kComment];
-    
-    NSDictionary *fromAuthorDict = [[self formValues] objectForKey:kForm];
-    SWAuthor *from;
-    if ([fromAuthorDict isKindOfClass:[NSDictionary class]]) {
-        from = [[SWAuthor alloc] init];
-        from.avatar = fromAuthorDict[@"avatar"];
-        from.nickname = fromAuthorDict[@"nickname"];
-    }
-    
-    NSDictionary *toAuthorDict = [[self formValues] objectForKey:kTo];
-    SWAuthor *to;
-    if ([toAuthorDict isKindOfClass:[NSDictionary class]]) {
-        to = [[SWAuthor alloc] init];
-        to.avatar = toAuthorDict[@"avatar"];
-        to.nickname = toAuthorDict[@"nickname"];
-    }
-    
+    SWAuthor *from = [[self formValues] objectForKey:kForm];
+    SWAuthor *to = [[self formValues] objectForKey:kTo];
     NSString *errorMessage;
     if (kStringIsEmpty(comment)) {
         errorMessage = @"回复内容不能为空";

@@ -34,7 +34,7 @@ static NSString *const Identifier = @"CollectionCellIdentifier";
     // 从默认 Realm 中，检索所有的状态
 
 
-    RLMResults *allAuthor = [SWAuthor allObjectsInRealm:[SWRealmConfiguration authorRealm]];
+    RLMResults *allAuthor = [SWAuthor allObjects];
     self.dataSource = [NSMutableArray arrayWithCapacity:allAuthor.count];
     for (NSInteger index = allAuthor.count - 1; index > -1; index --) {
         SWAuthor *author = [allAuthor objectAtIndex:index];
@@ -57,7 +57,7 @@ static NSString *const Identifier = @"CollectionCellIdentifier";
                 @strongify(self)
                 [self.dataSource insertObject:author atIndex:0];
                 [self.collectionView reloadData];
-                RLMRealm *realm = [SWRealmConfiguration authorRealm];
+                RLMRealm *realm = [RLMRealm defaultRealm];
                 [realm beginWriteTransaction];
                 [realm addObject:author];
                 [realm commitWriteTransaction];

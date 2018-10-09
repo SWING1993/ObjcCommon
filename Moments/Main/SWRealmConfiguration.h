@@ -10,7 +10,6 @@
 
 @interface SWRealmConfiguration : NSObject
 
-+ (RLMRealm *)authorRealm;
 
 @end
 

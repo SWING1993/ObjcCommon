@@ -46,10 +46,10 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    GADRequest *request = [GADRequest request];
-    request.testDevices = @[kGADSimulatorID];
-    self.bannerView.delegate = self;
-    [self.bannerView loadRequest:request];
+//    GADRequest *request = [GADRequest request];
+//    request.testDevices = @[kGADSimulatorID];
+//    self.bannerView.delegate = self;
+//    [self.bannerView loadRequest:request];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -117,8 +117,8 @@
 }
 
 - (void)addAuthor {
-    RLMRealm *authorRealm = [SWRealmConfiguration authorRealm];
-    RLMResults *allAuthor = [SWAuthor allObjectsInRealm:authorRealm];
+    RLMRealm *authorRealm = [RLMRealm defaultRealm];
+    RLMResults *allAuthor = [SWAuthor allObjects];
     if (allAuthor.count == 0) {
         NSArray *nicknames = @[@"煎饼侠",@"萌萌",@"皮卡丘",@"凹凸曼",@"拉克丝",@"小鑫鑫",@"琪琪",@"喵",@"Laurinda",@"阿狸",@"Fiona",@"Lee",@"雅彤",@"璐璐",@"SuperMan",@"可儿",@"雅静",@"Jennifer",@"路飞",@"达孟",@"蛋儿",@"茉莉",@"小薇",@"小翔",@"Adele",@"李菲菲",@"haha",@"ZZ",@"Lacey",@"星爷",@"Selena",@"周归璨",@"Wendy",@"Queenie",@"Lana",@"阿颖"];
         [authorRealm beginWriteTransaction];

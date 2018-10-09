@@ -31,7 +31,8 @@
     self.textLabel.text = self.rowDescriptor.title;
     self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     if (self.rowDescriptor.value) {
-        self.detailTextLabel.text = self.rowDescriptor.value[@"nickname"];
+        SWAuthor *author = self.rowDescriptor.value;
+        self.detailTextLabel.text = author.nickname;
         self.detailTextLabel.textColor = UIColorBlack;
     } else {
         self.detailTextLabel.text = @"请选择";
@@ -47,7 +48,7 @@
     @weakify(self)
     authorViewController.singleCompleteBlock = ^(SWAuthor *author) {
         @strongify(self)
-        self.rowDescriptor.value = @{@"nickname":author.nickname?:@"",@"avatar":author.avatar?:@""};
+        self.rowDescriptor.value = author;
         [self.formViewController updateFormRow:self.rowDescriptor];
         [controller.tableView deselectRowAtIndexPath:[controller.form indexPathOfFormRow:self.rowDescriptor] animated:YES];
     };
@@ -128,19 +129,13 @@
 - (void)savePressed:(UIBarButtonItem * __unused)button {
     [self.tableView endEditing:YES];
 
-    NSDictionary *authorDict = [[self formValues] objectForKey:kAuthor];
-    NSString *avatar;
-    NSString *nickname;
-    if ([authorDict isKindOfClass:[NSDictionary class]]) {
-        avatar = authorDict[@"avatar"];
-        nickname = authorDict[@"nickname"];
-    }
+    SWAuthor *author = [[self formValues] objectForKey:kAuthor];
     NSString *time = [[self formValues] objectForKey:kTime];
     UIImage *status = [[self formValues] objectForKey:kStatus];
     NSString *message = [[self formValues] objectForKey:kMessage];
 
     NSString *errorMessage;
-    if (kStringIsEmpty(nickname)) {
+    if (kStringIsEmpty(author.nickname)) {
         errorMessage = @"消息发布人不能为空";
     }
     if (kStringIsEmpty(message) && self.type == 1) {
@@ -158,8 +153,7 @@
     }
     
     SWMessage *msgObj = [[SWMessage alloc] init];
-    msgObj.avatar = avatar;
-    msgObj.nickname = nickname;
+    msgObj.author = author;
     msgObj.createdTime = time;
     msgObj.type = self.type;
     msgObj.contentImage = [SWStatus saveImage:status];

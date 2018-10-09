@@ -12,10 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SWMessage : RLMObject
 
-// 评论人昵称
-@property NSString *nickname;
-// 评论人头像
-@property NSString *avatar;
+// 评论人
+@property SWAuthor *author;
 // 类型：0=点赞 1=评论
 @property NSInteger type;
 // 发布的时间
