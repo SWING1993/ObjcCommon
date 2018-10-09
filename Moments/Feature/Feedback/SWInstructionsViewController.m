@@ -19,7 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = UIColorForBackground;
+    self.view.backgroundColor = UIColorWhite;
     [self setTitle:@"使用说明"];
     [self createFeedbackView];
 }
@@ -30,8 +30,6 @@
     _textView.userInteractionEnabled = NO;
     _textView.keyboardType = UIKeyboardTypeDefault;
     _textView.font = [UIFont systemFontOfSize:16];
-    _textView.layer.borderColor = UIColorSeparator.CGColor;
-    _textView.layer.borderWidth = PixelOne;
     [self.view addSubview:_textView];
 }
 

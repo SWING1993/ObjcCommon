@@ -65,7 +65,7 @@
     dispatch_queue_t queue = dispatch_queue_create("kk", DISPATCH_QUEUE_SERIAL);
     dispatch_async(queue, ^{
         @strongify(self)
-        [self addAuthor];
+        [self addTestRealm];
     });
 }
 
@@ -96,13 +96,7 @@
                 [self.navigationController pushViewController:controller animated:YES];
             }
             break;
-//            case 3: {
-//                // 分享
-//                SWMessageViewController *controller = [[SWMessageViewController alloc] init];
-//                [self.navigationController pushViewController:controller animated:YES];
-//            }
-//            break;
-            
+
             case 3:{
                 SWFeedbackViewController *controller = [[SWFeedbackViewController alloc] init];
                 [self.navigationController pushViewController:controller animated:YES];
@@ -137,20 +131,92 @@
     NSLog(@"adView:didFailToReceiveAdWithError:%@", [error localizedDescription]);
 }
 
-- (void)addAuthor {
-    RLMRealm *authorRealm = [RLMRealm defaultRealm];
+- (void)addTestRealm {
+    NSInteger launch = [[NSUserDefaults standardUserDefaults] integerForKey:kLaunch];
+    NSLog(@"launch:%zi",launch);
+    if (launch < 2) {
+        return;
+    }
+    
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    
     RLMResults *allAuthor = [SWAuthor allObjects];
     if (allAuthor.count == 0) {
         NSArray *nicknames = @[@"煎饼侠",@"萌萌",@"皮卡丘",@"凹凸曼",@"拉克丝",@"小鑫鑫",@"琪琪",@"喵",@"Laurinda",@"阿狸",@"Fiona",@"Lee",@"雅彤",@"璐璐",@"SuperMan",@"可儿",@"雅静",@"Jennifer",@"路飞",@"达孟",@"蛋儿",@"茉莉",@"小薇",@"小翔",@"Adele",@"李菲菲",@"haha",@"ZZ",@"Lacey",@"星爷",@"Selena",@"周归璨",@"Wendy",@"Queenie",@"Lana",@"阿颖"];
-        [authorRealm beginWriteTransaction];
+        [realm beginWriteTransaction];
         for (int i = 0; i < nicknames.count; i ++) {
             SWAuthor *author = [[SWAuthor alloc] init];
             author.nickname = nicknames[i];
             NSString *imageName = [NSString stringWithFormat:@"avatar%d.jpg",i];
             author.avatar = [SWStatus saveImage:[UIImage imageNamed:imageName]];
-            [authorRealm addObject:author];
+            [realm addObject:author];
         }
-        [authorRealm commitWriteTransaction];
+        [realm commitWriteTransaction];
+    }
+    
+    RLMResults<SWStatus *> *allStatus = [SWStatus allObjects];
+    if (allStatus.count <= 0) {
+        NSArray *nicknames = @[@"爱范儿呀",@"可儿",@"煎饼侠",@"Jennifer",@"开心鸭"];
+        NSArray *avatars = @[UIImageMake(@"avatar29.jpg"),UIImageMake(@"avatar10.jpg"),UIImageMake(@"avatar32.jpg"),UIImageMake(@"avatar35.jpg"),UIImageMake(@"avatar2.jpg")];
+        NSArray *contents = @[@"",@"",@"Zepp DiverCity",@"今日の東京。",@"每一天都很快乐!!!"];
+        NSArray *times = @[@"1天前",@"1天前",@"2小时前",@"10分钟前",@"1分钟前"];
+        [realm beginWriteTransaction];
+        for (int i = 0; i < nicknames.count; i ++) {
+            SWStatus *status = [[SWStatus alloc] init];
+            status.id = i;
+            status.avator = [SWStatus saveImage:avatars[i]];
+            status.nickname = nicknames[i];
+            status.content = contents[i];
+            status.createdTime = times[i];
+            if (i == 0) {
+                status.webSiteDesc = @"索尼推出 PS1 迷你复刻主机，你准备好剁手了吗";
+                status.type = 2;
+            } else if (i == 1) {
+                UIImage *image = [UIImage imageNamed:@"WechatIMG5.jpeg"];
+                status.images = [@[[SWStatus saveImage:image]] mj_JSONString];
+                [status.likes addObject:[allAuthor objectAtIndex:arc4random() % allAuthor.count]];
+                [status.likes addObject:[allAuthor objectAtIndex:arc4random() % allAuthor.count]];
+                [status.likes addObject:[allAuthor objectAtIndex:arc4random() % allAuthor.count]];
+                [status.likes addObject:[allAuthor objectAtIndex:arc4random() % allAuthor.count]];
+                status.type = 1;
+            } else if (i == 2) {
+                UIImage *image = [UIImage imageNamed:@"WechatIMG6.jpeg"];
+                status.images = [@[[SWStatus saveImage:image]] mj_JSONString];
+                
+            } else if (i == 3) {
+                NSMutableArray *imageNames = [NSMutableArray arrayWithCapacity:9];
+                for (int z = 0; z < 9; z ++) {
+                    UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"tokyo%d.jpg",z]];
+                    [imageNames addObject:[SWStatus saveImage:image]];
+                }
+                status.images = [imageNames mj_JSONString];
+                status.location = @"日本·东京";
+                [status.likes addObject:[allAuthor objectAtIndex:arc4random() % allAuthor.count]];
+                [status.likes addObject:[allAuthor objectAtIndex:arc4random() % allAuthor.count]];
+                [status.likes addObject:[allAuthor objectAtIndex:arc4random() % allAuthor.count]];
+                [status.likes addObject:[allAuthor objectAtIndex:arc4random() % allAuthor.count]];
+                SWStatusComment *comment1 = [[SWStatusComment alloc] init];
+                comment1.fromAuthor = status.likes[0];
+                comment1.comment = @"Beautiful!!!";
+                [status.comments addObject:comment1];
+                SWStatusComment *comment2 = [[SWStatusComment alloc] init];
+                comment2.fromAuthor = status.likes[3];
+                comment2.toAuthor = status.likes[0];
+                comment2.comment = @"thanks...";
+                [status.comments addObject:comment2];
+                
+            } else if (i == 4) {
+                [status.likes addObject:[allAuthor objectAtIndex:arc4random() % allAuthor.count]];
+                [status.likes addObject:[allAuthor objectAtIndex:arc4random() % allAuthor.count]];
+                [status.likes addObject:[allAuthor objectAtIndex:arc4random() % allAuthor.count]];
+                SWStatusComment *comment1 = [[SWStatusComment alloc] init];
+                comment1.fromAuthor = [status.likes lastObject];
+                comment1.comment = @"赞";
+                [status.comments addObject:comment1];
+            }
+            [realm addObject:status];
+        }
+        [realm commitWriteTransaction];
     }
 }
 

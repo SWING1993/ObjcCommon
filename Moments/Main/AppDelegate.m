@@ -36,6 +36,10 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     
+    NSInteger launch = [[NSUserDefaults standardUserDefaults] integerForKey:@"launch"];
+    launch ++;
+    [[NSUserDefaults standardUserDefaults] setInteger:launch forKey:kLaunch];
+    
     NSString *channel;
 #if DEBUG
     channel = @"Debug";
