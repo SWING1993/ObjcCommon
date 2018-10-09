@@ -33,7 +33,6 @@ static NSString *const Identifier = @"CollectionCellIdentifier";
     // Do any additional setup after loading the view.
     // 从默认 Realm 中，检索所有的状态
 
-
     RLMResults *allAuthor = [SWAuthor allObjects];
     self.dataSource = [NSMutableArray arrayWithCapacity:allAuthor.count];
     for (NSInteger index = allAuthor.count - 1; index > -1; index --) {
@@ -41,8 +40,7 @@ static NSString *const Identifier = @"CollectionCellIdentifier";
         [self.dataSource addObject:author];
     }
     [self.collectionView reloadData];
-    
-    
+
 }
 
 - (void)setupNavigationItems {
@@ -151,6 +149,10 @@ static NSString *const Identifier = @"CollectionCellIdentifier";
             make.top.right.equalTo(cell.contentView);
         }];
     }
+    //长按手势
+//    UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress:)];
+//    cell.contentView.tag = indexPath.row;
+//    [cell.contentView addGestureRecognizer:longPressGesture];
     return cell;
 }
 
@@ -166,6 +168,12 @@ static NSString *const Identifier = @"CollectionCellIdentifier";
         [self.navigationController popViewControllerAnimated:YES];
     }
 
+}
+
+- (void)longPress:(UILongPressGestureRecognizer *)gesture {
+    if (gesture.state == UIGestureRecognizerStateEnded) {
+        NSLog(@"长按结束");
+    }
 }
 
 @end

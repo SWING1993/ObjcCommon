@@ -23,7 +23,7 @@
     QMUICMI.grayDarkenColor = UIColorMake(93, 100, 110);                                     // UIColorGrayDarken : 深一点的灰色
     QMUICMI.grayLightenColor = UIColorMake(173, 180, 190);                                    // UIColorGrayLighten : 浅一点的灰色
     QMUICMI.redColor = UIColorMake(216, 78, 67);                                // UIColorRed : 红色
-    QMUICMI.greenColor = UIColorMake(43, 162, 69);                                         // UIColorGreen : 绿色
+    QMUICMI.greenColor = UIColorGreen1;                                         // UIColorGreen : 绿色
     QMUICMI.blueColor = UIColorMake(39, 130, 215);                              // UIColorBlue : 蓝色
     QMUICMI.yellowColor = UIColorMake(255, 190, 0);                                        // UIColorYellow : 黄色
     QMUICMI.linkColor = UIColorMake(56, 116, 171);                              // UIColorLink : 文字链接颜色

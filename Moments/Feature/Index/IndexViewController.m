@@ -13,8 +13,8 @@
 
 @interface IndexViewController ()<GADBannerViewDelegate>
 
-@property (nonatomic, copy) NSArray *dataSource;
 @property (nonatomic, strong) GADBannerView *bannerView;
+@property (nonatomic, strong) QMUIGridView *gridView;
 
 @end
 
@@ -22,20 +22,43 @@
 
 - (void)initSubviews {
     [super initSubviews];
-    self.view.backgroundColor = UIColorWhite;
+    self.view.backgroundColor = UIColorForBackground;
     [self setTitle:@"发现"];
+    
+    self.gridView = [[QMUIGridView alloc] init];
+    self.gridView.columnCount = 3;
+    self.gridView.rowHeight = kScreenW/3;
+    self.gridView.separatorWidth = PixelOne;
+    [self.view addSubview:self.gridView];
+    
+    NSArray *dataSource = @[@"制作朋友圈",@"制作消息",@"使用说明",@"分享给朋友",@"反馈"];
+    NSArray *iconName = @[@"朋友圈",@"消息",@"说明",@"分享",@"反馈"];
+
+    for (NSInteger i = 0; i < dataSource.count; i++) {
+        QMUIButton *btn = [[QMUIButton alloc] init];
+        btn.tag = i;
+        btn.titleLabel.font = UIFontMake(14);
+        btn.imagePosition = QMUIButtonImagePositionTop;// 将图片位置改为在文字上方
+        btn.spacingBetweenImageAndTitle = 10;
+        [btn setBackgroundColor:UIColorWhite];
+        UIImage *icon = UIImageMake(iconName[i]);
+        [btn setImage:icon forState:UIControlStateNormal];
+        [btn setTitle:dataSource[i] forState:UIControlStateNormal];
+        [btn setTitleColor:UIColorMakeX(61) forState:UIControlStateNormal];
+        [btn addTarget:self action:@selector(clickMenuAction:) forControlEvents:UIControlEventTouchUpInside];
+        [self.gridView addSubview:btn];
+    }
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.dataSource = @[@"朋友圈",@"状态详情",@"浏览页",@"消息"];
     self.bannerView = [[GADBannerView alloc] initWithFrame:CGRectMake(0, self.view.qmui_height - 50 - self.qmui_navigationBarMaxYInViewCoordinator, self.view.qmui_width, 50)];
     self.bannerView.adUnitID = @"ca-app-pub-6037095993957840/9771733149";
     self.bannerView.rootViewController = self;
-    [self.tableView addSubview:self.bannerView];
-    
+    [self.view addSubview:self.bannerView];
+
     @weakify(self)
     dispatch_queue_t queue = dispatch_queue_create("kk", DISPATCH_QUEUE_SERIAL);
     dispatch_async(queue, ^{
@@ -46,59 +69,38 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-//    GADRequest *request = [GADRequest request];
-//    request.testDevices = @[kGADSimulatorID];
-//    self.bannerView.delegate = self;
-//    [self.bannerView loadRequest:request];
+    GADRequest *request = [GADRequest request];
+    request.testDevices = @[kGADSimulatorID];
+    self.bannerView.delegate = self;
+    [self.bannerView loadRequest:request];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.dataSource.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    QMUITableViewCell *cell = (QMUITableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"cell"];
-    if (!cell) {
-        cell = [[QMUITableViewCell alloc] initForTableView:tableView withStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
-        cell.selectionStyle = UITableViewCellSeparatorStyleNone;
-    }
-    cell.textLabel.text = self.dataSource[indexPath.section];
-    return cell;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    switch (indexPath.section) {
-        case 0: {
-            SWStatusViewController *controller = [[SWStatusViewController alloc] init];
-            [self.navigationController pushViewController:controller animated:YES];
-        }
+- (void)clickMenuAction:(QMUIButton *)sender {
+    switch (sender.tag) {
+            case 0: {
+                SWStatusViewController *controller = [[SWStatusViewController alloc] init];
+                [self.navigationController pushViewController:controller animated:YES];
+            }
             break;
             
-        case 1: {
-           
-        }
+            case 1: {
+                SWMessageViewController *controller = [[SWMessageViewController alloc] init];
+                [self.navigationController pushViewController:controller animated:YES];
+            }
             break;
             
-        case 2: {
-           
-        }
-            break;
-            
-        case 3: {
-            SWMessageViewController *controller = [[SWMessageViewController alloc] init];
-            [self.navigationController pushViewController:controller animated:YES];
-        }
-            break;
-    
         default:
             break;
     }
-   
 }
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+
+    self.gridView.frame = CGRectMake(0, self.qmui_navigationBarMaxYInViewCoordinator, CGRectGetWidth(self.view.bounds), QMUIViewSelfSizingHeight);
+}
+
+
 
 - (BOOL)shouldCustomNavigationBarTransitionWhenPushDisappearing {
     return YES;
