@@ -76,8 +76,9 @@ CGFloat getDifferenceH(CGRect frame)
 
 - (void)dealloc
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillChangeFrameNotification object:nil];
-    [self removeObserver:self forKeyPath:@"self.chatToolBar.frame"];
+    // 不好用,先注释掉
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillChangeFrameNotification object:nil];
+//    [self removeObserver:self forKeyPath:@"self.chatToolBar.frame"];
 }
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -328,7 +329,6 @@ CGFloat getDifferenceH(CGRect frame)
     }
     
     if (handleText.length > 0) {
-        
         [self deleteBackward:handleText appendText:appendText];
     }
 }

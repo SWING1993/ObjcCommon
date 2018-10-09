@@ -792,11 +792,11 @@
 				03141ACE2146B34C0030B553 /* ChatKeyBoard.h */,
 				03141C452146B34C0030B553 /* ChatKeyBoard.m */,
 				03141AC32146B34C0030B553 /* ChatKeyBoardMacroDefine.h */,
+				03141AC72146B34C0030B553 /* Models */,
+				03141C2B2146B34C0030B553 /* Views */,
 				03141AC42146B34C0030B553 /* Cagegory */,
 				03141ACF2146B34C0030B553 /* icons */,
-				03141AC72146B34C0030B553 /* Models */,
 				03141AC02146B34C0030B553 /* plist */,
-				03141C2B2146B34C0030B553 /* Views */,
 			);
 			path = KeyBoard;
 			sourceTree = "<group>";
