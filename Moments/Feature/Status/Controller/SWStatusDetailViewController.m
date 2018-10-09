@@ -21,7 +21,7 @@
 #import "ChatKeyBoard.h"
 #import "FaceSourceManager.h"
 
-@interface SWStatusDetailViewController ()<UITableViewDataSource,UITableViewDelegate,ChatKeyBoardDelegate,ChatKeyBoardDataSource>
+@interface SWStatusDetailViewController ()<UITableViewDataSource,UITableViewDelegate,ChatKeyBoardDataSource>
 
 @property (nonatomic,strong) UITableView* tableView;
 @property (nonatomic,strong) SWStatusCellLayout* cellLayout;
@@ -60,7 +60,6 @@
 -(ChatKeyBoard *)chatKeyBoard {
     if (_chatKeyBoard == nil) {
         _chatKeyBoard = [ChatKeyBoard keyBoardWithNavgationBarTranslucent:NO];
-        _chatKeyBoard.delegate = self;
         _chatKeyBoard.dataSource = self;
         _chatKeyBoard.keyBoardStyle = KeyBoardStyleComment;
         _chatKeyBoard.userInteractionEnabled = NO;
@@ -70,24 +69,6 @@
         _chatKeyBoard.placeHolder = @"评论";
     }
     return _chatKeyBoard;
-}
-
-- (void)chatKeyBoardSendText:(NSString *)text {
-    if ([text isEmptyString]) {
-        return;
-    }
-    [self.chatKeyBoard keyboardDownForComment];
-    self.chatKeyBoard.placeHolder = nil;
-}
-- (void)chatKeyBoardFacePicked:(ChatKeyBoard *)chatKeyBoard faceStyle:(NSInteger)faceStyle faceName:(NSString *)faceName delete:(BOOL)isDeleteKey {
-    
-}
-- (void)chatKeyBoardAddFaceSubject:(ChatKeyBoard *)chatKeyBoard {
-    
-}
-
-- (void)chatKeyBoardSetFaceSubject:(ChatKeyBoard *)chatKeyBoard {
-    
 }
 
 - (NSArray<ChatToolBarItem *> *)chatKeyBoardToolbarItems {
