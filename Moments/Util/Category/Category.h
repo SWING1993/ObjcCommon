@@ -11,7 +11,6 @@
 
 #import "NSDictionary+HandleNSNull.h"
 #import "NSDictionary+Safe.h"
-#import "NSString+Device.h"
 #import "UIView+FrameGeometry.h"
 #import "NSString+Common.h"
 #import "UIViewController+Animation.h"
@@ -20,7 +19,6 @@
 #import "NSDate+Extension.h"
 #import "UIColor+layer.h"
 #import "UIImage+UI.h"
-#import "UIAlertAction+CM.h"
 #import "UIScrollView+EmptyDataSet.h"
 #import "UIView+GesAdditions.h"
 
