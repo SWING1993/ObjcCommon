@@ -12,7 +12,6 @@
 #import "SWAuthor.h"
 #import "SWFeedbackViewController.h"
 #import "SWInstructionsViewController.h"
-
 @interface IndexViewController ()<GADBannerViewDelegate>
 
 @property (nonatomic, strong) GADBannerView *bannerView;
@@ -26,6 +25,7 @@
     [super initSubviews];
     self.view.backgroundColor = UIColorForBackground;
     [self setTitle:@"发现"];
+    
     
     self.gridView = [[QMUIGridView alloc] init];
     self.gridView.columnCount = 3;

@@ -7,6 +7,7 @@
 //
 
 #import "SWInstructionsViewController.h"
+#import "HTTraffic.h"
 
 @interface SWInstructionsViewController ()
 
@@ -22,6 +23,9 @@
     self.view.backgroundColor = UIColorWhite;
     [self setTitle:@"使用说明"];
     [self createFeedbackView];
+    
+    NSLog(@"HTTraffic:%@",[HTTraffic trafficMonitorings]);
+
 }
 
 - (void)createFeedbackView {
