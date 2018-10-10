@@ -21,7 +21,7 @@
 }
 
 + (void)record {
-    NSString *today = [[NSDate date] formatYMDWith:@"."];
+//    NSString *today = [[NSDate date] formatYMDWith:@"."];
 //    NSString *whereStr = [NSString stringWithFormat:@"dateStr = '%@'",today];
 //    RLMResults *todayRecords = [SWDataCounter objectsWhere:whereStr];
 //    SWDataCounter *dataCounter = [todayRecords lastObject];

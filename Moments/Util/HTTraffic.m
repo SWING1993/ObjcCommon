@@ -18,11 +18,14 @@
     struct ifaddrs *addrs;
     const struct ifaddrs *cursor;
     
-    u_int32_t WiFiSent = 0;
-    u_int32_t WiFiReceived = 0;
-    u_int32_t WWANSent = 0;
-    u_int32_t WWANReceived = 0;
-    
+    long long WiFiSent = 0;
+    long long WiFiReceived = 0;
+    long long WiFiTotal = 0;
+
+    long long WWANSent = 0;
+    long long WWANReceived = 0;
+    long long WWANTotal = 0;
+
     if (getifaddrs(&addrs) == 0)
     {
         cursor = addrs;
@@ -69,12 +72,14 @@
         freeifaddrs(addrs);
     }
     
+    WiFiTotal = WiFiSent + WiFiReceived;
+    WWANTotal = WWANSent + WWANReceived;
     return @{DataCounterKeyWiFiSent : @(WiFiSent),
              DataCounterKeyWiFiReceived : @(WiFiReceived),
-             DataCounterKeyWiFiTotal : @(WiFiSent + WiFiReceived),
+             DataCounterKeyWiFiTotal : @(WiFiTotal),
              DataCounterKeyWWANSent : @(WWANSent),
              DataCounterKeyWWANReceived : @(WWANReceived),
-             DataCounterKeyWWANTotal: @(WWANSent + WWANReceived)};
+             DataCounterKeyWWANTotal: @(WWANTotal)};
 }
 
 + (NSString *)bytesToAvaiUnit:(long long)bytes {
