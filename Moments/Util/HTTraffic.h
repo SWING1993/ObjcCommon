@@ -13,5 +13,7 @@
 
 + (NSDictionary *)trafficMonitorings;
 
+- (NSString *)bytesToAvaiUnit:(int)bytes;
+
 @end
 
