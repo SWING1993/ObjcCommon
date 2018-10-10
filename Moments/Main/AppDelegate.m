@@ -8,11 +8,9 @@
 
 #import "AppDelegate.h"
 #import "AppConfigurationTemplate.h"
-#import "SWStatusViewController.h"
 #import "IndexViewController.h"
-#import "SWStatus.h"
 #import <UMCommon/UMCommon.h>
-#import "SWAuthor.h"
+#import <UserNotifications/UserNotifications.h>
 
 @interface AppDelegate ()
 
@@ -63,6 +61,7 @@
     self.window.rootViewController = indexNav;
     
     [self.window makeKeyAndVisible];
+    [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
 
     return YES;
 }
@@ -78,6 +77,14 @@
         BOOL successd = [fileManager removeItemAtPath:[documentsDirectory stringByAppendingPathComponent:filename] error:NULL];
         NSLog(@"%@删除%@",successd?@"成功":@"失败",filename);
     }
+}
+
+- (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    completionHandler(UIBackgroundFetchResultNewData);
+    
+    NSInteger launch = [[NSUserDefaults standardUserDefaults] integerForKey:@"application"];
+    launch ++;
+    [[NSUserDefaults standardUserDefaults] setInteger:launch forKey:@"application"];
 }
 
 @end

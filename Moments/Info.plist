@@ -33,6 +33,10 @@
 	<string>以便使用头像、朋友圈状态等照片库相关功能</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>以便使用头像、朋友圈状态等照片库相关功能</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+	</array>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

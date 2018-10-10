@@ -31,7 +31,6 @@
 #import "AppConfigurationTemplate.h"
 #import "SWViewController.h"
 #import "Gallop.h"
-#import "SWStatus.h"
 #import "CMAutoTrackerOperation.h"
 #import <YPNavigationBarTransition/YPNavigationBarTransition.h>
 #import "SWTableViewController.h"
