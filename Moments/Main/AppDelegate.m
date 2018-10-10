@@ -85,6 +85,7 @@
     NSInteger launch = [[NSUserDefaults standardUserDefaults] integerForKey:@"application"];
     launch ++;
     [[NSUserDefaults standardUserDefaults] setInteger:launch forKey:@"application"];
+    [SWDataCounter record];
 }
 
 @end

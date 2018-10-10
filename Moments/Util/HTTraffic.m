@@ -12,13 +12,6 @@
 #include <ifaddrs.h>
 #include <net/if_dl.h>
 
-static NSString *const DataCounterKeyWWANSent = @"WWANSent";
-static NSString *const DataCounterKeyWWANReceived = @"WWANReceived";
-static NSString *const DataCounterKeyWWANTotal = @"WWANTotal";
-static NSString *const DataCounterKeyWiFiSent = @"WiFiSent";
-static NSString *const DataCounterKeyWiFiReceived = @"WiFiReceived";
-static NSString *const DataCounterKeyWiFiTotal = @"WiFiTotal";
-
 @implementation HTTraffic
 
 + (NSDictionary *)trafficMonitorings {
@@ -81,11 +74,10 @@ static NSString *const DataCounterKeyWiFiTotal = @"WiFiTotal";
              DataCounterKeyWiFiTotal : @(WiFiSent + WiFiReceived),
              DataCounterKeyWWANSent : @(WWANSent),
              DataCounterKeyWWANReceived : @(WWANReceived),
-             DataCounterKeyWWANTotal: @(WWANSent + WWANReceived)
-             };
+             DataCounterKeyWWANTotal: @(WWANSent + WWANReceived)};
 }
 
--(NSString *)bytesToAvaiUnit:(int)bytes {
++ (NSString *)bytesToAvaiUnit:(long long)bytes {
     if(bytes < 1024)     // B
     {
         return [NSString stringWithFormat:@"%dB", bytes];

@@ -97,6 +97,7 @@
 		892720C92160CED5006E066F /* YPNavigationController+Configure.m in Sources */ = {isa = PBXBuildFile; fileRef = 892720C72160CED5006E066F /* YPNavigationController+Configure.m */; };
 		892720FA216C4956006E066F /* SWRealmConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 892720F9216C4956006E066F /* SWRealmConfiguration.m */; };
 		89272198216DC5FA006E066F /* HTTraffic.m in Sources */ = {isa = PBXBuildFile; fileRef = 89272197216DC5FA006E066F /* HTTraffic.m */; };
+		892721A0216DF1EC006E066F /* SWDataCounter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8927219F216DF1EC006E066F /* SWDataCounter.m */; };
 		897EBB7B2147664800CC32BF /* SWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBB7A2147664800CC32BF /* SWViewController.m */; };
 		897EBB81214767DC00CC32BF /* IndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBB80214767DC00CC32BF /* IndexViewController.m */; };
 		897EBBCC2147C33200CC32BF /* UITableView+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBBAD2147C33100CC32BF /* UITableView+Common.m */; };
@@ -314,6 +315,8 @@
 		892720F9216C4956006E066F /* SWRealmConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWRealmConfiguration.m; sourceTree = "<group>"; };
 		89272196216DC5FA006E066F /* HTTraffic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTTraffic.h; sourceTree = "<group>"; };
 		89272197216DC5FA006E066F /* HTTraffic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HTTraffic.m; sourceTree = "<group>"; };
+		8927219E216DF1EC006E066F /* SWDataCounter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWDataCounter.h; sourceTree = "<group>"; };
+		8927219F216DF1EC006E066F /* SWDataCounter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWDataCounter.m; sourceTree = "<group>"; };
 		897EBB792147664800CC32BF /* SWViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWViewController.h; sourceTree = "<group>"; };
 		897EBB7A2147664800CC32BF /* SWViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWViewController.m; sourceTree = "<group>"; };
 		897EBB7F214767DC00CC32BF /* IndexViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IndexViewController.h; sourceTree = "<group>"; };
@@ -758,6 +761,29 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		8927219B216DF07A006E066F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		8927219C216DF08D006E066F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8927219E216DF1EC006E066F /* SWDataCounter.h */,
+				8927219F216DF1EC006E066F /* SWDataCounter.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8927219D216DF095006E066F /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		897EBB752147641E00CC32BF /* Base */ = {
 			isa = PBXGroup;
 			children = (
@@ -777,6 +803,9 @@
 		897EBB77214765E600CC32BF /* Index */ = {
 			isa = PBXGroup;
 			children = (
+				8927219D216DF095006E066F /* View */,
+				8927219C216DF08D006E066F /* Model */,
+				8927219B216DF07A006E066F /* Controller */,
 				897EBB7F214767DC00CC32BF /* IndexViewController.h */,
 				897EBB80214767DC00CC32BF /* IndexViewController.m */,
 			);
@@ -1271,6 +1300,7 @@
 				89DF92432160645600AFE6B2 /* XLFormImageCell.m in Sources */,
 				03141D442146B34D0030B553 /* ChatKeyBoard.m in Sources */,
 				89DF924D2160645600AFE6B2 /* XLFormViewController.m in Sources */,
+				892721A0216DF1EC006E066F /* SWDataCounter.m in Sources */,
 				03141A352146A3FA0030B553 /* LWTextContainer.m in Sources */,
 				03141A392146A3FB0030B553 /* LWHTMLLayout.m in Sources */,
 				03141A5C2146A3FB0030B553 /* LWTextRunDelegate.m in Sources */,

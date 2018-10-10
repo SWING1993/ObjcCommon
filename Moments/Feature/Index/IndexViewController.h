@@ -8,6 +8,6 @@
 
 #import "SWViewController.h"
 
-@interface IndexViewController : SWViewController 
+@interface IndexViewController : SWTableViewController
 
 @end

@@ -8,12 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
+static NSString *const DataCounterKeyWWANSent = @"WWANSent";
+static NSString *const DataCounterKeyWWANReceived = @"WWANReceived";
+static NSString *const DataCounterKeyWWANTotal = @"WWANTotal";
+static NSString *const DataCounterKeyWiFiSent = @"WiFiSent";
+static NSString *const DataCounterKeyWiFiReceived = @"WiFiReceived";
+static NSString *const DataCounterKeyWiFiTotal = @"WiFiTotal";
 
 @interface HTTraffic : NSObject
 
 + (NSDictionary *)trafficMonitorings;
 
-- (NSString *)bytesToAvaiUnit:(int)bytes;
++ (NSString *)bytesToAvaiUnit:(long long)bytes;
 
 @end
 

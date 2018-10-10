@@ -10,7 +10,7 @@
 
 @interface IndexViewController ()<GADBannerViewDelegate>
 
-@property (nonatomic, strong) GADBannerView *bannerView;
+@property (nonatomic, strong) NSMutableArray *dataSource;
 
 @end
 
@@ -20,51 +20,66 @@
     [super initSubviews];
     self.view.backgroundColor = UIColorForBackground;
     [self setTitle:@"发现"];
-    NSLog(@"zzz-----%zi",[[NSUserDefaults standardUserDefaults] integerForKey:@"application"]);
+}
+
+- (void)initTableView {
+    [super initTableView];
+    self.tableView.sectionFooterHeight = CGFLOAT_MIN;
+    self.tableView.sectionHeaderHeight = CGFLOAT_MIN;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    self.bannerView = [[GADBannerView alloc] initWithFrame:CGRectMake(0, self.view.qmui_height - 50 - self.qmui_navigationBarMaxYInViewCoordinator, self.view.qmui_width, 50)];
-    self.bannerView.adUnitID = @"ca-app-pub-6037095993957840/9771733149";
-    self.bannerView.rootViewController = self;
-    [self.view addSubview:self.bannerView];
+    NSLog(@"zzz-----%zi",[[NSUserDefaults standardUserDefaults] integerForKey:@"application"]);
 
-    @weakify(self)
-    dispatch_queue_t queue = dispatch_queue_create("kk", DISPATCH_QUEUE_SERIAL);
-    dispatch_async(queue, ^{
-        @strongify(self)
-    });
+    [SWDataCounter record];
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    GADRequest *request = [GADRequest request];
-    request.testDevices = @[kGADSimulatorID];
-    self.bannerView.delegate = self;
-    [self.bannerView loadRequest:request];
+    RLMResults<SWDataCounter *> *allObjcs = [SWDataCounter allObjects];
+    self.dataSource = [NSMutableArray arrayWithCapacity:allObjcs.count];
+    for (int i = 0; i < allObjcs.count; i ++) {
+        SWDataCounter *dataCounter = [allObjcs objectAtIndex:i];
+        [self.dataSource addObject:dataCounter];
+    }
+    [self.tableView reloadData];
 }
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
 }
 
-- (BOOL)shouldCustomNavigationBarTransitionWhenPushDisappearing {
-    return YES;
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 60;
 }
 
-- (BOOL)shouldCustomNavigationBarTransitionWhenPopDisappearing {
-    return YES;
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.dataSource.count;
 }
 
-- (void)adViewDidReceiveAd:(GADBannerView *)bannerView {
-    NSLog(@"adView:didSuccess");
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    QMUITableViewCell *cell = (QMUITableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"cell"];
+    if (!cell) {
+        cell = [[QMUITableViewCell alloc] initForTableView:tableView withStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
+        cell.textLabel.font = [UIFont systemFontOfSize:13];
+        cell.detailTextLabel.font = [UIFont systemFontOfSize:12];
+        cell.textLabel.textColor = UIColorMakeX(33);
+        cell.detailTextLabel.textColor = UIColorGray;
+    }
+    SWDataCounter *dataCounter = [self.dataSource objectAtIndex:indexPath.row];
+    cell.textLabel.text = [dataCounter.date formatYMDHM];
+    
+    NSString*wifi = [NSString stringWithFormat:@"Wifi 总共:%@ 发送:%@ 接收:%@",[HTTraffic bytesToAvaiUnit:dataCounter.wifiTotal],[HTTraffic bytesToAvaiUnit:dataCounter.wifiSent],[HTTraffic bytesToAvaiUnit:dataCounter.wifiReceived]];
+    NSString*wwan= [NSString stringWithFormat:@"\n流量 总共:%@ 发送:%@ 接收:%@",[HTTraffic bytesToAvaiUnit:dataCounter.wwanTotal],[HTTraffic bytesToAvaiUnit:dataCounter.wwanSent],[HTTraffic bytesToAvaiUnit:dataCounter.wwanReceived]];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@%@",wifi,wwan];
+    cell.detailTextLabel.numberOfLines = 0;
+    return cell;
+
 }
 
-- (void)adView:(GADBannerView *)bannerView didFailToReceiveAdWithError:(GADRequestError *)error {
-    NSLog(@"adView:didFailToReceiveAdWithError:%@", [error localizedDescription]);
-}
 
 @end

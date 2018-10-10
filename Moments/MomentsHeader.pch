@@ -35,5 +35,7 @@
 #import <YPNavigationBarTransition/YPNavigationBarTransition.h>
 #import "SWTableViewController.h"
 #import "SWRealmConfiguration.h"
+#import "HTTraffic.h"
+#import "SWDataCounter.h"
 
 #endif /* MomentsHeader_pch */
