@@ -8,6 +8,7 @@
 
 #import "IndexViewController.h"
 #import "SWColorViewController.h"
+#import "SWTheme.h"
 
 
 @interface IndexViewController ()<GADBannerViewDelegate>
@@ -28,24 +29,46 @@
     [super initTableView];
     self.tableView.sectionFooterHeight = CGFLOAT_MIN;
     self.tableView.sectionHeaderHeight = CGFLOAT_MIN;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    NSLog(@"zzz-----%zi",[[NSUserDefaults standardUserDefaults] integerForKey:@"application"]);
-
-    [SWDataCounter record];
     
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    RLMResults<SWDataCounter *> *allObjcs = [SWDataCounter allObjects];
-    self.dataSource = [NSMutableArray arrayWithCapacity:allObjcs.count];
-    for (int i = 0; i < allObjcs.count; i ++) {
-        SWDataCounter *dataCounter = [allObjcs objectAtIndex:i];
-        [self.dataSource addObject:dataCounter];
+    NSArray *colorSELArr = @[@[[UIColor flatBlackColor],[UIColor flatBlackColorDark]],
+                             @[[UIColor flatBlueColor],[UIColor flatBlueColorDark]],
+                             @[[UIColor flatBrownColor],[UIColor flatBrownColorDark]],
+                             @[[UIColor flatCoffeeColor],[UIColor flatCoffeeColorDark]],
+                             @[[UIColor flatForestGreenColor],[UIColor flatForestGreenColorDark]],
+                             @[[UIColor flatGrayColor],[UIColor flatGrayColorDark]],
+                             @[[UIColor flatGreenColor],[UIColor flatGreenColorDark]],
+                             @[[UIColor flatLimeColor],[UIColor flatLimeColorDark]],
+                             @[[UIColor flatMagentaColor],[UIColor flatMagentaColorDark]],
+                             @[[UIColor flatMaroonColor],[UIColor flatMaroonColorDark]],
+                             @[[UIColor flatMintColor],[UIColor flatMintColorDark]],
+                             @[[UIColor flatNavyBlueColor],[UIColor flatNavyBlueColorDark]],
+                             @[[UIColor flatOrangeColor],[UIColor flatOrangeColorDark]],
+                             @[[UIColor flatPinkColor],[UIColor flatPinkColorDark]],
+                             @[[UIColor flatPlumColor],[UIColor flatPlumColorDark]],
+                             @[[UIColor flatPowderBlueColor],[UIColor flatPowderBlueColorDark]],
+                             @[[UIColor flatPurpleColor],[UIColor flatPurpleColorDark]],
+                             @[[UIColor flatRedColor],[UIColor flatRedColorDark]],
+                             @[[UIColor flatSandColor],[UIColor flatSandColorDark]],
+                             @[[UIColor flatSkyBlueColor],[UIColor flatSkyBlueColorDark]],
+                             @[[UIColor flatTealColor],[UIColor flatTealColorDark]],
+                             @[[UIColor flatWatermelonColor],[UIColor flatWatermelonColorDark]],
+                             @[[UIColor flatWhiteColor],[UIColor flatWhiteColorDark]],
+                             @[[UIColor flatYellowColor],[UIColor flatYellowColorDark]]];
+    
+    
+    self.dataSource = [NSMutableArray arrayWithCapacity:colorSELArr.count];
+    for (int index = 0; index < colorSELArr.count; index ++) {
+        NSArray *colors = [colorSELArr objectAtIndex:index];
+        SWTheme *theme = [[SWTheme alloc] init];
+        theme.firstColor = [colors firstObject];
+        theme.lastColor = [colors lastObject];
+        [self.dataSource addObject:theme];
     }
     [self.tableView reloadData];
 }
@@ -54,9 +77,8 @@
     [super viewDidLayoutSubviews];
 }
 
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 65;
+    return 100;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -72,13 +94,22 @@
         cell.textLabel.textColor = UIColorMakeX(33);
         cell.detailTextLabel.textColor = UIColorGray;
     }
-    SWDataCounter *dataCounter = [self.dataSource objectAtIndex:indexPath.row];
-    cell.textLabel.text = [dataCounter.date formatYMDHM];
     
-    NSString*wifi = [NSString stringWithFormat:@"Wifi 总共:%@ 发送:%@ 接收:%@",[HTTraffic bytesToAvaiUnit:dataCounter.wifiTotal],[HTTraffic bytesToAvaiUnit:dataCounter.wifiSent],[HTTraffic bytesToAvaiUnit:dataCounter.wifiReceived]];
-    NSString*wwan= [NSString stringWithFormat:@"\n流量 总共:%@ 发送:%@ 接收:%@",[HTTraffic bytesToAvaiUnit:dataCounter.wwanTotal],[HTTraffic bytesToAvaiUnit:dataCounter.wwanSent],[HTTraffic bytesToAvaiUnit:dataCounter.wwanReceived]];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@%@",wifi,wwan];
-    cell.detailTextLabel.numberOfLines = 0;
+    for (UIView *view in cell.contentView.subviews) {
+        [view removeFromSuperview];
+    }
+    
+    SWTheme *theme = self.dataSource[indexPath.row];
+    UIView *themeView = [[UIView alloc] init];
+    themeView.backgroundColor = [UIColor colorWithGradientStyle:UIGradientStyleLeftToRight withFrame:CGRectMake(0, 0, (kScreenW - 30), (70)) andColors:@[theme.firstColor,theme.lastColor]];
+    themeView.layer.cornerRadius = 5;
+    [cell.contentView addSubview:themeView];
+    [themeView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(kScreenW - 30);
+        make.height.mas_equalTo(70);
+        make.center.mas_equalTo(cell.contentView);
+    }];
+ 
     return cell;
 
 }
