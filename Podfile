@@ -22,5 +22,6 @@ target "Moments" do
   pod 'UMCAnalytics'
   pod 'UMCSecurityPlugins'
   pod 'YPNavigationBarTransition', '~> 2.0'
+  pod 'ChameleonFramework'
 
 end

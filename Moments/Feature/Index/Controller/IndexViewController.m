@@ -7,6 +7,8 @@
 //
 
 #import "IndexViewController.h"
+#import "SWColorViewController.h"
+
 
 @interface IndexViewController ()<GADBannerViewDelegate>
 
@@ -81,5 +83,9 @@
 
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    SWColorViewController *controller = [[SWColorViewController alloc] init];
+    [self.navigationController pushViewController:controller animated:YES];
+}
 
 @end

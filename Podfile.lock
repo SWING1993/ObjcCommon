@@ -14,6 +14,9 @@ PODS:
   - BlocksKit/UIKit (2.2.5):
     - BlocksKit/Core
     - BlocksKit/DynamicDelegate
+  - ChameleonFramework (2.1.0):
+    - ChameleonFramework/Default (= 2.1.0)
+  - ChameleonFramework/Default (2.1.0)
   - DZNEmptyDataSet (1.8.1)
   - Google-Mobile-Ads-SDK (7.33.1)
   - Masonry (1.1.0)
@@ -291,6 +294,7 @@ PODS:
 
 DEPENDENCIES:
   - BlocksKit
+  - ChameleonFramework
   - DZNEmptyDataSet
   - Google-Mobile-Ads-SDK
   - Masonry
@@ -312,6 +316,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - BlocksKit
+    - ChameleonFramework
     - DZNEmptyDataSet
     - Google-Mobile-Ads-SDK
     - Masonry
@@ -332,6 +337,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
+  ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   Google-Mobile-Ads-SDK: 71c6d3e8d8f52673fa5a83fc0d027623b11fde16
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
@@ -350,6 +356,6 @@ SPEC CHECKSUMS:
   UMCSecurityPlugins: 0831a08f3988f3cea9f1d3a7626cd9bee4fef150
   YPNavigationBarTransition: 928a8a3d944cecfd2f10a0847710384a9cdf9039
 
-PODFILE CHECKSUM: 5c84a2b1fd396636a158955174182d8598875d18
+PODFILE CHECKSUM: 444c1e0203012b63808f8a51e2994ac3e737dd35
 
 COCOAPODS: 1.5.3

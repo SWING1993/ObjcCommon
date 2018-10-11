@@ -53,51 +53,14 @@
 		03141A5D2146A3FB0030B553 /* LWAsyncImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 03141A342146A3FA0030B553 /* LWAsyncImageView+WebCache.m */; };
 		03141A672146A64A0030B553 /* AppConfigurationTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 03141A662146A64A0030B553 /* AppConfigurationTemplate.m */; };
 		03141A6B2146A7B50030B553 /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 03141A692146A7A60030B553 /* libxml2.2.tbd */; };
-		03141C462146B34D0030B553 /* systemEmoji.plist in Resources */ = {isa = PBXBuildFile; fileRef = 03141AC12146B34C0030B553 /* systemEmoji.plist */; };
-		03141C482146B34D0030B553 /* NSString+Emoji.m in Sources */ = {isa = PBXBuildFile; fileRef = 03141AC52146B34C0030B553 /* NSString+Emoji.m */; };
-		03141C492146B34D0030B553 /* MoreItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 03141ACB2146B34C0030B553 /* MoreItem.m */; };
-		03141C4A2146B34D0030B553 /* ChatToolBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 03141ACC2146B34C0030B553 /* ChatToolBarItem.m */; };
-		03141C4B2146B34D0030B553 /* FaceThemeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 03141ACD2146B34C0030B553 /* FaceThemeModel.m */; };
-		03141D232146B34D0030B553 /* sharemore_location@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03141C142146B34C0030B553 /* sharemore_location@3x.png */; };
-		03141D242146B34D0030B553 /* sharemore_pic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03141C152146B34C0030B553 /* sharemore_pic@2x.png */; };
-		03141D252146B34D0030B553 /* sharemore_location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03141C162146B34C0030B553 /* sharemore_location@2x.png */; };
-		03141D262146B34D0030B553 /* sharemore_pic@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03141C172146B34C0030B553 /* sharemore_pic@3x.png */; };
-		03141D272146B34D0030B553 /* sharemore_video@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03141C182146B34C0030B553 /* sharemore_video@3x.png */; };
-		03141D282146B34D0030B553 /* yy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03141C192146B34C0030B553 /* yy@2x.png */; };
-		03141D292146B34D0030B553 /* sharemore_video@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03141C1A2146B34C0030B553 /* sharemore_video@2x.png */; };
-		03141D2A2146B34D0030B553 /* sp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03141C1B2146B34C0030B553 /* sp@2x.png */; };
-		03141D2B2146B34D0030B553 /* face_HL@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03141C1D2146B34C0030B553 /* face_HL@2x.png */; };
-		03141D2C2146B34D0030B553 /* Delete_ios7@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03141C1E2146B34C0030B553 /* Delete_ios7@3x.png */; };
-		03141D2D2146B34D0030B553 /* switchUp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03141C1F2146B34C0030B553 /* switchUp@2x.png */; };
-		03141D2E2146B34D0030B553 /* more_ios@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03141C202146B34C0030B553 /* more_ios@2x.png */; };
-		03141D2F2146B34D0030B553 /* voice@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03141C212146B34C0030B553 /* voice@2x.png */; };
-		03141D302146B34D0030B553 /* keyboard@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03141C222146B34C0030B553 /* keyboard@2x.png */; };
-		03141D312146B34D0030B553 /* Delete_ios7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03141C232146B34C0030B553 /* Delete_ios7@2x.png */; };
-		03141D322146B34D0030B553 /* keyboard_HL@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03141C242146B34C0030B553 /* keyboard_HL@2x.png */; };
-		03141D332146B34D0030B553 /* face@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03141C252146B34C0030B553 /* face@2x.png */; };
-		03141D342146B34D0030B553 /* input-bar-flat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03141C262146B34C0030B553 /* input-bar-flat@2x.png */; };
-		03141D352146B34D0030B553 /* voice_HL@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03141C272146B34C0030B553 /* voice_HL@2x.png */; };
-		03141D362146B34D0030B553 /* input-bar-flat@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03141C282146B34C0030B553 /* input-bar-flat@3x.png */; };
-		03141D372146B34D0030B553 /* more_ios_HL@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03141C292146B34C0030B553 /* more_ios_HL@2x.png */; };
-		03141D382146B34D0030B553 /* switchDown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03141C2A2146B34C0030B553 /* switchDown@2x.png */; };
-		03141D392146B34D0030B553 /* FacePanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 03141C2F2146B34C0030B553 /* FacePanel.m */; };
-		03141D3A2146B34D0030B553 /* PanelBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03141C312146B34C0030B553 /* PanelBottomView.m */; };
-		03141D3B2146B34D0030B553 /* FaceThemeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03141C332146B34C0030B553 /* FaceThemeView.m */; };
-		03141D3C2146B34D0030B553 /* FacePageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03141C352146B34C0030B553 /* FacePageView.m */; };
-		03141D3D2146B34D0030B553 /* FaceButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 03141C372146B34C0030B553 /* FaceButton.m */; };
-		03141D3E2146B34D0030B553 /* FaceSourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 03141C382146B34C0030B553 /* FaceSourceManager.m */; };
-		03141D3F2146B34D0030B553 /* RFRecordButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 03141C3B2146B34C0030B553 /* RFRecordButton.m */; };
-		03141D402146B34D0030B553 /* ChatToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 03141C3D2146B34C0030B553 /* ChatToolBar.m */; };
-		03141D412146B34D0030B553 /* RFTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03141C3E2146B34C0030B553 /* RFTextView.m */; };
-		03141D422146B34D0030B553 /* OfficialAccountToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 03141C3F2146B34C0030B553 /* OfficialAccountToolbar.m */; };
-		03141D432146B34D0030B553 /* MorePanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 03141C432146B34C0030B553 /* MorePanel.m */; };
-		03141D442146B34D0030B553 /* ChatKeyBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 03141C452146B34C0030B553 /* ChatKeyBoard.m */; };
 		499416C83B006E9CF274A068 /* Pods_Moments.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EA9D01FD7A1B70092AD68B9 /* Pods_Moments.framework */; };
 		892720C62160CCD2006E066F /* SWTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 892720C52160CCD2006E066F /* SWTableViewController.m */; };
 		892720C92160CED5006E066F /* YPNavigationController+Configure.m in Sources */ = {isa = PBXBuildFile; fileRef = 892720C72160CED5006E066F /* YPNavigationController+Configure.m */; };
 		892720FA216C4956006E066F /* SWRealmConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 892720F9216C4956006E066F /* SWRealmConfiguration.m */; };
 		89272198216DC5FA006E066F /* HTTraffic.m in Sources */ = {isa = PBXBuildFile; fileRef = 89272197216DC5FA006E066F /* HTTraffic.m */; };
 		892721A0216DF1EC006E066F /* SWDataCounter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8927219F216DF1EC006E066F /* SWDataCounter.m */; };
+		892721A9216F3406006E066F /* SWColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 892721A8216F3406006E066F /* SWColorViewController.m */; };
+		892721B1216F351B006E066F /* SWTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 892721B0216F351B006E066F /* SWTheme.m */; };
 		897EBB7B2147664800CC32BF /* SWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBB7A2147664800CC32BF /* SWViewController.m */; };
 		897EBB81214767DC00CC32BF /* IndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBB80214767DC00CC32BF /* IndexViewController.m */; };
 		897EBBCC2147C33200CC32BF /* UITableView+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBBAD2147C33100CC32BF /* UITableView+Common.m */; };
@@ -250,62 +213,6 @@
 		03141A662146A64A0030B553 /* AppConfigurationTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppConfigurationTemplate.m; sourceTree = "<group>"; };
 		03141A692146A7A60030B553 /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
 		03141AA12146AADB0030B553 /* MomentsHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MomentsHeader.pch; sourceTree = "<group>"; };
-		03141AC12146B34C0030B553 /* systemEmoji.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = systemEmoji.plist; sourceTree = "<group>"; };
-		03141AC32146B34C0030B553 /* ChatKeyBoardMacroDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatKeyBoardMacroDefine.h; sourceTree = "<group>"; };
-		03141AC52146B34C0030B553 /* NSString+Emoji.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Emoji.m"; sourceTree = "<group>"; };
-		03141AC62146B34C0030B553 /* NSString+Emoji.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Emoji.h"; sourceTree = "<group>"; };
-		03141AC82146B34C0030B553 /* ChatToolBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatToolBarItem.h; sourceTree = "<group>"; };
-		03141AC92146B34C0030B553 /* MoreItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreItem.h; sourceTree = "<group>"; };
-		03141ACA2146B34C0030B553 /* FaceThemeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceThemeModel.h; sourceTree = "<group>"; };
-		03141ACB2146B34C0030B553 /* MoreItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreItem.m; sourceTree = "<group>"; };
-		03141ACC2146B34C0030B553 /* ChatToolBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatToolBarItem.m; sourceTree = "<group>"; };
-		03141ACD2146B34C0030B553 /* FaceThemeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceThemeModel.m; sourceTree = "<group>"; };
-		03141ACE2146B34C0030B553 /* ChatKeyBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatKeyBoard.h; sourceTree = "<group>"; };
-		03141C142146B34C0030B553 /* sharemore_location@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sharemore_location@3x.png"; sourceTree = "<group>"; };
-		03141C152146B34C0030B553 /* sharemore_pic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sharemore_pic@2x.png"; sourceTree = "<group>"; };
-		03141C162146B34C0030B553 /* sharemore_location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sharemore_location@2x.png"; sourceTree = "<group>"; };
-		03141C172146B34C0030B553 /* sharemore_pic@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sharemore_pic@3x.png"; sourceTree = "<group>"; };
-		03141C182146B34C0030B553 /* sharemore_video@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sharemore_video@3x.png"; sourceTree = "<group>"; };
-		03141C192146B34C0030B553 /* yy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yy@2x.png"; sourceTree = "<group>"; };
-		03141C1A2146B34C0030B553 /* sharemore_video@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sharemore_video@2x.png"; sourceTree = "<group>"; };
-		03141C1B2146B34C0030B553 /* sp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sp@2x.png"; sourceTree = "<group>"; };
-		03141C1D2146B34C0030B553 /* face_HL@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "face_HL@2x.png"; sourceTree = "<group>"; };
-		03141C1E2146B34C0030B553 /* Delete_ios7@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Delete_ios7@3x.png"; sourceTree = "<group>"; };
-		03141C1F2146B34C0030B553 /* switchUp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "switchUp@2x.png"; sourceTree = "<group>"; };
-		03141C202146B34C0030B553 /* more_ios@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "more_ios@2x.png"; sourceTree = "<group>"; };
-		03141C212146B34C0030B553 /* voice@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "voice@2x.png"; sourceTree = "<group>"; };
-		03141C222146B34C0030B553 /* keyboard@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard@2x.png"; sourceTree = "<group>"; };
-		03141C232146B34C0030B553 /* Delete_ios7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Delete_ios7@2x.png"; sourceTree = "<group>"; };
-		03141C242146B34C0030B553 /* keyboard_HL@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard_HL@2x.png"; sourceTree = "<group>"; };
-		03141C252146B34C0030B553 /* face@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "face@2x.png"; sourceTree = "<group>"; };
-		03141C262146B34C0030B553 /* input-bar-flat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "input-bar-flat@2x.png"; sourceTree = "<group>"; };
-		03141C272146B34C0030B553 /* voice_HL@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "voice_HL@2x.png"; sourceTree = "<group>"; };
-		03141C282146B34C0030B553 /* input-bar-flat@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "input-bar-flat@3x.png"; sourceTree = "<group>"; };
-		03141C292146B34C0030B553 /* more_ios_HL@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "more_ios_HL@2x.png"; sourceTree = "<group>"; };
-		03141C2A2146B34C0030B553 /* switchDown@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "switchDown@2x.png"; sourceTree = "<group>"; };
-		03141C2D2146B34C0030B553 /* FaceThemeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceThemeView.h; sourceTree = "<group>"; };
-		03141C2E2146B34C0030B553 /* FacePageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacePageView.h; sourceTree = "<group>"; };
-		03141C2F2146B34C0030B553 /* FacePanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacePanel.m; sourceTree = "<group>"; };
-		03141C302146B34C0030B553 /* FaceButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceButton.h; sourceTree = "<group>"; };
-		03141C312146B34C0030B553 /* PanelBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PanelBottomView.m; sourceTree = "<group>"; };
-		03141C322146B34C0030B553 /* FaceSourceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceSourceManager.h; sourceTree = "<group>"; };
-		03141C332146B34C0030B553 /* FaceThemeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceThemeView.m; sourceTree = "<group>"; };
-		03141C342146B34C0030B553 /* FacePanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacePanel.h; sourceTree = "<group>"; };
-		03141C352146B34C0030B553 /* FacePageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacePageView.m; sourceTree = "<group>"; };
-		03141C362146B34C0030B553 /* PanelBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanelBottomView.h; sourceTree = "<group>"; };
-		03141C372146B34C0030B553 /* FaceButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceButton.m; sourceTree = "<group>"; };
-		03141C382146B34C0030B553 /* FaceSourceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceSourceManager.m; sourceTree = "<group>"; };
-		03141C3A2146B34C0030B553 /* RFTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFTextView.h; sourceTree = "<group>"; };
-		03141C3B2146B34C0030B553 /* RFRecordButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFRecordButton.m; sourceTree = "<group>"; };
-		03141C3C2146B34C0030B553 /* OfficialAccountToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfficialAccountToolbar.h; sourceTree = "<group>"; };
-		03141C3D2146B34C0030B553 /* ChatToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatToolBar.m; sourceTree = "<group>"; };
-		03141C3E2146B34C0030B553 /* RFTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFTextView.m; sourceTree = "<group>"; };
-		03141C3F2146B34C0030B553 /* OfficialAccountToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfficialAccountToolbar.m; sourceTree = "<group>"; };
-		03141C402146B34C0030B553 /* RFRecordButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFRecordButton.h; sourceTree = "<group>"; };
-		03141C412146B34C0030B553 /* ChatToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatToolBar.h; sourceTree = "<group>"; };
-		03141C432146B34C0030B553 /* MorePanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MorePanel.m; sourceTree = "<group>"; };
-		03141C442146B34C0030B553 /* MorePanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MorePanel.h; sourceTree = "<group>"; };
-		03141C452146B34C0030B553 /* ChatKeyBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatKeyBoard.m; sourceTree = "<group>"; };
 		05BDC4358F3399D37FD7F08F /* Pods-Moments.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moments.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Moments/Pods-Moments.debug.xcconfig"; sourceTree = "<group>"; };
 		892720C42160CCD1006E066F /* SWTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWTableViewController.h; sourceTree = "<group>"; };
 		892720C52160CCD2006E066F /* SWTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWTableViewController.m; sourceTree = "<group>"; };
@@ -317,6 +224,10 @@
 		89272197216DC5FA006E066F /* HTTraffic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HTTraffic.m; sourceTree = "<group>"; };
 		8927219E216DF1EC006E066F /* SWDataCounter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWDataCounter.h; sourceTree = "<group>"; };
 		8927219F216DF1EC006E066F /* SWDataCounter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWDataCounter.m; sourceTree = "<group>"; };
+		892721A7216F3406006E066F /* SWColorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWColorViewController.h; sourceTree = "<group>"; };
+		892721A8216F3406006E066F /* SWColorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWColorViewController.m; sourceTree = "<group>"; };
+		892721AF216F351B006E066F /* SWTheme.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWTheme.h; sourceTree = "<group>"; };
+		892721B0216F351B006E066F /* SWTheme.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWTheme.m; sourceTree = "<group>"; };
 		897EBB792147664800CC32BF /* SWViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWViewController.h; sourceTree = "<group>"; };
 		897EBB7A2147664800CC32BF /* SWViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWViewController.m; sourceTree = "<group>"; };
 		897EBB7F214767DC00CC32BF /* IndexViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IndexViewController.h; sourceTree = "<group>"; };
@@ -501,7 +412,6 @@
 			isa = PBXGroup;
 			children = (
 				89DF91E32160645600AFE6B2 /* XLForm */,
-				03141ABF2146B34C0030B553 /* KeyBoard */,
 				031419E02146A3FA0030B553 /* Gallop */,
 			);
 			path = Vendor;
@@ -609,149 +519,6 @@
 			path = Util;
 			sourceTree = "<group>";
 		};
-		03141ABF2146B34C0030B553 /* KeyBoard */ = {
-			isa = PBXGroup;
-			children = (
-				03141ACE2146B34C0030B553 /* ChatKeyBoard.h */,
-				03141C452146B34C0030B553 /* ChatKeyBoard.m */,
-				03141AC32146B34C0030B553 /* ChatKeyBoardMacroDefine.h */,
-				03141AC72146B34C0030B553 /* Models */,
-				03141C2B2146B34C0030B553 /* Views */,
-				03141AC42146B34C0030B553 /* Cagegory */,
-				03141ACF2146B34C0030B553 /* icons */,
-				03141AC02146B34C0030B553 /* plist */,
-			);
-			path = KeyBoard;
-			sourceTree = "<group>";
-		};
-		03141AC02146B34C0030B553 /* plist */ = {
-			isa = PBXGroup;
-			children = (
-				03141AC12146B34C0030B553 /* systemEmoji.plist */,
-			);
-			path = plist;
-			sourceTree = "<group>";
-		};
-		03141AC42146B34C0030B553 /* Cagegory */ = {
-			isa = PBXGroup;
-			children = (
-				03141AC62146B34C0030B553 /* NSString+Emoji.h */,
-				03141AC52146B34C0030B553 /* NSString+Emoji.m */,
-			);
-			path = Cagegory;
-			sourceTree = "<group>";
-		};
-		03141AC72146B34C0030B553 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				03141AC82146B34C0030B553 /* ChatToolBarItem.h */,
-				03141ACC2146B34C0030B553 /* ChatToolBarItem.m */,
-				03141ACA2146B34C0030B553 /* FaceThemeModel.h */,
-				03141ACD2146B34C0030B553 /* FaceThemeModel.m */,
-				03141AC92146B34C0030B553 /* MoreItem.h */,
-				03141ACB2146B34C0030B553 /* MoreItem.m */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		03141ACF2146B34C0030B553 /* icons */ = {
-			isa = PBXGroup;
-			children = (
-				03141C132146B34C0030B553 /* more */,
-				03141C1C2146B34C0030B553 /* ChatToolBar */,
-			);
-			path = icons;
-			sourceTree = "<group>";
-		};
-		03141C132146B34C0030B553 /* more */ = {
-			isa = PBXGroup;
-			children = (
-				03141C142146B34C0030B553 /* sharemore_location@3x.png */,
-				03141C152146B34C0030B553 /* sharemore_pic@2x.png */,
-				03141C162146B34C0030B553 /* sharemore_location@2x.png */,
-				03141C172146B34C0030B553 /* sharemore_pic@3x.png */,
-				03141C182146B34C0030B553 /* sharemore_video@3x.png */,
-				03141C192146B34C0030B553 /* yy@2x.png */,
-				03141C1A2146B34C0030B553 /* sharemore_video@2x.png */,
-				03141C1B2146B34C0030B553 /* sp@2x.png */,
-			);
-			path = more;
-			sourceTree = "<group>";
-		};
-		03141C1C2146B34C0030B553 /* ChatToolBar */ = {
-			isa = PBXGroup;
-			children = (
-				03141C1D2146B34C0030B553 /* face_HL@2x.png */,
-				03141C1E2146B34C0030B553 /* Delete_ios7@3x.png */,
-				03141C1F2146B34C0030B553 /* switchUp@2x.png */,
-				03141C202146B34C0030B553 /* more_ios@2x.png */,
-				03141C212146B34C0030B553 /* voice@2x.png */,
-				03141C222146B34C0030B553 /* keyboard@2x.png */,
-				03141C232146B34C0030B553 /* Delete_ios7@2x.png */,
-				03141C242146B34C0030B553 /* keyboard_HL@2x.png */,
-				03141C252146B34C0030B553 /* face@2x.png */,
-				03141C262146B34C0030B553 /* input-bar-flat@2x.png */,
-				03141C272146B34C0030B553 /* voice_HL@2x.png */,
-				03141C282146B34C0030B553 /* input-bar-flat@3x.png */,
-				03141C292146B34C0030B553 /* more_ios_HL@2x.png */,
-				03141C2A2146B34C0030B553 /* switchDown@2x.png */,
-			);
-			path = ChatToolBar;
-			sourceTree = "<group>";
-		};
-		03141C2B2146B34C0030B553 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				03141C2C2146B34C0030B553 /* FacePanel */,
-				03141C392146B34C0030B553 /* ToolBarPanel */,
-				03141C422146B34C0030B553 /* MorePanel */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		03141C2C2146B34C0030B553 /* FacePanel */ = {
-			isa = PBXGroup;
-			children = (
-				03141C302146B34C0030B553 /* FaceButton.h */,
-				03141C372146B34C0030B553 /* FaceButton.m */,
-				03141C2E2146B34C0030B553 /* FacePageView.h */,
-				03141C352146B34C0030B553 /* FacePageView.m */,
-				03141C342146B34C0030B553 /* FacePanel.h */,
-				03141C2F2146B34C0030B553 /* FacePanel.m */,
-				03141C322146B34C0030B553 /* FaceSourceManager.h */,
-				03141C382146B34C0030B553 /* FaceSourceManager.m */,
-				03141C2D2146B34C0030B553 /* FaceThemeView.h */,
-				03141C332146B34C0030B553 /* FaceThemeView.m */,
-				03141C362146B34C0030B553 /* PanelBottomView.h */,
-				03141C312146B34C0030B553 /* PanelBottomView.m */,
-			);
-			path = FacePanel;
-			sourceTree = "<group>";
-		};
-		03141C392146B34C0030B553 /* ToolBarPanel */ = {
-			isa = PBXGroup;
-			children = (
-				03141C412146B34C0030B553 /* ChatToolBar.h */,
-				03141C3D2146B34C0030B553 /* ChatToolBar.m */,
-				03141C3C2146B34C0030B553 /* OfficialAccountToolbar.h */,
-				03141C3F2146B34C0030B553 /* OfficialAccountToolbar.m */,
-				03141C402146B34C0030B553 /* RFRecordButton.h */,
-				03141C3B2146B34C0030B553 /* RFRecordButton.m */,
-				03141C3A2146B34C0030B553 /* RFTextView.h */,
-				03141C3E2146B34C0030B553 /* RFTextView.m */,
-			);
-			path = ToolBarPanel;
-			sourceTree = "<group>";
-		};
-		03141C422146B34C0030B553 /* MorePanel */ = {
-			isa = PBXGroup;
-			children = (
-				03141C442146B34C0030B553 /* MorePanel.h */,
-				03141C432146B34C0030B553 /* MorePanel.m */,
-			);
-			path = MorePanel;
-			sourceTree = "<group>";
-		};
 		434EBE3B6B699DD0AD3D57E5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -764,6 +531,8 @@
 		8927219B216DF07A006E066F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				897EBB7F214767DC00CC32BF /* IndexViewController.h */,
+				897EBB80214767DC00CC32BF /* IndexViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -784,6 +553,41 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		892721AA216F340B006E066F /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				892721AD216F34F5006E066F /* Model */,
+				892721AC216F34EE006E066F /* View */,
+				892721AB216F34E3006E066F /* Controller */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		892721AB216F34E3006E066F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				892721A7216F3406006E066F /* SWColorViewController.h */,
+				892721A8216F3406006E066F /* SWColorViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		892721AC216F34EE006E066F /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		892721AD216F34F5006E066F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				892721AF216F351B006E066F /* SWTheme.h */,
+				892721B0216F351B006E066F /* SWTheme.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		897EBB752147641E00CC32BF /* Base */ = {
 			isa = PBXGroup;
 			children = (
@@ -795,6 +599,7 @@
 		897EBB762147644100CC32BF /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				892721AA216F340B006E066F /* Theme */,
 				897EBB77214765E600CC32BF /* Index */,
 			);
 			path = Feature;
@@ -806,8 +611,6 @@
 				8927219D216DF095006E066F /* View */,
 				8927219C216DF08D006E066F /* Model */,
 				8927219B216DF07A006E066F /* Controller */,
-				897EBB7F214767DC00CC32BF /* IndexViewController.h */,
-				897EBB80214767DC00CC32BF /* IndexViewController.m */,
 			);
 			path = Index;
 			sourceTree = "<group>";
@@ -1091,32 +894,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03141C462146B34D0030B553 /* systemEmoji.plist in Resources */,
-				03141D2E2146B34D0030B553 /* more_ios@2x.png in Resources */,
-				03141D302146B34D0030B553 /* keyboard@2x.png in Resources */,
-				03141D372146B34D0030B553 /* more_ios_HL@2x.png in Resources */,
-				03141D282146B34D0030B553 /* yy@2x.png in Resources */,
 				0314195321469BB60030B553 /* Assets.xcassets in Resources */,
-				03141D272146B34D0030B553 /* sharemore_video@3x.png in Resources */,
 				897EBBE4214A2F8D00CC32BF /* GoogleService-Info.plist in Resources */,
-				03141D2A2146B34D0030B553 /* sp@2x.png in Resources */,
-				03141D252146B34D0030B553 /* sharemore_location@2x.png in Resources */,
-				03141D342146B34D0030B553 /* input-bar-flat@2x.png in Resources */,
-				03141D322146B34D0030B553 /* keyboard_HL@2x.png in Resources */,
-				03141D362146B34D0030B553 /* input-bar-flat@3x.png in Resources */,
-				03141D2C2146B34D0030B553 /* Delete_ios7@3x.png in Resources */,
-				03141D312146B34D0030B553 /* Delete_ios7@2x.png in Resources */,
 				89DF92392160645600AFE6B2 /* XLForm.bundle in Resources */,
-				03141D232146B34D0030B553 /* sharemore_location@3x.png in Resources */,
-				03141D292146B34D0030B553 /* sharemore_video@2x.png in Resources */,
-				03141D2D2146B34D0030B553 /* switchUp@2x.png in Resources */,
-				03141D382146B34D0030B553 /* switchDown@2x.png in Resources */,
-				03141D332146B34D0030B553 /* face@2x.png in Resources */,
-				03141D2B2146B34D0030B553 /* face_HL@2x.png in Resources */,
-				03141D262146B34D0030B553 /* sharemore_pic@3x.png in Resources */,
-				03141D352146B34D0030B553 /* voice_HL@2x.png in Resources */,
-				03141D242146B34D0030B553 /* sharemore_pic@2x.png in Resources */,
-				03141D2F2146B34D0030B553 /* voice@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1131,6 +911,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Moments/Pods-Moments-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BlocksKit/BlocksKit.framework",
+				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
 				"${BUILT_PRODUCTS_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework",
 				"${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
@@ -1148,6 +929,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BlocksKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DZNEmptyDataSet.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJExtension.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
@@ -1194,27 +976,22 @@
 			files = (
 				897EBBCC2147C33200CC32BF /* UITableView+Common.m in Sources */,
 				03141A402146A3FB0030B553 /* LWTransactionGroup.m in Sources */,
-				03141D3A2146B34D0030B553 /* PanelBottomView.m in Sources */,
 				89DF92572160645600AFE6B2 /* XLFormRowNavigationAccessoryView.m in Sources */,
 				897EBBD12147C33200CC32BF /* NSDate+Utilities.m in Sources */,
 				03141A3D2146A3FB0030B553 /* CALayer+WebCacheOperation.m in Sources */,
 				89DF923E2160645600AFE6B2 /* XLFormButtonCell.m in Sources */,
 				89DF925B2160645600AFE6B2 /* XLFormRegexValidator.m in Sources */,
 				897EBBD82147C33200CC32BF /* NSDictionary+Safe.m in Sources */,
-				03141C492146B34D0030B553 /* MoreItem.m in Sources */,
 				89DF925D2160645600AFE6B2 /* XLFormValidator.m in Sources */,
 				89DF92532160645600AFE6B2 /* NSExpression+XLFormAdditions.m in Sources */,
 				89DF92482160645600AFE6B2 /* XLFormTextFieldCell.m in Sources */,
 				89DF92552160645600AFE6B2 /* XLFormRightImageButton.m in Sources */,
-				03141D402146B34D0030B553 /* ChatToolBar.m in Sources */,
 				89DF923D2160645600AFE6B2 /* XLFormCheckCell.m in Sources */,
 				89DF924F2160645600AFE6B2 /* XLFormOptionsObject.m in Sources */,
 				897EBBCE2147C33200CC32BF /* UIColor+layer.m in Sources */,
 				89DF92502160645600AFE6B2 /* XLForm.m in Sources */,
 				03141A562146A3FB0030B553 /* LWStorage.m in Sources */,
-				03141D412146B34D0030B553 /* RFTextView.m in Sources */,
 				03141A362146A3FA0030B553 /* LWTransaction.m in Sources */,
-				03141C4B2146B34D0030B553 /* FaceThemeModel.m in Sources */,
 				897EBBD42147C33200CC32BF /* NSString+Common.m in Sources */,
 				03141A3A2146A3FB0030B553 /* LWTextGlyph.m in Sources */,
 				89DF91CC215F2C9300AFE6B2 /* CMAutoTrackerOperation.m in Sources */,
@@ -1222,6 +999,7 @@
 				03141A412146A3FB0030B553 /* NSMutableAttributedString+Gallop.m in Sources */,
 				89DF924A2160645600AFE6B2 /* XLFormSectionDescriptor.m in Sources */,
 				03141A522146A3FB0030B553 /* SDImageCache+Gallop.m in Sources */,
+				892721B1216F351B006E066F /* SWTheme.m in Sources */,
 				89DF92422160645600AFE6B2 /* XLFormInlineSelectorCell.m in Sources */,
 				03141A422146A3FB0030B553 /* NSManagedObject+LWLayout.m in Sources */,
 				03141A492146A3FB0030B553 /* LWHTMLDisplayView.m in Sources */,
@@ -1229,18 +1007,14 @@
 				89DF92582160645600AFE6B2 /* XLFormRightDetailCell.m in Sources */,
 				892720C62160CCD2006E066F /* SWTableViewController.m in Sources */,
 				89DF92562160645600AFE6B2 /* XLFormTextView.m in Sources */,
-				03141D3D2146B34D0030B553 /* FaceButton.m in Sources */,
 				03141A552146A3FB0030B553 /* LWTextParser.m in Sources */,
 				897EBBD92147C33200CC32BF /* UIViewController+Animation.m in Sources */,
-				03141C4A2146B34D0030B553 /* ChatToolBarItem.m in Sources */,
 				89DF925A2160645600AFE6B2 /* UIView+XLFormAdditions.m in Sources */,
 				897EBBCD2147C33200CC32BF /* NSDictionary+HandleNSNull.m in Sources */,
 				03141A672146A64A0030B553 /* AppConfigurationTemplate.m in Sources */,
 				03141A502146A3FB0030B553 /* LWAsyncImageView.m in Sources */,
 				03141A3E2146A3FB0030B553 /* LWAsyncImageView+Display.m in Sources */,
 				89272198216DC5FA006E066F /* HTTraffic.m in Sources */,
-				03141D3F2146B34D0030B553 /* RFRecordButton.m in Sources */,
-				03141D392146B34D0030B553 /* FacePanel.m in Sources */,
 				89DF923C2160645600AFE6B2 /* XLFormSegmentedCell.m in Sources */,
 				03141A572146A3FB0030B553 /* NSString+HTML.m in Sources */,
 				89DF924C2160645600AFE6B2 /* XLFormDescriptor.m in Sources */,
@@ -1267,13 +1041,9 @@
 				89DF92542160645600AFE6B2 /* NSString+XLFormAdditions.m in Sources */,
 				897EBBDA2147C33200CC32BF /* UIImage+UI.m in Sources */,
 				03141A582146A3FB0030B553 /* LWAsyncDisplayView.m in Sources */,
-				03141D3B2146B34D0030B553 /* FaceThemeView.m in Sources */,
-				03141D432146B34D0030B553 /* MorePanel.m in Sources */,
 				89DF924B2160645600AFE6B2 /* XLFormRowDescriptor.m in Sources */,
-				03141C482146B34D0030B553 /* NSString+Emoji.m in Sources */,
 				89DF92442160645600AFE6B2 /* XLFormLeftRightSelectorCell.m in Sources */,
 				03141A5A2146A3FB0030B553 /* LWAsyncImageView+WebCacheOperation.m in Sources */,
-				03141D422146B34D0030B553 /* OfficialAccountToolbar.m in Sources */,
 				89DF92452160645600AFE6B2 /* XLFormPickerCell.m in Sources */,
 				03141A5B2146A3FB0030B553 /* UIImage+Gallop.m in Sources */,
 				03141A432146A3FB0030B553 /* LWTextAttachment.m in Sources */,
@@ -1282,11 +1052,9 @@
 				03141A5D2146A3FB0030B553 /* LWAsyncImageView+WebCache.m in Sources */,
 				897EBBD72147C33200CC32BF /* UIView+GesAdditions.m in Sources */,
 				03141A462146A3FB0030B553 /* LWHTMLTextConfig.m in Sources */,
-				03141D3C2146B34D0030B553 /* FacePageView.m in Sources */,
 				897EBBD22147C33200CC32BF /* UIView+Common.m in Sources */,
 				03141A3C2146A3FB0030B553 /* LWHTMLImageConfig.m in Sources */,
 				03141A4F2146A3FB0030B553 /* LWHTMLNode.m in Sources */,
-				03141D3E2146B34D0030B553 /* FaceSourceManager.m in Sources */,
 				03141A4A2146A3FB0030B553 /* LWTextLine.m in Sources */,
 				03141A3F2146A3FB0030B553 /* LWLayout.m in Sources */,
 				03141A442146A3FB0030B553 /* NSString+HKMD5.m in Sources */,
@@ -1298,7 +1066,6 @@
 				89DF925C2160645600AFE6B2 /* XLFormValidationStatus.m in Sources */,
 				89DF92492160645600AFE6B2 /* XLFormDatePickerCell.m in Sources */,
 				89DF92432160645600AFE6B2 /* XLFormImageCell.m in Sources */,
-				03141D442146B34D0030B553 /* ChatKeyBoard.m in Sources */,
 				89DF924D2160645600AFE6B2 /* XLFormViewController.m in Sources */,
 				892721A0216DF1EC006E066F /* SWDataCounter.m in Sources */,
 				03141A352146A3FA0030B553 /* LWTextContainer.m in Sources */,
@@ -1309,6 +1076,7 @@
 				89DF92512160645600AFE6B2 /* NSObject+XLFormAdditions.m in Sources */,
 				89DF92402160645600AFE6B2 /* XLFormSwitchCell.m in Sources */,
 				89DF92592160645600AFE6B2 /* NSArray+XLFormAdditions.m in Sources */,
+				892721A9216F3406006E066F /* SWColorViewController.m in Sources */,
 				89DF923A2160645600AFE6B2 /* XLFormTextViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
