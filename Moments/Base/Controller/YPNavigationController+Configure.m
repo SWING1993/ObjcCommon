@@ -13,7 +13,7 @@
 - (YPNavigationBarConfigurations) yp_navigtionBarConfiguration {
     YPNavigationBarConfigurations configurations = YPNavigationBarShow;
     configurations |= YPNavigationBarStyleBlack;
-    configurations |= YPNavigationBarBackgroundStyleTranslucent;
+    configurations |= YPNavigationBarBackgroundStyleOpaque;
     configurations |= YPNavigationBarBackgroundStyleColor;
     return configurations;
 }
@@ -28,7 +28,7 @@
 }
 
 - (UIColor *) yp_navigationBackgroundColor {
-    return UIColorMakeWithRGBA(31, 31, 31, 0.95);
+    return [UIColor flatBlackColorDark];
 }
 
 
