@@ -34,9 +34,6 @@
 #import "CMAutoTrackerOperation.h"
 #import <YPNavigationBarTransition/YPNavigationBarTransition.h>
 #import "SWTableViewController.h"
-#import "SWRealmConfiguration.h"
-#import "HTTraffic.h"
-#import "SWDataCounter.h"
 #import <ChameleonFramework/Chameleon.h>
 
 #endif /* MomentsHeader_pch */

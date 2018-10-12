@@ -57,12 +57,6 @@
 		499416C83B006E9CF274A068 /* Pods_DaysMatter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EA9D01FD7A1B70092AD68B9 /* Pods_DaysMatter.framework */; };
 		892720C62160CCD2006E066F /* SWTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 892720C52160CCD2006E066F /* SWTableViewController.m */; };
 		892720C92160CED5006E066F /* YPNavigationController+Configure.m in Sources */ = {isa = PBXBuildFile; fileRef = 892720C72160CED5006E066F /* YPNavigationController+Configure.m */; };
-		89272198216DC5FA006E066F /* HTTraffic.m in Sources */ = {isa = PBXBuildFile; fileRef = 89272197216DC5FA006E066F /* HTTraffic.m */; };
-		892721A0216DF1EC006E066F /* SWDataCounter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8927219F216DF1EC006E066F /* SWDataCounter.m */; };
-		892721A9216F3406006E066F /* SWColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 892721A8216F3406006E066F /* SWColorViewController.m */; };
-		892721B1216F351B006E066F /* SWTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 892721B0216F351B006E066F /* SWTheme.m */; };
-		892721B4216F5137006E066F /* IndexHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 892721B3216F5137006E066F /* IndexHeaderView.m */; };
-		892721B8216F53E3006E066F /* bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 892721B7216F53E3006E066F /* bg.jpg */; };
 		897EBB7B2147664800CC32BF /* SWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBB7A2147664800CC32BF /* SWViewController.m */; };
 		897EBB81214767DC00CC32BF /* IndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBB80214767DC00CC32BF /* IndexViewController.m */; };
 		897EBBCC2147C33200CC32BF /* UITableView+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 897EBBAD2147C33100CC32BF /* UITableView+Common.m */; };
@@ -222,17 +216,6 @@
 		892720C52160CCD2006E066F /* SWTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWTableViewController.m; sourceTree = "<group>"; };
 		892720C72160CED5006E066F /* YPNavigationController+Configure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YPNavigationController+Configure.m"; sourceTree = "<group>"; };
 		892720C82160CED5006E066F /* YPNavigationController+Configure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YPNavigationController+Configure.h"; sourceTree = "<group>"; };
-		89272196216DC5FA006E066F /* HTTraffic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTTraffic.h; sourceTree = "<group>"; };
-		89272197216DC5FA006E066F /* HTTraffic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HTTraffic.m; sourceTree = "<group>"; };
-		8927219E216DF1EC006E066F /* SWDataCounter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWDataCounter.h; sourceTree = "<group>"; };
-		8927219F216DF1EC006E066F /* SWDataCounter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWDataCounter.m; sourceTree = "<group>"; };
-		892721A7216F3406006E066F /* SWColorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWColorViewController.h; sourceTree = "<group>"; };
-		892721A8216F3406006E066F /* SWColorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWColorViewController.m; sourceTree = "<group>"; };
-		892721AF216F351B006E066F /* SWTheme.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWTheme.h; sourceTree = "<group>"; };
-		892721B0216F351B006E066F /* SWTheme.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWTheme.m; sourceTree = "<group>"; };
-		892721B2216F5137006E066F /* IndexHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IndexHeaderView.h; sourceTree = "<group>"; };
-		892721B3216F5137006E066F /* IndexHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IndexHeaderView.m; sourceTree = "<group>"; };
-		892721B7216F53E3006E066F /* bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg.jpg; sourceTree = "<group>"; };
 		897EBB792147664800CC32BF /* SWViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWViewController.h; sourceTree = "<group>"; };
 		897EBB7A2147664800CC32BF /* SWViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWViewController.m; sourceTree = "<group>"; };
 		897EBB7F214767DC00CC32BF /* IndexViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IndexViewController.h; sourceTree = "<group>"; };
@@ -394,7 +377,6 @@
 				897EBB752147641E00CC32BF /* Base */,
 				0314195221469BB60030B553 /* Assets.xcassets */,
 				0314195721469BB60030B553 /* Info.plist */,
-				892721B7216F53E3006E066F /* bg.jpg */,
 				03141AA12146AADB0030B553 /* MomentsHeader.pch */,
 				0314195821469BB60030B553 /* main.m */,
 				897EBBE3214A2F8D00CC32BF /* GoogleService-Info.plist */,
@@ -518,8 +500,6 @@
 			children = (
 				89DF91C4215F2C9300AFE6B2 /* CMAutoTracker */,
 				897EBBAC2147C33100CC32BF /* Category */,
-				89272196216DC5FA006E066F /* HTTraffic.h */,
-				89272197216DC5FA006E066F /* HTTraffic.m */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -545,8 +525,6 @@
 		8927219C216DF08D006E066F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				8927219E216DF1EC006E066F /* SWDataCounter.h */,
-				8927219F216DF1EC006E066F /* SWDataCounter.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -554,45 +532,8 @@
 		8927219D216DF095006E066F /* View */ = {
 			isa = PBXGroup;
 			children = (
-				892721B2216F5137006E066F /* IndexHeaderView.h */,
-				892721B3216F5137006E066F /* IndexHeaderView.m */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		892721AA216F340B006E066F /* Theme */ = {
-			isa = PBXGroup;
-			children = (
-				892721AD216F34F5006E066F /* Model */,
-				892721AC216F34EE006E066F /* View */,
-				892721AB216F34E3006E066F /* Controller */,
-			);
-			path = Theme;
-			sourceTree = "<group>";
-		};
-		892721AB216F34E3006E066F /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				892721A7216F3406006E066F /* SWColorViewController.h */,
-				892721A8216F3406006E066F /* SWColorViewController.m */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		892721AC216F34EE006E066F /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		892721AD216F34F5006E066F /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				892721AF216F351B006E066F /* SWTheme.h */,
-				892721B0216F351B006E066F /* SWTheme.m */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		892721B921703EC4006E066F /* Recovered References */ = {
@@ -614,7 +555,6 @@
 		897EBB762147644100CC32BF /* Feature */ = {
 			isa = PBXGroup;
 			children = (
-				892721AA216F340B006E066F /* Theme */,
 				897EBB77214765E600CC32BF /* Index */,
 			);
 			path = Feature;
@@ -909,7 +849,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				892721B8216F53E3006E066F /* bg.jpg in Resources */,
 				0314195321469BB60030B553 /* Assets.xcassets in Resources */,
 				897EBBE4214A2F8D00CC32BF /* GoogleService-Info.plist in Resources */,
 				89DF92392160645600AFE6B2 /* XLForm.bundle in Resources */,
@@ -1014,9 +953,7 @@
 				03141A532146A3FB0030B553 /* LWImageProcessor.m in Sources */,
 				03141A412146A3FB0030B553 /* NSMutableAttributedString+Gallop.m in Sources */,
 				89DF924A2160645600AFE6B2 /* XLFormSectionDescriptor.m in Sources */,
-				892721B4216F5137006E066F /* IndexHeaderView.m in Sources */,
 				03141A522146A3FB0030B553 /* SDImageCache+Gallop.m in Sources */,
-				892721B1216F351B006E066F /* SWTheme.m in Sources */,
 				89DF92422160645600AFE6B2 /* XLFormInlineSelectorCell.m in Sources */,
 				03141A422146A3FB0030B553 /* NSManagedObject+LWLayout.m in Sources */,
 				03141A492146A3FB0030B553 /* LWHTMLDisplayView.m in Sources */,
@@ -1031,7 +968,6 @@
 				03141A672146A64A0030B553 /* AppConfigurationTemplate.m in Sources */,
 				03141A502146A3FB0030B553 /* LWAsyncImageView.m in Sources */,
 				03141A3E2146A3FB0030B553 /* LWAsyncImageView+Display.m in Sources */,
-				89272198216DC5FA006E066F /* HTTraffic.m in Sources */,
 				89DF923C2160645600AFE6B2 /* XLFormSegmentedCell.m in Sources */,
 				03141A572146A3FB0030B553 /* NSString+HTML.m in Sources */,
 				89DF924C2160645600AFE6B2 /* XLFormDescriptor.m in Sources */,
@@ -1083,7 +1019,6 @@
 				89DF92492160645600AFE6B2 /* XLFormDatePickerCell.m in Sources */,
 				89DF92432160645600AFE6B2 /* XLFormImageCell.m in Sources */,
 				89DF924D2160645600AFE6B2 /* XLFormViewController.m in Sources */,
-				892721A0216DF1EC006E066F /* SWDataCounter.m in Sources */,
 				03141A352146A3FA0030B553 /* LWTextContainer.m in Sources */,
 				03141A392146A3FB0030B553 /* LWHTMLLayout.m in Sources */,
 				03141A5C2146A3FB0030B553 /* LWTextRunDelegate.m in Sources */,
@@ -1092,7 +1027,6 @@
 				89DF92512160645600AFE6B2 /* NSObject+XLFormAdditions.m in Sources */,
 				89DF92402160645600AFE6B2 /* XLFormSwitchCell.m in Sources */,
 				89DF92592160645600AFE6B2 /* NSArray+XLFormAdditions.m in Sources */,
-				892721A9216F3406006E066F /* SWColorViewController.m in Sources */,
 				89DF923A2160645600AFE6B2 /* XLFormTextViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

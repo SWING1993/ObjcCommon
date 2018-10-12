@@ -81,11 +81,6 @@
 
 - (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     completionHandler(UIBackgroundFetchResultNewData);
-    
-    NSInteger launch = [[NSUserDefaults standardUserDefaults] integerForKey:@"application"];
-    launch ++;
-    [[NSUserDefaults standardUserDefaults] setInteger:launch forKey:@"application"];
-    [SWDataCounter record];
 }
 
 @end
