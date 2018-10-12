@@ -57,7 +57,6 @@
 		499416C83B006E9CF274A068 /* Pods_DaysMatter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EA9D01FD7A1B70092AD68B9 /* Pods_DaysMatter.framework */; };
 		892720C62160CCD2006E066F /* SWTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 892720C52160CCD2006E066F /* SWTableViewController.m */; };
 		892720C92160CED5006E066F /* YPNavigationController+Configure.m in Sources */ = {isa = PBXBuildFile; fileRef = 892720C72160CED5006E066F /* YPNavigationController+Configure.m */; };
-		892720FA216C4956006E066F /* SWRealmConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 892720F9216C4956006E066F /* SWRealmConfiguration.m */; };
 		89272198216DC5FA006E066F /* HTTraffic.m in Sources */ = {isa = PBXBuildFile; fileRef = 89272197216DC5FA006E066F /* HTTraffic.m */; };
 		892721A0216DF1EC006E066F /* SWDataCounter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8927219F216DF1EC006E066F /* SWDataCounter.m */; };
 		892721A9216F3406006E066F /* SWColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 892721A8216F3406006E066F /* SWColorViewController.m */; };
@@ -223,8 +222,6 @@
 		892720C52160CCD2006E066F /* SWTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWTableViewController.m; sourceTree = "<group>"; };
 		892720C72160CED5006E066F /* YPNavigationController+Configure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YPNavigationController+Configure.m"; sourceTree = "<group>"; };
 		892720C82160CED5006E066F /* YPNavigationController+Configure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YPNavigationController+Configure.h"; sourceTree = "<group>"; };
-		892720F8216C4956006E066F /* SWRealmConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWRealmConfiguration.h; sourceTree = "<group>"; };
-		892720F9216C4956006E066F /* SWRealmConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWRealmConfiguration.m; sourceTree = "<group>"; };
 		89272196216DC5FA006E066F /* HTTraffic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTTraffic.h; sourceTree = "<group>"; };
 		89272197216DC5FA006E066F /* HTTraffic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HTTraffic.m; sourceTree = "<group>"; };
 		8927219E216DF1EC006E066F /* SWDataCounter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWDataCounter.h; sourceTree = "<group>"; };
@@ -412,8 +409,6 @@
 				0314194A21469BB50030B553 /* AppDelegate.m */,
 				03141A652146A6490030B553 /* AppConfigurationTemplate.h */,
 				03141A662146A64A0030B553 /* AppConfigurationTemplate.m */,
-				892720F8216C4956006E066F /* SWRealmConfiguration.h */,
-				892720F9216C4956006E066F /* SWRealmConfiguration.m */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -1050,7 +1045,6 @@
 				89DF91CD215F2C9300AFE6B2 /* UIViewController+CMAutoTracker.m in Sources */,
 				89DF924E2160645600AFE6B2 /* XLFormOptionsViewController.m in Sources */,
 				03141A4C2146A3FB0030B553 /* LWStorageBuilder.m in Sources */,
-				892720FA216C4956006E066F /* SWRealmConfiguration.m in Sources */,
 				03141A592146A3FB0030B553 /* LWHTMLParser.m in Sources */,
 				03141A372146A3FA0030B553 /* LWTextLayout.m in Sources */,
 				897EBB7B2147664800CC32BF /* SWViewController.m in Sources */,
