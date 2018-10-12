@@ -1,7 +1,7 @@
 source 'https://github.com/cocoaPods/specs.git'
 platform :ios, '8.0'
 use_frameworks!
-target "Moments" do
+target "DaysMatter" do
   pod 'Masonry'
   pod 'BlocksKit'
   pod 'DZNEmptyDataSet'

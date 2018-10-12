@@ -53,7 +53,8 @@
 		03141A5D2146A3FB0030B553 /* LWAsyncImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 03141A342146A3FA0030B553 /* LWAsyncImageView+WebCache.m */; };
 		03141A672146A64A0030B553 /* AppConfigurationTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 03141A662146A64A0030B553 /* AppConfigurationTemplate.m */; };
 		03141A6B2146A7B50030B553 /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 03141A692146A7A60030B553 /* libxml2.2.tbd */; };
-		499416C83B006E9CF274A068 /* Pods_Moments.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EA9D01FD7A1B70092AD68B9 /* Pods_Moments.framework */; };
+		0BC9C087957587E830056648 /* Pods_DaysMatter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36468A513C59ED38B4C8C667 /* Pods_DaysMatter.framework */; };
+		499416C83B006E9CF274A068 /* Pods_DaysMatter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EA9D01FD7A1B70092AD68B9 /* Pods_DaysMatter.framework */; };
 		892720C62160CCD2006E066F /* SWTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 892720C52160CCD2006E066F /* SWTableViewController.m */; };
 		892720C92160CED5006E066F /* YPNavigationController+Configure.m in Sources */ = {isa = PBXBuildFile; fileRef = 892720C72160CED5006E066F /* YPNavigationController+Configure.m */; };
 		892720FA216C4956006E066F /* SWRealmConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 892720F9216C4956006E066F /* SWRealmConfiguration.m */; };
@@ -121,7 +122,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0314194621469BB50030B553 /* Moments.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moments.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0314194621469BB50030B553 /* DaysMatter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DaysMatter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0314194921469BB50030B553 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0314194A21469BB50030B553 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		0314195221469BB60030B553 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -215,7 +216,9 @@
 		03141A662146A64A0030B553 /* AppConfigurationTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppConfigurationTemplate.m; sourceTree = "<group>"; };
 		03141A692146A7A60030B553 /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
 		03141AA12146AADB0030B553 /* MomentsHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MomentsHeader.pch; sourceTree = "<group>"; };
-		05BDC4358F3399D37FD7F08F /* Pods-Moments.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moments.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Moments/Pods-Moments.debug.xcconfig"; sourceTree = "<group>"; };
+		36468A513C59ED38B4C8C667 /* Pods_DaysMatter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DaysMatter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		68FD26AEA1E5D6E7B9CA2DA2 /* Pods-DaysMatter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DaysMatter.release.xcconfig"; path = "Pods/Target Support Files/Pods-DaysMatter/Pods-DaysMatter.release.xcconfig"; sourceTree = "<group>"; };
+		7CDB3765E1E3D3380AE0EE05 /* Pods-DaysMatter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DaysMatter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DaysMatter/Pods-DaysMatter.debug.xcconfig"; sourceTree = "<group>"; };
 		892720C42160CCD1006E066F /* SWTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWTableViewController.h; sourceTree = "<group>"; };
 		892720C52160CCD2006E066F /* SWTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWTableViewController.m; sourceTree = "<group>"; };
 		892720C72160CED5006E066F /* YPNavigationController+Configure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YPNavigationController+Configure.m"; sourceTree = "<group>"; };
@@ -347,8 +350,7 @@
 		89DF92362160645600AFE6B2 /* XLFormRegexValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLFormRegexValidator.h; sourceTree = "<group>"; };
 		89DF92372160645600AFE6B2 /* XLFormValidationStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLFormValidationStatus.h; sourceTree = "<group>"; };
 		89DF92382160645600AFE6B2 /* XLFormValidatorProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLFormValidatorProtocol.h; sourceTree = "<group>"; };
-		9EA9D01FD7A1B70092AD68B9 /* Pods_Moments.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Moments.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A61FFE8889B53E330545BB1B /* Pods-Moments.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moments.release.xcconfig"; path = "Pods/Target Support Files/Pods-Moments/Pods-Moments.release.xcconfig"; sourceTree = "<group>"; };
+		9EA9D01FD7A1B70092AD68B9 /* Pods_DaysMatter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DaysMatter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -357,7 +359,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				03141A6B2146A7B50030B553 /* libxml2.2.tbd in Frameworks */,
-				499416C83B006E9CF274A068 /* Pods_Moments.framework in Frameworks */,
+				499416C83B006E9CF274A068 /* Pods_DaysMatter.framework in Frameworks */,
+				0BC9C087957587E830056648 /* Pods_DaysMatter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,22 +370,23 @@
 		0314193D21469BB50030B553 = {
 			isa = PBXGroup;
 			children = (
-				0314194821469BB50030B553 /* Moments */,
+				0314194821469BB50030B553 /* DaysMatter */,
 				0314194721469BB50030B553 /* Products */,
 				434EBE3B6B699DD0AD3D57E5 /* Pods */,
 				AD8237014271D1CACE5D2039 /* Frameworks */,
+				892721B921703EC4006E066F /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
 		0314194721469BB50030B553 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0314194621469BB50030B553 /* Moments.app */,
+				0314194621469BB50030B553 /* DaysMatter.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		0314194821469BB50030B553 /* Moments */ = {
+		0314194821469BB50030B553 /* DaysMatter */ = {
 			isa = PBXGroup;
 			children = (
 				0314195F21469F4C0030B553 /* Main */,
@@ -398,7 +402,7 @@
 				0314195821469BB60030B553 /* main.m */,
 				897EBBE3214A2F8D00CC32BF /* GoogleService-Info.plist */,
 			);
-			path = Moments;
+			path = DaysMatter;
 			sourceTree = "<group>";
 		};
 		0314195F21469F4C0030B553 /* Main */ = {
@@ -528,8 +532,8 @@
 		434EBE3B6B699DD0AD3D57E5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				05BDC4358F3399D37FD7F08F /* Pods-Moments.debug.xcconfig */,
-				A61FFE8889B53E330545BB1B /* Pods-Moments.release.xcconfig */,
+				7CDB3765E1E3D3380AE0EE05 /* Pods-DaysMatter.debug.xcconfig */,
+				68FD26AEA1E5D6E7B9CA2DA2 /* Pods-DaysMatter.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -594,6 +598,14 @@
 				892721B0216F351B006E066F /* SWTheme.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		892721B921703EC4006E066F /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				9EA9D01FD7A1B70092AD68B9 /* Pods_DaysMatter.framework */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		897EBB752147641E00CC32BF /* Base */ = {
@@ -833,7 +845,7 @@
 			isa = PBXGroup;
 			children = (
 				03141A692146A7A60030B553 /* libxml2.2.tbd */,
-				9EA9D01FD7A1B70092AD68B9 /* Pods_Moments.framework */,
+				36468A513C59ED38B4C8C667 /* Pods_DaysMatter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -841,9 +853,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0314194521469BB50030B553 /* Moments */ = {
+		0314194521469BB50030B553 /* DaysMatter */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0314195C21469BB60030B553 /* Build configuration list for PBXNativeTarget "Moments" */;
+			buildConfigurationList = 0314195C21469BB60030B553 /* Build configuration list for PBXNativeTarget "DaysMatter" */;
 			buildPhases = (
 				C68ACC5DFBADD063DD803C21 /* [CP] Check Pods Manifest.lock */,
 				0314194221469BB50030B553 /* Sources */,
@@ -855,9 +867,9 @@
 			);
 			dependencies = (
 			);
-			name = Moments;
-			productName = Moments;
-			productReference = 0314194621469BB50030B553 /* Moments.app */;
+			name = DaysMatter;
+			productName = DaysMatter;
+			productReference = 0314194621469BB50030B553 /* DaysMatter.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -879,7 +891,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 0314194121469BB50030B553 /* Build configuration list for PBXProject "Moments" */;
+			buildConfigurationList = 0314194121469BB50030B553 /* Build configuration list for PBXProject "DaysMatter" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -892,7 +904,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0314194521469BB50030B553 /* Moments */,
+				0314194521469BB50030B553 /* DaysMatter */,
 			);
 		};
 /* End PBXProject section */
@@ -918,7 +930,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Moments/Pods-Moments-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-DaysMatter/Pods-DaysMatter-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BlocksKit/BlocksKit.framework",
 				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
 				"${BUILT_PRODUCTS_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework",
@@ -955,7 +967,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Moments/Pods-Moments-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DaysMatter/Pods-DaysMatter-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C68ACC5DFBADD063DD803C21 /* [CP] Check Pods Manifest.lock */ = {
@@ -969,7 +981,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Moments-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-DaysMatter-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1206,22 +1218,22 @@
 		};
 		0314195D21469BB60030B553 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 05BDC4358F3399D37FD7F08F /* Pods-Moments.debug.xcconfig */;
+			baseConfigurationReference = 7CDB3765E1E3D3380AE0EE05 /* Pods-DaysMatter.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WPXQYZSK2Q;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SRCROOT)/Moments/MomentsHeader.pch";
+				GCC_PREFIX_HEADER = "$(SRCROOT)/DaysMatter/MomentsHeader.pch";
 				HEADER_SEARCH_PATHS = "${SDK_DIR}/usr/include/libxml2";
-				INFOPLIST_FILE = Moments/Info.plist;
+				INFOPLIST_FILE = DaysMatter/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.swing.moments;
+				PRODUCT_BUNDLE_IDENTIFIER = com.swing.DaysMatter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1229,22 +1241,22 @@
 		};
 		0314195E21469BB60030B553 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A61FFE8889B53E330545BB1B /* Pods-Moments.release.xcconfig */;
+			baseConfigurationReference = 68FD26AEA1E5D6E7B9CA2DA2 /* Pods-DaysMatter.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WPXQYZSK2Q;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SRCROOT)/Moments/MomentsHeader.pch";
+				GCC_PREFIX_HEADER = "$(SRCROOT)/DaysMatter/MomentsHeader.pch";
 				HEADER_SEARCH_PATHS = "${SDK_DIR}/usr/include/libxml2";
-				INFOPLIST_FILE = Moments/Info.plist;
+				INFOPLIST_FILE = DaysMatter/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.swing.moments;
+				PRODUCT_BUNDLE_IDENTIFIER = com.swing.DaysMatter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1253,7 +1265,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0314194121469BB50030B553 /* Build configuration list for PBXProject "Moments" */ = {
+		0314194121469BB50030B553 /* Build configuration list for PBXProject "DaysMatter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0314195A21469BB60030B553 /* Debug */,
@@ -1262,7 +1274,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0314195C21469BB60030B553 /* Build configuration list for PBXNativeTarget "Moments" */ = {
+		0314195C21469BB60030B553 /* Build configuration list for PBXNativeTarget "DaysMatter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0314195D21469BB60030B553 /* Debug */,
